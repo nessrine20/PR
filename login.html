@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>login</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <div class="main-container">
+
+    <!-- Barre latérale avec menu hamburger -->
+    <aside class="sidebar">
+      <div class="hamburger" onclick="toggleMenu()">
+        ☰
+      </div>
+
+      <ul id="menu" class="menu">
+        <li onclick="changeRole('prof')"> Prof</li>
+        <li onclick="changeRole('etudiant')">Étudiant</li>
+        <li onclick="changeRole('admin')"> Admin</li>
+      </ul>
+    </aside>
+
+    <!-- Carte principale -->
+    <div class="auth-card">
+
+      <!-- Partie gauche (illustration + texte) -->
+      <div class="illustration" id="illustration">
+        <h2 id="roleTitle">Bienvenue Prof </h2>
+        <p id="roleDesc">Gérez vos cours et vos étudiants facilement.</p>
+        <div class="image-placeholder" id="roleImage">[Image Prof ici]</div>
+      </div>
+
+      <!-- Partie droite (formulaire) -->
+      <div class="form-section">
+
+        <form>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="votre.email@gmail.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" placeholder="••••••••" required>
+          </div>
+
+          <button type="submit" class="btn">Connexion</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

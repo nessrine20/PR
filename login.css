@@ -1,0 +1,230 @@
+/* === RESET GLOBAL === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: #f4f3f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === CONTENEUR PRINCIPAL === */
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === SIDEBAR (STYLE MODERNE AVEC HAMBURGER) === */
+.sidebar {
+  position: relative;
+  height: 520px;
+  width: 100px;
+  background: #ffffff;
+  border-radius: 25px 0 0 25px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding-top: 30px;
+}
+
+/* === HAMBURGER FLOTTANT CIRCULAIRE === */
+.hamburger {
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: #cb99c9;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.hamburger:hover {
+  background: #862c92;
+  color: #fff;
+  transform: rotate(90deg);
+}
+
+/* === MENU DÉROULANT (ROLES) === */
+.menu {
+  list-style: none;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 40px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.menu li {
+  width: 100%;
+  text-align: center;
+  padding: 14px 0;
+  cursor: pointer;
+  color: #333;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background 0.3s, color 0.3s;
+}
+
+.menu li:hover {
+  background: #986dc6;
+  color: #fff;
+  border-radius: 8px;
+}
+
+/* Animation du menu */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === CARTE AUTH === */
+.auth-card {
+  display: flex;
+  width: 850px;
+  height: 520px;
+  background: white;
+  border-radius: 0 25px 25px 0;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* === PARTIE GAUCHE (ILLUSTRATION RÔLE) === */
+.illustration {
+  flex: 1;
+  background: linear-gradient(120deg, #b62fff, #7248ff);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 60px 40px;
+  transition: background 0.8s ease;
+}
+
+.illustration h2 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.illustration p {
+  font-size: 1rem;
+  opacity: 0.9;
+  max-width: 340px;
+  line-height: 1.4;
+}
+
+.image-placeholder {
+  width: 250px;
+  height: 250px;
+  border: 2px dashed rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+  font-size: 0.9rem;
+  margin-top: 25px;
+}
+
+.role-photo {
+  width: 250px;
+  height: 250px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* === FORMULAIRE === */
+.form-section {
+  flex: 1;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px 60px;
+  border-radius: 0 25px 25px 0;
+}
+
+.already {
+  text-align: right;
+  margin-bottom: 25px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.already a {
+  color: #9d6bbf;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.already a:hover {
+  text-decoration: underline;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom:35px;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+input {
+  padding: 12px;
+  border: 1.5px solid #d6d6d6;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #653e75;
+  box-shadow: 0 0 0 3px rgba(47, 79, 255, 0.15);
+  outline: none;
+}
+
+.btn {
+  width: 100%;
+  background: #ba88d4;
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  padding: 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background: #82678d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(104, 81, 125, 0.3);
+}
