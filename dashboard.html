@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plateforme Étudiante</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+
+<body>
+  <!-- === NAVBAR === -->
+  <header class="navbar">
+    <div class="logo">🎓 EduPlatform</div>
+    <div class="nav-actions">
+      <button id="langBtn" class="btn">FR</button>
+      <button id="darkModeBtn" class="btn">🌙</button>
+      <div class="profile">👤 Profil</div>
+    </div>
+  </header>
+
+  <!-- === HAMBURGER TOUJOURS VISIBLE === -->
+  <div id="hamburger" class="hamburger">☰</div>
+
+  <!-- === SIDEBAR === -->
+  <aside id="sidebar" class="sidebar">
+    <ul class="menu">
+      <li class="menu-item">
+        <div class="menu-title"> Cours</div>
+        <ul class="submenu">
+          <li>☁️ Cloud</li>
+          <li>💻 Développement Web</li>
+          <li>📡 Réseaux Sans Fil</li>
+          <li>🤖 Intelligence Artificielle</li>
+        </ul>
+      </li>
+
+      <li class="menu-item">
+        <div class="menu-title"> TD</div>
+        <ul class="submenu">
+          <li>📚 Algorithmique</li>
+          <li>🧮 Base de Données</li>
+        </ul>
+      </li>
+
+      <li class="menu-item">
+        <div class="menu-title"> TP</div>
+        <ul class="submenu">
+          <li>💡 IoT</li>
+          <li>🧰 DevOps</li>
+        </ul>
+      </li>
+
+      <li class="menu-item">
+        <div class="menu-title"> Examens</div>
+        <ul class="submenu">
+          <li>📄 Blancs</li>
+          <li>📘 Finaux</li>
+        </ul>
+      </li>
+      
+      <li class="menu-item">
+        <div class="menu-title"> Compétition </div>
+        <ul class="submenu">
+          <li>💡 IoT</li>
+          <li>🧰 DevOps</li>
+        </ul>
+      </li>
+      
+      <li class="menu-item">
+        <div class="menu-title"> Demande de Stage </div>
+        <ul class="submenu">
+          <li>initiation</li>
+          <li>perfectionnement </li>
+           <li>PFE </li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- === CONTENU PRINCIPAL === -->
+  <main class="content">
+    <h1 id="welcomeTitle">Bienvenue sur votre espace étudiant 👋</h1>
+    <p id="welcomeText">Sélectionnez un élément dans le menu pour commencer.</p>
+  </main>
+
+  <!-- === CANVAS POUR LE CURSEUR === -->
+  <canvas id="cursorCanvas"></canvas>
+
+  <!-- === SCRIPT === -->
+  <script src="dashboard.js" defer></script>
+</body>
+</html>
