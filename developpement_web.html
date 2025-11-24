@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Développement Web</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4eaff;
+    }
+
+    /* TOPBAR */
+    .topbar {
+      background: linear-gradient(135deg, #c59bff, #b07cff);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .topbar-title {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .back-btn {
+      padding: 8px 16px;
+      background: #fff;
+      color: #6a34cc;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .back-btn:hover {
+      background: #f1e4ff;
+    }
+
+    /* CONTAINER */
+    .container {
+      width: 70%;
+      margin: 40px auto;
+    }
+
+    h1 {
+      font-size: 30px;
+      text-align: center;
+      color: #4a2db6;
+      margin-bottom: 30px;
+    }
+
+    /* MODULE STYLE */
+    .module {
+      background: white;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      overflow: hidden;
+      border: 1px solid #e4d6ff;
+    }
+
+    .module-header {
+      padding: 18px;
+      font-size: 18px;
+      font-weight: bold;
+      background: #e9d6ff;
+      cursor: pointer;
+      color: #4a2db6;
+    }
+
+    .module-header:hover {
+      background: #dfc8ff;
+    }
+
+    .module-body {
+      display: none;
+      background: #ffffff;
+      padding: 20px;
+      font-size: 15px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    /* CARDS */
+    .subcards {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      flex: 1;
+      background: #f6e9ff;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      border: 1px solid #e2caff;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .card h3 {
+      color: #5b22b3;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #555;
+      font-size: 14px;
+    }
+
+    .btn-more {
+      display: inline-block;
+      margin-top: 10px;
+      background: #6a34cc;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .btn-more:hover {
+      background: #5420a5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-title">💻 Cours Développement Web</div>
+    <a href="dashboard.html" class="back-btn">← Retour</a>
+  </div>
+
+  <div class="container">
+
+    <h1>Modules de Développement Web</h1>
+
+    <!-- === MODULE 0 === -->
+    <div class="module">
+      <div class="module-header">Introduction au Développement Web</div>
+      <div class="module-body">
+        <p>
+          Comprendre le fonctionnement du Web, client/serveur, navigateurs, HTTP, structure d’un site.
+        </p>
+
+        <div class="subcards">
+          <div class="card">
+            <h3>📘 Résumé</h3>
+            <p>Fonctionnement du Web, architecture, outils.</p>
+            <a href="#" class="btn-more">Voir</a>
+          </div>
+
+          <div class="card">
+            <h3>📝 TD</h3>
+            <p>Questions d’analyse & introduction.</p>
+            <a href="#" class="btn-more">Accéder</a>
+          </div>
+
+          <div class="card">
+            <h3>🔧 TP</h3>
+            <p>Créer votre première page HTML.</p>
+            <a href="#" class="btn-more">Détails</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- === MODULE 1 === -->
+    <div class="module">
+      <div class="module-header">Module 1 – HTML & Structure d'une page</div>
+      <div class="module-body">
+        <p>
+          Balises HTML, structure d’un document, images, liens, tableaux, formulaires.
+        </p>
+
+        <div class="subcards">
+          <div class="card">
+            <h3>📘 Résumé</h3>
+            <p>Balises essentielles et structure HTML.</p>
+            <a href="#" class="btn-more">Voir</a>
+          </div>
+
+          <div class="card">
+            <h3>📝 TD</h3>
+            <p>Créer une page de présentation personnelle.</p>
+            <a href="#" class="btn-more">Accéder</a>
+          </div>
+
+          <div class="card">
+            <h3>🔧 TP</h3>
+            <p>Mini-site multi-pages.</p>
+            <a href="#" class="btn-more">Détails</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- === MODULE 2 === -->
+    <div class="module">
+      <div class="module-header">Module 2 – CSS : Styles & Mise en Page</div>
+      <div class="module-body">
+        <p>
+          Sélecteurs, couleurs, bordures, flexbox, grid, responsive design.
+        </p>
+
+        <div class="subcards">
+          <div class="card">
+            <h3>📘 Résumé</h3>
+            <p>Bases du CSS + mise en forme.</p>
+            <a href="#" class="btn-more">Voir</a>
+          </div>
+
+          <div class="card">
+            <h3>📝 TD</h3>
+            <p>Styliser une page HTML existante.</p>
+            <a href="#" class="btn-more">Accéder</a>
+          </div>
+
+          <div class="card">
+            <h3>🔧 TP</h3>
+            <p>Site responsive avec Flexbox.</p>
+            <a href="#" class="btn-more">Détails</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- === MODULE 3 === -->
+    <div class="module">
+      <div class="module-header">Module 3 – JavaScript : Logique & DOM</div>
+      <div class="module-body">
+        <p>
+          Variables, conditions, boucles, fonctions, manipulation du DOM, événements.
+        </p>
+
+        <div class="subcards">
+          <div class="card">
+            <h3>📘 Résumé</h3>
+            <p>Fonctions JS et interactions utilisateur.</p>
+            <a href="#" class="btn-more">Voir</a>
+          </div>
+
+          <div class="card">
+            <h3>📝 TD</h3>
+            <p>Exercices de logique JavaScript.</p>
+            <a href="#" class="btn-more">Accéder</a>
+          </div>
+
+          <div class="card">
+            <h3>🔧 TP</h3>
+            <p>Créer une calculatrice ou une To-Do List.</p>
+            <a href="#" class="btn-more">Détails</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- === MODULE 4 === -->
+    <div class="module">
+      <div class="module-header">Module 4 – Mini-Projets Web</div>
+      <div class="module-body">
+        <p>
+          Réalisation de mini-projets complets : slider, formulaire validé, menu dynamique.
+        </p>
+
+        <div class="subcards">
+          <div class="card">
+            <h3>📘 Résumé</h3>
+            <p>Techniques utilisées dans les mini-projets.</p>
+            <a href="#" class="btn-more">Voir</a>
+          </div>
+
+          <div class="card">
+            <h3>📝 TD</h3>
+            <p>Analyse d’un projet web.</p>
+            <a href="#" class="btn-more">Accéder</a>
+          </div>
+
+          <div class="card">
+            <h3>🔧 TP</h3>
+            <p>Créer un site interactif complet.</p>
+            <a href="#" class="btn-more">Détails</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- JS -->
+  <script>
+    document.querySelectorAll('.module-header').forEach(header => {
+      header.addEventListener('click', () => {
+        let body = header.nextElementSibling;
+        body.style.display =
+          body.style.display === "block" ? "none" : "block";
+      });
+    });
+  </script>
+
+</body>
+</html>

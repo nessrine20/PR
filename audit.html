@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audit & Conformité</title>
+
+<style>
+/* GLOBAL STYLE */
+body { font-family: Arial; margin:0; background:#f4eaff; }
+
+/* TOPBAR */
+.topbar {
+  background: linear-gradient(135deg,#c59bff,#b07cff);
+  padding:15px 30px;
+  display:flex; justify-content:space-between; align-items:center;
+  color:white; box-shadow:0 4px 15px rgba(0,0,0,0.1);
+  position:sticky; top:0; z-index:10;
+}
+.topbar-title { font-size:22px; font-weight:bold; }
+.back-btn {
+  background:white; color:#6a34cc;
+  padding:8px 16px; border-radius:8px;
+  text-decoration:none; font-weight:bold;
+}
+.back-btn:hover { background:#f1e4ff; }
+
+/* CONTENT */
+.container { width:70%; margin:40px auto; }
+h1 { text-align:center; color:#4a2db6; font-size:30px; }
+
+/* MODULE */
+.module {
+  background:white; border:1px solid #e4d6ff;
+  border-radius:12px; margin-bottom:20px;
+  overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+.module-header {
+  padding:18px; background:#e9d6ff;
+  color:#4a2db6; font-weight:bold; cursor:pointer;
+  font-size:18px;
+}
+.module-header:hover { background:#dfc8ff; }
+.module-body { display:none; padding:20px; }
+
+/* CARDS */
+.subcards { display:flex; gap:20px; margin-top:20px; }
+.card {
+  flex:1; background:#f6e9ff;
+  padding:15px; border-radius:10px;
+  border:1px solid #e2caff; text-align:center;
+  box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+.card h3 { color:#5b22b3; }
+.btn-more {
+  margin-top:10px; display:inline-block;
+  background:#6a34cc; color:white;
+  padding:8px 15px; border-radius:8px;
+  text-decoration:none; font-weight:bold;
+}
+.btn-more:hover { background:#5420a5; }
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="topbar-title">🛡️ Audit & Conformité</div>
+  <a href="dashboard.html" class="back-btn">← Retour</a>
+</div>
+
+<div class="container">
+<h1>Modules – Audit & Conformité</h1>
+
+<!-- MODULE 0 -->
+<div class="module">
+  <div class="module-header">Introduction à l’Audit</div>
+  <div class="module-body">
+    <p>
+      Rôle de l’audit informatique, objectifs, types d’audit,
+      responsable de sécurité, conformité légale & normes.
+    </p>
+
+    <div class="subcards">
+      <div class="card">
+        <h3>📘 Résumé</h3>
+        <p>Concepts de base : audit interne, externe, objectifs.</p>
+        <a href="#" class="btn-more">Voir</a>
+      </div>
+
+      <div class="card">
+        <h3>📝 TD</h3>
+        <p>Analyse d’un cas réel d’audit informatique.</p>
+        <a href="#" class="btn-more">Accéder</a>
+      </div>
+
+      <div class="card">
+        <h3>🔧 TP</h3>
+        <p>Identifier les risques dans un système fictif.</p>
+        <a href="#" class="btn-more">Détails</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODULE 1 -->
+<div class="module">
+  <div class="module-header">Module 1 – Normes & Standards (ISO 27001)</div>
+  <div class="module-body">
+    <p>
+      ISO 27001, ISO 27002, SMSI, gestion des risques,
+      politique de sécurité, contrôles & audit de conformité.
+    </p>
+
+    <div class="subcards">
+      <div class="card"><h3>📘 Résumé</h3><p>Structure de l’ISO 27001 et contrôles.</p><a href="#" class="btn-more">Voir</a></div>
+      <div class="card"><h3>📝 TD</h3><p>Mapping risques → mesures ISO.</p><a href="#" class="btn-more">Accéder</a></div>
+      <div class="card"><h3>🔧 TP</h3><p>Créer un mini SMSI pour une entreprise.</p><a href="#" class="btn-more">Détails</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 2 -->
+<div class="module">
+  <div class="module-header">Module 2 – Audit Technique</div>
+  <div class="module-body">
+    <p>
+      Audit réseau, audit système, analyse des vulnérabilités,
+      scans de sécurité, tests techniques & conformité.
+    </p>
+
+    <div class="subcards">
+      <div class="card"><h3>📘 Résumé</h3><p>Types de tests techniques (scans, pentest).</p><a href="#" class="btn-more">Voir</a></div>
+      <div class="card"><h3>📝 TD</h3><p>Interpréter des résultats Nessus/OpenVAS.</p><a href="#" class="btn-more">Accéder</a></div>
+      <div class="card"><h3>🔧 TP</h3><p>Faire un audit réseau simple.</p><a href="#" class="btn-more">Détails</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 3 -->
+<div class="module">
+  <div class="module-header">Module 3 – Gestion de Risques & Plan de Sécurité</div>
+  <div class="module-body">
+    <p>
+      Méthodes d’analyse de risques : EBIOS, OCTAVE, MEHARI.
+      Plans de continuité (PCA) et reprise après sinistre (PRA).
+    </p>
+
+    <div class="subcards">
+      <div class="card"><h3>📘 Résumé</h3><p>Gestion des risques et méthodologies.</p><a href="#" class="btn-more">Voir</a></div>
+      <div class="card"><h3>📝 TD</h3><p>Probabilité × Impact : calcul du risque.</p><a href="#" class="btn-more">Accéder</a></div>
+      <div class="card"><h3>🔧 TP</h3><p>Créer un tableau d’analyse des risques.</p><a href="#" class="btn-more">Détails</a></div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+document.querySelectorAll('.module-header').forEach(h=>{
+  h.onclick = () => {
+    let b = h.nextElementSibling;
+    b.style.display = b.style.display==="block" ? "none" : "block";
+  };
+});
+</script>
+
+</body>
+</html>

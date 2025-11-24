@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VoIP – Téléphonie IP</title>
+
+<style>
+/* STYLE IDENTIQUE AUX AUTRES PAGES */
+body { font-family: Arial; margin:0; background:#f4eaff; }
+
+/* TOPBAR */
+.topbar {
+  background: linear-gradient(135deg,#c59bff,#b07cff);
+  padding:15px 30px;
+  display:flex; justify-content:space-between; align-items:center;
+  color:white; box-shadow:0 4px 15px rgba(0,0,0,0.1);
+  position:sticky; top:0; z-index:10;
+}
+.topbar-title { font-size:22px; font-weight:bold; }
+
+.back-btn {
+  background:white; color:#6a34cc;
+  padding:8px 16px; border-radius:8px;
+  text-decoration:none; font-weight:bold;
+}
+.back-btn:hover { background:#f1e4ff; }
+
+/* CONTENT */
+.container { width:70%; margin:40px auto; }
+h1 { text-align:center; color:#4a2db6; font-size:30px; }
+
+/* MODULE */
+.module {
+  background:white; border-radius:12px;
+  border:1px solid #e4d6ff;
+  margin-bottom:20px; overflow:hidden;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+.module-header {
+  padding:18px; background:#e9d6ff;
+  font-size:18px; font-weight:bold;
+  cursor:pointer; color:#4a2db6;
+}
+.module-header:hover { background:#dfc8ff; }
+.module-body { display:none; padding:20px; }
+
+/* CARDS (Résumé / TD / TP) */
+.subcards { display:flex; gap:20px; margin-top:20px; }
+.card {
+  flex:1; background:#f6e9ff;
+  padding:15px; border-radius:10px;
+  border:1px solid #e2caff; text-align:center;
+  box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+.card h3 { color:#5b22b3; }
+.btn-more {
+  display:inline-block; margin-top:10px;
+  background:#6a34cc; color:white;
+  padding:8px 15px; border-radius:8px;
+  text-decoration:none;
+}
+.btn-more:hover { background:#5420a5; }
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="topbar-title">📞 VoIP – Téléphonie IP</div>
+  <a href="dashboard.html" class="back-btn">← Retour</a>
+</div>
+
+<div class="container">
+<h1>Modules VoIP</h1>
+
+<!-- MODULE 0 -->
+<div class="module">
+  <div class="module-header">Introduction à la VoIP</div>
+  <div class="module-body">
+    <p>
+      La VoIP permet de transmettre la voix via Internet. 
+      Elle repose sur des protocoles comme SIP et RTP et remplace la téléphonie traditionnelle.
+    </p>
+
+    <div class="subcards">
+      <div class="card">
+        <h3>📘 Résumé</h3>
+        <p>Avantages, architecture, fonctionnement.</p>
+        <a href="#" class="btn-more">Voir</a>
+      </div>
+
+      <div class="card">
+        <h3>📝 TD</h3>
+        <p>Questions de compréhension VoIP.</p>
+        <a href="#" class="btn-more">Accéder</a>
+      </div>
+
+      <div class="card">
+        <h3>🔧 TP</h3>
+        <p>Installer un softphone (Zoiper / X-Lite).</p>
+        <a href="#" class="btn-more">Détails</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 1 -->
+<div class="module">
+  <div class="module-header">Module 1 – Protocoles SIP & RTP</div>
+  <div class="module-body">
+    <p>
+      Le protocole SIP gère l’établissement des appels. RTP transmet la voix.
+      Ensemble, ils sont la base de la téléphonie IP.
+    </p>
+
+    <div class="subcards">
+      <div class="card">
+        <h3>📘 Résumé</h3>
+        <p>SIP, RTP, SDP, ports utilisés.</p>
+        <a href="#" class="btn-more">Voir</a>
+      </div>
+
+      <div class="card">
+        <h3>📝 TD</h3>
+        <p>Analyser un message SIP INVITE.</p>
+        <a href="#" class="btn-more">Accéder</a>
+      </div>
+
+      <div class="card">
+        <h3>🔧 TP</h3>
+        <p>Sniffer un appel SIP avec Wireshark.</p>
+        <a href="#" class="btn-more">Détails</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 2 -->
+<div class="module">
+  <div class="module-header">Module 2 – PBX et Asterisk</div>
+  <div class="module-body">
+    <p>
+      Asterisk est un serveur de téléphonie open-source qui permet de gérer des extensions, IVR, queues d’appels…
+    </p>
+
+    <div class="subcards">
+      <div class="card">
+        <h3>📘 Résumé</h3>
+        <p>Extensions, dialplans, contextes.</p>
+        <a href="#" class="btn-more">Voir</a>
+      </div>
+
+      <div class="card">
+        <h3>📝 TD</h3>
+        <p>Écrire un mini dialplan.</p>
+        <a href="#" class="btn-more">Accéder</a>
+      </div>
+
+      <div class="card">
+        <h3>🔧 TP</h3>
+        <p>Installer Asterisk dans une VM.</p>
+        <a href="#" class="btn-more">Détails</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 3 -->
+<div class="module">
+  <div class="module-header">Module 3 – Qualité de service VoIP (QoS)</div>
+  <div class="module-body">
+    <p>
+      La qualité d’un appel dépend de la latence, jitter, perte de paquets et bande passante.
+    </p>
+
+    <div class="subcards">
+      <div class="card">
+        <h3>📘 Résumé</h3>
+        <p>Jitter, MOS, codecs audio.</p>
+        <a href="#" class="btn-more">Voir</a>
+      </div>
+
+      <div class="card">
+        <h3>📝 TD</h3>
+        <p>Analyse Wireshark de la qualité VoIP.</p>
+        <a href="#" class="btn-more">Accéder</a>
+      </div>
+
+      <div class="card">
+        <h3>🔧 TP</h3>
+        <p>Configurer QoS sur un routeur.</p>
+        <a href="#" class="btn-more">Détails</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+document.querySelectorAll('.module-header').forEach(h=>{
+  h.onclick=()=>{ 
+    let body=h.nextElementSibling;
+    body.style.display = body.style.display==="block" ? "none" : "block";
+  };
+});
+</script>
+
+</body>
+</html>

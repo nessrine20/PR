@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CyberOps – Opérations de Cybersécurité</title>
+
+<style>
+/* GLOBAL STYLE */
+body { font-family: Arial; margin:0; background:#f4eaff; }
+
+/* TOPBAR */
+.topbar {
+  background: linear-gradient(135deg,#c59bff,#b07cff);
+  padding:15px 30px;
+  display:flex; justify-content:space-between; align-items:center;
+  color:white; box-shadow:0 4px 15px rgba(0,0,0,0.1);
+  position:sticky; top:0; z-index:10;
+}
+.topbar-title { font-size:22px; font-weight:bold; }
+.back-btn {
+  background:white; color:#6a34cc;
+  padding:8px 16px; border-radius:8px;
+  text-decoration:none; font-weight:bold;
+}
+.back-btn:hover { background:#f1e4ff; }
+
+/* CONTENT */
+.container { width:70%; margin:40px auto; }
+h1 { text-align:center; color:#4a2db6; font-size:30px; }
+
+/* MODULE */
+.module {
+  background:white; border:1px solid #e4d6ff;
+  border-radius:12px; margin-bottom:20px;
+  overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+.module-header {
+  padding:18px; background:#e9d6ff;
+  color:#4a2db6; font-weight:bold; cursor:pointer;
+  font-size:18px;
+}
+.module-header:hover { background:#dfc8ff; }
+.module-body { display:none; padding:20px; }
+
+/* CARDS */
+.subcards { display:flex; gap:20px; margin-top:20px; }
+.card {
+  flex:1; background:#f6e9ff;
+  padding:15px; border-radius:10px;
+  border:1px solid #e2caff; text-align:center;
+  box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+.card h3 { color:#5b22b3; }
+.btn-more {
+  margin-top:10px; display:inline-block;
+  background:#6a34cc; color:white;
+  padding:8px 15px; border-radius:8px;
+  text-decoration:none; font-weight:bold;
+}
+.btn-more:hover { background:#5420a5; }
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="topbar-title">🛡️ CyberOps – Opérations de Cybersécurité</div>
+  <a href="dashboard.html" class="back-btn">← Retour</a>
+</div>
+
+<div class="container">
+<h1>Modules – CyberOps</h1>
+
+<!-- MODULE 0 -->
+<div class="module">
+  <div class="module-header">Introduction à CyberOps</div>
+  <div class="module-body">
+    <p>
+      Rôle du SOC (Security Operations Center), analystes de niveau 1 et 2,
+      surveillance continue, détection, analyse et réponse aux incidents.
+    </p>
+
+    <div class="subcards">
+      <div class="card"><h3>📘 Résumé</h3><p>Les bases des opérations de sécurité.</p><a href="#" class="btn-more">Voir</a></div>
+      <div class="card"><h3>📝 TD</h3><p>Identifier les rôles SOC.</p><a href="#" class="btn-more">Accéder</a></div>
+      <div class="card"><h3>🔧 TP</h3><p>Lire un rapport d'incident simple.</p><a href="#" class="btn-more">Détails</a></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODULE 1 -->
+<div class="module">
+  <div class="module-header">Module 1 – Menaces & Attaques</div>
+  <div class="module-body">
+    <p>
+      Malware, phishing, ransomware, DoS/DDoS, MITM, attaques réseau,
+      techniques utilisées par les cybercriminels.
+    </p>
+
+    <div class="subcards">
+      <div class="card"><h3>📘 Résumé</h3><p>Classification des menaces.</p><a href="#" class="btn-more">Voir</a></div>
+      <div class="card"><h3>📝 TD</h3><p>Analyser un email suspect.</p><a href="#" class="btn-more">Accéder</a></div>
+      <div class="card"><h3>🔧 TP</h3><p>(théorique) Simuler un MITM.</p><a href="#" class="btn-more">Détails</a></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODULE 2 -->
+<div class="module">
+  <div class="module-header">Module 2 – Analyse Réseau & Protocoles</div>
+  <div class="module-body">
+    <p>
+      Analyse de paquets, Wireshark, NetFlow, TCP/IP, UDP, ports, scans,
+      détection d’activités suspectes.
+    </p>
+
+    <div class="subcards">
+      <div class="card"><h3>📘 Résumé</h3><p>Fonctionnement des protocoles réseau.</p><a href="#" class="btn-more">Voir</a></div>
+      <div class="card"><h3>📝 TD</h3><p>Interpréter un trafic réseau capturé.</p><a href="#" class="btn-more">Accéder</a></div>
+      <div class="card"><h3>🔧 TP</h3><p>Capturer et analyser un flux TCP.</p><a href="#" class="btn-more">Détails</a></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODULE 3 -->
+<div class="module">
+  <div class="module-header">Module 3 – SIEM & Surveillance</div>
+  <div class="module-body">
+    <p>
+      SIEM (Security Information and Event Management), logs,
+      corrélation d’événements, alerting, règles de détection.
+    </p>
+
+    <div class="subcards">
+      <div class="card"><h3>📘 Résumé</h3><p>Fonctionnement d’un SIEM (Splunk, ELK).</p><a href="#" class="btn-more">Voir</a></div>
+      <div class="card"><h3>📝 TD</h3><p>Analyser des logs d'authentification.</p><a href="#" class="btn-more">Accéder</a></div>
+      <div class="card"><h3>🔧 TP</h3><p>Créer une règle de détection simple.</p><a href="#" class="btn-more">Détails</a></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODULE 4 -->
+<div class="module">
+  <div class="module-header">Module 4 – Réponse aux Incidents</div>
+  <div class="module-body">
+    <p>
+      Processus IR (Incident Response) : détection, confinement, éradication,
+      récupération, rapport final, analyse post-incident.
+    </p>
+
+    <div class="subcards">
+      <div class="card"><h3>📘 Résumé</h3><p>Cycle complet de réponse aux incidents.</p><a href="#" class="btn-more">Voir</a></div>
+      <div class="card"><h3>📝 TD</h3><p>Étudier un incident réel (theorique).</p><a href="#" class="btn-more">Accéder</a></div>
+      <div class="card"><h3>🔧 TP</h3><p>Écrire un rapport d'incident.</p><a href="#" class="btn-more">Détails</a></div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<script>
+document.querySelectorAll('.module-header').forEach(h=>{
+  h.onclick = () => {
+    let b = h.nextElementSibling;
+    b.style.display = b.style.display==="block" ? "none" : "block";
+  };
+});
+</script>
+
+</body>
+</html>

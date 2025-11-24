@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VPN – Réseaux Privés Virtuels</title>
+
+<style>
+/* === STYLE GLOBAL IDENTIQUE À DÉV WEB === */
+body { font-family: Arial; margin:0; background:#f4eaff; }
+
+/* TOPBAR */
+.topbar {
+  background: linear-gradient(135deg,#c59bff,#b07cff);
+  padding:15px 30px;
+  display:flex; justify-content:space-between; align-items:center;
+  color:white; box-shadow:0 4px 15px rgba(0,0,0,0.1);
+  position:sticky; top:0; z-index:10;
+}
+.back-btn {
+  background:white; color:#6a34cc; padding:8px 16px;
+  border-radius:8px; text-decoration:none; font-weight:bold;
+}
+.back-btn:hover { background:#f1e4ff; }
+
+.container { width:70%; margin:40px auto; }
+h1 { text-align:center; font-size:30px; color:#4a2db6; }
+
+/* MODULE */
+.module {
+  background:white; border:1px solid #e4d6ff; border-radius:12px;
+  margin-bottom:20px; overflow:hidden;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+.module-header {
+  padding:18px; background:#e9d6ff; cursor:pointer; 
+  color:#4a2db6; font-weight:bold; font-size:18px;
+}
+.module-header:hover { background:#dfc8ff; }
+.module-body { display:none; padding:20px; }
+
+/* SUBCARDS */
+.subcards { display:flex; gap:20px; margin-top:20px; }
+.card {
+  flex:1; background:#f6e9ff; padding:15px; border-radius:10px;
+  border:1px solid #e2caff; text-align:center;
+  box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+.btn-more {
+  margin-top:10px; background:#6a34cc; padding:8px 15px;
+  border-radius:8px; text-decoration:none; color:white;
+}
+.btn-more:hover { background:#5420a5; }
+</style>
+</head>
+
+<body>
+<div class="topbar">
+  <div class="topbar-title">🔐 VPN – Réseaux Privés Virtuels</div>
+  <a href="dashboard.html" class="back-btn">← Retour</a>
+</div>
+
+<div class="container">
+<h1>Modules VPN</h1>
+
+<!-- Module 0 -->
+<div class="module">
+  <div class="module-header">Introduction aux VPN</div>
+  <div class="module-body">
+    <p>Définition d’un VPN, utilité, confidentialité, tunnels sécurisés.</p>
+    <div class="subcards">
+      <div class="card"><h3>📘 Résumé</h3><p>Les bases du VPN.</p><a class="btn-more" href="#">Voir</a></div>
+      <div class="card"><h3>📝 TD</h3><p>Questions théoriques sur VPN.</p><a class="btn-more" href="#">Accéder</a></div>
+      <div class="card"><h3>🔧 TP</h3><p>Créer un VPN PPTP.</p><a class="btn-more" href="#">Détails</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Module 1 -->
+<div class="module">
+  <div class="module-header">Module 1 – Protocoles VPN</div>
+  <div class="module-body">
+    <p>PPTP, L2TP, OpenVPN, IPSec, WireGuard.</p>
+    <div class="subcards">
+      <div class="card"><h3>📘 Résumé</h3><p>Comparaison des protocoles.</p><a class="btn-more" href="#">Voir</a></div>
+      <div class="card"><h3>📝 TD</h3><p>Proposer le meilleur protocole.</p><a class="btn-more" href="#">Accéder</a></div>
+      <div class="card"><h3>🔧 TP</h3><p>Configurer OpenVPN.</p><a class="btn-more" href="#">Détails</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Module 2 -->
+<div class="module">
+  <div class="module-header">Module 2 – VPN Site-to-Site</div>
+  <div class="module-body">
+    <p>Connexion sécurisée entre deux réseaux distants.</p>
+    <div class="subcards">
+      <div class="card"><h3>📘 Résumé</h3><p>Architecture site-to-site.</p><a class="btn-more" href="#">Voir</a></div>
+      <div class="card"><h3>📝 TD</h3><p>Étude de cas entreprise.</p><a class="btn-more" href="#">Accéder</a></div>
+      <div class="card"><h3>🔧 TP</h3><p>Configuration IPSec Cisco.</p><a class="btn-more" href="#">Détails</a></div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+document.querySelectorAll('.module-header').forEach(h=>{
+  h.onclick=()=>{ let body=h.nextElementSibling;
+    body.style.display = body.style.display==="block" ? "none" : "block";
+  };
+});
+</script>
+</body>
+</html>
