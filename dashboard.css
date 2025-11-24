@@ -20,17 +20,18 @@ body {
 /* === NAVBAR === */
 .navbar {
   width: 70%;
-  height: 80px;
-  margin-top: 20px;
+  height: 500px; /* ↓ réduit de 80px à 60px */
+  margin-top: 20px; /* ↓ réduit l'espace au-dessus */
   background: linear-gradient(120deg, #9c6bff, #c29fff);
-  border-radius: 25px;
+  border-radius: 10px; /* ↓ arrondis plus minimalistes */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 40px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  transition: all 0.4s ease;
+  padding: 0 25px; /* ↓ réduit le padding */
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.15); /* ↓ shadow plus légère */
+  transition: all 0.3s ease;
 }
+
 
 .navbar:hover {
   transform: translateY(-5px);
@@ -102,10 +103,10 @@ body {
 /* === SIDEBAR === */
 .sidebar {
   position: fixed;
-  top: 80px;
+  top: 100px;
   left: 0;
   width: 200px;
-  height: calc(90vh - 80px);
+  height: calc(75vh - 100px);
   background: linear-gradient(180deg, #b288ff, #8b5cff);
   color: white;
   padding: 25px 0;
@@ -115,19 +116,131 @@ body {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   overflow-y: auto;
-  z-index: 900;
+  z-index: 800;
 }
 
 .sidebar.active {
   transform: translateX(0);
 }
+.sidebar-btn {
+  display: block;
+  padding: 10px 15px;
+  margin: 8px 0;
+  background: #c9a8ff;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: 0.2s ease;
+}
+
+.sidebar-btn:hover {
+  background: #b691ff;
+  transform: translateX(4px);
+}
+
 
 /* === MENU PRINCIPAL === */
 .menu {
   list-style: none;
   padding: 0 20px;
 }
+/* === DASHBOARD CONTENT === */
+.content {
+  padding-top: 40px !important;  /* au lieu de 120px */
+  margin-left: 0;
+  text-align: center;
+}
 
+/* === TITRE === */
+.dashboard-title {
+  text-align: center;
+  font-size: 32px;
+  margin-top: 20px;
+  color: #4a2db6;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.dashboard-subtitle {
+  text-align: center;
+  margin-bottom: 35px;
+  font-size: 16px;
+  color: #555;
+}
+
+/* === GRID CARDS (4 per line) === */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* EXACT 4 CARDS PER LINE */
+  gap: 15px;
+  max-width: 1500px;
+  padding: 40px;
+}
+/* === CARD === */
+.card {
+  background: linear-gradient(100deg, #d9baff, #c39aff);
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  text-align: center;
+  color: white;
+  height: 200px; /* FIXED */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 25px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card p {
+  margin-top: 5px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* === Button inside card === */
+.btn-card {
+  background: white;
+  color: #6a34cc;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.btn-card:hover {
+  background: #f2eaff;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1200px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 00px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 .menu-item {
   margin-bottom: 20px;
 }
@@ -205,3 +318,4 @@ body {
   pointer-events: none;
   z-index: 9999;
 }
+  
