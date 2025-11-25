@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TD – Module 2 Cloud Billing</title>
+
+<style>
+/* ======= GLOBAL ======= */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4eaff;
+  transition: 0.3s;
+}
+
+/* ======= DARK MODE ======= */
+body.dark {
+  background: #1f1b24;
+  color: #eaeaea;
+}
+
+body.dark .topbar {
+  background: #3b2f52;
+}
+
+body.dark a,
+body.dark h2,
+body.dark p {
+  color: #eee;
+}
+
+body.dark .section {
+  background: #2d2635;
+  border-color: #42364b;
+}
+
+/* ======= TOPBAR ======= */
+.topbar {
+  background: linear-gradient(135deg, #c59bff, #b07cff);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.topbar-title {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.top-btn {
+  padding: 8px 14px;
+  background: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  color: #6a34cc;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.back-btn {
+  padding: 8px 16px;
+  background: #fff;
+  color: #6a34cc;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ======= CONTENT ======= */
+.container {
+  width: 70%;
+  margin: 40px auto;
+}
+
+h1 {
+  color: #4a2db6;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.section {
+  background: #ffffff;
+  border: 1px solid #e4d6ff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  margin-bottom: 25px;
+}
+
+.question {
+  margin-bottom: 18px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.answer-area {
+  background: #f7edff;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+body.dark .answer-area {
+  background: #392f45;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ========= TOPBAR ========= -->
+<div class="topbar">
+  <div class="topbar-title" data-fr="📝 TD – Module 2 : Cloud Billing" data-en="📝 TD – Module 2: Cloud Billing">
+    📝 TD – Module 2 : Cloud Billing
+  </div>
+
+  <div>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="cloud.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <h1 data-fr="Travaux Dirigés – Cloud Billing" data-en="Exercises – Cloud Billing">
+    Travaux Dirigés – Cloud Billing
+  </h1>
+
+  <!-- ======= TD QUESTIONS ======= -->
+  <div class="section">
+
+    <div class="question" data-fr="1️⃣ Expliquez le modèle de facturation à l’usage (Pay-As-You-Go)." 
+                             data-en="1️⃣ Explain the Pay-As-You-Go billing model.">
+      1️⃣ Expliquez le modèle de facturation à l’usage (Pay-As-You-Go).
+    </div>
+
+    <div class="answer-area" data-fr="Ce modèle signifie que vous payez uniquement les ressources que vous consommez, sans engagement préalable."
+                             data-en="This model means you only pay for the resources you consume, with no upfront commitment.">
+      Ce modèle signifie que vous payez uniquement les ressources que vous consommez, sans engagement préalable.
+    </div>
+
+    <br>
+
+    <div class="question" 
+         data-fr="2️⃣ Que signifie le modèle « No upfront cost » ?" 
+         data-en="2️⃣ What does the 'No upfront cost' model mean?">
+      2️⃣ Que signifie le modèle « No upfront cost » ?
+    </div>
+
+    <div class="answer-area"
+         data-fr="Aucun paiement initial n’est requis pour commencer à utiliser un service."
+         data-en="No initial payment is required to start using a service.">
+      Aucun paiement initial n’est requis pour commencer à utiliser un service.
+    </div>
+
+    <br>
+
+    <div class="question"
+         data-fr="3️⃣ Citez deux outils AWS pour estimer les coûts." 
+         data-en="3️⃣ Mention two AWS tools to estimate costs.">
+      3️⃣ Citez deux outils AWS pour estimer les coûts.
+    </div>
+
+    <div class="answer-area"
+         data-fr="AWS Pricing Calculator, Cost Explorer."
+         data-en="AWS Pricing Calculator, Cost Explorer.">
+      AWS Pricing Calculator, Cost Explorer.
+    </div>
+
+    <br>
+
+    <div class="question"
+         data-fr="4️⃣ Différence entre coût direct et coût opérationnel ?" 
+         data-en="4️⃣ Difference between direct cost and operational cost?">
+      4️⃣ Différence entre coût direct et coût opérationnel ?
+    </div>
+
+    <div class="answer-area"
+         data-fr="Coûts directs = ressources consommées. Coûts opérationnels = gestion, maintenance, optimisation."
+         data-en="Direct costs = consumed resources. Operational costs = management, maintenance, optimization.">
+      Coûts directs = ressources consommées. Coûts opérationnels = gestion, maintenance, optimisation.
+    </div>
+
+  </div>
+</div>
+
+<!-- ======= SCRIPT MULTILINGUE + DARK MODE ======= -->
+<script>
+// DARK MODE
+document.getElementById("toggleDark").onclick = () => {
+  document.body.classList.toggle("dark");
+};
+
+// LANGUAGE SYSTEM
+let lang = "fr";
+document.getElementById("toggleLang").onclick = () => {
+  lang = (lang === "fr") ? "en" : "fr";
+  document.getElementById("toggleLang").innerText = (lang === "fr") ? "EN" : "FR";
+
+  document.querySelectorAll("[data-fr]").forEach(el => {
+    el.innerHTML = el.getAttribute("data-" + lang);
+  });
+};
+</script>
+
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examens – EduPlatform</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3eaff;
+    }
+
+    /* TOPBAR */
+    .topbar {
+      background: linear-gradient(120deg, #a06bff, #c79cff);
+      padding: 15px 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+
+    .back-btn {
+      background: white;
+      color: #6a2ad4;
+      font-size: 15px;
+      padding: 8px 16px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+
+    /* CONTAINER */
+    .container {
+      width: 75%;
+      margin: 35px auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #5c1fc9;
+      font-size: 32px;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      color: #5c1fc9;
+      margin-bottom: 10px;
+      font-size: 22px;
+      margin-top: 40px;
+    }
+
+    /* LIST STYLE */
+    ul.exam-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 25px 0;
+    }
+
+    ul.exam-list li {
+      background: white;
+      border-left: 6px solid #a06bff;
+      padding: 15px;
+      margin-bottom: 12px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+
+    ul.exam-list li a {
+      text-decoration: none;
+      color: #5c1fc9;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    ul.exam-list li p {
+      margin: 5px 0 0;
+      font-size: 14px;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    📚 Examens – EduPlatform
+    <a href="dashboard.html" class="back-btn">← Retour</a>
+  </div>
+
+  <div class="container">
+
+    <h1>Liste des DS et Examens</h1>
+
+    <!-- CLOUD -->
+    <h2>🌩️ Cloud AWS</h2>
+    <ul class="exam-list">
+      <li>
+        <a href="#">DS Cloud</a>
+        <p>Sujets portant sur les bases AWS, régions, services.</p>
+      </li>
+      <li>
+        <a href="#">Examen Final Cloud</a>
+        <p>Évaluation complète Cloud AWS.</p>
+      </li>
+    </ul>
+
+    <!-- DEV WEB -->
+    <h2>💻 Développement Web</h2>
+    <ul class="exam-list">
+      <li>
+        <a href="#">DS Développement Web</a>
+        <p>HTML / CSS / JavaScript.</p>
+      </li>
+      <li>
+        <a href="#">Examen Final Développement Web</a>
+        <p>Projet + QCM + analyse.</p>
+      </li>
+    </ul>
+
+    <!-- WIFI -->
+    <h2>📡 Sécurité Réseaux Sans Fil</h2>
+    <ul class="exam-list">
+      <li>
+        <a href="#">DS Sécurité WiFi</a>
+        <p>WPA, attaques, configurations.</p>
+      </li>
+      <li>
+        <a href="#">Examen Final WiFi</a>
+        <p>Analyse réseau + sécurité.</p>
+      </li>
+    </ul>
+
+    <!-- IA -->
+    <h2>🤖 Intelligence Artificielle</h2>
+    <ul class="exam-list">
+      <li>
+        <a href="#">DS IA</a>
+        <p>Modèles ML, métriques, prédictions.</p>
+      </li>
+      <li>
+        <a href="#">Examen Final IA</a>
+        <p>Deep Learning + classification.</p>
+      </li>
+    </ul>
+
+    <!-- AUDIT -->
+    <h2>🔐 Audit & Sécurité</h2>
+    <ul class="exam-list">
+      <li>
+        <a href="#">DS Audit</a>
+        <p>Normes ISO, tests, scanning.</p>
+      </li>
+      <li>
+        <a href="#">Examen Final Audit</a>
+        <p>Nessus, pentesting, rapport.</p>
+      </li>
+    </ul>
+
+    <!-- VOIP -->
+    <h2>📞 VoIP</h2>
+    <ul class="exam-list">
+      <li>
+        <a href="#">DS VoIP</a>
+        <p>SIP, RTP, RTCP.</p>
+      </li>
+      <li>
+        <a href="#">Examen Final VoIP</a>
+        <p>Fonctionnement VoIP avancé.</p>
+      </li>
+    </ul>
+
+    <!-- VPN -->
+    <h2>🔒 VPN</h2>
+    <ul class="exam-list">
+      <li>
+        <a href="#">DS VPN</a>
+        <p>IPSec, tunnels, cryptologie.</p>
+      </li>
+      <li>
+        <a href="#">Examen Final VPN</a>
+        <p>Sécurité et configuration.</p>
+      </li>
+    </ul>
+
+    <!-- CULTURE -->
+    <h2>📘 Culture de l’entreprise</h2>
+    <ul class="exam-list">
+      <li>
+        <a href="#">DS Culture</a>
+        <p>Droit, communication, organisation.</p>
+      </li>
+      <li>
+        <a href="#">Examen Final Culture</a>
+        <p>Analyse de cas + QCM.</p>
+      </li>
+    </ul>
+
+    <!-- CYBEROPS -->
+    <h2>🛡 CyberOps</h2>
+    <ul class="exam-list">
+      <li>
+        <a href="#">DS CyberOps</a>
+        <p>Linux, commandes, SOC.</p>
+      </li>
+      <li>
+        <a href="#">Examen Final CyberOps</a>
+        <p>Logs, attaques, analyse SOC.</p>
+      </li>
+    </ul>
+
+  </div>
+
+</body>
+</html>

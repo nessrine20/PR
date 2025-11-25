@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Résumé – Module 1 : AWS Cloud Concepts</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4eaff;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      transition: 0.3s;
+    }
+
+    /* DARK MODE */
+    body.dark {
+      background: #1f1f27;
+      color: #e6e6e6;
+    }
+
+    /* TOPBAR */
+    .topbar {
+      background: linear-gradient(135deg, #c59bff, #b07cff);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .topbar-actions button {
+      margin-left: 10px;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 8px;
+      background: white;
+      font-weight: bold;
+      color: #6a34cc;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .topbar-actions button:hover {
+      background: #f5e9ff;
+    }
+
+    .container {
+      width: 70%;
+      margin: 40px auto;
+      background: white;
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    body.dark .container {
+      background: #2c2c35;
+    }
+
+    h1 {
+      text-align: center;
+      color: #5b22b3;
+      margin-bottom: 25px;
+    }
+
+    body.dark h1 {
+      color: #d8c4ff;
+    }
+
+    .highlight {
+      background: #e6ccff;
+      padding: 4px 6px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    body.dark .highlight {
+      background: #7d5bb4;
+      color: white;
+    }
+.btn {
+  padding:7px 14px;
+  border:none;
+  border-radius:8px;
+  margin-left:8px;
+  font-weight:bold;
+  cursor:pointer;
+  background:white;
+  color:#6a34cc;
+  transition:0.25s;
+}
+
+    a.back {
+      display: inline-block;
+      margin-top: 25px;
+      color: #6a34cc;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div><strong>📘 Résumé — Module 1 : AWS Cloud Concepts</strong></div>
+
+    <div class="topbar-actions">
+      <button id="langToggle">EN</button>
+      <button class="btn-print" onclick="window.print()">🖨 Imprimer en PDF</button>
+      <button id="darkToggle">🌙</button>
+       <a href="cloud.html" class="btn">← Retour</a>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <h1 id="title">Résumé du Module 1 : Concepts Fondamentaux du Cloud AWS</h1>
+
+    <p id="intro">
+      Le cloud computing est un modèle permettant d’accéder via Internet à des ressources
+      informatiques telles que des serveurs, stockage, bases de données, réseaux et services logiciels.
+      AWS fournit ces ressources sous forme de services distribués dans le monde entier.
+    </p>
+
+    <h2 >1. <span id="s1" class="highlight">Les 3 modèles de Cloud</span></h2>
+    <ul id="models">
+      <li><strong>IaaS :</strong> machines virtuelles, stockage, réseaux</li>
+      <li><strong>PaaS :</strong> déploiement d’applications sans gérer les serveurs</li>
+      <li><strong>SaaS :</strong> applications complètes prêtes à l’emploi</li>
+    </ul>
+
+    <h2>2. <span  id="s2"class="highlight">Les 6 avantages du Cloud AWS</span></h2>
+    <ul id="benefits">
+      <li>Paiement à l’usage</li>
+      <li>Évolutivité & élasticité</li>
+      <li>Haute disponibilité (HA)</li>
+      <li>Fiabilité</li>
+      <li>Sécurité avancée</li>
+      <li>Vitesse d’innovation</li>
+    </ul>
+
+    <h2>3. <span  id="s3" class="highlight">Le réseau mondial AWS</span></h2>
+    <ul id="network">
+      <li><strong>Régions AWS :</strong> zones géographiques (ex : Paris, Frankfurt, Ohio)</li>
+      <li><strong>Zones de disponibilité (AZ) :</strong> datacenters indépendants</li>
+      <li><strong>Edge Locations :</strong> distribution de contenu avec Amazon CloudFront</li>
+    </ul>
+
+    <h2>4. <span  id="s4"class="highlight">Les services fondamentaux AWS</span></h2>
+    <ul id="services">
+      <li><strong>EC2 :</strong> machines virtuelles</li>
+      <li><strong>S3 :</strong> stockage objet</li>
+      <li><strong>RDS :</strong> base de données SQL gérée</li>
+      <li><strong>IAM :</strong> gestion des utilisateurs et permissions</li>
+    </ul>
+
+    <br>
+  
+  </div>
+
+  <script>
+    // DARK MODE
+    const darkBtn = document.getElementById("darkToggle");
+    darkBtn.onclick = () => document.body.classList.toggle("dark");
+
+    // LANG SWITCH
+    const langBtn = document.getElementById("langToggle");
+    langBtn.onclick = () => {
+      if (langBtn.textContent === "EN") {
+        langBtn.textContent = "FR";
+        document.getElementById("title").textContent =
+          "Module 1 Summary: AWS Cloud Fundamental Concepts";
+      } else {
+        langBtn.textContent = "EN";
+        document.getElementById("title").textContent =
+          "Résumé du Module 1 : Concepts Fondamentaux du Cloud AWS";
+      }
+    };
+   
+// Sélecteur de langue
+let isEnglish = false;
+
+// Textes FR → EN pour toute la page
+const translations = {
+    title: {
+        fr: "Résumé du Module 1 : Concepts Fondamentaux du Cloud AWS",
+        en: "Module 1 Summary: Core AWS Cloud Concepts"
+    },
+    intro: {
+        fr: "Le cloud computing est un modèle permettant d’accéder via Internet à des ressources informatiques telles que des serveurs, stockage, bases de données et réseaux. AWS fournit ces services sous forme de services distribués dans le monde entier.",
+        en: "Cloud computing provides on-demand access through the Internet to computing resources such as servers, storage, databases, and networks. AWS delivers these resources as globally distributed cloud services."
+    },
+    s1: {
+        fr: "Les 3 modèles de Cloud",
+        en: "The 3 Cloud Models"
+    },
+    models: {
+        fr: `
+            <li>IaaS – Infrastructure</li>
+            <li>PaaS – Plateforme</li>
+            <li>SaaS – Logiciels</li>
+        `,
+        en: `
+            <li>IaaS – Infrastructure</li>
+            <li>PaaS – Platform</li>
+            <li>SaaS – Software</li>
+        `
+    },
+    s2: {
+        fr: "Les 6 avantages du Cloud AWS",
+        en: "The 6 Benefits of AWS Cloud"
+    },
+    benefits: {
+        fr: `
+            <li>Paiement à l’usage</li>
+            <li>Évolutivité</li>
+            <li>Haute disponibilité</li>
+            <li>Fiabilité</li>
+            <li>Sécurité avancée</li>
+            <li>Vitesse d’innovation</li>
+        `,
+        en: `
+            <li>Pay-as-you-go</li>
+            <li>Scalability</li>
+            <li>High availability</li>
+            <li>Reliability</li>
+            <li>Advanced security</li>
+            <li>Fast innovation</li>
+        `
+    },
+    s3: {
+        fr: "Le réseau mondial AWS",
+        en: "The AWS Global Network"
+    },
+    network: {
+        fr: `
+            <li>Régions AWS</li>
+            <li>Zones de disponibilité (AZ)</li>
+            <li>Edge Locations – CloudFront</li>
+        `,
+        en: `
+            <li>AWS Regions</li>
+            <li>Availability Zones (AZ)</li>
+            <li>Edge Locations – CloudFront</li>
+        `
+    },
+    s4: {
+        fr: "Les services fondamentaux AWS",
+        en: "AWS Core Services"
+    },
+    services: {
+        fr: `
+            <li>EC2 – Machines virtuelles</li>
+            <li>S3 – Stockage objet</li>
+            <li>RDS – Base de données SQL</li>
+            <li>IAM – Gestion des permissions</li>
+        `,
+        en: `
+            <li>EC2 – Virtual machines</li>
+            <li>S3 – Object storage</li>
+            <li>RDS – SQL database</li>
+            <li>IAM – Identity & Access Management</li>
+        `
+    }
+};
+
+// Fonction de traduction complète
+function applyTranslation(lang) {
+    document.getElementById("title").innerText = translations.title[lang];
+    document.getElementById("intro").innerText = translations.intro[lang];
+
+    document.getElementById("s1").innerText = translations.s1[lang];
+    document.getElementById("models").innerHTML = translations.models[lang];
+
+    document.getElementById("s2").innerText = translations.s2[lang];
+    document.getElementById("benefits").innerHTML = translations.benefits[lang];
+
+    document.getElementById("s3").innerText = translations.s3[lang];
+    document.getElementById("network").innerHTML = translations.network[lang];
+
+    document.getElementById("s4").innerText = translations.s4[lang];
+    document.getElementById("services").innerHTML = translations.services[lang];
+}
+
+// Bouton de langue
+document.getElementById("btnLang").addEventListener("click", () => {
+    isEnglish = !isEnglish;
+
+    if (isEnglish) {
+        applyTranslation("en");
+        document.getElementById("btnLang").innerText = "FR";
+    } else {
+        applyTranslation("fr");
+        document.getElementById("btnLang").innerText = "EN";
+    }
+});
+
+// Mode sombre (amélioré)
+document.getElementById("btnDark").addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+});
+</script>
+
+ 
+
+</body>
+
+</html>

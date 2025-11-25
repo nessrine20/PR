@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Résumé – Module 3 : AWS Infrastructure</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #f4eaff;
+        transition: 0.3s;
+    }
+
+    /* Dark mode */
+    body.dark {
+        background: #2b2b2b;
+        color: #eee;
+    }
+
+    .topbar {
+        background: #b37bff;
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    .top-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    .top-right {
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn-top {
+        background: white;
+        border: none;
+        padding: 6px 14px;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+        color: #6a34cc;
+    }
+
+    .btn-top:hover {
+        background: #f1e4ff;
+    }
+
+    .btn-pdf {
+        background: white;
+        border: none;
+        padding: 6px 10px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    a.retour {
+        background: white;
+        color: #6a34cc;
+        padding: 6px 14px;
+        border-radius: 8px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .content {
+        background: white;
+        width: 70%;
+        margin: 40px auto;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+
+    body.dark .content {
+        background: #3b3b3b;
+        color: white;
+        box-shadow: 0 8px 25px rgba(255,255,255,0.08);
+    }
+
+    h1 {
+        color: #5a2bcf;
+        font-size: 28px;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    h2 {
+        color: #5a2bcf;
+        margin-top: 30px;
+        font-size: 22px;
+    }
+
+    ul li {
+        margin-bottom: 6px;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+    <div class="top-left">📘 Résumé — Module 3 : AWS Infrastructure</div>
+
+    <div class="top-right">
+        <button id="btnLang" class="btn-top">EN</button>
+        <button id="btnDark" class="btn-top">🌙</button>
+        <button class="btn-pdf" onclick="window.print()">📄 PDF</button>
+        <a href="cloud.html" class="retour">← Retour</a>
+    </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content" id="content">
+
+<h1 id="title">Résumé – Module 3 : AWS Infrastructure</h1>
+
+<p id="intro">
+L’infrastructure AWS repose sur un réseau mondial de centres de données hautement disponibles,
+répartis dans plusieurs régions, zones de disponibilités et points de présence.
+</p>
+
+<h2 id="s1">1. Les Régions AWS</h2>
+<ul id="s1_list">
+    <li>Chaque région est une zone géographique distincte (ex : Paris, Ohio, Tokyo).</li>
+    <li>Permet de rapprocher les services des utilisateurs pour réduire la latence.</li>
+    <li>Les données ne quittent jamais une région sans permission explicite.</li>
+</ul>
+
+<h2 id="s2">2. Les Zones de Disponibilité (AZ)</h2>
+<ul id="s2_list">
+    <li>Chaque région contient plusieurs AZ isolées physiquement.</li>
+    <li>Chaque AZ possède un datacenter indépendant (énergie, refroidissement, réseau).</li>
+    <li>Permet une tolérance aux pannes.</li>
+</ul>
+
+<h2 id="s3">3. Edge Locations & CDN (Amazon CloudFront)</h2>
+<ul id="s3_list">
+    <li>Points de présence dans le monde entier.</li>
+    <li>Accélération de la distribution de contenu (CDN).</li>
+    <li>Réduction de la latence pour les utilisateurs finaux.</li>
+</ul>
+
+<h2 id="s4">4. Services réseau clés</h2>
+<ul id="s4_list">
+    <li>VPC : réseau privé virtuel isolé dans AWS.</li>
+    <li>Route 53 : service DNS global.</li>
+    <li>Direct Connect : connexion réseau dédiée à AWS.</li>
+    <li>Elastic Load Balancing : répartition intelligente du trafic.</li>
+</ul>
+
+</div>
+
+<script>
+/* 🌙 Mode sombre */
+document.getElementById("btnDark").addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+});
+
+/* 🌍 Traduction FR ↔ EN */
+document.getElementById("btnLang").addEventListener("click", () => {
+    const langBtn = document.getElementById("btnLang");
+    
+    if (langBtn.innerText === "EN") {
+        langBtn.innerText = "FR";
+
+        document.getElementById("title").innerText =
+            "Summary – Module 3: AWS Infrastructure";
+
+        document.getElementById("intro").innerText =
+            "AWS infrastructure relies on a global network of highly available datacenters distributed across regions, availability zones, and edge locations.";
+
+        document.getElementById("s1").innerText = "1. AWS Regions";
+        document.getElementById("s1_list").innerHTML = `
+            <li>Each region is a distinct geographical area.</li>
+            <li>Brings services closer to users to reduce latency.</li>
+            <li>Data never leaves a region unless you explicitly allow it.</li>`;
+
+        document.getElementById("s2").innerText = "2. Availability Zones (AZ)";
+        document.getElementById("s2_list").innerHTML = `
+            <li>Each region contains isolated availability zones.</li>
+            <li>Each AZ has independent datacenters.</li>
+            <li>Ensures high fault tolerance.</li>`;
+
+        document.getElementById("s3").innerText = "3. Edge Locations & CDN";
+        document.getElementById("s3_list").innerHTML = `
+            <li>Global points of presence.</li>
+            <li>Accelerates content delivery (CDN).</li>
+            <li>Reduces latency for final users.</li>`;
+
+        document.getElementById("s4").innerText = "4. Key Network Services";
+        document.getElementById("s4_list").innerHTML = `
+            <li>VPC: isolated private network.</li>
+            <li>Route 53: global DNS.</li>
+            <li>Direct Connect: dedicated connection to AWS.</li>
+            <li>Elastic Load Balancing: traffic distribution.</li>`;
+
+    } else {
+        location.reload(); // recharge la page pour le FR
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TD – Module 3 : AWS Infrastructure</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4eaff;
+      color: #333;
+      transition: 0.3s;
+    }
+
+    body.dark {
+      background: #1e1b26;
+      color: #e6e6e6;
+    }
+
+    .topbar {
+      background: linear-gradient(135deg, #c59bff, #b07cff);
+      padding: 15px 25px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .top-btn {
+      padding: 8px 14px;
+      border: none;
+      background: white;
+      color: #6a34cc;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .container {
+      width: 75%;
+      margin: 30px auto;
+      padding-bottom: 40px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #5b22b3;
+    }
+
+    h2 {
+      color: #8845ff;
+    }
+
+    .highlight {
+      background: #e8d3ff;
+      padding: 3px 6px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s;
+      font-weight: bold;
+    }
+
+    .highlight.marked {
+      background: #b784ff;
+      color: white;
+    }
+
+    .question {
+      background: #ffffff;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #dfcaff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    }
+
+    .btn-print {
+      padding: 10px 18px;
+      background: #6a34cc;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <strong data-fr="TD – Module 3 : AWS Infrastructure" 
+            data-en="TD – Module 3: AWS Infrastructure">
+      TD – Module 3 : AWS Infrastructure
+    </strong>
+
+    <div>
+      <button id="toggleLang" class="top-btn">EN</button>
+      <button id="toggleDark" class="top-btn">🌙</button>
+      <button onclick="window.print()" class="btn-print">🖨 Print</button>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <h1 data-fr="Travaux Dirigés – Infrastructure AWS"
+        data-en="Tutorial Exercises – AWS Infrastructure">
+      Travaux Dirigés – Infrastructure AWS
+    </h1>
+
+    <!-- ***************** QUESTIONS TD *************************** -->
+
+    <div class="question" 
+         data-fr="<strong>1️⃣ Définir une <span class='highlight'>Région AWS</span>.</strong>"
+         data-en="<strong>1️⃣ Define an <span class='highlight'>AWS Region</span>.</strong>">
+      <strong>1️⃣ Définir une <span class="highlight">Région AWS</span>.</strong>
+      <p>Répondez ici...</p>
+    </div>
+
+    <div class="question"
+         data-fr="<strong>2️⃣ Quelle est la différence entre une <span class='highlight'>AZ</span> et une Région ?</strong>"
+         data-en="<strong>2️⃣ What is the difference between an <span class='highlight'>AZ</span> and a Region?</strong>">
+      <strong>2️⃣ Quelle est la différence entre une <span class="highlight">AZ</span> et une Région ?</strong>
+      <p>Répondez ici...</p>
+    </div>
+
+    <div class="question"
+         data-fr="<strong>3️⃣ Pourquoi AWS utilise plusieurs <span class='highlight'>Zones de Disponibilité</span> ?</strong>"
+         data-en="<strong>3️⃣ Why does AWS use multiple <span class='highlight'>Availability Zones</span>?</strong>">
+      <strong>3️⃣ Pourquoi AWS utilise plusieurs <span class="highlight">Zones de Disponibilité</span> ?</strong>
+      <p>Répondez ici...</p>
+    </div>
+
+    <div class="question"
+         data-fr="<strong>4️⃣ À quoi servent les <span class='highlight'>Edge Locations</span> ?</strong>"
+         data-en="<strong>4️⃣ What are <span class='highlight'>Edge Locations</span> used for?</strong>">
+      <strong>4️⃣ À quoi servent les <span class="highlight">Edge Locations</span> ?</strong>
+      <p>Répondez ici...</p>
+    </div>
+
+    <div class="question"
+         data-fr="<strong>5️⃣ Donner un exemple concret d'utilisation d'une AZ.</strong>"
+         data-en="<strong>5️⃣ Give a concrete example of AZ usage.</strong>">
+      <strong>5️⃣ Donner un exemple concret d'utilisation d'une AZ.</strong>
+      <p>Répondez ici...</p>
+    </div>
+
+    <div class="question"
+         data-fr="<strong>6️⃣ Expliquer comment AWS garantit la <span class='highlight'>haute disponibilité</span>.</strong>"
+         data-en="<strong>6️⃣ Explain how AWS provides <span class='highlight'>high availability</span>.</strong>">
+      <strong>6️⃣ Expliquer comment AWS garantit la <span class="highlight">haute disponibilité</span>.</strong>
+      <p>Répondez ici...</p>
+    </div>
+
+    <div class="question"
+         data-fr="<strong>7️⃣ Pourquoi une application critique doit-elle être déployée sur plusieurs AZ ?</strong>"
+         data-en="<strong>7️⃣ Why must a critical application be deployed across multiple AZs?</strong>">
+      <strong>7️⃣ Pourquoi une application critique doit-elle être déployée sur plusieurs AZ ?</strong>
+      <p>Répondez ici...</p>
+    </div>
+
+  </div>
+
+  <script>
+    /* DARK MODE */
+    document.getElementById("toggleDark").onclick = () => {
+      document.body.classList.toggle("dark");
+    };
+
+    /* LANG SWITCH */
+    let lang = "fr";
+
+    document.getElementById("toggleLang").onclick = () => {
+      lang = lang === "fr" ? "en" : "fr";
+      document.getElementById("toggleLang").textContent = lang === "fr" ? "EN" : "FR";
+
+      document.querySelectorAll("[data-fr]").forEach(el => {
+        el.innerHTML = el.getAttribute("data-" + lang);
+      });
+    };
+
+    /* MARK CONCEPTS */
+    document.querySelectorAll(".highlight").forEach(span => {
+      span.onclick = () => {
+        span.classList.toggle("marked");
+      };
+    });
+  </script>
+
+</body>
+</html>
