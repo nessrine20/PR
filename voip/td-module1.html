@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TD - Protocoles SIP & RTP</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .question { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .question-num { color: #6a34cc; font-weight: bold; font-size: 18px; }
+  .answer { background: #d4edda; padding: 15px; border-radius: 10px; margin-top: 15px; display: none; border-left: 4px solid #28a745; }
+  .show-answer { background: #6a34cc; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; margin: 15px 0; white-space: pre; font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📝 TD - SIP & RTP</div>
+  <a href="../VOIp.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>📝 TD : Protocoles SIP & RTP</h1>
+
+  <h2>Partie 1 : QCM</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1</p>
+    <p>Quel port utilise SIP par défaut ?</p>
+    <p>a) 80 &nbsp; b) 443 &nbsp; c) 5060 &nbsp; d) 1720</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer"><strong>Réponse : c) 5060</strong><br>SIP utilise le port 5060 en UDP/TCP et 5061 pour TLS.</div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2</p>
+    <p>Quelle requête SIP est utilisée pour terminer un appel ?</p>
+    <p>a) CANCEL &nbsp; b) BYE &nbsp; c) HANGUP &nbsp; d) END</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer"><strong>Réponse : b) BYE</strong><br>BYE termine un appel établi. CANCEL annule une requête en cours (avant établissement).</div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3</p>
+    <p>Que signifie le code 180 en SIP ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer"><strong>180 Ringing</strong> - Le téléphone de l'appelé sonne.</div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4</p>
+    <p>Quel protocole transporte réellement la voix ?</p>
+    <p>a) SIP &nbsp; b) HTTP &nbsp; c) RTP &nbsp; d) TCP</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer"><strong>Réponse : c) RTP</strong><br>SIP est pour la signalisation, RTP transporte le flux audio/vidéo.</div>
+  </div>
+
+  <h2>Partie 2 : Analyse de message</h2>
+
+  <div class="question">
+    <p class="question-num">Question 5</p>
+    <p>Analysez ce message SIP et répondez aux questions :</p>
+    <div class="code-block">INVITE sip:+33612345678@sip.orange.fr SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.100:5060
+From: "Jean Dupont" <sip:jean@maison.local>;tag=abc123
+To: <sip:+33612345678@sip.orange.fr>
+Call-ID: 98765432@192.168.1.100
+CSeq: 1 INVITE</div>
+    <ul>
+      <li>a) Qui appelle qui ?</li>
+      <li>b) Quel type de requête est-ce ?</li>
+      <li>c) Quelle est l'adresse IP de l'appelant ?</li>
+    </ul>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ul>
+        <li>a) <strong>Jean Dupont</strong> appelle le <strong>+33612345678</strong></li>
+        <li>b) <strong>INVITE</strong> - Initiation d'appel</li>
+        <li>c) <strong>192.168.1.100</strong> (visible dans Via et Call-ID)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Exercice pratique</h2>
+
+  <div class="question">
+    <p class="question-num">Question 6</p>
+    <p>Remettez dans l'ordre les étapes d'un appel SIP réussi :</p>
+    <ol type="A">
+      <li>200 OK</li>
+      <li>INVITE</li>
+      <li>Flux RTP</li>
+      <li>ACK</li>
+      <li>180 Ringing</li>
+      <li>BYE</li>
+    </ol>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <strong>Ordre correct :</strong>
+      <ol>
+        <li><strong>B - INVITE</strong> (initiation)</li>
+        <li><strong>E - 180 Ringing</strong> (ça sonne)</li>
+        <li><strong>A - 200 OK</strong> (décroché)</li>
+        <li><strong>D - ACK</strong> (confirmation)</li>
+        <li><strong>C - Flux RTP</strong> (conversation)</li>
+        <li><strong>F - BYE</strong> (raccrochage)</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+

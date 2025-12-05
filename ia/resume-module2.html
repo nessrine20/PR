@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résumé - Réseaux de Neurones</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  h3 { color: #6a34cc; }
+  .highlight { background: #f0e6ff; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #6a34cc; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  th { background: #e9d6ff; color: #4a2db6; }
+  .formula { background: #f5f5f5; padding: 15px; border-radius: 8px; font-family: monospace; text-align: center; margin: 15px 0; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2, .dark h3 { color: #d4b4ff; }
+  .dark .highlight { background: #3a3a3a; }
+  .dark .formula { background: #3a3a3a; }
+  .dark th { background: #3a3a3a; color: #d4b4ff; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📘 Résumé - Réseaux de Neurones</div>
+  <div style="display:flex; gap:10px; align-items:center;">
+    <button onclick="window.print()" style="padding:8px 14px; background:linear-gradient(135deg,#6a34cc,#9b59b6); color:white; border:none; border-radius:10px; font-weight:bold; cursor:pointer;">🖨️ Imprimer</button>
+    <button id="toggleDark" style="padding:8px 14px; background:#fff; border:none; border-radius:10px; font-weight:bold; color:#6a34cc; cursor:pointer;">🌙</button>
+    <a href="../ia.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+<div class="container">
+  <h1>🧠 Réseaux de Neurones</h1>
+
+  <h2>1. Le Neurone Artificiel (Perceptron)</h2>
+  
+  <p>Un neurone artificiel reçoit des entrées, les pondère, les somme et applique une fonction d'activation.</p>
+
+  <div class="formula">
+    y = f(Σ(wi × xi) + b)
+  </div>
+
+  <ul>
+    <li><strong>xi</strong> : Entrées</li>
+    <li><strong>wi</strong> : Poids (à apprendre)</li>
+    <li><strong>b</strong> : Biais</li>
+    <li><strong>f</strong> : Fonction d'activation</li>
+    <li><strong>y</strong> : Sortie</li>
+  </ul>
+
+  <h2>2. Fonctions d'Activation</h2>
+
+  <table>
+    <tr><th>Fonction</th><th>Formule</th><th>Usage</th></tr>
+    <tr>
+      <td><strong>Sigmoid</strong></td>
+      <td>σ(x) = 1/(1+e⁻ˣ)</td>
+      <td>Sortie [0,1], classification binaire</td>
+    </tr>
+    <tr>
+      <td><strong>Tanh</strong></td>
+      <td>tanh(x)</td>
+      <td>Sortie [-1,1], couches cachées</td>
+    </tr>
+    <tr>
+      <td><strong>ReLU</strong></td>
+      <td>max(0, x)</td>
+      <td>Standard pour couches cachées</td>
+    </tr>
+    <tr>
+      <td><strong>Leaky ReLU</strong></td>
+      <td>max(0.01x, x)</td>
+      <td>Évite les "neurones morts"</td>
+    </tr>
+    <tr>
+      <td><strong>Softmax</strong></td>
+      <td>eˣⁱ / Σeˣʲ</td>
+      <td>Classification multi-classes</td>
+    </tr>
+  </table>
+
+  <h2>3. Architecture d'un Réseau</h2>
+
+  <h3>Couches</h3>
+  <ul>
+    <li><strong>Couche d'entrée</strong> : Reçoit les données (features)</li>
+    <li><strong>Couches cachées</strong> : Transformations successives</li>
+    <li><strong>Couche de sortie</strong> : Prédiction finale</li>
+  </ul>
+
+  <h3>Types de réseaux</h3>
+  <table>
+    <tr><th>Type</th><th>Usage</th></tr>
+    <tr><td><strong>MLP</strong> (Multi-Layer Perceptron)</td><td>Données tabulaires</td></tr>
+    <tr><td><strong>CNN</strong> (Convolutional)</td><td>Images, vision</td></tr>
+    <tr><td><strong>RNN</strong> (Recurrent)</td><td>Séquences, texte</td></tr>
+    <tr><td><strong>LSTM/GRU</strong></td><td>Séquences longues</td></tr>
+    <tr><td><strong>Transformer</strong></td><td>NLP, GPT, BERT</td></tr>
+  </table>
+
+  <h2>4. Apprentissage (Training)</h2>
+
+  <h3>Forward Propagation</h3>
+  <p>Les données traversent le réseau de l'entrée vers la sortie.</p>
+
+  <h3>Fonction de Perte (Loss)</h3>
+  <ul>
+    <li><strong>MSE</strong> (Mean Squared Error) : Régression</li>
+    <li><strong>Cross-Entropy</strong> : Classification</li>
+  </ul>
+
+  <h3>Backpropagation</h3>
+  <p>Calcul du gradient de l'erreur par rapport à chaque poids, en remontant dans le réseau.</p>
+
+  <h3>Optimiseurs</h3>
+  <table>
+    <tr><th>Optimiseur</th><th>Caractéristiques</th></tr>
+    <tr><td><strong>SGD</strong></td><td>Basique, peut osciller</td></tr>
+    <tr><td><strong>Momentum</strong></td><td>Accélère la convergence</td></tr>
+    <tr><td><strong>Adam</strong></td><td>Adaptatif, recommandé par défaut</td></tr>
+    <tr><td><strong>RMSprop</strong></td><td>Bon pour RNN</td></tr>
+  </table>
+
+  <h2>5. Régularisation</h2>
+
+  <ul>
+    <li><strong>Dropout</strong> : Désactive aléatoirement des neurones pendant l'entraînement</li>
+    <li><strong>L1/L2</strong> : Pénalise les grands poids</li>
+    <li><strong>Batch Normalization</strong> : Normalise les activations</li>
+    <li><strong>Early Stopping</strong> : Arrête quand la validation stagne</li>
+    <li><strong>Data Augmentation</strong> : Augmente artificiellement les données</li>
+  </ul>
+
+  <h2>6. Hyperparamètres</h2>
+
+  <ul>
+    <li><strong>Learning Rate</strong> : Vitesse d'apprentissage (0.001 typique)</li>
+    <li><strong>Batch Size</strong> : Nombre d'exemples par itération (32, 64, 128)</li>
+    <li><strong>Epochs</strong> : Nombre de passages sur les données</li>
+    <li><strong>Architecture</strong> : Nombre de couches et neurones</li>
+  </ul>
+
+  <div class="highlight">
+    <strong>🔑 Points clés :</strong>
+    <ul>
+      <li>ReLU est l'activation standard pour les couches cachées</li>
+      <li>Adam est l'optimiseur recommandé par défaut</li>
+      <li>Dropout (0.2-0.5) aide contre l'overfitting</li>
+      <li>Le learning rate est l'hyperparamètre le plus important</li>
+      <li>Plus de données > plus de couches</li>
+    </ul>
+  </div>
+</div>
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+</script>
+</body>
+</html>
+
+

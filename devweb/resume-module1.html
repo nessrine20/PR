@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résumé - HTML & CSS</title>
+<link rel="stylesheet" href="../assets/css/global.css">
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+  .top-btn { padding: 8px 14px; background: #fff; border: none; border-radius: 10px; font-weight: bold; color: #6a34cc; cursor: pointer; }
+  .print-btn { padding: 8px 14px; background: linear-gradient(135deg, #6a34cc, #9b59b6); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2, .dark h3 { color: #d4b4ff; }
+  .dark .highlight { background: #3a3a3a; }
+  .dark th { background: #3a3a3a; color: #d4b4ff; }
+  .dark .code-block { background: #1a1a2e; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  h3 { color: #6a34cc; }
+  .highlight { background: #f0e6ff; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #6a34cc; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; margin: 15px 0; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  th { background: #e9d6ff; color: #4a2db6; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📘 Résumé - HTML & CSS</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../developpement_web.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+<div class="container">
+  <h1>🌐 HTML & CSS Fondamentaux</h1>
+
+  <h2>1. Structure HTML de base</h2>
+  <div class="code-block">&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Ma Page&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Contenu ici --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+
+  <h2>2. Balises HTML essentielles</h2>
+  <table>
+    <tr><th>Balise</th><th>Usage</th></tr>
+    <tr><td><code>&lt;h1&gt; à &lt;h6&gt;</code></td><td>Titres (h1 = principal)</td></tr>
+    <tr><td><code>&lt;p&gt;</code></td><td>Paragraphe</td></tr>
+    <tr><td><code>&lt;a href=""&gt;</code></td><td>Lien hypertexte</td></tr>
+    <tr><td><code>&lt;img src="" alt=""&gt;</code></td><td>Image</td></tr>
+    <tr><td><code>&lt;div&gt;</code></td><td>Conteneur générique (block)</td></tr>
+    <tr><td><code>&lt;span&gt;</code></td><td>Conteneur inline</td></tr>
+    <tr><td><code>&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;</code></td><td>Listes</td></tr>
+    <tr><td><code>&lt;table&gt;, &lt;tr&gt;, &lt;td&gt;</code></td><td>Tableaux</td></tr>
+    <tr><td><code>&lt;form&gt;, &lt;input&gt;</code></td><td>Formulaires</td></tr>
+  </table>
+
+  <h3>Balises sémantiques (HTML5)</h3>
+  <table>
+    <tr><th>Balise</th><th>Usage</th></tr>
+    <tr><td><code>&lt;header&gt;</code></td><td>En-tête de page/section</td></tr>
+    <tr><td><code>&lt;nav&gt;</code></td><td>Navigation</td></tr>
+    <tr><td><code>&lt;main&gt;</code></td><td>Contenu principal</td></tr>
+    <tr><td><code>&lt;section&gt;</code></td><td>Section thématique</td></tr>
+    <tr><td><code>&lt;article&gt;</code></td><td>Contenu autonome</td></tr>
+    <tr><td><code>&lt;aside&gt;</code></td><td>Contenu secondaire</td></tr>
+    <tr><td><code>&lt;footer&gt;</code></td><td>Pied de page</td></tr>
+  </table>
+
+  <h2>3. CSS - Sélecteurs</h2>
+  <div class="code-block">/* Sélecteur d'élément */
+p { color: blue; }
+
+/* Sélecteur de classe */
+.ma-classe { font-size: 16px; }
+
+/* Sélecteur d'ID */
+#mon-id { background: red; }
+
+/* Combinateurs */
+div p { }        /* descendant */
+div > p { }      /* enfant direct */
+div + p { }      /* frère adjacent */
+div ~ p { }      /* frères suivants */
+
+/* Pseudo-classes */
+a:hover { }      /* au survol */
+input:focus { }  /* quand focus */
+li:nth-child(2) { } /* 2ème enfant */</div>
+
+  <h2>4. Box Model</h2>
+  <div class="highlight">
+    <strong>De l'intérieur vers l'extérieur :</strong><br>
+    <code>content</code> → <code>padding</code> → <code>border</code> → <code>margin</code>
+  </div>
+  <div class="code-block">.box {
+  width: 200px;
+  padding: 20px;      /* Espace intérieur */
+  border: 1px solid;  /* Bordure */
+  margin: 10px;       /* Espace extérieur */
+  box-sizing: border-box; /* Inclut padding/border dans width */
+}</div>
+
+  <h2>5. Flexbox</h2>
+  <div class="code-block">.container {
+  display: flex;
+  flex-direction: row;      /* row | column */
+  justify-content: center;  /* axe principal */
+  align-items: center;      /* axe secondaire */
+  gap: 20px;                /* espacement */
+  flex-wrap: wrap;          /* retour à la ligne */
+}
+
+.item {
+  flex: 1;                  /* grandir/rétrécir */
+}</div>
+
+  <h2>6. CSS Grid</h2>
+  <div class="code-block">.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales */
+  grid-template-rows: auto;
+  gap: 20px;
+}
+
+.item {
+  grid-column: span 2;  /* occupe 2 colonnes */
+}</div>
+
+  <h2>7. Responsive Design</h2>
+  <div class="code-block">/* Mobile first */
+.container { width: 100%; }
+
+/* Tablette */
+@media (min-width: 768px) {
+  .container { width: 750px; }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .container { width: 960px; }
+}</div>
+
+  <div class="highlight">
+    <strong>🔑 Points clés :</strong>
+    <ul>
+      <li>HTML = structure, CSS = style</li>
+      <li>Utiliser les balises sémantiques pour l'accessibilité et le SEO</li>
+      <li>Flexbox pour les layouts 1D, Grid pour les layouts 2D</li>
+      <li>Mobile first : commencer par le mobile, puis adapter</li>
+    </ul>
+  </div>
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+  document.getElementById("toggleLang").onclick = function() { alert("English version coming soon!"); };
+</script>
+</body>
+</html>
+
+

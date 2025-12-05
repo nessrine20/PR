@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP - Portfolio HTML/CSS</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .objective { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+  .step { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .step-num { background: #6a34cc; color: white; padding: 5px 12px; border-radius: 50%; font-weight: bold; margin-right: 10px; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; margin: 15px 0; overflow-x: auto; font-size: 13px; }
+  .success { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; }
+  .tip { background: #fff3cd; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #ffc107; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">🔧 TP - Portfolio HTML/CSS</div>
+  <a href="../developpement_web.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>🎨 TP : Créer un Portfolio Personnel</h1>
+
+  <div class="objective">
+    <strong>🎯 Objectifs :</strong>
+    <ul>
+      <li>Créer une page web responsive</li>
+      <li>Utiliser les balises sémantiques HTML5</li>
+      <li>Maîtriser Flexbox et CSS Grid</li>
+      <li>Implémenter un design moderne</li>
+    </ul>
+    <strong>⏱️ Durée :</strong> 3h
+  </div>
+
+  <h2>Structure du projet</h2>
+  <div class="code-block">portfolio/
+├── index.html
+├── css/
+│   └── style.css
+└── images/
+    └── (vos images)</div>
+
+  <h2>Partie 1 : Structure HTML</h2>
+
+  <div class="step">
+    <p><span class="step-num">1</span><strong>Créer la structure de base</strong></p>
+    <div class="code-block">&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Mon Portfolio&lt;/title&gt;
+  &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;nav&gt;...&lt;/nav&gt;
+  &lt;/header&gt;
+  
+  &lt;main&gt;
+    &lt;section id="hero"&gt;...&lt;/section&gt;
+    &lt;section id="projets"&gt;...&lt;/section&gt;
+    &lt;section id="competences"&gt;...&lt;/section&gt;
+    &lt;section id="contact"&gt;...&lt;/section&gt;
+  &lt;/main&gt;
+  
+  &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">2</span><strong>Navigation</strong></p>
+    <div class="code-block">&lt;nav class="navbar"&gt;
+  &lt;div class="logo"&gt;Mon Nom&lt;/div&gt;
+  &lt;ul class="nav-links"&gt;
+    &lt;li&gt;&lt;a href="#projets"&gt;Projets&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#competences"&gt;Compétences&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">3</span><strong>Section Projets avec Grid</strong></p>
+    <div class="code-block">&lt;section id="projets"&gt;
+  &lt;h2&gt;Mes Projets&lt;/h2&gt;
+  &lt;div class="projects-grid"&gt;
+    &lt;article class="project-card"&gt;
+      &lt;img src="images/projet1.jpg" alt="Projet 1"&gt;
+      &lt;h3&gt;Projet 1&lt;/h3&gt;
+      &lt;p&gt;Description...&lt;/p&gt;
+      &lt;a href="#" class="btn"&gt;Voir plus&lt;/a&gt;
+    &lt;/article&gt;
+    &lt;!-- Répéter pour chaque projet --&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</div>
+  </div>
+
+  <h2>Partie 2 : Styles CSS</h2>
+
+  <div class="step">
+    <p><span class="step-num">4</span><strong>Variables CSS et Reset</strong></p>
+    <div class="code-block">:root {
+  --primary: #6a34cc;
+  --secondary: #b07cff;
+  --text: #333;
+  --bg: #f4f4f4;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+}</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">5</span><strong>Navbar Flexbox</strong></p>
+    <div class="code-block">.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background: var(--primary);
+  color: white;
+  position: sticky;
+  top: 0;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.nav-links a:hover {
+  opacity: 0.8;
+}</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">6</span><strong>Grille de projets</strong></p>
+    <div class="code-block">.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem 5%;
+}
+
+.project-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">7</span><strong>Responsive</strong></p>
+    <div class="code-block">@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .nav-links {
+    flex-direction: column;
+    text-align: center;
+  }
+}</div>
+  </div>
+
+  <div class="tip">
+    <strong>💡 Bonus :</strong> Ajoutez des animations CSS, un effet parallax sur le hero, et un formulaire de contact stylisé !
+  </div>
+
+  <div class="success">
+    <strong>📝 Livrables :</strong>
+    <ol>
+      <li>Page HTML valide (W3C validator)</li>
+      <li>CSS organisé avec variables</li>
+      <li>Design responsive (mobile, tablette, desktop)</li>
+      <li>Au moins 3 projets présentés</li>
+    </ol>
+  </div>
+</div>
+</body>
+</html>
+
+

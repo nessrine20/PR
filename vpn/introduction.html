@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction aux VPN</title>
+<link rel="stylesheet" href="../assets/css/global.css">
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+  .top-btn { padding: 8px 14px; background: #fff; border: none; border-radius: 10px; font-weight: bold; color: #6a34cc; cursor: pointer; transition: 0.25s; }
+  .top-btn:hover { background: #f3e7ff; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .highlight { background: #f0e6ff; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #6a34cc; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  th { background: #e9d6ff; color: #4a2db6; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2 { color: #d4b4ff; }
+  .dark .highlight { background: #3a3a3a; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">🌐 Introduction aux VPN</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../vpn.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+<div class="container">
+  <h1>🌐 Introduction aux VPN</h1>
+
+  <h2>Qu'est-ce qu'un VPN ?</h2>
+  <p>Un <strong>VPN</strong> (Virtual Private Network) est un tunnel sécurisé et chiffré qui permet de connecter des réseaux ou des utilisateurs distants de manière sécurisée à travers Internet.</p>
+
+  <h2>Pourquoi utiliser un VPN ?</h2>
+  <ul>
+    <li>🔒 <strong>Confidentialité</strong> : Chiffrement des données transmises</li>
+    <li>🏢 <strong>Accès distant</strong> : Connexion sécurisée au réseau d'entreprise</li>
+    <li>🔗 <strong>Interconnexion</strong> : Relier des sites géographiquement distants</li>
+    <li>🌍 <strong>Contournement géographique</strong> : Accéder à des contenus restreints</li>
+    <li>🛡️ <strong>Protection</strong> : Sécurité sur les réseaux WiFi publics</li>
+  </ul>
+
+  <h2>Types de VPN</h2>
+  <table>
+    <tr><th>Type</th><th>Description</th><th>Cas d'usage</th></tr>
+    <tr>
+      <td><strong>Site-to-Site</strong></td>
+      <td>Connexion permanente entre deux réseaux</td>
+      <td>Relier des bureaux distants</td>
+    </tr>
+    <tr>
+      <td><strong>Remote Access</strong></td>
+      <td>Connexion d'un utilisateur au réseau</td>
+      <td>Télétravail</td>
+    </tr>
+    <tr>
+      <td><strong>Client VPN</strong></td>
+      <td>Logiciel sur le poste utilisateur</td>
+      <td>Protection personnelle</td>
+    </tr>
+  </table>
+
+  <h2>Protocoles VPN</h2>
+  <table>
+    <tr><th>Protocole</th><th>Sécurité</th><th>Performance</th><th>Statut</th></tr>
+    <tr><td>PPTP</td><td>❌ Faible</td><td>Rapide</td><td>Obsolète</td></tr>
+    <tr><td>L2TP/IPSec</td><td>✅ Bonne</td><td>Moyenne</td><td>Utilisé</td></tr>
+    <tr><td>OpenVPN</td><td>✅ Excellente</td><td>Bonne</td><td>Populaire</td></tr>
+    <tr><td>IKEv2/IPSec</td><td>✅ Excellente</td><td>Excellente</td><td>Recommandé</td></tr>
+    <tr><td>WireGuard</td><td>✅ Excellente</td><td>Excellente</td><td>Moderne</td></tr>
+  </table>
+
+  <h2>Composants d'un VPN</h2>
+  <div class="highlight">
+    <ul>
+      <li><strong>Client VPN</strong> : Logiciel côté utilisateur</li>
+      <li><strong>Serveur/Gateway VPN</strong> : Point d'entrée du tunnel</li>
+      <li><strong>Tunnel</strong> : Canal chiffré entre client et serveur</li>
+      <li><strong>Protocole de tunneling</strong> : IPSec, OpenVPN, WireGuard...</li>
+      <li><strong>Authentification</strong> : Certificats, mot de passe, MFA</li>
+    </ul>
+  </div>
+
+  <div class="highlight">
+    <strong>🔑 À retenir :</strong>
+    <ul>
+      <li>VPN = tunnel chiffré sur Internet</li>
+      <li>Site-to-Site pour les entreprises, Remote Access pour les utilisateurs</li>
+      <li>IKEv2 et WireGuard sont les protocoles modernes recommandés</li>
+      <li>PPTP est obsolète et non sécurisé</li>
+    </ul>
+  </div>
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+  document.getElementById("toggleLang").onclick = function() {
+    alert("English version coming soon!");
+  };
+</script>
+</body>
+</html>
+
+

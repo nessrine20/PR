@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correction DS 1 - Développement Web</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #28a745, #20c997); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+  .top-btn { padding: 8px 14px; background: #fff; border: none; border-radius: 10px; font-weight: bold; color: #28a745; cursor: pointer; }
+  .print-btn { padding: 8px 14px; background: linear-gradient(135deg, #28a745, #20c997); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #28a745; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #28a745; border-bottom: 3px solid #d4edda; padding-bottom: 15px; text-align: center; }
+  h2 { color: #20c997; margin-top: 30px; }
+  .question { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #28a745; }
+  .question-num { color: #28a745; font-weight: bold; font-size: 18px; margin-bottom: 10px; }
+  .answer { background: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; border: 2px solid #28a745; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; margin: 10px 0; overflow-x: auto; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2 { color: #5cdb5c; }
+  .dark .question { background: #2a3a2a; }
+  .dark .answer { background: #3a4a3a; border-color: #5cdb5c; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } .container { box-shadow: none; width: 95%; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">✅ Correction DS 1 - Dev Web</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../Examens.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>✅ Correction DS 1 - Développement Web</h1>
+
+  <h2>Partie 1 : HTML & CSS</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1 - Balises sémantiques (2 pts)</p>
+    <div class="answer">
+      <p><strong>Différence :</strong> Les balises sémantiques donnent du sens au contenu (accessibilité, SEO), contrairement à div/span qui sont génériques.</p>
+      <p><strong>5 balises sémantiques :</strong> header, nav, main, section, article, aside, footer</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2 - Box Model (3 pts)</p>
+    <div class="answer">
+      <p><strong>Box Model :</strong> content → padding → border → margin</p>
+      <p><strong>Propriété :</strong> <code>box-sizing: border-box;</code></p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3 - CSS Grid (3 pts)</p>
+    <div class="answer">
+      <div class="code-block">
+.grid-container {<br>
+&nbsp;&nbsp;display: grid;<br>
+&nbsp;&nbsp;grid-template-columns: repeat(3, 1fr);<br>
+&nbsp;&nbsp;gap: 20px;<br>
+}
+      </div>
+    </div>
+  </div>
+
+  <h2>Partie 2 : JavaScript</h2>
+
+  <div class="question">
+    <p class="question-num">Question 4 - let, const, var (2 pts)</p>
+    <div class="answer">
+      <ul>
+        <li><strong>var :</strong> Function scope, hoisting, réassignable</li>
+        <li><strong>let :</strong> Block scope, pas de hoisting, réassignable</li>
+        <li><strong>const :</strong> Block scope, pas de hoisting, non réassignable</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5 - Asynchronisme (3 pts)</p>
+    <div class="answer">
+      <p><strong>Asynchronisme :</strong> Exécuter du code sans bloquer le thread principal.</p>
+      <p><strong>Promises :</strong> Objet représentant une valeur future (pending → fulfilled/rejected)</p>
+      <p><strong>async/await :</strong> Syntaxe plus lisible pour les Promises, await pause l'exécution jusqu'à la résolution</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 6 - Analyse code (3 pts)</p>
+    <div class="answer">
+      <p><strong>Résultat :</strong> ReferenceError - Cannot access 'x' before initialization</p>
+      <p><strong>Explication :</strong> TDZ (Temporal Dead Zone) - la variable let x est "hoistée" mais non initialisée, donc inaccessible avant sa déclaration.</p>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Pratique</h2>
+
+  <div class="question">
+    <p class="question-num">Question 7 - Bouton toggle (4 pts)</p>
+    <div class="answer">
+      <div class="code-block">
+&lt;!-- HTML --&gt;<br>
+&lt;button id="toggleBtn"&gt;Changer couleur&lt;/button&gt;<br><br>
+
+&lt;!-- CSS --&gt;<br>
+&lt;style&gt;<br>
+body { transition: background 0.3s; }<br>
+.violet { background: #6a34cc; }<br>
+&lt;/style&gt;<br><br>
+
+&lt;!-- JavaScript --&gt;<br>
+&lt;script&gt;<br>
+document.getElementById("toggleBtn").onclick = function() {<br>
+&nbsp;&nbsp;document.body.classList.toggle("violet");<br>
+};<br>
+&lt;/script&gt;
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+  document.getElementById("toggleLang").onclick = function() { alert("English version coming soon!"); };
+</script>
+</body>
+</html>
+
+

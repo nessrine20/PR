@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correction Examen - Audit</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #28a745, #20c997); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; }
+  .top-btn, .print-btn { padding: 8px 14px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .top-btn { background: #fff; color: #28a745; }
+  .print-btn { background: linear-gradient(135deg, #28a745, #20c997); color: white; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #28a745; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #28a745; text-align: center; }
+  h2 { color: #20c997; margin-top: 30px; }
+  .question { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #28a745; }
+  .question-num { color: #28a745; font-weight: bold; font-size: 18px; }
+  .answer { background: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; border: 2px solid #28a745; }
+  .critical { background: #f8d7da; padding: 10px; border-radius: 5px; margin: 5px 0; }
+  .high { background: #fff3cd; padding: 10px; border-radius: 5px; margin: 5px 0; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark .question { background: #2a3a2a; }
+  .dark .answer { background: #3a4a3a; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } .container { box-shadow: none; width: 95%; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">✅ Correction Examen - Audit</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../Examens.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>✅ Correction Examen - Audit</h1>
+
+  <div class="question">
+    <p class="question-num">Question 1 - Méthodologie Pentest (5 pts)</p>
+    <div class="answer">
+      <ol>
+        <li><strong>Reconnaissance :</strong> OSINT, DNS, whois</li>
+        <li><strong>Scanning :</strong> Nmap, découverte services</li>
+        <li><strong>Énumération :</strong> Versions, vulnérabilités</li>
+        <li><strong>Exploitation :</strong> Tenter d'exploiter les failles</li>
+        <li><strong>Post-exploitation :</strong> Élévation privilèges, pivoting</li>
+        <li><strong>Reporting :</strong> Documentation des trouvailles</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2 - OWASP Top 10 (5 pts)</p>
+    <div class="answer">
+      <ul>
+        <li><strong>Injection :</strong> Requêtes paramétrées, ORM</li>
+        <li><strong>Broken Authentication :</strong> MFA, session timeout</li>
+        <li><strong>XSS :</strong> Échappement, CSP</li>
+        <li><strong>IDOR :</strong> Contrôles d'accès côté serveur</li>
+        <li><strong>Security Misconfiguration :</strong> Hardening, audits</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4 - Nessus (5 pts)</p>
+    <div class="answer">
+      <p><strong>Fonctionnement :</strong> Scan automatisé des vulnérabilités connues</p>
+      <p><strong>CVSS (0-10) :</strong></p>
+      <ul>
+        <li>Critical (9-10) : Correction immédiate</li>
+        <li>High (7-8.9) : Correction prioritaire</li>
+        <li>Medium (4-6.9) : Planifier correction</li>
+        <li>Low (0-3.9) : Risque acceptable</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 7 - Rapport banque (10 pts)</p>
+    <div class="answer">
+      <p><strong>a) Résumé exécutif :</strong></p>
+      <p>"Le test de pénétration a révélé des vulnérabilités critiques exposant les données clients. Une injection SQL sur le portail permet l'accès à la base de données. Des CVE non corrigées et des mots de passe faibles augmentent le risque de compromission complète du SI. Actions immédiates requises."</p>
+      
+      <p><strong>b) Plan de remédiation :</strong></p>
+      <div class="critical">
+        <strong>🔴 Semaine 1 - CRITIQUE :</strong>
+        <ul>
+          <li>Corriger l'injection SQL (requêtes paramétrées)</li>
+          <li>Patcher les CVE critiques</li>
+        </ul>
+      </div>
+      <div class="high">
+        <strong>🟠 Semaine 2-3 - HAUTE :</strong>
+        <ul>
+          <li>Politique de mots de passe (12+ caractères, complexité)</li>
+          <li>Déployer MFA</li>
+          <li>Revue de tous les serveurs exposés</li>
+        </ul>
+      </div>
+      <p><strong>🟡 Mois suivant :</strong> Audit WAF, formation développeurs, tests de régression</p>
+    </div>
+  </div>
+
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() { document.body.classList.toggle("dark"); this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙"; };
+  document.getElementById("toggleLang").onclick = function() { alert("English version coming soon!"); };
+</script>
+</body>
+</html>
+
+

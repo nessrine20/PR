@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correction DS 1 - CyberOps</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #28a745, #20c997); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+  .top-btn { padding: 8px 14px; background: #fff; border: none; border-radius: 10px; font-weight: bold; color: #28a745; cursor: pointer; }
+  .print-btn { padding: 8px 14px; background: linear-gradient(135deg, #28a745, #20c997); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #28a745; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #28a745; border-bottom: 3px solid #d4edda; padding-bottom: 15px; text-align: center; }
+  h2 { color: #20c997; margin-top: 30px; }
+  .question { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #28a745; }
+  .question-num { color: #28a745; font-weight: bold; font-size: 18px; margin-bottom: 10px; }
+  .answer { background: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; border: 2px solid #28a745; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+  th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+  th { background: #d4edda; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2 { color: #5cdb5c; }
+  .dark .question { background: #2a3a2a; }
+  .dark .answer { background: #3a4a3a; border-color: #5cdb5c; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } .container { box-shadow: none; width: 95%; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">✅ Correction DS 1 - CyberOps</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../Examens.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>✅ Correction DS 1 - CyberOps</h1>
+
+  <h2>Partie 1 : SOC et SIEM</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1 - SOC (3 pts)</p>
+    <div class="answer">
+      <p><strong>SOC :</strong> Centre opérationnel de sécurité, surveillance 24/7</p>
+      <p><strong>Missions :</strong></p>
+      <ul>
+        <li>Détection des menaces en temps réel</li>
+        <li>Analyse et investigation des incidents</li>
+        <li>Réponse aux incidents</li>
+        <li>Amélioration continue de la sécurité</li>
+      </ul>
+      <p><strong>Rôles :</strong> Analyste L1/L2/L3, Threat Hunter, Incident Responder, SOC Manager</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2 - SIEM (3 pts)</p>
+    <div class="answer">
+      <p><strong>SIEM :</strong> Security Information and Event Management</p>
+      <p><strong>Fonctionnement :</strong></p>
+      <ul>
+        <li>Collecte logs de multiples sources</li>
+        <li>Normalisation et corrélation</li>
+        <li>Détection par règles et anomalies</li>
+        <li>Alerting et reporting</li>
+      </ul>
+      <p><strong>Sources :</strong> Firewall, IDS/IPS, serveurs, AD, applications, endpoints</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3 - Tiers SOC (2 pts)</p>
+    <div class="answer">
+      <table>
+        <tr><th>Tier</th><th>Responsabilités</th></tr>
+        <tr><td><strong>Tier 1</strong></td><td>Triage des alertes, escalade</td></tr>
+        <tr><td><strong>Tier 2</strong></td><td>Investigation approfondie, analyse</td></tr>
+        <tr><td><strong>Tier 3</strong></td><td>Threat hunting, forensics, réponse complexe</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h2>Partie 2 : Menaces et attaques</h2>
+
+  <div class="question">
+    <p class="question-num">Question 4 - Kill Chain (3 pts)</p>
+    <div class="answer">
+      <ol>
+        <li><strong>Reconnaissance :</strong> Collecte d'informations</li>
+        <li><strong>Weaponization :</strong> Création du malware</li>
+        <li><strong>Delivery :</strong> Envoi (phishing, USB...)</li>
+        <li><strong>Exploitation :</strong> Exploitation de la vulnérabilité</li>
+        <li><strong>Installation :</strong> Persistance sur le système</li>
+        <li><strong>Command & Control :</strong> Communication avec l'attaquant</li>
+        <li><strong>Actions on Objectives :</strong> Vol, destruction, ransomware</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5 - IDS vs IPS (3 pts)</p>
+    <div class="answer">
+      <table>
+        <tr><th>IDS</th><th>IPS</th></tr>
+        <tr><td>Détection passive</td><td>Prévention active</td></tr>
+        <tr><td>Alerte seulement</td><td>Bloque le trafic</td></tr>
+        <tr><td>Hors bande (TAP)</td><td>En ligne</td></tr>
+      </table>
+      <p><strong>Outils :</strong> Snort, Suricata, Zeek (IDS) / Palo Alto, FortiGate (IPS)</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 6 - MITRE ATT&CK (2 pts)</p>
+    <div class="answer">
+      <p><strong>MITRE ATT&CK :</strong> Base de connaissances des tactiques et techniques d'attaque</p>
+      <p><strong>Usage SOC :</strong></p>
+      <ul>
+        <li>Cartographier les capacités de détection</li>
+        <li>Identifier les gaps de couverture</li>
+        <li>Comprendre le comportement des attaquants</li>
+        <li>Améliorer les règles SIEM</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Analyse forensique</h2>
+
+  <div class="question">
+    <p class="question-num">Question 7 - Investigation (4 pts)</p>
+    <div class="answer">
+      <ol>
+        <li><strong>Validation :</strong> Confirmer l'authenticité de l'alerte (pas de faux positif)</li>
+        <li><strong>Contexte :</strong> Identifier l'utilisateur associé, vérifier si absence/congés</li>
+        <li><strong>Analyse IP :</strong> Géolocalisation, réputation (VirusTotal, AbuseIPDB)</li>
+        <li><strong>Logs serveur :</strong> Vérifier les actions effectuées après connexion</li>
+        <li><strong>Corrélation :</strong> Chercher d'autres IoC (autres connexions, exfiltration)</li>
+        <li><strong>Containment :</strong> Bloquer l'IP, désactiver le compte si compromis</li>
+        <li><strong>Documentation :</strong> Créer un incident ticket, timeline</li>
+        <li><strong>Escalade :</strong> Si confirmé, escalader au Tier 2/3</li>
+      </ol>
+    </div>
+  </div>
+
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+  document.getElementById("toggleLang").onclick = function() { alert("English version coming soon!"); };
+</script>
+</body>
+</html>
+
+

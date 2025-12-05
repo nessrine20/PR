@@ -1,0 +1,69 @@
+/*  STYLES GLOBAUX PLATEFORME */
+
+/* Curseur Canvas */
+#cursorCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Bouton d'impression */
+.print-btn {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #6a34cc, #9b59b6);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.print-btn:hover {
+  background: linear-gradient(135deg, #5b22b3, #8e44ad);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(106, 52, 204, 0.3);
+}
+
+/* Styles d'impression */
+@media print {
+  .topbar, .print-btn, .top-btn, .back-btn, #cursorCanvas {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .container {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 20px !important;
+  }
+  
+  h1, h2, h3 {
+    color: #333 !important;
+  }
+  
+  .highlight {
+    background: #f5f5f5 !important;
+    border-left-color: #666 !important;
+  }
+  
+  table {
+    border: 1px solid #333 !important;
+  }
+  
+  th, td {
+    border: 1px solid #333 !important;
+  }
+}
+

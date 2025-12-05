@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correction Examen - VPN</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #28a745, #20c997); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; }
+  .top-btn, .print-btn { padding: 8px 14px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .top-btn { background: #fff; color: #28a745; }
+  .print-btn { background: linear-gradient(135deg, #28a745, #20c997); color: white; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #28a745; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #28a745; text-align: center; }
+  h2 { color: #20c997; margin-top: 30px; }
+  .question { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #28a745; }
+  .question-num { color: #28a745; font-weight: bold; font-size: 18px; }
+  .answer { background: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; border: 2px solid #28a745; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+  th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+  th { background: #d4edda; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark .question { background: #2a3a2a; }
+  .dark .answer { background: #3a4a3a; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } .container { box-shadow: none; width: 95%; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">✅ Correction Examen - VPN</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../Examens.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>✅ Correction Examen - VPN</h1>
+
+  <div class="question">
+    <p class="question-num">Question 1 - Comparaison protocoles (5 pts)</p>
+    <div class="answer">
+      <table>
+        <tr><th>Protocole</th><th>Sécurité</th><th>Performance</th><th>Usage</th></tr>
+        <tr><td>IPSec</td><td>Très bonne, standard</td><td>Moyenne</td><td>Enterprise, site-to-site</td></tr>
+        <tr><td>OpenVPN</td><td>Excellente, audité</td><td>Bonne</td><td>Remote access, cross-platform</td></tr>
+        <tr><td>WireGuard</td><td>Moderne, minimal</td><td>Excellente</td><td>Mobile, faible latence</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2 - IKEv2 (5 pts)</p>
+    <div class="answer">
+      <p><strong>Améliorations vs IKEv1 :</strong></p>
+      <ul>
+        <li>Moins de messages (4 au lieu de 9)</li>
+        <li>MOBIKE : reconnexion lors changement réseau</li>
+        <li>Meilleure résistance aux DoS</li>
+        <li>Support natif NAT-T</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3 - PFS (5 pts)</p>
+    <div class="answer">
+      <p><strong>PFS :</strong> Nouvelle clé Diffie-Hellman pour chaque session.</p>
+      <p><strong>Importance :</strong> Si la clé privée est compromise, les sessions passées restent protégées.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4 - Troubleshooting (5 pts)</p>
+    <div class="answer">
+      <ol>
+        <li>Vérifier connectivité Internet</li>
+        <li>Ping du serveur VPN</li>
+        <li>Vérifier les logs client VPN</li>
+        <li>Tester avec Wireshark (phase IKE)</li>
+        <li>Vérifier firewall (ports 500, 4500, protocole ESP)</li>
+        <li>Comparer avec un client fonctionnel</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5 - Split Tunneling (5 pts)</p>
+    <div class="answer">
+      <p><strong>Définition :</strong> Seul le trafic vers le réseau entreprise passe par le VPN.</p>
+      <p><strong>Avantages :</strong> Économie bande passante, meilleure performance Internet</p>
+      <p><strong>Risques :</strong> Exposition aux attaques, bypass des politiques de sécurité</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 7 - Architecture multinationale (10 pts)</p>
+    <div class="answer">
+      <p><strong>a) Architecture :</strong></p>
+      <ul>
+        <li>Hub-and-spoke : Paris = hub central</li>
+        <li>Tunnels IPSec site-to-site vers Londres, NY, Tokyo</li>
+        <li>VPN SSL/OpenVPN pour les télétravailleurs</li>
+        <li>Concentrateur VPN haute capacité (Cisco, Fortinet)</li>
+      </ul>
+      <p><strong>b) Redondance :</strong></p>
+      <ul>
+        <li>Dual-ISP sur chaque site</li>
+        <li>Cluster actif/passif de concentrateurs</li>
+        <li>DMVPN pour mesh dynamique</li>
+        <li>Basculement automatique (routing protocols)</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() { document.body.classList.toggle("dark"); this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙"; };
+  document.getElementById("toggleLang").onclick = function() { alert("English version coming soon!"); };
+</script>
+</body>
+</html>
+
+

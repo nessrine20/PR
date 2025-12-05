@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résumé - SOC & SIEM</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  h3 { color: #6a34cc; }
+  .highlight { background: #f0e6ff; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #6a34cc; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  th { background: #e9d6ff; color: #4a2db6; }
+  .schema { background: #f5f5f5; padding: 20px; border-radius: 10px; font-family: monospace; margin: 20px 0; text-align: center; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📘 Résumé - SOC & SIEM</div>
+  <a href="../cyberops.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>🛡️ SOC & SIEM</h1>
+
+  <h2>1. Le SOC (Security Operations Center)</h2>
+  
+  <h3>Définition</h3>
+  <p>Un SOC est une équipe centralisée qui surveille, détecte, analyse et répond aux incidents de sécurité 24/7.</p>
+
+  <h3>Structure du SOC</h3>
+  <table>
+    <tr><th>Niveau</th><th>Rôle</th><th>Responsabilités</th></tr>
+    <tr><td><strong>Tier 1</strong></td><td>Analyste SOC Junior</td><td>Surveillance, triage des alertes, escalade</td></tr>
+    <tr><td><strong>Tier 2</strong></td><td>Analyste SOC Senior</td><td>Investigation approfondie, corrélation</td></tr>
+    <tr><td><strong>Tier 3</strong></td><td>Expert / Threat Hunter</td><td>Hunting proactif, analyse de malware</td></tr>
+    <tr><td><strong>SOC Manager</strong></td><td>Responsable</td><td>Gestion d'équipe, reporting, stratégie</td></tr>
+  </table>
+
+  <h3>Processus de réponse aux incidents</h3>
+  <div class="schema">
+    Détection → Analyse → Containment → Éradication → Recovery → Lessons Learned
+  </div>
+
+  <h2>2. Le SIEM (Security Information and Event Management)</h2>
+
+  <h3>Fonctionnalités principales</h3>
+  <ul>
+    <li><strong>Collecte des logs</strong> : Centralise les logs de toutes les sources</li>
+    <li><strong>Normalisation</strong> : Format uniforme pour tous les événements</li>
+    <li><strong>Corrélation</strong> : Identifie les patterns d'attaque</li>
+    <li><strong>Alerting</strong> : Génère des alertes selon les règles</li>
+    <li><strong>Reporting</strong> : Tableaux de bord et rapports de conformité</li>
+  </ul>
+
+  <h3>Solutions SIEM populaires</h3>
+  <table>
+    <tr><th>Solution</th><th>Type</th><th>Points forts</th></tr>
+    <tr><td>Splunk</td><td>Commercial</td><td>Puissant, SPL flexible</td></tr>
+    <tr><td>QRadar (IBM)</td><td>Commercial</td><td>Corrélation avancée</td></tr>
+    <tr><td>Elastic SIEM</td><td>Open Source</td><td>Stack ELK, gratuit</td></tr>
+    <tr><td>Wazuh</td><td>Open Source</td><td>HIDS + SIEM, gratuit</td></tr>
+  </table>
+
+  <h2>3. Sources de logs importantes</h2>
+  <table>
+    <tr><th>Source</th><th>Type de logs</th></tr>
+    <tr><td>Pare-feu</td><td>Connexions autorisées/bloquées</td></tr>
+    <tr><td>IDS/IPS</td><td>Alertes d'intrusion</td></tr>
+    <tr><td>Serveurs</td><td>Auth, erreurs, accès</td></tr>
+    <tr><td>Active Directory</td><td>Authentifications, modifications</td></tr>
+    <tr><td>Endpoints (EDR)</td><td>Processus, fichiers, réseau</td></tr>
+    <tr><td>Proxy Web</td><td>URLs visitées</td></tr>
+  </table>
+
+  <h2>4. Règles de corrélation</h2>
+  <p>Exemples de règles SIEM :</p>
+  <ul>
+    <li><strong>Brute force</strong> : 5+ échecs de connexion en 5 min</li>
+    <li><strong>Lateral movement</strong> : Même user, connexions multiples serveurs</li>
+    <li><strong>Data exfiltration</strong> : Upload volumineux vers IP externe</li>
+    <li><strong>Malware</strong> : Processus enfant PowerShell de Office</li>
+  </ul>
+
+  <h2>5. KPIs du SOC</h2>
+  <table>
+    <tr><th>Métrique</th><th>Description</th></tr>
+    <tr><td><strong>MTTD</strong></td><td>Mean Time To Detect</td></tr>
+    <tr><td><strong>MTTR</strong></td><td>Mean Time To Respond</td></tr>
+    <tr><td><strong>False Positive Rate</strong></td><td>% de faux positifs</td></tr>
+    <tr><td><strong>Incidents résolus</strong></td><td>Par jour/semaine</td></tr>
+  </table>
+
+  <div class="highlight">
+    <strong>🔑 Points clés :</strong>
+    <ul>
+      <li>Le SOC est le cœur de la défense cyber opérationnelle</li>
+      <li>Le SIEM centralise et corrèle les événements de sécurité</li>
+      <li>Les règles de corrélation doivent être ajustées continuellement</li>
+      <li>Réduire le MTTD et MTTR est prioritaire</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
+
+

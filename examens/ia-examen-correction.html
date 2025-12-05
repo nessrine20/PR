@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correction Examen - IA</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #28a745, #20c997); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+  .top-btn { padding: 8px 14px; background: #fff; border: none; border-radius: 10px; font-weight: bold; color: #28a745; cursor: pointer; }
+  .print-btn { padding: 8px 14px; background: linear-gradient(135deg, #28a745, #20c997); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #28a745; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #28a745; border-bottom: 3px solid #d4edda; padding-bottom: 15px; text-align: center; }
+  h2 { color: #20c997; margin-top: 30px; }
+  .question { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #28a745; }
+  .question-num { color: #28a745; font-weight: bold; font-size: 18px; margin-bottom: 10px; }
+  .answer { background: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; border: 2px solid #28a745; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2 { color: #5cdb5c; }
+  .dark .question { background: #2a3a2a; }
+  .dark .answer { background: #3a4a3a; border-color: #5cdb5c; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } .container { box-shadow: none; width: 95%; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">✅ Correction Examen - IA</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../Examens.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>✅ Correction Examen - IA</h1>
+
+  <h2>Partie 1 : Deep Learning</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1 - Backpropagation (5 pts)</p>
+    <div class="answer">
+      <p><strong>Principe :</strong> Calculer le gradient de l'erreur par rapport à chaque poids, de la sortie vers l'entrée (règle de la chaîne).</p>
+      <p><strong>Étapes :</strong></p>
+      <ol>
+        <li>Forward pass : calculer la prédiction</li>
+        <li>Calculer la loss (erreur)</li>
+        <li>Backward pass : propager les gradients</li>
+        <li>Mise à jour : w = w - lr × gradient</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2 - CNN (5 pts)</p>
+    <div class="answer">
+      <ul>
+        <li><strong>Convolution :</strong> Extraction de features (filtres), détecte patterns locaux</li>
+        <li><strong>Pooling :</strong> Réduction de dimension, invariance spatiale (Max/Avg)</li>
+        <li><strong>Fully-Connected :</strong> Classification finale, combine les features</li>
+      </ul>
+      <p><strong>Architecture type :</strong> Conv → ReLU → Pool → Conv → ReLU → Pool → Flatten → FC → Softmax</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3 - Transfer Learning (5 pts)</p>
+    <div class="answer">
+      <p><strong>Définition :</strong> Réutiliser un modèle pré-entraîné sur une grande base pour une nouvelle tâche.</p>
+      <p><strong>Quand :</strong> Peu de données, tâche similaire</p>
+      <p><strong>Comment :</strong> Geler les premières couches, fine-tuner les dernières</p>
+      <p><strong>Exemple :</strong> Utiliser ResNet pré-entraîné sur ImageNet pour classifier des images médicales</p>
+    </div>
+  </div>
+
+  <h2>Partie 2 : NLP</h2>
+
+  <div class="question">
+    <p class="question-num">Question 4 - Self-Attention (5 pts)</p>
+    <div class="answer">
+      <p><strong>Formule :</strong> Attention(Q,K,V) = softmax(QK<sup>T</sup>/√d) × V</p>
+      <ul>
+        <li><strong>Q (Query) :</strong> Ce qu'on cherche</li>
+        <li><strong>K (Key) :</strong> Ce qui est disponible</li>
+        <li><strong>V (Value) :</strong> L'information associée</li>
+      </ul>
+      <p>Chaque token "regarde" tous les autres pour capturer les relations contextuelles.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5 - BERT vs GPT (5 pts)</p>
+    <div class="answer">
+      <ul>
+        <li><strong>BERT :</strong> Encoder-only, bidirectionnel, bon pour la compréhension (NER, QA)</li>
+        <li><strong>GPT :</strong> Decoder-only, autorégressif, bon pour la génération (chatbots, texte)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Détection de fraude</h2>
+
+  <div class="question">
+    <p class="question-num">Question 7 (10 pts)</p>
+    <div class="answer">
+      <p><strong>a) Algorithmes :</strong> Classification supervisée - Random Forest, XGBoost, ou Deep Learning (autoencoders pour anomalies)</p>
+      
+      <p><strong>b) Gestion déséquilibre :</strong></p>
+      <ul>
+        <li>SMOTE (suréchantillonnage synthétique)</li>
+        <li>Sous-échantillonnage de la classe majoritaire</li>
+        <li>Class weights (pénaliser plus les erreurs sur les fraudes)</li>
+        <li>Anomaly detection (One-Class SVM, Isolation Forest)</li>
+      </ul>
+      
+      <p><strong>c) Métriques :</strong></p>
+      <ul>
+        <li><strong>Recall :</strong> Détecter un maximum de fraudes (priorité)</li>
+        <li><strong>Precision :</strong> Éviter les faux positifs (ne pas bloquer les clients)</li>
+        <li><strong>F1-Score :</strong> Équilibre</li>
+        <li><strong>AUC-PR :</strong> Meilleur que ROC pour classes déséquilibrées</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() { document.body.classList.toggle("dark"); this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙"; };
+  document.getElementById("toggleLang").onclick = function() { alert("English version coming soon!"); };
+</script>
+</body>
+</html>
+
+

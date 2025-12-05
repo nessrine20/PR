@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP - Héberger un site sur S3</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .objective { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+  .step { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .step-num { background: #6a34cc; color: white; padding: 5px 12px; border-radius: 50%; font-weight: bold; margin-right: 10px; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; margin: 15px 0; overflow-x: auto; }
+  .success { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; }
+  .tip { background: #fff3cd; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #ffc107; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">🔧 TP - Site statique S3</div>
+  <a href="../cloud.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>🌐 TP : Héberger un site web statique sur S3</h1>
+
+  <div class="objective">
+    <strong>🎯 Objectifs :</strong>
+    <ul>
+      <li>Créer un bucket S3</li>
+      <li>Configurer l'hébergement de site statique</li>
+      <li>Uploader des fichiers HTML/CSS</li>
+      <li>Configurer les permissions publiques</li>
+    </ul>
+    <strong>⏱️ Durée :</strong> 1h30
+  </div>
+
+  <h2>Partie 1 : Créer le bucket S3</h2>
+
+  <div class="step">
+    <p><span class="step-num">1</span><strong>Accéder à S3</strong></p>
+    <ul>
+      <li>Console AWS → Rechercher "S3"</li>
+      <li>Cliquer sur "Créer un bucket"</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">2</span><strong>Configurer le bucket</strong></p>
+    <ul>
+      <li><strong>Nom :</strong> mon-site-web-unique-123 (doit être unique globalement)</li>
+      <li><strong>Région :</strong> eu-west-3 (Paris)</li>
+      <li><strong>Décocher</strong> "Bloquer tout accès public"</li>
+      <li>Cocher l'avertissement pour confirmer</li>
+      <li>Cliquer sur "Créer un bucket"</li>
+    </ul>
+  </div>
+
+  <h2>Partie 2 : Activer l'hébergement</h2>
+
+  <div class="step">
+    <p><span class="step-num">3</span><strong>Configurer l'hébergement statique</strong></p>
+    <ul>
+      <li>Ouvrir le bucket créé</li>
+      <li>Onglet "Propriétés"</li>
+      <li>Défiler jusqu'à "Hébergement de site web statique"</li>
+      <li>Cliquer sur "Modifier"</li>
+      <li>Activer l'hébergement</li>
+      <li>Document d'index : <code>index.html</code></li>
+      <li>Document d'erreur : <code>error.html</code></li>
+      <li>Sauvegarder</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">4</span><strong>Ajouter la politique de bucket</strong></p>
+    <ul>
+      <li>Onglet "Autorisations"</li>
+      <li>Section "Politique de bucket" → Modifier</li>
+      <li>Coller cette politique :</li>
+    </ul>
+    <div class="code-block">{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::VOTRE-NOM-BUCKET/*"
+    }
+  ]
+}</div>
+    <p>⚠️ Remplacer <code>VOTRE-NOM-BUCKET</code> par le nom réel de votre bucket</p>
+  </div>
+
+  <h2>Partie 3 : Créer et uploader le site</h2>
+
+  <div class="step">
+    <p><span class="step-num">5</span><strong>Créer les fichiers</strong></p>
+    <p><strong>index.html :</strong></p>
+    <div class="code-block">&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Mon Site Cloud&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;h1&gt;☁️ Bienvenue sur mon site hébergé sur AWS S3 !&lt;/h1&gt;
+    &lt;p&gt;Ce site est 100% statique et serverless.&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;✅ Haute disponibilité (99.99%)&lt;/li&gt;
+      &lt;li&gt;✅ Coût très faible&lt;/li&gt;
+      &lt;li&gt;✅ Scalabilité automatique&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+
+    <p><strong>style.css :</strong></p>
+    <div class="code-block">body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  text-align: center;
+  max-width: 500px;
+}
+h1 { color: #764ba2; }
+ul { text-align: left; }
+li { margin: 10px 0; }</div>
+
+    <p><strong>error.html :</strong></p>
+    <div class="code-block">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body style="text-align:center; padding:50px;"&gt;
+  &lt;h1&gt;❌ Erreur 404&lt;/h1&gt;
+  &lt;p&gt;Page non trouvée&lt;/p&gt;
+  &lt;a href="index.html"&gt;Retour à l'accueil&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">6</span><strong>Uploader les fichiers</strong></p>
+    <ul>
+      <li>Onglet "Objets" du bucket</li>
+      <li>Cliquer sur "Charger"</li>
+      <li>Glisser-déposer les 3 fichiers</li>
+      <li>Cliquer sur "Charger"</li>
+    </ul>
+  </div>
+
+  <h2>Partie 4 : Tester le site</h2>
+
+  <div class="step">
+    <p><span class="step-num">7</span><strong>Accéder au site</strong></p>
+    <p>L'URL se trouve dans : Propriétés → Hébergement de site web statique</p>
+    <p>Format : <code>http://BUCKET-NAME.s3-website.REGION.amazonaws.com</code></p>
+  </div>
+
+  <div class="tip">
+    <strong>💡 Bonus :</strong> Ajoutez CloudFront pour HTTPS et un CDN global, puis Route 53 pour un nom de domaine personnalisé !
+  </div>
+
+  <div class="success">
+    <strong>✅ Livrables :</strong>
+    <ol>
+      <li>URL du site fonctionnel</li>
+      <li>Capture du bucket avec les fichiers</li>
+      <li>Capture de la page d'accueil</li>
+      <li>Test de la page d'erreur (URL invalide)</li>
+    </ol>
+  </div>
+</div>
+</body>
+</html>
+
+

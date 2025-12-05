@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP - Application Todo List</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .objective { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+  .step { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .step-num { background: #6a34cc; color: white; padding: 5px 12px; border-radius: 50%; font-weight: bold; margin-right: 10px; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; margin: 15px 0; overflow-x: auto; font-size: 12px; }
+  .success { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; }
+  .tip { background: #fff3cd; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #ffc107; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">🔧 TP - Todo List JavaScript</div>
+  <a href="../developpement_web.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>✅ TP : Application Todo List</h1>
+
+  <div class="objective">
+    <strong>🎯 Objectifs :</strong>
+    <ul>
+      <li>Manipuler le DOM avec JavaScript</li>
+      <li>Gérer les événements</li>
+      <li>Utiliser le localStorage</li>
+      <li>Appliquer les méthodes de tableau</li>
+    </ul>
+    <strong>⏱️ Durée :</strong> 2h
+  </div>
+
+  <h2>Partie 1 : Structure HTML</h2>
+
+  <div class="step">
+    <p><span class="step-num">1</span><strong>Créer le HTML</strong></p>
+    <div class="code-block">&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Todo List&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;h1&gt;📝 Ma Todo List&lt;/h1&gt;
+    
+    &lt;form id="todo-form"&gt;
+      &lt;input type="text" id="todo-input" placeholder="Nouvelle tâche..." required&gt;
+      &lt;button type="submit"&gt;Ajouter&lt;/button&gt;
+    &lt;/form&gt;
+    
+    &lt;ul id="todo-list"&gt;&lt;/ul&gt;
+    
+    &lt;div class="filters"&gt;
+      &lt;button data-filter="all" class="active"&gt;Toutes&lt;/button&gt;
+      &lt;button data-filter="active"&gt;Actives&lt;/button&gt;
+      &lt;button data-filter="completed"&gt;Terminées&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;script src="app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+  </div>
+
+  <h2>Partie 2 : JavaScript</h2>
+
+  <div class="step">
+    <p><span class="step-num">2</span><strong>Variables et sélecteurs</strong></p>
+    <div class="code-block">// Sélection des éléments
+const form = document.getElementById('todo-form');
+const input = document.getElementById('todo-input');
+const list = document.getElementById('todo-list');
+
+// Tableau des tâches
+let todos = JSON.parse(localStorage.getItem('todos')) || [];</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">3</span><strong>Fonction de rendu</strong></p>
+    <div class="code-block">function renderTodos(filter = 'all') {
+  list.innerHTML = '';
+  
+  let filtered = todos;
+  if (filter === 'active') {
+    filtered = todos.filter(t => !t.completed);
+  } else if (filter === 'completed') {
+    filtered = todos.filter(t => t.completed);
+  }
+  
+  filtered.forEach((todo, index) => {
+    const li = document.createElement('li');
+    li.className = todo.completed ? 'completed' : '';
+    li.innerHTML = `
+      &lt;input type="checkbox" ${todo.completed ? 'checked' : ''}&gt;
+      &lt;span&gt;${todo.text}&lt;/span&gt;
+      &lt;button class="delete"&gt;❌&lt;/button&gt;
+    `;
+    
+    // Événements
+    li.querySelector('input').addEventListener('change', () => toggleTodo(index));
+    li.querySelector('.delete').addEventListener('click', () => deleteTodo(index));
+    
+    list.appendChild(li);
+  });
+}</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">4</span><strong>Fonctions CRUD</strong></p>
+    <div class="code-block">// Ajouter une tâche
+function addTodo(text) {
+  todos.push({ text, completed: false });
+  saveTodos();
+  renderTodos();
+}
+
+// Basculer le statut
+function toggleTodo(index) {
+  todos[index].completed = !todos[index].completed;
+  saveTodos();
+  renderTodos();
+}
+
+// Supprimer une tâche
+function deleteTodo(index) {
+  todos.splice(index, 1);
+  saveTodos();
+  renderTodos();
+}
+
+// Sauvegarder dans localStorage
+function saveTodos() {
+  localStorage.setItem('todos', JSON.stringify(todos));
+}</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">5</span><strong>Événements</strong></p>
+    <div class="code-block">// Soumission du formulaire
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (input.value.trim()) {
+    addTodo(input.value.trim());
+    input.value = '';
+  }
+});
+
+// Filtres
+document.querySelectorAll('.filters button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelector('.filters .active').classList.remove('active');
+    btn.classList.add('active');
+    renderTodos(btn.dataset.filter);
+  });
+});
+
+// Rendu initial
+renderTodos();</div>
+  </div>
+
+  <h2>Partie 3 : CSS</h2>
+
+  <div class="step">
+    <p><span class="step-num">6</span><strong>Styles de base</strong></p>
+    <div class="code-block">.container { max-width: 500px; margin: 50px auto; padding: 20px; }
+#todo-form { display: flex; gap: 10px; margin-bottom: 20px; }
+#todo-input { flex: 1; padding: 10px; border: 2px solid #ddd; border-radius: 8px; }
+#todo-form button { padding: 10px 20px; background: #6a34cc; color: white; border: none; border-radius: 8px; cursor: pointer; }
+
+#todo-list { list-style: none; padding: 0; }
+#todo-list li { display: flex; align-items: center; gap: 10px; padding: 15px; background: #f8f4ff; margin-bottom: 10px; border-radius: 8px; }
+#todo-list li.completed span { text-decoration: line-through; opacity: 0.6; }
+#todo-list li span { flex: 1; }
+.delete { background: none; border: none; cursor: pointer; font-size: 16px; }
+
+.filters { display: flex; gap: 10px; justify-content: center; margin-top: 20px; }
+.filters button { padding: 8px 16px; border: none; background: #ddd; border-radius: 5px; cursor: pointer; }
+.filters button.active { background: #6a34cc; color: white; }</div>
+  </div>
+
+  <div class="tip">
+    <strong>💡 Bonus :</strong>
+    <ul>
+      <li>Ajouter la possibilité d'éditer une tâche (double-clic)</li>
+      <li>Ajouter un compteur de tâches restantes</li>
+      <li>Ajouter un bouton "Supprimer toutes les terminées"</li>
+      <li>Ajouter des animations CSS</li>
+    </ul>
+  </div>
+
+  <div class="success">
+    <strong>📝 Livrables :</strong>
+    <ol>
+      <li>Application fonctionnelle</li>
+      <li>Persistance avec localStorage</li>
+      <li>Filtres opérationnels</li>
+      <li>Design propre et responsive</li>
+    </ol>
+  </div>
+</div>
+</body>
+</html>
+
+

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correction DS 1 - Cloud Computing</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #28a745, #20c997); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+  .top-btn { padding: 8px 14px; background: #fff; border: none; border-radius: 10px; font-weight: bold; color: #28a745; cursor: pointer; }
+  .print-btn { padding: 8px 14px; background: linear-gradient(135deg, #28a745, #20c997); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #28a745; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #28a745; border-bottom: 3px solid #d4edda; padding-bottom: 15px; text-align: center; }
+  h2 { color: #20c997; margin-top: 30px; }
+  .question { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #28a745; }
+  .question-num { color: #28a745; font-weight: bold; font-size: 18px; margin-bottom: 10px; }
+  .answer { background: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; border: 2px solid #28a745; }
+  .correct { color: #28a745; font-weight: bold; }
+  table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+  th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  th { background: #d4edda; color: #28a745; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2 { color: #5cdb5c; }
+  .dark .question { background: #2a3a2a; }
+  .dark .answer { background: #3a4a3a; border-color: #5cdb5c; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } .container { box-shadow: none; width: 95%; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">✅ Correction DS 1 - Cloud</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../Examens.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>✅ Correction DS 1 - Cloud Computing</h1>
+
+  <h2>Partie 1 : Questions de cours</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1 (2 pts)</p>
+    <div class="answer">
+      <p><strong>Définition :</strong> Le Cloud Computing est la fourniture de ressources informatiques (serveurs, stockage, réseau, logiciels) via Internet avec facturation à l'usage.</p>
+      <p><strong>5 caractéristiques NIST :</strong></p>
+      <ol>
+        <li>Self-service à la demande</li>
+        <li>Accès réseau large</li>
+        <li>Mise en commun des ressources (pooling)</li>
+        <li>Élasticité rapide</li>
+        <li>Service mesuré (pay-as-you-go)</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2 (2 pts)</p>
+    <div class="answer">
+      <table>
+        <tr><th>Modèle</th><th>Description</th><th>Exemple</th></tr>
+        <tr><td><strong>IaaS</strong></td><td>Infrastructure (VMs, stockage, réseau)</td><td>AWS EC2, Azure VMs</td></tr>
+        <tr><td><strong>PaaS</strong></td><td>Plateforme de développement</td><td>Heroku, Google App Engine</td></tr>
+        <tr><td><strong>SaaS</strong></td><td>Application prête à l'emploi</td><td>Gmail, Office 365, Salesforce</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3 (2 pts)</p>
+    <div class="answer">
+      <p><strong>Avantages :</strong></p>
+      <ul>
+        <li>Réduction des coûts (pas d'investissement initial)</li>
+        <li>Scalabilité et élasticité</li>
+        <li>Haute disponibilité</li>
+        <li>Accès aux dernières technologies</li>
+        <li>Déploiement rapide</li>
+      </ul>
+      <p><strong>Inconvénients :</strong></p>
+      <ul>
+        <li>Dépendance au fournisseur (vendor lock-in)</li>
+        <li>Problèmes de sécurité et conformité</li>
+        <li>Coûts cachés (trafic sortant)</li>
+        <li>Latence réseau</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4 (2 pts)</p>
+    <div class="answer">
+      <p>Le modèle de responsabilité partagée définit qui est responsable de la sécurité :</p>
+      <table>
+        <tr><th>Élément</th><th>IaaS</th><th>PaaS</th><th>SaaS</th></tr>
+        <tr><td>Infrastructure physique</td><td>Provider</td><td>Provider</td><td>Provider</td></tr>
+        <tr><td>Réseau</td><td>Partagé</td><td>Provider</td><td>Provider</td></tr>
+        <tr><td>OS</td><td>Client</td><td>Provider</td><td>Provider</td></tr>
+        <tr><td>Applications</td><td>Client</td><td>Client</td><td>Provider</td></tr>
+        <tr><td>Données</td><td>Client</td><td>Client</td><td>Client</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h2>Partie 2 : QCM</h2>
+
+  <div class="question">
+    <p class="question-num">Questions 5-10</p>
+    <div class="answer">
+      <p><strong>Q5 :</strong> <span class="correct">☑ Amazon AWS</span></p>
+      <p><strong>Q6 :</strong> <span class="correct">☑ S3</span> (Simple Storage Service)</p>
+      <p><strong>Q7 :</strong> <span class="correct">☑ Cloud Hybride</span></p>
+      <p><strong>Q8 :</strong> <span class="correct">☑ Élasticité rapide</span></p>
+      <p><strong>Q9 :</strong> <span class="correct">☑ SaaS</span> (Software as a Service)</p>
+      <p><strong>Q10 :</strong> <span class="correct">☑ Un groupe de zones de disponibilité</span></p>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Cas pratique</h2>
+
+  <div class="question">
+    <p class="question-num">Question 11 (6 pts)</p>
+    <div class="answer">
+      <p><strong>a) Modèle recommandé : PaaS</strong></p>
+      <ul>
+        <li>Équipe réduite → pas besoin de gérer l'infrastructure</li>
+        <li>Budget limité → coût initial faible</li>
+        <li>Focus sur le développement, pas l'administration</li>
+        <li>Exemples : Heroku, AWS Elastic Beanstalk</li>
+      </ul>
+      
+      <p><strong>b) Architecture AWS proposée :</strong></p>
+      <ul>
+        <li><strong>Frontend</strong> : S3 + CloudFront (site statique)</li>
+        <li><strong>Backend</strong> : Elastic Beanstalk ou EC2 + ALB</li>
+        <li><strong>Base de données</strong> : RDS Aurora</li>
+        <li><strong>Stockage images</strong> : S3</li>
+        <li><strong>Cache</strong> : ElastiCache Redis</li>
+      </ul>
+      
+      <p><strong>c) Gestion des pics de trafic :</strong></p>
+      <ul>
+        <li><strong>Auto Scaling</strong> : Augmentation automatique du nombre d'instances</li>
+        <li><strong>Load Balancer</strong> : Distribution du trafic</li>
+        <li><strong>CloudFront CDN</strong> : Cache proche des utilisateurs</li>
+        <li><strong>RDS Read Replicas</strong> : Réplication de lecture</li>
+        <li><strong>ElastiCache</strong> : Réduire la charge sur la base</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+  document.getElementById("toggleLang").onclick = function() {
+    alert("English version coming soon!");
+  };
+</script>
+</body>
+</html>
+
+

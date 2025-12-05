@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP - Configuration OpenVPN</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .objective { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+  .step { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .step-num { background: #6a34cc; color: white; padding: 5px 12px; border-radius: 50%; font-weight: bold; margin-right: 10px; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; margin: 15px 0; overflow-x: auto; }
+  .warning { background: #fff3cd; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #ffc107; }
+  .success { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">🔧 TP - OpenVPN</div>
+  <a href="../vpn.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>🔧 TP : Configuration OpenVPN</h1>
+  
+  <div class="objective">
+    <strong>🎯 Objectifs :</strong>
+    <ul>
+      <li>Installer OpenVPN</li>
+      <li>Configurer un serveur VPN</li>
+      <li>Connecter un client</li>
+    </ul>
+    <strong>⏱️ Durée :</strong> 2h<br>
+    <strong>🛠️ Prérequis :</strong> VM Linux (Ubuntu/Debian), accès root
+  </div>
+
+  <h2>Partie 1 : Installation du serveur</h2>
+
+  <div class="step">
+    <p><span class="step-num">1</span><strong>Installer OpenVPN</strong></p>
+    <div class="code-block">sudo apt update
+sudo apt install openvpn easy-rsa -y</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">2</span><strong>Configurer Easy-RSA (PKI)</strong></p>
+    <div class="code-block">make-cadir ~/openvpn-ca
+cd ~/openvpn-ca
+./easyrsa init-pki
+./easyrsa build-ca nopass</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">3</span><strong>Générer les certificats</strong></p>
+    <div class="code-block"># Certificat serveur
+./easyrsa gen-req server nopass
+./easyrsa sign-req server server
+
+# Clé Diffie-Hellman
+./easyrsa gen-dh
+
+# Certificat client
+./easyrsa gen-req client1 nopass
+./easyrsa sign-req client client1</div>
+  </div>
+
+  <h2>Partie 2 : Configuration serveur</h2>
+
+  <div class="step">
+    <p><span class="step-num">4</span><strong>Créer le fichier de configuration</strong></p>
+    <div class="code-block">sudo nano /etc/openvpn/server.conf</div>
+    <p>Contenu :</p>
+    <div class="code-block">port 1194
+proto udp
+dev tun
+ca ca.crt
+cert server.crt
+key server.key
+dh dh.pem
+server 10.8.0.0 255.255.255.0
+push "redirect-gateway def1"
+push "dhcp-option DNS 8.8.8.8"
+keepalive 10 120
+cipher AES-256-GCM
+user nobody
+group nogroup
+persist-key
+persist-tun
+status /var/log/openvpn-status.log
+verb 3</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">5</span><strong>Activer l'IP forwarding</strong></p>
+    <div class="code-block">echo "net.ipv4.ip_forward=1" | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">6</span><strong>Démarrer le service</strong></p>
+    <div class="code-block">sudo systemctl start openvpn@server
+sudo systemctl enable openvpn@server
+sudo systemctl status openvpn@server</div>
+  </div>
+
+  <h2>Partie 3 : Configuration client</h2>
+
+  <div class="step">
+    <p><span class="step-num">7</span><strong>Créer le fichier .ovpn</strong></p>
+    <div class="code-block">client
+dev tun
+proto udp
+remote VOTRE_IP_SERVEUR 1194
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+ca ca.crt
+cert client1.crt
+key client1.key
+cipher AES-256-GCM
+verb 3</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">8</span><strong>Tester la connexion</strong></p>
+    <p>Installez OpenVPN GUI (Windows) ou Tunnelblick (Mac) et importez le fichier .ovpn</p>
+  </div>
+
+  <div class="success">
+    <strong>✅ Vérification :</strong>
+    <ul>
+      <li>Connexion établie sans erreur</li>
+      <li>Nouvelle IP attribuée (10.8.0.x)</li>
+      <li>Ping vers le serveur : <code>ping 10.8.0.1</code></li>
+    </ul>
+  </div>
+
+  <h2>📝 Livrable</h2>
+  <p>Captures d'écran montrant : configuration serveur, connexion client réussie, nouvelle IP.</p>
+</div>
+</body>
+</html>
+
+

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TD - Protocoles VPN</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .question { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .question-num { color: #6a34cc; font-weight: bold; font-size: 18px; }
+  .answer { background: #d4edda; padding: 15px; border-radius: 10px; margin-top: 15px; display: none; border-left: 4px solid #28a745; }
+  .show-answer { background: #6a34cc; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+  .scenario { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📝 TD - Protocoles VPN</div>
+  <a href="../vpn.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>📝 TD : Protocoles VPN</h1>
+
+  <h2>Partie 1 : QCM</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1</p>
+    <p>Quel protocole VPN est considéré comme obsolète et non sécurisé ?</p>
+    <p>a) OpenVPN &nbsp; b) PPTP &nbsp; c) WireGuard &nbsp; d) IKEv2</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer"><strong>Réponse : b) PPTP</strong><br>PPTP utilise un chiffrement faible (MPPE) et a des vulnérabilités connues.</div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2</p>
+    <p>Quel protocole VPN est le plus léger avec environ 4000 lignes de code ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer"><strong>Réponse : WireGuard</strong><br>WireGuard est minimaliste comparé à OpenVPN (~100 000 lignes).</div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3</p>
+    <p>Quel protocole est recommandé pour les appareils mobiles grâce à MOBIKE ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer"><strong>Réponse : IKEv2/IPSec</strong><br>MOBIKE permet une reconnexion transparente lors du changement de réseau (WiFi → 4G).</div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4</p>
+    <p>Quel port utilise OpenVPN par défaut en UDP ?</p>
+    <p>a) 443 &nbsp; b) 1194 &nbsp; c) 500 &nbsp; d) 51820</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer"><strong>Réponse : b) 1194</strong><br>OpenVPN utilise UDP 1194 par défaut, mais peut être configuré sur 443 (TCP) pour bypass firewall.</div>
+  </div>
+
+  <h2>Partie 2 : Étude de cas</h2>
+
+  <div class="scenario">
+    <strong>📋 Scénario :</strong><br>
+    Une entreprise avec 3 sites (Paris, Lyon, Marseille) doit connecter ses réseaux de manière sécurisée. Les employés doivent aussi pouvoir travailler à distance.
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5</p>
+    <p>Quel type de VPN recommandez-vous pour connecter les 3 sites ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <strong>VPN Site-to-Site</strong><br>
+      Configuration IPSec entre les routeurs/firewalls de chaque site. Connexion permanente et transparente pour les utilisateurs.
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 6</p>
+    <p>Quel type de VPN pour les télétravailleurs ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <strong>VPN Remote Access (Client-to-Site)</strong><br>
+      Options recommandées :
+      <ul>
+        <li>OpenVPN avec certificats</li>
+        <li>IKEv2 pour les mobiles</li>
+        <li>WireGuard pour la performance</li>
+      </ul>
+      Avec authentification MFA obligatoire.
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 7</p>
+    <p>Classez ces protocoles du moins sécurisé au plus sécurisé :</p>
+    <p>A) OpenVPN &nbsp; B) PPTP &nbsp; C) WireGuard &nbsp; D) L2TP/IPSec</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <strong>Du moins au plus sécurisé :</strong>
+      <ol>
+        <li>B) PPTP (obsolète)</li>
+        <li>D) L2TP/IPSec (correct)</li>
+        <li>A) OpenVPN (excellent)</li>
+        <li>C) WireGuard (crypto moderne)</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+

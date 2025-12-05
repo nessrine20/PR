@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correction Examen - Cloud Computing</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #28a745, #20c997); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+  .top-btn { padding: 8px 14px; background: #fff; border: none; border-radius: 10px; font-weight: bold; color: #28a745; cursor: pointer; }
+  .print-btn { padding: 8px 14px; background: linear-gradient(135deg, #28a745, #20c997); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #28a745; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #28a745; border-bottom: 3px solid #d4edda; padding-bottom: 15px; text-align: center; }
+  h2 { color: #20c997; margin-top: 30px; }
+  .question { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #28a745; }
+  .question-num { color: #28a745; font-weight: bold; font-size: 18px; margin-bottom: 10px; }
+  .answer { background: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; border: 2px solid #28a745; }
+  table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+  th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+  th { background: #d4edda; color: #28a745; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2 { color: #5cdb5c; }
+  .dark .question { background: #2a3a2a; }
+  .dark .answer { background: #3a4a3a; border-color: #5cdb5c; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } .container { box-shadow: none; width: 95%; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">✅ Correction Examen - Cloud</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../Examens.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>✅ Correction Examen Final - Cloud</h1>
+
+  <h2>Partie 1 : Questions de cours</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1 - Modèles de déploiement (3 pts)</p>
+    <div class="answer">
+      <table>
+        <tr><th>Modèle</th><th>Définition</th><th>Cas d'usage</th></tr>
+        <tr><td><strong>Public</strong></td><td>Ressources partagées, géré par le provider</td><td>Startups, applications web grand public</td></tr>
+        <tr><td><strong>Privé</strong></td><td>Infrastructure dédiée à une organisation</td><td>Banques, données très sensibles</td></tr>
+        <tr><td><strong>Hybride</strong></td><td>Combinaison public + privé</td><td>Migration progressive, burst capacity</td></tr>
+        <tr><td><strong>Multi-Cloud</strong></td><td>Plusieurs providers cloud</td><td>Éviter vendor lock-in, redondance</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2 - Serverless (3 pts)</p>
+    <div class="answer">
+      <p><strong>Définition :</strong> Le Serverless permet d'exécuter du code sans gérer de serveurs. Le provider gère automatiquement l'infrastructure.</p>
+      <p><strong>Avantages :</strong></p>
+      <ul>
+        <li>Pas de gestion d'infrastructure</li>
+        <li>Scaling automatique</li>
+        <li>Facturation à l'exécution (milliseconde)</li>
+        <li>Haute disponibilité intégrée</li>
+      </ul>
+      <p><strong>Exemple AWS :</strong> Lambda - exécute du code en réponse à des événements</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3 - VPC (3 pts)</p>
+    <div class="answer">
+      <p><strong>VPC :</strong> Réseau privé virtuel isolé dans le cloud AWS.</p>
+      <p><strong>Composants :</strong></p>
+      <ul>
+        <li><strong>Subnets</strong> : Publics (accessible Internet) et Privés (interne)</li>
+        <li><strong>Internet Gateway</strong> : Point de connexion à Internet</li>
+        <li><strong>NAT Gateway</strong> : Permet aux subnets privés d'accéder à Internet</li>
+        <li><strong>Security Groups</strong> : Firewall au niveau instance (stateful)</li>
+        <li><strong>Network ACL</strong> : Firewall au niveau subnet (stateless)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4 - Tarification (3 pts)</p>
+    <div class="answer">
+      <table>
+        <tr><th>Type</th><th>Description</th><th>Économie</th><th>Usage</th></tr>
+        <tr><td><strong>On-Demand</strong></td><td>Payer à l'heure/seconde</td><td>0%</td><td>Dev/test, pics imprévisibles</td></tr>
+        <tr><td><strong>Reserved</strong></td><td>Engagement 1-3 ans</td><td>Jusqu'à 72%</td><td>Workloads stables</td></tr>
+        <tr><td><strong>Spot</strong></td><td>Capacité non utilisée</td><td>Jusqu'à 90%</td><td>Workloads interruptibles</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h2>Partie 2 : Services AWS</h2>
+
+  <div class="question">
+    <p class="question-num">Question 5 - Association services (4 pts)</p>
+    <div class="answer">
+      <table>
+        <tr><th>Service</th><th>Fonction</th></tr>
+        <tr><td>EC2</td><td>Machines virtuelles (compute)</td></tr>
+        <tr><td>S3</td><td>Stockage objet</td></tr>
+        <tr><td>RDS</td><td>Bases de données relationnelles managées</td></tr>
+        <tr><td>Lambda</td><td>Serverless (exécution de code)</td></tr>
+        <tr><td>CloudFront</td><td>CDN (Content Delivery Network)</td></tr>
+        <tr><td>Route 53</td><td>DNS managé</td></tr>
+        <tr><td>IAM</td><td>Gestion des identités et accès</td></tr>
+        <tr><td>VPC</td><td>Réseau privé virtuel</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 6 - Classes S3 (4 pts)</p>
+    <div class="answer">
+      <table>
+        <tr><th>Classe</th><th>Usage</th><th>Durabilité</th><th>Coût</th></tr>
+        <tr><td>Standard</td><td>Accès fréquent</td><td>99.999999999%</td><td>Élevé</td></tr>
+        <tr><td>Infrequent Access</td><td>Accès rare</td><td>99.999999999%</td><td>Moyen</td></tr>
+        <tr><td>Glacier</td><td>Archive (minutes à heures)</td><td>99.999999999%</td><td>Faible</td></tr>
+        <tr><td>Deep Archive</td><td>Archive long terme (12h)</td><td>99.999999999%</td><td>Très faible</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Architecture</h2>
+
+  <div class="question">
+    <p class="question-num">Question 8 - Architecture Banque (8 pts)</p>
+    <div class="answer">
+      <p><strong>a) Modèle : Cloud Hybride</strong></p>
+      <ul>
+        <li>Données sensibles en cloud privé/on-premise</li>
+        <li>Applications moins critiques en cloud public</li>
+        <li>Conformité RGPD respectée</li>
+      </ul>
+      
+      <p><strong>b) Architecture :</strong></p>
+      <ul>
+        <li>Multi-AZ pour haute disponibilité</li>
+        <li>ALB + Auto Scaling Group pour les instances</li>
+        <li>RDS Aurora Multi-AZ + Read Replicas</li>
+        <li>ElastiCache pour le cache</li>
+        <li>VPC avec subnets privés pour la DB</li>
+        <li>CloudWatch pour le monitoring</li>
+      </ul>
+      
+      <p><strong>c) Sécurité :</strong></p>
+      <ul>
+        <li>Chiffrement KMS (données au repos)</li>
+        <li>TLS (données en transit)</li>
+        <li>IAM avec least privilege</li>
+        <li>VPC avec Security Groups restrictifs</li>
+        <li>WAF pour les attaques web</li>
+        <li>CloudTrail pour l'audit</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 9 - Analyse coûts (8 pts)</p>
+    <div class="answer">
+      <p><strong>a) Calcul :</strong></p>
+      <ul>
+        <li>On-premise : 50 000 + 500×n</li>
+        <li>Cloud : 800×n</li>
+        <li>50 000 + 500n = 800n → 50 000 = 300n → <strong>n ≈ 167 mois (14 ans)</strong></li>
+        <li>Le Cloud est plus économique pendant les 14 premières années</li>
+      </ul>
+      
+      <p><strong>b) Autres facteurs :</strong></p>
+      <ul>
+        <li>Scalabilité et flexibilité</li>
+        <li>Time to market réduit</li>
+        <li>Compétences nécessaires</li>
+        <li>Disponibilité et SLA</li>
+        <li>Sécurité et conformité</li>
+        <li>Coûts cachés (personnel, électricité)</li>
+      </ul>
+      
+      <p><strong>c) Optimisation coûts :</strong></p>
+      <ul>
+        <li>Reserved Instances pour workloads stables</li>
+        <li>Spot Instances pour workloads flexibles</li>
+        <li>Right-sizing des instances</li>
+        <li>Auto Scaling</li>
+        <li>S3 Lifecycle policies</li>
+        <li>AWS Cost Explorer et Budgets</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+  document.getElementById("toggleLang").onclick = function() {
+    alert("English version coming soon!");
+  };
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résumé - Protocoles de Sécurité WiFi</title>
+<link rel="stylesheet" href="../assets/css/global.css">
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar {
+    background: linear-gradient(135deg, #c59bff, #b07cff);
+    padding: 15px 30px; display: flex; justify-content: space-between;
+    align-items: center; color: white; position: sticky; top: 0; z-index: 10;
+  }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+  .top-btn { padding: 8px 14px; background: #fff; border: none; border-radius: 10px; font-weight: bold; color: #6a34cc; cursor: pointer; }
+  .print-btn { padding: 8px 14px; background: linear-gradient(135deg, #6a34cc, #9b59b6); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .back-btn {
+    padding: 8px 16px; background: #fff; color: #6a34cc;
+    border-radius: 8px; font-weight: bold; text-decoration: none;
+  }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2 { color: #d4b4ff; }
+  .dark .highlight { background: #3a3a3a; }
+  .dark th { background: #3a3a3a; color: #d4b4ff; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  h3 { color: #6a34cc; }
+  .highlight { background: #f0e6ff; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #6a34cc; }
+  .warning { background: #fff3cd; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #ffc107; }
+  .success { background: #d4edda; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #28a745; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  th { background: #e9d6ff; color: #4a2db6; }
+  ul { padding-left: 25px; }
+  li { margin: 8px 0; }
+  code { background: #2d2d2d; color: #f8f8f2; padding: 2px 8px; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-title">📘 Résumé - Protocoles WiFi</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../securite.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>🔒 Protocoles de Sécurité WiFi</h1>
+  
+  <h2>1. WEP (Wired Equivalent Privacy)</h2>
+  <div class="warning">
+    <strong>⚠️ OBSOLÈTE - Ne plus utiliser !</strong>
+  </div>
+  <ul>
+    <li><strong>Année :</strong> 1997</li>
+    <li><strong>Chiffrement :</strong> RC4 avec clé de 64 ou 128 bits</li>
+    <li><strong>IV (Vecteur d'Initialisation) :</strong> 24 bits seulement</li>
+    <li><strong>Faille majeure :</strong> IV trop court → répétition → cassable en minutes</li>
+    <li><strong>Attaques connues :</strong> FMS, PTW, Chopchop</li>
+  </ul>
+
+  <h2>2. WPA (WiFi Protected Access)</h2>
+  <ul>
+    <li><strong>Année :</strong> 2003 (solution temporaire)</li>
+    <li><strong>Chiffrement :</strong> TKIP (Temporal Key Integrity Protocol)</li>
+    <li><strong>Amélioration :</strong> Clé dynamique qui change à chaque paquet</li>
+    <li><strong>Faille :</strong> Vulnérable aux attaques par dictionnaire</li>
+  </ul>
+
+  <h2>3. WPA2 - ✅ Standard actuel</h2>
+  <div class="success">
+    <strong>✅ Recommandé pour la plupart des usages</strong>
+  </div>
+  <ul>
+    <li><strong>Année :</strong> 2004</li>
+    <li><strong>Chiffrement :</strong> AES-CCMP (128 bits minimum)</li>
+    <li><strong>Modes :</strong>
+      <ul>
+        <li><strong>Personal (PSK)</strong> : Mot de passe partagé - usage domestique</li>
+        <li><strong>Enterprise</strong> : Authentification RADIUS - usage professionnel</li>
+      </ul>
+    </li>
+  </ul>
+
+  <div class="highlight">
+    <strong>💡 WPA2-Personal vs Enterprise :</strong><br><br>
+    <strong>Personal (PSK) :</strong> Tous les utilisateurs partagent le même mot de passe. Simple mais si le mot de passe fuite, tout le monde doit le changer.<br><br>
+    <strong>Enterprise (802.1X) :</strong> Chaque utilisateur a ses propres identifiants via un serveur RADIUS. Plus sécurisé, gestion centralisée.
+  </div>
+
+  <h2>4. WPA3 - 🆕 Dernière norme</h2>
+  <ul>
+    <li><strong>Année :</strong> 2018</li>
+    <li><strong>Nouveautés :</strong>
+      <ul>
+        <li><strong>SAE (Simultaneous Authentication of Equals)</strong> : Remplace PSK</li>
+        <li><strong>Protection contre attaques offline</strong> : Impossible de capturer le handshake et le cracker hors ligne</li>
+        <li><strong>Forward Secrecy</strong> : Même si la clé est compromise, les communications passées restent protégées</li>
+        <li><strong>192 bits en Enterprise</strong> : Sécurité renforcée</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h2>📊 Tableau comparatif</h2>
+  <table>
+    <tr>
+      <th>Protocole</th>
+      <th>Chiffrement</th>
+      <th>Sécurité</th>
+      <th>Recommandation</th>
+    </tr>
+    <tr>
+      <td>WEP</td>
+      <td>RC4 (64/128 bits)</td>
+      <td>❌ Très faible</td>
+      <td>Ne jamais utiliser</td>
+    </tr>
+    <tr>
+      <td>WPA</td>
+      <td>TKIP</td>
+      <td>⚠️ Faible</td>
+      <td>Éviter</td>
+    </tr>
+    <tr>
+      <td>WPA2-Personal</td>
+      <td>AES-CCMP</td>
+      <td>✅ Bonne</td>
+      <td>OK pour maison</td>
+    </tr>
+    <tr>
+      <td>WPA2-Enterprise</td>
+      <td>AES-CCMP + RADIUS</td>
+      <td>✅ Très bonne</td>
+      <td>Entreprises</td>
+    </tr>
+    <tr>
+      <td>WPA3</td>
+      <td>AES-GCMP + SAE</td>
+      <td>✅✅ Excellente</td>
+      <td>Idéal si supporté</td>
+    </tr>
+  </table>
+
+  <h2>🔑 Points clés à retenir</h2>
+  <div class="highlight">
+    <ul>
+      <li>WEP = <strong>JAMAIS</strong></li>
+      <li>WPA2-AES = <strong>Minimum requis</strong></li>
+      <li>WPA3 = <strong>Meilleur choix</strong> si disponible</li>
+      <li>Mot de passe fort = <strong>12+ caractères</strong> avec majuscules, chiffres, symboles</li>
+      <li>Enterprise > Personal pour les organisations</li>
+    </ul>
+  </div>
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+  document.getElementById("toggleLang").onclick = function() { alert("English version coming soon!"); };
+</script>
+</body>
+</html>
+
+

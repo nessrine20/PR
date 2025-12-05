@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP - Splunk Basics</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .objective { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+  .step { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .step-num { background: #6a34cc; color: white; padding: 5px 12px; border-radius: 50%; font-weight: bold; margin-right: 10px; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; margin: 15px 0; overflow-x: auto; }
+  .success { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; }
+  .tip { background: #fff3cd; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #ffc107; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">🔧 TP - Splunk Basics</div>
+  <a href="../cyberops.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>🔍 TP : Introduction à Splunk</h1>
+
+  <div class="objective">
+    <strong>🎯 Objectifs :</strong>
+    <ul>
+      <li>Installer Splunk Free</li>
+      <li>Ingérer des logs</li>
+      <li>Écrire des requêtes SPL basiques</li>
+      <li>Créer un dashboard simple</li>
+    </ul>
+    <strong>⏱️ Durée :</strong> 2h
+  </div>
+
+  <h2>Partie 1 : Installation</h2>
+
+  <div class="step">
+    <p><span class="step-num">1</span><strong>Télécharger Splunk</strong></p>
+    <ul>
+      <li>Aller sur <a href="https://www.splunk.com/en_us/download.html" target="_blank">splunk.com/download</a></li>
+      <li>Créer un compte (gratuit)</li>
+      <li>Télécharger Splunk Enterprise (Free trial ou Free license: 500MB/jour)</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">2</span><strong>Installer et démarrer</strong></p>
+    <div class="code-block"># Windows : Installer via l'exe
+# Linux :
+tar xvzf splunk-x.x.x-Linux-x86_64.tgz
+cd splunk/bin
+./splunk start --accept-license</div>
+    <p>Accéder à <strong>http://localhost:8000</strong></p>
+  </div>
+
+  <h2>Partie 2 : Ingestion de logs</h2>
+
+  <div class="step">
+    <p><span class="step-num">3</span><strong>Ajouter des données</strong></p>
+    <ul>
+      <li>Settings → Add Data → Upload</li>
+      <li>Télécharger un fichier de logs (Apache, Windows Event...)</li>
+      <li>Sélectionner le sourcetype approprié</li>
+    </ul>
+  </div>
+
+  <div class="tip">
+    <strong>💡 Astuce :</strong> Splunk fournit des données de démo. Cherchez "Splunk Boss of the SOC" (BOTS) pour des exercices réalistes.
+  </div>
+
+  <h2>Partie 3 : Requêtes SPL</h2>
+
+  <div class="step">
+    <p><span class="step-num">4</span><strong>Requêtes de base</strong></p>
+    <div class="code-block"># Recherche simple
+index=main error
+
+# Filtrer par source
+index=main sourcetype=access_combined
+
+# Statistiques
+index=main | stats count by status
+
+# Top 10 des IPs
+index=main | top limit=10 src_ip
+
+# Recherche dans le temps
+index=main earliest=-1h latest=now</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">5</span><strong>Requêtes avancées</strong></p>
+    <div class="code-block"># Erreurs 404 par heure
+index=main status=404 
+| timechart span=1h count
+
+# Tentatives de login échouées
+index=main action=failure 
+| stats count by user 
+| sort -count
+
+# Connexions depuis l'étranger
+index=main 
+| iplocation src_ip 
+| search Country!="France"
+| table src_ip, Country, user</div>
+  </div>
+
+  <h2>Partie 4 : Dashboard</h2>
+
+  <div class="step">
+    <p><span class="step-num">6</span><strong>Créer un dashboard</strong></p>
+    <ol>
+      <li>Exécuter une recherche</li>
+      <li>Save As → Dashboard Panel</li>
+      <li>Créer un nouveau dashboard "Security Overview"</li>
+      <li>Ajouter plusieurs panels :
+        <ul>
+          <li>Nombre d'événements par heure</li>
+          <li>Top sources d'erreurs</li>
+          <li>Carte des connexions géolocalisées</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+
+  <h2>Partie 5 : Alertes</h2>
+
+  <div class="step">
+    <p><span class="step-num">7</span><strong>Créer une alerte</strong></p>
+    <div class="code-block"># Requête pour brute force
+index=main action=failure 
+| stats count by user 
+| where count > 5</div>
+    <ul>
+      <li>Save As → Alert</li>
+      <li>Schedule : Real-time ou Every 5 minutes</li>
+      <li>Trigger condition : Number of results > 0</li>
+      <li>Action : Send email ou Log event</li>
+    </ul>
+  </div>
+
+  <div class="success">
+    <strong>✅ Livrables :</strong>
+    <ol>
+      <li>Capture du dashboard créé</li>
+      <li>3 requêtes SPL documentées</li>
+      <li>Configuration de l'alerte</li>
+    </ol>
+  </div>
+</div>
+</body>
+</html>
+
+

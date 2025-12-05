@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction - Culture d'Entreprise</title>
+<link rel="stylesheet" href="../assets/css/global.css">
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+  .top-btn { padding: 8px 14px; background: #fff; border: none; border-radius: 10px; font-weight: bold; color: #6a34cc; cursor: pointer; transition: 0.25s; }
+  .top-btn:hover { background: #f3e7ff; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .highlight { background: #f0e6ff; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #6a34cc; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2 { color: #d4b4ff; }
+  .dark .highlight { background: #3a3a3a; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">🏢 Introduction - Culture d'Entreprise</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../culture.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+<div class="container">
+  <h1>🏢 Introduction à la Culture d'Entreprise</h1>
+
+  <h2>Qu'est-ce que la culture d'entreprise ?</h2>
+  <p>La <strong>culture d'entreprise</strong> désigne l'ensemble des valeurs, normes, comportements et pratiques partagés au sein d'une organisation. Elle définit "comment on fait les choses ici".</p>
+
+  <h2>Composantes de la culture d'entreprise</h2>
+  <ul>
+    <li><strong>Vision</strong> : Où l'entreprise veut aller</li>
+    <li><strong>Mission</strong> : Pourquoi l'entreprise existe</li>
+    <li><strong>Valeurs</strong> : Principes fondamentaux (intégrité, innovation...)</li>
+    <li><strong>Normes</strong> : Règles de comportement acceptées</li>
+    <li><strong>Rituels</strong> : Réunions, célébrations, traditions</li>
+    <li><strong>Symboles</strong> : Logo, dress code, aménagement des bureaux</li>
+  </ul>
+
+  <h2>Importance de la culture</h2>
+  <div class="highlight">
+    <ul>
+      <li>🎯 Guide les décisions et comportements</li>
+      <li>👥 Attire et retient les talents</li>
+      <li>💪 Renforce la cohésion d'équipe</li>
+      <li>📈 Impact sur la performance</li>
+      <li>🌟 Différenciation concurrentielle</li>
+    </ul>
+  </div>
+
+  <h2>Types de cultures (modèle de Quinn)</h2>
+  <ul>
+    <li><strong>Culture de clan</strong> : Familiale, collaborative, mentorat</li>
+    <li><strong>Culture adhocratique</strong> : Innovation, créativité, agilité</li>
+    <li><strong>Culture de marché</strong> : Compétition, résultats, performance</li>
+    <li><strong>Culture hiérarchique</strong> : Procédures, stabilité, contrôle</li>
+  </ul>
+
+  <h2>Soft Skills essentielles</h2>
+  <ul>
+    <li><strong>Communication</strong> : Orale et écrite</li>
+    <li><strong>Travail en équipe</strong> : Collaboration</li>
+    <li><strong>Adaptabilité</strong> : Flexibilité face au changement</li>
+    <li><strong>Résolution de problèmes</strong> : Analyse et créativité</li>
+    <li><strong>Leadership</strong> : Influence et motivation</li>
+    <li><strong>Gestion du temps</strong> : Organisation et priorités</li>
+  </ul>
+
+  <div class="highlight">
+    <strong>🔑 À retenir :</strong>
+    <ul>
+      <li>La culture d'entreprise façonne le quotidien des collaborateurs</li>
+      <li>Elle repose sur des valeurs, une vision et des pratiques partagées</li>
+      <li>Les soft skills sont aussi importantes que les compétences techniques</li>
+      <li>Chaque entreprise a une culture unique</li>
+    </ul>
+  </div>
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+  document.getElementById("toggleLang").onclick = function() {
+    alert("English version coming soon!");
+  };
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correction DS 1 - Audit de Sécurité</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #28a745, #20c997); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+  .top-btn { padding: 8px 14px; background: #fff; border: none; border-radius: 10px; font-weight: bold; color: #28a745; cursor: pointer; }
+  .print-btn { padding: 8px 14px; background: linear-gradient(135deg, #28a745, #20c997); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #28a745; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #28a745; border-bottom: 3px solid #d4edda; padding-bottom: 15px; text-align: center; }
+  h2 { color: #20c997; margin-top: 30px; }
+  .question { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #28a745; }
+  .question-num { color: #28a745; font-weight: bold; font-size: 18px; margin-bottom: 10px; }
+  .answer { background: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; border: 2px solid #28a745; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+  th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+  th { background: #d4edda; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2 { color: #5cdb5c; }
+  .dark .question { background: #2a3a2a; }
+  .dark .answer { background: #3a4a3a; border-color: #5cdb5c; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } .container { box-shadow: none; width: 95%; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">✅ Correction DS 1 - Audit</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../Examens.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>✅ Correction DS 1 - Audit de Sécurité</h1>
+
+  <h2>Partie 1 : Normes et standards</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1 - ISO 27001 (3 pts)</p>
+    <div class="answer">
+      <p><strong>ISO 27001 :</strong> Norme internationale pour les systèmes de management de la sécurité de l'information</p>
+      <p><strong>Objectifs SMSI :</strong></p>
+      <ul>
+        <li>Confidentialité, Intégrité, Disponibilité (CIA)</li>
+        <li>Gestion des risques systématique</li>
+        <li>Amélioration continue de la sécurité</li>
+        <li>Conformité réglementaire</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2 - ISO 27001 vs 27002 (3 pts)</p>
+    <div class="answer">
+      <table>
+        <tr><th>ISO 27001</th><th>ISO 27002</th></tr>
+        <tr><td>Exigences du SMSI</td><td>Guide de bonnes pratiques</td></tr>
+        <tr><td>Certifiable</td><td>Non certifiable</td></tr>
+        <tr><td>"Quoi faire"</td><td>"Comment le faire"</td></tr>
+      </table>
+      <p><strong>Complémentarité :</strong> 27001 définit les exigences, 27002 donne les contrôles détaillés pour y répondre</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3 - PDCA (2 pts)</p>
+    <div class="answer">
+      <ul>
+        <li><strong>Plan :</strong> Établir politique, objectifs, processus</li>
+        <li><strong>Do :</strong> Implémenter et exploiter le SMSI</li>
+        <li><strong>Check :</strong> Surveiller, auditer, mesurer</li>
+        <li><strong>Act :</strong> Améliorer en continu</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Partie 2 : Méthodologie</h2>
+
+  <div class="question">
+    <p class="question-num">Question 4 - Phases d'audit (3 pts)</p>
+    <div class="answer">
+      <ol>
+        <li><strong>Préparation :</strong> Cadrage, périmètre, planning</li>
+        <li><strong>Collecte :</strong> Interviews, analyse docs, observation</li>
+        <li><strong>Tests :</strong> Scans, pentests, vérifications</li>
+        <li><strong>Analyse :</strong> Évaluation des vulnérabilités</li>
+        <li><strong>Rapport :</strong> Constats, recommandations, plan d'action</li>
+        <li><strong>Suivi :</strong> Vérification des corrections</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5 - Types de pentest (3 pts)</p>
+    <div class="answer">
+      <table>
+        <tr><th>Type</th><th>Informations fournies</th><th>Simule</th></tr>
+        <tr><td><strong>Boîte noire</strong></td><td>Aucune</td><td>Attaquant externe</td></tr>
+        <tr><td><strong>Boîte grise</strong></td><td>Partielles (comptes)</td><td>Employé malveillant</td></tr>
+        <tr><td><strong>Boîte blanche</strong></td><td>Complètes (code, archi)</td><td>Audit interne</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 6 - Outils (2 pts)</p>
+    <div class="answer">
+      <ul>
+        <li><strong>Nessus :</strong> Scanner de vulnérabilités</li>
+        <li><strong>Nmap :</strong> Découverte réseau et ports</li>
+        <li><strong>Burp Suite :</strong> Tests web (XSS, SQLi)</li>
+        <li><strong>Metasploit :</strong> Framework d'exploitation</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Analyse de risques</h2>
+
+  <div class="question">
+    <p class="question-num">Question 7 - Cas e-commerce (4 pts)</p>
+    <div class="answer">
+      <p><strong>Actifs :</strong> Base clients, données CB, serveurs, site web</p>
+      <p><strong>Menaces :</strong></p>
+      <ul>
+        <li>Injection SQL → Vol de données</li>
+        <li>Attaque ransomware → Indisponibilité</li>
+        <li>Phishing employés → Compromission</li>
+        <li>DDoS → Perte de revenus</li>
+      </ul>
+      <p><strong>Mesures :</strong></p>
+      <ul>
+        <li>Chiffrement données CB (PCI-DSS)</li>
+        <li>WAF et tests de pénétration réguliers</li>
+        <li>Sauvegardes hors-ligne</li>
+        <li>Formation sensibilisation employés</li>
+        <li>MFA pour les accès admin</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+  document.getElementById("toggleLang").onclick = function() { alert("English version coming soon!"); };
+</script>
+</body>
+</html>
+
+

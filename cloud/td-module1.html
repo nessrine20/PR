@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TD - Introduction au Cloud</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .question { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .question-num { color: #6a34cc; font-weight: bold; font-size: 18px; }
+  .answer { background: #d4edda; padding: 15px; border-radius: 10px; margin-top: 15px; display: none; border-left: 4px solid #28a745; }
+  .show-answer { background: #6a34cc; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+  .scenario { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📝 TD - Introduction au Cloud</div>
+  <a href="../cloud.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>📝 TD : Introduction au Cloud Computing</h1>
+
+  <h2>Partie 1 : QCM</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1</p>
+    <p>Quelles sont les 5 caractéristiques essentielles du Cloud selon le NIST ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ol>
+        <li>Self-service à la demande</li>
+        <li>Accès réseau large</li>
+        <li>Mise en commun des ressources (pooling)</li>
+        <li>Élasticité rapide</li>
+        <li>Service mesuré (pay-as-you-go)</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2</p>
+    <p>Quelle est la différence entre IaaS, PaaS et SaaS ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ul>
+        <li><strong>IaaS</strong> : Infrastructure (VM, stockage, réseau) - Ex: AWS EC2</li>
+        <li><strong>PaaS</strong> : Plateforme de développement - Ex: Heroku</li>
+        <li><strong>SaaS</strong> : Application prête à l'emploi - Ex: Gmail</li>
+      </ul>
+      <p>Plus on monte (IaaS → SaaS), moins le client a de responsabilités.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3</p>
+    <p>Quel est le leader mondial du Cloud public ? Quelle est sa part de marché approximative ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <strong>Amazon Web Services (AWS)</strong> avec environ 32% de parts de marché, suivi par Microsoft Azure (~22%) et Google Cloud Platform (~10%).
+    </div>
+  </div>
+
+  <h2>Partie 2 : Cas pratiques</h2>
+
+  <div class="scenario">
+    <strong>📋 Cas n°1 - Choix de modèle</strong><br><br>
+    Une startup veut lancer une application web. Elle a une petite équipe de 3 développeurs, peu de budget initial, et s'attend à une croissance rapide si le produit fonctionne.
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4</p>
+    <p>Quel modèle de service Cloud recommanderiez-vous ? Justifiez.</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <strong>PaaS</strong> (ex: Heroku, Vercel, Railway) car :
+      <ul>
+        <li>Pas besoin de gérer l'infrastructure</li>
+        <li>Déploiement rapide</li>
+        <li>Scalabilité automatique</li>
+        <li>L'équipe peut se concentrer sur le code</li>
+        <li>Coût initial faible (souvent gratuit pour démarrer)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="scenario">
+    <strong>📋 Cas n°2 - Cloud hybride</strong><br><br>
+    Une banque veut moderniser son infrastructure. Elle a des données clients sensibles soumises à des réglementations strictes, mais souhaite aussi profiter de l'innovation cloud.
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5</p>
+    <p>Quel modèle de déploiement recommanderiez-vous ? Comment l'architecturer ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <strong>Cloud Hybride</strong> :
+      <ul>
+        <li><strong>Cloud privé</strong> : Données sensibles, applications critiques (core banking)</li>
+        <li><strong>Cloud public</strong> : Applications non-critiques, dev/test, analytics, IA</li>
+        <li>Connexion sécurisée entre les deux (VPN, Direct Connect)</li>
+      </ul>
+      <p>Cela permet de respecter les réglementations tout en bénéficiant de l'agilité du cloud public.</p>
+    </div>
+  </div>
+
+  <div class="scenario">
+    <strong>📋 Cas n°3 - Analyse de coûts</strong><br><br>
+    Une entreprise hésite entre acheter un serveur (5000€ + 200€/mois de maintenance) ou utiliser AWS EC2 (150€/mois).
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 6</p>
+    <p>À partir de combien de mois le cloud devient-il plus cher ? Quels autres facteurs considérer ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <strong>Calcul :</strong>
+      <ul>
+        <li>On-premise : 5000 + 200×n</li>
+        <li>Cloud : 150×n</li>
+        <li>Égalité : 5000 + 200n = 150n → 5000 = -50n → <strong>n = 100 mois (8.3 ans)</strong></li>
+      </ul>
+      <strong>Autres facteurs :</strong>
+      <ul>
+        <li>Scalabilité (le cloud peut s'adapter)</li>
+        <li>Disponibilité (SLA cloud vs gestion interne)</li>
+        <li>Personnel IT nécessaire</li>
+        <li>Obsolescence du matériel</li>
+        <li>Coûts cachés (électricité, refroidissement, espace)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Classification</h2>
+
+  <div class="question">
+    <p class="question-num">Question 7</p>
+    <p>Classez ces services dans la bonne catégorie (IaaS, PaaS, SaaS) :</p>
+    <ol>
+      <li>Microsoft Office 365</li>
+      <li>Amazon EC2</li>
+      <li>Google App Engine</li>
+      <li>Dropbox</li>
+      <li>Azure Virtual Machines</li>
+      <li>Heroku</li>
+    </ol>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ul>
+        <li><strong>SaaS</strong> : Office 365, Dropbox</li>
+        <li><strong>IaaS</strong> : Amazon EC2, Azure Virtual Machines</li>
+        <li><strong>PaaS</strong> : Google App Engine, Heroku</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+

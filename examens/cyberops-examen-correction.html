@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correction Examen - CyberOps</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #28a745, #20c997); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; }
+  .top-btn, .print-btn { padding: 8px 14px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .top-btn { background: #fff; color: #28a745; }
+  .print-btn { background: linear-gradient(135deg, #28a745, #20c997); color: white; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #28a745; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #28a745; text-align: center; }
+  h2 { color: #20c997; margin-top: 30px; }
+  .question { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #28a745; }
+  .question-num { color: #28a745; font-weight: bold; font-size: 18px; }
+  .answer { background: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; border: 2px solid #28a745; }
+  .alert { background: #f8d7da; padding: 10px; border-radius: 5px; margin: 10px 0; border-left: 4px solid #dc3545; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark .question { background: #2a3a2a; }
+  .dark .answer { background: #3a4a3a; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } .container { box-shadow: none; width: 95%; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">✅ Correction Examen - CyberOps</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../Examens.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>✅ Correction Examen - CyberOps</h1>
+
+  <div class="question">
+    <p class="question-num">Question 1 - IOC (5 pts)</p>
+    <div class="answer">
+      <p><strong>Types d'IOC :</strong></p>
+      <ul>
+        <li><strong>Réseau :</strong> IPs malveillantes, domaines C2, URLs</li>
+        <li><strong>Fichiers :</strong> Hashs (MD5, SHA256), noms fichiers</li>
+        <li><strong>Comportementaux :</strong> Clés registre, mutex, patterns</li>
+        <li><strong>Email :</strong> Adresses expéditeur, sujets, pièces jointes</li>
+      </ul>
+      <p><strong>Collecte :</strong> OSINT, feeds TI, partage ISAC, analyse interne</p>
+      <p><strong>Usage :</strong> Règles SIEM, blocage firewall, EDR</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2 - MITRE ATT&CK (5 pts)</p>
+    <div class="answer">
+      <p><strong>Structure :</strong> Matrice Tactiques (colonnes) × Techniques (lignes)</p>
+      <p><strong>Tactiques :</strong> Initial Access → Execution → Persistence → Privilege Escalation → Defense Evasion → Credential Access → Discovery → Lateral Movement → Collection → Exfiltration → Impact</p>
+      <p><strong>Usage SOC :</strong></p>
+      <ul>
+        <li>Mapper les détections existantes</li>
+        <li>Identifier les gaps de couverture</li>
+        <li>Créer des règles de détection ciblées</li>
+        <li>Évaluer les campagnes d'attaque</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3 - Threat Hunting (5 pts)</p>
+    <div class="answer">
+      <p><strong>Définition :</strong> Recherche proactive de menaces non détectées</p>
+      <p><strong>Différence vs détection :</strong></p>
+      <ul>
+        <li>Détection = réactive (alertes)</li>
+        <li>Hunting = proactif (hypothèses)</li>
+      </ul>
+      <p><strong>Méthodologie :</strong> Hypothèse → Collecte données → Analyse → Découverte → Amélioration détection</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4 - Phases IR (5 pts)</p>
+    <div class="answer">
+      <ol>
+        <li><strong>Préparation :</strong> Plans, équipe, outils</li>
+        <li><strong>Identification :</strong> Détection, validation</li>
+        <li><strong>Containment :</strong> Limiter la propagation</li>
+        <li><strong>Eradication :</strong> Supprimer la menace</li>
+        <li><strong>Recovery :</strong> Restaurer les systèmes</li>
+        <li><strong>Lessons Learned :</strong> Améliorer</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5 - Forensique (5 pts)</p>
+    <div class="answer">
+      <p><strong>Principes de préservation :</strong></p>
+      <ul>
+        <li><strong>Chaîne de custody :</strong> Documenter chaque manipulation</li>
+        <li><strong>Copie bit-à-bit :</strong> Travailler sur copies, jamais l'original</li>
+        <li><strong>Hash de vérification :</strong> Prouver l'intégrité</li>
+        <li><strong>Volatilité :</strong> Collecter RAM avant shutdown</li>
+        <li><strong>Documentation :</strong> Photos, notes horodatées</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 7 - Scénario incident (10 pts)</p>
+    <div class="answer">
+      <p><strong>a) Analyse initiale :</strong></p>
+      <div class="alert">
+        <strong>Suspicion :</strong> Compromission par RDP brute force ou credentials volés, suivie d'exécution de commandes PowerShell encodées (technique Cobalt Strike/Empire) et exfiltration de données → probable ransomware ou APT
+      </div>
+      
+      <p><strong>b) Containment immédiat :</strong></p>
+      <ul>
+        <li>Isoler le serveur du réseau (mais ne pas éteindre)</li>
+        <li>Bloquer l'IP externe au firewall</li>
+        <li>Révoquer les credentials de l'utilisateur RDP</li>
+        <li>Désactiver le compte compromis dans AD</li>
+        <li>Scanner les autres serveurs pour mouvement latéral</li>
+      </ul>
+      
+      <p><strong>c) Preuves à collecter :</strong></p>
+      <ul>
+        <li>Memory dump (RAM) du serveur</li>
+        <li>Logs RDP et Security Event Log</li>
+        <li>Logs PowerShell (ScriptBlock logging)</li>
+        <li>NetFlow/logs firewall pour le trafic externe</li>
+        <li>Timeline du filesystem</li>
+        <li>Logs Proxy/DNS</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() { document.body.classList.toggle("dark"); this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙"; };
+  document.getElementById("toggleLang").onclick = function() { alert("English version coming soon!"); };
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP - Analyse VoIP avec Wireshark</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .objective { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+  .step { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .step-num { background: #6a34cc; color: white; padding: 5px 12px; border-radius: 50%; font-weight: bold; margin-right: 10px; }
+  .warning { background: #fff3cd; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #ffc107; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; margin: 15px 0; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">🔧 TP - Wireshark VoIP</div>
+  <a href="../VOIp.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>🔧 TP : Analyse VoIP avec Wireshark</h1>
+  
+  <div class="objective">
+    <strong>🎯 Objectifs :</strong>
+    <ul>
+      <li>Capturer un appel VoIP</li>
+      <li>Analyser les messages SIP</li>
+      <li>Visualiser le flux RTP</li>
+    </ul>
+    <strong>⏱️ Durée :</strong> 1h30<br>
+    <strong>🛠️ Prérequis :</strong> Wireshark installé, softphone (Zoiper/X-Lite)
+  </div>
+
+  <h2>Partie 1 : Installation</h2>
+
+  <div class="step">
+    <p><span class="step-num">1</span><strong>Installer Wireshark</strong></p>
+    <p>Téléchargez sur <a href="https://www.wireshark.org" target="_blank">wireshark.org</a></p>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">2</span><strong>Installer un softphone</strong></p>
+    <ul>
+      <li>Zoiper (gratuit) : <a href="https://www.zoiper.com" target="_blank">zoiper.com</a></li>
+      <li>Ou X-Lite / MicroSIP</li>
+    </ul>
+  </div>
+
+  <h2>Partie 2 : Capture</h2>
+
+  <div class="step">
+    <p><span class="step-num">3</span><strong>Démarrer la capture</strong></p>
+    <ol>
+      <li>Ouvrez Wireshark</li>
+      <li>Sélectionnez votre interface réseau</li>
+      <li>Appliquez le filtre : <code>sip or rtp</code></li>
+      <li>Cliquez sur "Start"</li>
+    </ol>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">4</span><strong>Passer un appel test</strong></p>
+    <p>Utilisez votre softphone pour passer un appel (même un appel test echo).</p>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">5</span><strong>Arrêter et analyser</strong></p>
+    <p>Arrêtez la capture et analysez les paquets.</p>
+  </div>
+
+  <h2>Partie 3 : Analyse</h2>
+
+  <div class="step">
+    <p><span class="step-num">6</span><strong>Voir le flux d'appel</strong></p>
+    <p>Menu : <strong>Telephony → VoIP Calls</strong></p>
+    <p>Sélectionnez l'appel et cliquez sur "Flow Sequence"</p>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">7</span><strong>Écouter l'audio (si non chiffré)</strong></p>
+    <p>Menu : <strong>Telephony → RTP → RTP Streams</strong></p>
+    <p>Sélectionnez le flux et "Play Streams"</p>
+    <div class="warning">
+      <strong>⚠️ Note :</strong> Ceci ne fonctionne que si l'appel n'est pas chiffré (pas de SRTP).
+    </div>
+  </div>
+
+  <h2>Partie 4 : Questions</h2>
+  <ol>
+    <li>Identifiez le message INVITE et notez les en-têtes From/To</li>
+    <li>Trouvez le code de réponse quand l'appel est établi</li>
+    <li>Quel codec audio est utilisé ? (cherchez dans SDP)</li>
+    <li>Combien de paquets RTP ont été échangés ?</li>
+  </ol>
+
+  <h2>📝 Livrable</h2>
+  <p>Capture d'écran du flow sequence + réponses aux questions.</p>
+</div>
+</body>
+</html>
+
+

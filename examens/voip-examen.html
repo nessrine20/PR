@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Examen Final - VoIP</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; }
+  .top-btn, .print-btn { padding: 8px 14px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .top-btn { background: #fff; color: #6a34cc; }
+  .print-btn { background: linear-gradient(135deg, #6a34cc, #9b59b6); color: white; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; text-align: center; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .info-box { background: #fff3cd; padding: 20px; border-radius: 10px; margin-bottom: 30px; border-left: 4px solid #ffc107; }
+  .question { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .question-num { color: #6a34cc; font-weight: bold; font-size: 18px; margin-bottom: 10px; }
+  .points { float: right; background: #6a34cc; color: white; padding: 3px 10px; border-radius: 15px; font-size: 14px; }
+  .answer-space { border: 2px dashed #ccc; padding: 40px; margin-top: 15px; border-radius: 8px; min-height: 80px; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2 { color: #d4b4ff; }
+  .dark .question { background: #3a3a3a; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } .container { box-shadow: none; width: 95%; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📝 Examen Final - VoIP</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../Examens.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>📞 Examen Final - VoIP</h1>
+  
+  <div class="info-box">
+    <strong>📅 Durée :</strong> 2h00 | <strong>📊 Barème :</strong> 40 points
+  </div>
+
+  <h2>Partie 1 : Architecture VoIP (15 pts)</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1 <span class="points">5 pts</span></p>
+    <p>Décrivez l'architecture SIP complète : Registrar, Proxy, Redirect Server, Location Server. Quel est le rôle de chacun ?</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2 <span class="points">5 pts</span></p>
+    <p>Comparez H.323 et SIP. Pourquoi SIP a-t-il remplacé H.323 dans la plupart des déploiements ?</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3 <span class="points">5 pts</span></p>
+    <p>Expliquez le processus de négociation des codecs via SDP. Comment les endpoints choisissent-ils le codec commun ?</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <h2>Partie 2 : QoS et Sécurité (15 pts)</h2>
+
+  <div class="question">
+    <p class="question-num">Question 4 <span class="points">5 pts</span></p>
+    <p>Comment garantir la QoS pour la VoIP ? Expliquez DiffServ, les techniques de prioritisation et le dimensionnement de bande passante.</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5 <span class="points">5 pts</span></p>
+    <p>Décrivez SRTP et TLS pour sécuriser les communications VoIP. Que protègent-ils respectivement ?</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 6 <span class="points">5 pts</span></p>
+    <p>Comment fonctionne une attaque SRTP replay ? Comment SRTP s'en protège-t-il ?</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <h2>Partie 3 : Déploiement (10 pts)</h2>
+
+  <div class="question">
+    <p class="question-num">Question 7 <span class="points">10 pts</span></p>
+    <p><strong>Scénario :</strong> Une entreprise de 200 employés veut migrer vers la VoIP. Actuellement, ils ont un PABX traditionnel.</p>
+    <p><strong>a)</strong> Proposez une architecture (IP-PBX, trunk SIP, téléphones). (4 pts)</p>
+    <div class="answer-space"></div>
+    <p><strong>b)</strong> Calculez la bande passante nécessaire pour 50 appels simultanés en G.711. (3 pts)</p>
+    <div class="answer-space"></div>
+    <p><strong>c)</strong> Quelles mesures de sécurité et de haute disponibilité mettre en place ? (3 pts)</p>
+    <div class="answer-space"></div>
+  </div>
+
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() { document.body.classList.toggle("dark"); this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙"; };
+  document.getElementById("toggleLang").onclick = function() { alert("English version coming soon!"); };
+</script>
+</body>
+</html>
+
+

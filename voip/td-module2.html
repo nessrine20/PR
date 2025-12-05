@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TD - Sécurité VoIP</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .question { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .question-num { color: #6a34cc; font-weight: bold; font-size: 18px; }
+  .answer { background: #d4edda; padding: 15px; border-radius: 10px; margin-top: 15px; display: none; border-left: 4px solid #28a745; }
+  .show-answer { background: #6a34cc; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+  .scenario { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📝 TD - Sécurité VoIP</div>
+  <a href="../VOIp.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>📝 TD : Sécurité VoIP</h1>
+
+  <h2>Partie 1 : Questions théoriques</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1</p>
+    <p>Pourquoi le protocole RTP est-il vulnérable aux écoutes ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ul>
+        <li>RTP transmet la voix <strong>en clair</strong> (non chiffré)</li>
+        <li>Utilise UDP (pas de contrôle d'intégrité)</li>
+        <li>Les paquets peuvent être capturés sur le réseau</li>
+        <li>Les codecs (G.711, G.729) peuvent être décodés</li>
+        <li>Wireshark peut reconstruire automatiquement les conversations</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2</p>
+    <p>Quelle est la différence entre TLS et SRTP ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <table style="width:100%; border-collapse:collapse;">
+        <tr><th style="border:1px solid #ddd; padding:8px;">TLS</th><th style="border:1px solid #ddd; padding:8px;">SRTP</th></tr>
+        <tr>
+          <td style="border:1px solid #ddd; padding:8px;">Chiffre la <strong>signalisation</strong> (SIP)</td>
+          <td style="border:1px solid #ddd; padding:8px;">Chiffre le <strong>média</strong> (voix/vidéo)</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #ddd; padding:8px;">Port 5061 (SIPS)</td>
+          <td style="border:1px solid #ddd; padding:8px;">Ports RTP dynamiques</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #ddd; padding:8px;">Protège les métadonnées d'appel</td>
+          <td style="border:1px solid #ddd; padding:8px;">Protège le contenu de la conversation</td>
+        </tr>
+      </table>
+      <p><strong>Les deux sont complémentaires</strong> pour une sécurité complète.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3</p>
+    <p>Qu'est-ce que le "Toll Fraud" ? Comment s'en protéger ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <p><strong>Toll Fraud :</strong> Fraude téléphonique où un attaquant utilise votre infrastructure VoIP pour passer des appels (souvent internationaux) à vos frais.</p>
+      <p><strong>Protection :</strong></p>
+      <ul>
+        <li>Mots de passe forts pour les extensions</li>
+        <li>Bloquer les destinations non autorisées</li>
+        <li>Limites de crédit par utilisateur</li>
+        <li>Fail2ban pour bloquer les attaques brute force</li>
+        <li>Filtrage IP source</li>
+        <li>Monitoring et alertes en temps réel</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Partie 2 : Architecture sécurisée</h2>
+
+  <div class="scenario">
+    <strong>📋 Scénario</strong><br><br>
+    Une entreprise de 200 employés souhaite déployer une solution VoIP sécurisée. Elle a des bureaux distants et des employés en télétravail.
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4</p>
+    <p>Proposez une architecture VoIP sécurisée.</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <p><strong>Architecture recommandée :</strong></p>
+      <ul>
+        <li><strong>VLAN dédié</strong> pour le trafic voix</li>
+        <li><strong>SBC</strong> (Session Border Controller) en DMZ</li>
+        <li><strong>IPBX</strong> (Asterisk/FreePBX) en réseau interne</li>
+        <li><strong>TLS/SRTP</strong> activés obligatoirement</li>
+        <li><strong>VPN</strong> pour les sites distants et télétravailleurs</li>
+        <li><strong>QoS</strong> configurée pour prioriser la voix</li>
+        <li><strong>Fail2ban</strong> sur l'IPBX</li>
+        <li><strong>Firewall SIP-aware</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5</p>
+    <p>Quel est le rôle d'un SBC (Session Border Controller) ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <p>Le SBC est le <strong>gardien</strong> du réseau VoIP :</p>
+      <ul>
+        <li><strong>Sécurité</strong> : Filtre les attaques, cache la topologie interne</li>
+        <li><strong>NAT Traversal</strong> : Gère les problèmes de NAT</li>
+        <li><strong>Transcoding</strong> : Conversion de codecs</li>
+        <li><strong>Interopérabilité</strong> : Normalise les protocoles</li>
+        <li><strong>Contrôle d'accès</strong> : Authentification, ACL</li>
+        <li><strong>QoS</strong> : Priorisation du trafic</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Configuration</h2>
+
+  <div class="question">
+    <p class="question-num">Question 6</p>
+    <p>Quelles règles Fail2ban configureriez-vous pour Asterisk ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <p><strong>Configuration jail.local :</strong></p>
+      <pre style="background:#2d2d2d; color:#f8f8f2; padding:10px; border-radius:5px;">
+[asterisk]
+enabled = true
+filter = asterisk
+action = iptables-allports[name=ASTERISK]
+logpath = /var/log/asterisk/messages
+maxretry = 3
+bantime = 86400
+findtime = 600
+      </pre>
+      <p><strong>Surveille :</strong></p>
+      <ul>
+        <li>Échecs d'authentification SIP</li>
+        <li>Tentatives de REGISTER non autorisées</li>
+        <li>Attaques brute force sur les extensions</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+

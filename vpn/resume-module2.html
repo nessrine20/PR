@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résumé - IPSec</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  h3 { color: #6a34cc; }
+  .highlight { background: #f0e6ff; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #6a34cc; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  th { background: #e9d6ff; color: #4a2db6; }
+  .schema { background: #f5f5f5; padding: 20px; border-radius: 10px; text-align: center; font-family: monospace; margin: 20px 0; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2, .dark h3 { color: #d4b4ff; }
+  .dark .highlight, .dark .schema { background: #3a3a3a; }
+  .dark th { background: #3a3a3a; color: #d4b4ff; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📘 Résumé - IPSec</div>
+  <div style="display:flex; gap:10px; align-items:center;">
+    <button onclick="window.print()" style="padding:8px 14px; background:linear-gradient(135deg,#6a34cc,#9b59b6); color:white; border:none; border-radius:10px; font-weight:bold; cursor:pointer;">🖨️ Imprimer</button>
+    <button id="toggleDark" style="padding:8px 14px; background:#fff; border:none; border-radius:10px; font-weight:bold; color:#6a34cc; cursor:pointer;">🌙</button>
+    <a href="../vpn.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+<div class="container">
+  <h1>🔐 IPSec (Internet Protocol Security)</h1>
+
+  <h2>1. Introduction à IPSec</h2>
+  <p>IPSec est une suite de protocoles qui sécurise les communications IP au niveau de la couche 3 (réseau). Il assure :</p>
+  <ul>
+    <li><strong>Confidentialité</strong> : Chiffrement des données</li>
+    <li><strong>Intégrité</strong> : Détection des modifications</li>
+    <li><strong>Authentification</strong> : Vérification de l'identité</li>
+    <li><strong>Anti-replay</strong> : Protection contre la répétition</li>
+  </ul>
+
+  <h2>2. Protocoles IPSec</h2>
+
+  <table>
+    <tr><th>Protocole</th><th>Fonction</th><th>Protège</th></tr>
+    <tr>
+      <td><strong>AH</strong><br>(Authentication Header)</td>
+      <td>Authentification et intégrité</td>
+      <td>En-tête IP + données (pas de chiffrement)</td>
+    </tr>
+    <tr>
+      <td><strong>ESP</strong><br>(Encapsulating Security Payload)</td>
+      <td>Chiffrement + authentification + intégrité</td>
+      <td>Données (et optionnellement en-tête)</td>
+    </tr>
+  </table>
+
+  <div class="highlight">
+    <strong>📌 En pratique :</strong> ESP est le plus utilisé car il offre le chiffrement. AH est rarement utilisé seul.
+  </div>
+
+  <h2>3. Modes IPSec</h2>
+
+  <h3>Mode Transport</h3>
+  <div class="schema">
+    [En-tête IP original] [ESP/AH] [Données chiffrées]
+  </div>
+  <ul>
+    <li>Chiffre uniquement les données (payload)</li>
+    <li>En-tête IP original conservé</li>
+    <li>Usage : Communication host-to-host</li>
+  </ul>
+
+  <h3>Mode Tunnel</h3>
+  <div class="schema">
+    [Nouvel en-tête IP] [ESP/AH] [En-tête IP original + Données chiffrées]
+  </div>
+  <ul>
+    <li>Chiffre tout le paquet IP original</li>
+    <li>Nouvel en-tête IP ajouté</li>
+    <li>Usage : VPN site-à-site, gateway-to-gateway</li>
+  </ul>
+
+  <h2>4. IKE (Internet Key Exchange)</h2>
+  <p>Protocole de négociation pour établir les tunnels IPSec.</p>
+
+  <h3>IKE Phase 1 (IKE SA)</h3>
+  <ul>
+    <li>Authentification mutuelle</li>
+    <li>Négociation des algorithmes</li>
+    <li>Échange Diffie-Hellman</li>
+    <li>Établissement du canal sécurisé</li>
+  </ul>
+
+  <h3>IKE Phase 2 (IPSec SA)</h3>
+  <ul>
+    <li>Négociation des paramètres IPSec</li>
+    <li>Génération des clés de session</li>
+    <li>Création du tunnel IPSec</li>
+  </ul>
+
+  <h3>IKEv1 vs IKEv2</h3>
+  <table>
+    <tr><th>IKEv1</th><th>IKEv2</th></tr>
+    <tr><td>6-9 messages pour établir</td><td>4 messages</td></tr>
+    <tr><td>Plus complexe</td><td>Plus simple et rapide</td></tr>
+    <tr><td>Pas de MOBIKE</td><td>MOBIKE (mobilité)</td></tr>
+    <tr><td>Ancien</td><td>Recommandé</td></tr>
+  </table>
+
+  <h2>5. Security Associations (SA)</h2>
+  <p>Une SA définit les paramètres de sécurité pour une connexion unidirectionnelle :</p>
+  <ul>
+    <li>Algorithme de chiffrement (AES-256)</li>
+    <li>Algorithme d'intégrité (SHA-256)</li>
+    <li>Clés de session</li>
+    <li>Durée de vie</li>
+    <li>SPI (Security Parameter Index)</li>
+  </ul>
+
+  <h2>6. Algorithmes recommandés</h2>
+  <table>
+    <tr><th>Fonction</th><th>Recommandé</th><th>À éviter</th></tr>
+    <tr><td>Chiffrement</td><td>AES-256-GCM</td><td>DES, 3DES</td></tr>
+    <tr><td>Intégrité</td><td>SHA-256, SHA-384</td><td>MD5, SHA-1</td></tr>
+    <tr><td>DH Group</td><td>14, 19, 20 (ECC)</td><td>1, 2, 5</td></tr>
+    <tr><td>Authentification</td><td>Certificats, EAP</td><td>PSK faible</td></tr>
+  </table>
+
+  <h2>7. Cas d'usage</h2>
+
+  <table>
+    <tr><th>Scénario</th><th>Mode</th><th>Type</th></tr>
+    <tr><td>VPN site-à-site</td><td>Tunnel</td><td>Gateway ↔ Gateway</td></tr>
+    <tr><td>VPN client</td><td>Tunnel</td><td>Client ↔ Gateway</td></tr>
+    <tr><td>Sécurisation L2TP</td><td>Transport</td><td>Host ↔ Host</td></tr>
+  </table>
+
+  <div class="highlight">
+    <strong>🔑 Points clés :</strong>
+    <ul>
+      <li>ESP + Mode Tunnel = Configuration VPN classique</li>
+      <li>IKEv2 est plus rapide et plus sûr que IKEv1</li>
+      <li>Utiliser AES-256-GCM et SHA-256 minimum</li>
+      <li>PFS (Perfect Forward Secrecy) avec DH élevé</li>
+    </ul>
+  </div>
+</div>
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+</script>
+</body>
+</html>
+
+

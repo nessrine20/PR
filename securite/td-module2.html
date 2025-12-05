@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TD - Attaques WiFi</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .question { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .question-num { color: #6a34cc; font-weight: bold; font-size: 18px; }
+  .answer { background: #d4edda; padding: 15px; border-radius: 10px; margin-top: 15px; display: none; border-left: 4px solid #28a745; }
+  .show-answer { background: #6a34cc; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+  .scenario { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📝 TD - Attaques WiFi</div>
+  <a href="../securite.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>📝 TD : Attaques WiFi</h1>
+
+  <h2>Partie 1 : Questions théoriques</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1</p>
+    <p>Pourquoi le WEP peut-il être cracké en quelques minutes ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ul>
+        <li><strong>IV (Vecteur d'Initialisation) court</strong> : 24 bits → collisions rapides</li>
+        <li><strong>Clé statique</strong> : Partagée entre tous les utilisateurs</li>
+        <li><strong>RC4 mal implémenté</strong> : Faiblesses statistiques exploitables</li>
+        <li><strong>CRC32 non sécurisé</strong> : Permet la modification des paquets</li>
+        <li><strong>Attaques optimisées</strong> : PTW ne nécessite que ~40000 paquets</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2</p>
+    <p>Qu'est-ce que le 4-Way Handshake ? Pourquoi est-il ciblé ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <p><strong>4-Way Handshake :</strong> Échange de 4 messages EAPOL entre le client et l'AP pour établir la clé de session (PTK) à partir du PSK.</p>
+      <p><strong>Pourquoi ciblé :</strong></p>
+      <ul>
+        <li>Contient le MIC (Message Integrity Code)</li>
+        <li>Permet de vérifier si un mot de passe est correct</li>
+        <li>Peut être capturé passivement</li>
+        <li>Une fois capturé, le crack est hors-ligne</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3</p>
+    <p>Comment fonctionne une attaque Evil Twin ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ol>
+        <li>L'attaquant crée un faux AP avec le même SSID que la cible</li>
+        <li>Le faux AP émet un signal plus fort</li>
+        <li>L'attaquant envoie des trames deauth aux clients</li>
+        <li>Les clients se reconnectent au faux AP (signal plus fort)</li>
+        <li>L'attaquant peut capturer le trafic, voler des credentials, ou afficher une fausse page de login</li>
+      </ol>
+    </div>
+  </div>
+
+  <h2>Partie 2 : Cas pratiques</h2>
+
+  <div class="scenario">
+    <strong>📋 Scénario 1</strong><br><br>
+    Vous êtes pentester. Un client vous demande de tester la sécurité de son réseau WiFi WPA2-PSK "ENTREPRISE_WIFI".
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4</p>
+    <p>Décrivez les étapes d'un test de pénétration WiFi.</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ol>
+        <li><strong>Reconnaissance :</strong> Scanner les réseaux (airodump-ng), identifier BSSID, canal, clients</li>
+        <li><strong>Capture handshake :</strong> Attendre une connexion ou forcer avec deauth</li>
+        <li><strong>Crack hors-ligne :</strong> Utiliser hashcat/aircrack avec dictionnaire</li>
+        <li><strong>Si échec :</strong> Tenter Evil Twin pour capturer les credentials</li>
+        <li><strong>Post-exploitation :</strong> Si accès, scanner le réseau interne</li>
+        <li><strong>Rapport :</strong> Documenter les vulnérabilités et recommandations</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="scenario">
+    <strong>📋 Scénario 2</strong><br><br>
+    Le mot de passe du réseau est "Summer2024!". Estimez sa résistance.
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5</p>
+    <p>Ce mot de passe est-il sécurisé ? Justifiez.</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <p><strong>Analyse :</strong></p>
+      <ul>
+        <li>11 caractères ✓</li>
+        <li>Majuscule, minuscules, chiffres, caractère spécial ✓</li>
+        <li><strong>MAIS :</strong> Pattern prévisible (Saison + Année + !)</li>
+        <li>Présent dans les dictionnaires "saisonniers"</li>
+        <li><strong>Verdict : FAIBLE</strong> - Sera cracké en quelques minutes avec un dictionnaire de mots de passe courants</li>
+      </ul>
+      <p><strong>Recommandation :</strong> Utiliser une passphrase aléatoire de 16+ caractères ou un mot de passe généré aléatoirement.</p>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Contre-mesures</h2>
+
+  <div class="question">
+    <p class="question-num">Question 6</p>
+    <p>Comment protéger un réseau d'entreprise contre les attaques WiFi ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ul>
+        <li><strong>WPA3 ou WPA2-Enterprise</strong> avec 802.1X et RADIUS</li>
+        <li><strong>Authentification par certificat</strong> (EAP-TLS)</li>
+        <li><strong>SSID non diffusé</strong> (protection faible mais ajoutée)</li>
+        <li><strong>Segmentation réseau</strong> : VLAN séparés (invités, employés)</li>
+        <li><strong>802.11w</strong> : Protection des trames de management</li>
+        <li><strong>WIDS/WIPS</strong> : Détection des AP rogues</li>
+        <li><strong>Mots de passe forts</strong> : 20+ caractères aléatoires</li>
+        <li><strong>Rotation des clés</strong> : Changer régulièrement le PSK</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+

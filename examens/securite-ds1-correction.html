@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correction DS 1 - Sécurité WiFi</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #28a745, #20c997); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+  .top-btn { padding: 8px 14px; background: #fff; border: none; border-radius: 10px; font-weight: bold; color: #28a745; cursor: pointer; }
+  .print-btn { padding: 8px 14px; background: linear-gradient(135deg, #28a745, #20c997); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #28a745; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #28a745; border-bottom: 3px solid #d4edda; padding-bottom: 15px; text-align: center; }
+  h2 { color: #20c997; margin-top: 30px; }
+  .question { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #28a745; }
+  .question-num { color: #28a745; font-weight: bold; font-size: 18px; margin-bottom: 10px; }
+  .answer { background: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; border: 2px solid #28a745; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2 { color: #5cdb5c; }
+  .dark .question { background: #2a3a2a; }
+  .dark .answer { background: #3a4a3a; border-color: #5cdb5c; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } .container { box-shadow: none; width: 95%; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">✅ Correction DS 1 - Sécurité WiFi</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../Examens.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>✅ Correction DS 1 - Sécurité WiFi</h1>
+
+  <h2>Partie 1 : Protocoles de sécurité</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1 - WEP (3 pts)</p>
+    <div class="answer">
+      <p><strong>Failles du WEP :</strong></p>
+      <ul>
+        <li><strong>IV (24 bits) trop court</strong> : Répétitions inévitables après ~5000 paquets</li>
+        <li><strong>RC4 mal implémenté</strong> : Faiblesses statistiques exploitables</li>
+        <li><strong>Clé statique</strong> : Partagée entre tous les utilisateurs</li>
+        <li><strong>CRC32</strong> : Pas de protection d'intégrité cryptographique</li>
+        <li><strong>Attaques connues</strong> : FMS, PTW (cracké en minutes)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2 - WPA2-Personal vs Enterprise (3 pts)</p>
+    <div class="answer">
+      <ul>
+        <li><strong>Personal (PSK)</strong> : Mot de passe partagé, simple mais si compromis tout le monde doit changer</li>
+        <li><strong>Enterprise (802.1X)</strong> : Authentification RADIUS, chaque utilisateur a ses propres identifiants</li>
+        <li><strong>Sécurité</strong> : Enterprise bien plus sécurisé (pas de PSK à cracker, gestion centralisée)</li>
+        <li><strong>Architecture</strong> : Enterprise nécessite un serveur RADIUS</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3 - 4-Way Handshake (2 pts)</p>
+    <div class="answer">
+      <p>Échange de 4 messages EAPOL pour établir la clé de session (PTK).</p>
+      <p><strong>Ciblé car :</strong> Contient le MIC permettant de vérifier un mot de passe. Peut être capturé et cracké hors-ligne.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4 - WPA3 (2 pts)</p>
+    <div class="answer">
+      <ul>
+        <li><strong>SAE</strong> : Remplace PSK, résistant aux attaques offline</li>
+        <li><strong>Forward Secrecy</strong> : Clé compromise ne révèle pas le passé</li>
+        <li><strong>Protection contre brute force</strong></li>
+        <li><strong>192 bits en Enterprise</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Partie 2 : Attaques</h2>
+
+  <div class="question">
+    <p class="question-num">Question 5 - Evil Twin (3 pts)</p>
+    <div class="answer">
+      <p><strong>Principe :</strong> Faux AP avec même SSID que la cible, signal plus fort, les clients s'y connectent.</p>
+      <p><strong>Protection :</strong> WPA2-Enterprise avec certificats, vérifier les certificats, WIDS/WIPS</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 6 - Attaque dictionnaire (3 pts)</p>
+    <div class="answer">
+      <ol>
+        <li>Scanner et identifier le réseau cible</li>
+        <li>Capturer le 4-Way Handshake (ou forcer avec deauth)</li>
+        <li>Utiliser Aircrack-ng/Hashcat avec un dictionnaire</li>
+        <li>Tester chaque mot de passe contre le handshake</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 7 - Recommandations PME (4 pts)</p>
+    <div class="answer">
+      <ol>
+        <li>Utiliser WPA3 ou WPA2-Enterprise</li>
+        <li>Mot de passe fort (20+ caractères aléatoires)</li>
+        <li>Désactiver WPS</li>
+        <li>VLAN séparés (voix, invités, employés)</li>
+        <li>SSID non-descriptif</li>
+        <li>802.11w (protection trames management)</li>
+        <li>WIDS/WIPS pour détecter les AP rogues</li>
+        <li>Rotation régulière des clés</li>
+      </ol>
+    </div>
+  </div>
+
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+  document.getElementById("toggleLang").onclick = function() { alert("English version coming soon!"); };
+</script>
+</body>
+</html>
+
+

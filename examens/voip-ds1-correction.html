@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correction DS 1 - VoIP</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #28a745, #20c997); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+  .top-btn { padding: 8px 14px; background: #fff; border: none; border-radius: 10px; font-weight: bold; color: #28a745; cursor: pointer; }
+  .print-btn { padding: 8px 14px; background: linear-gradient(135deg, #28a745, #20c997); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #28a745; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #28a745; border-bottom: 3px solid #d4edda; padding-bottom: 15px; text-align: center; }
+  h2 { color: #20c997; margin-top: 30px; }
+  .question { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #28a745; }
+  .question-num { color: #28a745; font-weight: bold; font-size: 18px; margin-bottom: 10px; }
+  .answer { background: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; border: 2px solid #28a745; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+  th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+  th { background: #d4edda; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2 { color: #5cdb5c; }
+  .dark .question { background: #2a3a2a; }
+  .dark .answer { background: #3a4a3a; border-color: #5cdb5c; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } .container { box-shadow: none; width: 95%; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">✅ Correction DS 1 - VoIP</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../Examens.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>✅ Correction DS 1 - VoIP</h1>
+
+  <h2>Partie 1 : Protocoles</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1 - SIP (3 pts)</p>
+    <div class="answer">
+      <p><strong>SIP :</strong> Protocole de signalisation pour établir, modifier et terminer des sessions multimédia.</p>
+      <ul>
+        <li><strong>INVITE :</strong> Initier un appel</li>
+        <li><strong>ACK :</strong> Confirmer la réception du 200 OK</li>
+        <li><strong>BYE :</strong> Terminer l'appel</li>
+        <li><strong>REGISTER :</strong> Enregistrer l'adresse auprès du registrar</li>
+        <li><strong>OPTIONS :</strong> Interroger les capacités</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2 - RTP/RTCP (3 pts)</p>
+    <div class="answer">
+      <ul>
+        <li><strong>RTP :</strong> Transport des données média (voix/vidéo)</li>
+        <li><strong>RTCP :</strong> Contrôle et statistiques (QoS, sync)</li>
+        <li><strong>UDP vs TCP :</strong> UDP = faible latence, pas de retransmission (mieux pour temps réel)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3 - SDP (2 pts)</p>
+    <div class="answer">
+      <p><strong>SDP :</strong> Décrit les paramètres de la session média</p>
+      <p><strong>Contient :</strong> Codecs supportés, ports, adresses IP, type de média</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4 - Flux d'appel (2 pts)</p>
+    <div class="answer">
+      <ol>
+        <li>A envoie INVITE (+ SDP) à B</li>
+        <li>B répond 180 Ringing</li>
+        <li>B décroche → 200 OK (+ SDP)</li>
+        <li>A envoie ACK</li>
+        <li>RTP bidirectionnel (conversation)</li>
+        <li>A ou B envoie BYE</li>
+        <li>200 OK pour confirmer la fin</li>
+      </ol>
+    </div>
+  </div>
+
+  <h2>Partie 2 : QoS et Codecs</h2>
+
+  <div class="question">
+    <p class="question-num">Question 5 - QoS (3 pts)</p>
+    <div class="answer">
+      <table>
+        <tr><th>Problème</th><th>Description</th><th>Valeur acceptable</th></tr>
+        <tr><td>Latence</td><td>Délai de bout en bout</td><td>&lt; 150ms</td></tr>
+        <tr><td>Gigue</td><td>Variation de la latence</td><td>&lt; 30ms</td></tr>
+        <tr><td>Perte</td><td>Paquets perdus</td><td>&lt; 1%</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 6 - Codecs (3 pts)</p>
+    <div class="answer">
+      <table>
+        <tr><th>Codec</th><th>Bande passante</th><th>Usage</th></tr>
+        <tr><td>G.711</td><td>64 kbps</td><td>LAN, haute qualité</td></tr>
+        <tr><td>G.729</td><td>8 kbps</td><td>WAN, économie BP</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Sécurité</h2>
+
+  <div class="question">
+    <p class="question-num">Question 7 - Menaces (4 pts)</p>
+    <div class="answer">
+      <ul>
+        <li><strong>Écoute (Eavesdropping) :</strong> Capture RTP → SRTP/TLS</li>
+        <li><strong>Usurpation d'identité :</strong> Caller ID spoofing → Authentification forte</li>
+        <li><strong>DoS/DDoS :</strong> Flood de requêtes → Rate limiting, IPS</li>
+        <li><strong>Toll Fraud :</strong> Appels non autorisés → Authentification, restrictions</li>
+        <li><strong>MITM :</strong> Interception → TLS, SRTP, certificats</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+  document.getElementById("toggleLang").onclick = function() { alert("English version coming soon!"); };
+</script>
+</body>
+</html>
+
+

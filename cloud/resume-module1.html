@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résumé - Introduction au Cloud</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  h3 { color: #6a34cc; }
+  .highlight { background: #f0e6ff; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #6a34cc; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  th { background: #e9d6ff; color: #4a2db6; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2 { color: #d4b4ff; }
+  .dark .highlight { background: #3a3a3a; }
+  .dark th { background: #3a3a3a; color: #d4b4ff; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } .container { box-shadow: none; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📘 Résumé - Introduction au Cloud</div>
+  <div style="display:flex; gap:10px; align-items:center;">
+    <button onclick="window.print()" style="padding:8px 14px; background:linear-gradient(135deg,#6a34cc,#9b59b6); color:white; border:none; border-radius:10px; font-weight:bold; cursor:pointer;">🖨️ Imprimer</button>
+    <button id="toggleDark" style="padding:8px 14px; background:#fff; border:none; border-radius:10px; font-weight:bold; color:#6a34cc; cursor:pointer;">🌙</button>
+    <a href="../cloud.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+<div class="container">
+  <h1>☁️ Introduction au Cloud Computing</h1>
+
+  <h2>1. Définition du Cloud</h2>
+  <p>Le Cloud Computing est la fourniture de ressources informatiques (serveurs, stockage, bases de données, réseau, logiciels) via Internet, avec une facturation à l'usage.</p>
+
+  <div class="highlight">
+    <strong>🔑 Caractéristiques essentielles (NIST) :</strong>
+    <ul>
+      <li><strong>Self-service à la demande</strong> : Provisionner sans intervention humaine</li>
+      <li><strong>Accès réseau large</strong> : Accessible via Internet</li>
+      <li><strong>Mise en commun des ressources</strong> : Multi-tenant</li>
+      <li><strong>Élasticité rapide</strong> : Scale up/down automatique</li>
+      <li><strong>Service mesuré</strong> : Pay-as-you-go</li>
+    </ul>
+  </div>
+
+  <h2>2. Modèles de services</h2>
+  <table>
+    <tr><th>Modèle</th><th>Description</th><th>Exemples</th><th>Responsabilité client</th></tr>
+    <tr>
+      <td><strong>IaaS</strong><br>(Infrastructure)</td>
+      <td>Machines virtuelles, stockage, réseau</td>
+      <td>AWS EC2, Azure VM, GCP Compute</td>
+      <td>OS, applications, données</td>
+    </tr>
+    <tr>
+      <td><strong>PaaS</strong><br>(Platform)</td>
+      <td>Environnement de développement</td>
+      <td>Heroku, Azure App Service, Google App Engine</td>
+      <td>Applications, données</td>
+    </tr>
+    <tr>
+      <td><strong>SaaS</strong><br>(Software)</td>
+      <td>Applications prêtes à l'emploi</td>
+      <td>Gmail, Office 365, Salesforce</td>
+      <td>Données uniquement</td>
+    </tr>
+  </table>
+
+  <h2>3. Modèles de déploiement</h2>
+  <table>
+    <tr><th>Type</th><th>Description</th><th>Cas d'usage</th></tr>
+    <tr>
+      <td><strong>Cloud Public</strong></td>
+      <td>Ressources partagées, géré par le provider</td>
+      <td>Startups, applications web</td>
+    </tr>
+    <tr>
+      <td><strong>Cloud Privé</strong></td>
+      <td>Infrastructure dédiée à une organisation</td>
+      <td>Entreprises, données sensibles</td>
+    </tr>
+    <tr>
+      <td><strong>Cloud Hybride</strong></td>
+      <td>Combinaison public + privé</td>
+      <td>Migration progressive, burst</td>
+    </tr>
+    <tr>
+      <td><strong>Multi-Cloud</strong></td>
+      <td>Plusieurs providers cloud</td>
+      <td>Éviter le vendor lock-in</td>
+    </tr>
+  </table>
+
+  <h2>4. Principaux fournisseurs</h2>
+  <table>
+    <tr><th>Provider</th><th>Part de marché</th><th>Points forts</th></tr>
+    <tr><td><strong>AWS</strong> (Amazon)</td><td>~32%</td><td>Leader, large catalogue de services</td></tr>
+    <tr><td><strong>Azure</strong> (Microsoft)</td><td>~22%</td><td>Intégration Microsoft, entreprises</td></tr>
+    <tr><td><strong>GCP</strong> (Google)</td><td>~10%</td><td>Big Data, Machine Learning</td></tr>
+    <tr><td><strong>Alibaba Cloud</strong></td><td>~5%</td><td>Leader en Asie</td></tr>
+  </table>
+
+  <h2>5. Avantages du Cloud</h2>
+  <ul>
+    <li><strong>Réduction des coûts</strong> : Pas d'investissement initial (CAPEX → OPEX)</li>
+    <li><strong>Scalabilité</strong> : Adapter les ressources à la demande</li>
+    <li><strong>Disponibilité</strong> : SLA élevés (99.9%+)</li>
+    <li><strong>Innovation</strong> : Accès rapide aux dernières technologies</li>
+    <li><strong>Agilité</strong> : Déploiement en minutes vs semaines</li>
+  </ul>
+
+  <h2>6. Défis et risques</h2>
+  <ul>
+    <li><strong>Sécurité</strong> : Données stockées chez un tiers</li>
+    <li><strong>Conformité</strong> : RGPD, localisation des données</li>
+    <li><strong>Vendor lock-in</strong> : Dépendance à un fournisseur</li>
+    <li><strong>Coûts cachés</strong> : Trafic sortant, stockage...</li>
+    <li><strong>Latence</strong> : Distance aux datacenters</li>
+  </ul>
+
+  <div class="highlight">
+    <strong>🔑 Points clés :</strong>
+    <ul>
+      <li>IaaS = infrastructure, PaaS = plateforme, SaaS = logiciel</li>
+      <li>AWS leader du marché, suivi d'Azure et GCP</li>
+      <li>Le modèle de responsabilité partagée est fondamental</li>
+      <li>Cloud hybride = compromis flexibilité/contrôle</li>
+    </ul>
+  </div>
+</div>
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+</script>
+</body>
+</html>
+
+

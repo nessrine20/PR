@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TD - Normes ISO 27001</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .question { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .question-num { color: #6a34cc; font-weight: bold; font-size: 18px; }
+  .answer { background: #d4edda; padding: 15px; border-radius: 10px; margin-top: 15px; display: none; border-left: 4px solid #28a745; }
+  .show-answer { background: #6a34cc; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+  .show-answer:hover { background: #5420a5; }
+  .scenario { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📝 TD - ISO 27001</div>
+  <a href="../audit.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>📝 TD : Normes ISO 27001/27002</h1>
+
+  <h2>Partie 1 : QCM</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1</p>
+    <p>Quelle norme ISO est certifiable ?</p>
+    <p>a) ISO 27002 &nbsp; b) ISO 27001 &nbsp; c) ISO 27005 &nbsp; d) ISO 27017</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer"><strong>Réponse : b) ISO 27001</strong><br>ISO 27001 définit les exigences du SMSI et est la seule certifiable. ISO 27002 est un guide de bonnes pratiques.</div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2</p>
+    <p>Que signifie SMSI ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer"><strong>Système de Management de la Sécurité de l'Information</strong><br>C'est l'ensemble des politiques, procédures et contrôles mis en place pour gérer la sécurité de l'information.</div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3</p>
+    <p>Combien de contrôles contient l'annexe A de l'ISO 27001 (version 2013) ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer"><strong>114 contrôles</strong> répartis en 14 domaines.</div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4</p>
+    <p>Quelle est la durée de validité d'une certification ISO 27001 ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer"><strong>3 ans</strong>, avec des audits de surveillance annuels.</div>
+  </div>
+
+  <h2>Partie 2 : Étude de cas</h2>
+
+  <div class="scenario">
+    <strong>📋 Scénario :</strong><br>
+    Une entreprise de 200 employés souhaite obtenir la certification ISO 27001. Elle n'a actuellement aucune politique de sécurité formalisée.
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5</p>
+    <p>Listez les 5 premières étapes à mettre en place pour préparer la certification.</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ol>
+        <li><strong>Engagement de la direction</strong> - Obtenir le soutien du top management</li>
+        <li><strong>Définir le périmètre</strong> - Quels sites, processus, systèmes ?</li>
+        <li><strong>Analyse des risques</strong> - Identifier et évaluer les risques</li>
+        <li><strong>Rédiger la politique de sécurité</strong> - Document fondateur</li>
+        <li><strong>Inventaire des actifs</strong> - Lister les actifs à protéger</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 6</p>
+    <p>Associez chaque contrôle au domaine ISO 27002 correspondant :</p>
+    <ul>
+      <li>1. Filtrage des CV des candidats</li>
+      <li>2. Chiffrement des données</li>
+      <li>3. Contrôle d'accès par badge</li>
+      <li>4. Sauvegarde des données</li>
+    </ul>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ul>
+        <li>1. Filtrage CV → <strong>A.7 Sécurité RH</strong></li>
+        <li>2. Chiffrement → <strong>A.10 Cryptographie</strong></li>
+        <li>3. Badge → <strong>A.11 Sécurité physique</strong></li>
+        <li>4. Sauvegarde → <strong>A.12 Sécurité opérationnelle</strong></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+

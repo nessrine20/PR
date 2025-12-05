@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résumé - Menaces & Attaques</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  h3 { color: #6a34cc; }
+  .highlight { background: #f0e6ff; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #6a34cc; }
+  .danger { background: #f8d7da; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #dc3545; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  th { background: #e9d6ff; color: #4a2db6; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📘 Résumé - Menaces & Attaques</div>
+  <a href="../cyberops.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>⚔️ Menaces & Attaques Cybersécurité</h1>
+
+  <h2>1. Classification des menaces</h2>
+  <table>
+    <tr><th>Catégorie</th><th>Exemples</th></tr>
+    <tr><td><strong>Malware</strong></td><td>Virus, Worms, Trojans, Ransomware, Spyware</td></tr>
+    <tr><td><strong>Ingénierie sociale</strong></td><td>Phishing, Spear phishing, Vishing, Smishing</td></tr>
+    <tr><td><strong>Attaques réseau</strong></td><td>DoS/DDoS, MITM, ARP Spoofing</td></tr>
+    <tr><td><strong>Attaques web</strong></td><td>SQL Injection, XSS, CSRF</td></tr>
+    <tr><td><strong>Attaques mots de passe</strong></td><td>Brute force, Dictionary, Rainbow tables</td></tr>
+  </table>
+
+  <h2>2. Types de Malware</h2>
+
+  <h3>🦠 Virus</h3>
+  <ul>
+    <li>S'attache à un programme hôte</li>
+    <li>Se propage lors de l'exécution</li>
+    <li>Nécessite une action utilisateur</li>
+  </ul>
+
+  <h3>🐛 Worm (Ver)</h3>
+  <ul>
+    <li>Se propage automatiquement</li>
+    <li>Exploite les vulnérabilités réseau</li>
+    <li>Pas besoin d'action utilisateur</li>
+  </ul>
+
+  <h3>🎭 Trojan (Cheval de Troie)</h3>
+  <ul>
+    <li>Se fait passer pour un logiciel légitime</li>
+    <li>Ouvre une backdoor</li>
+    <li>RAT (Remote Access Trojan)</li>
+  </ul>
+
+  <h3>💰 Ransomware</h3>
+  <div class="danger">
+    <strong>⚠️ Menace majeure actuelle</strong>
+    <ul>
+      <li>Chiffre les fichiers de la victime</li>
+      <li>Demande une rançon (souvent en Bitcoin)</li>
+      <li>Exemples : WannaCry, Ryuk, LockBit</li>
+    </ul>
+  </div>
+
+  <h2>3. Attaques par ingénierie sociale</h2>
+
+  <h3>🎣 Phishing</h3>
+  <ul>
+    <li>Email frauduleux imitant une entité légitime</li>
+    <li>Objectif : voler des identifiants</li>
+    <li>Variantes : Spear phishing (ciblé), Whaling (dirigeants)</li>
+  </ul>
+
+  <h3>📱 Vishing / Smishing</h3>
+  <ul>
+    <li><strong>Vishing</strong> : Phishing par téléphone (Voice)</li>
+    <li><strong>Smishing</strong> : Phishing par SMS</li>
+  </ul>
+
+  <h2>4. Attaques réseau</h2>
+
+  <h3>💥 DoS / DDoS</h3>
+  <ul>
+    <li><strong>DoS</strong> : Denial of Service (une source)</li>
+    <li><strong>DDoS</strong> : Distributed DoS (multiples sources/botnet)</li>
+    <li>Types : SYN Flood, UDP Flood, HTTP Flood</li>
+  </ul>
+
+  <h3>👤 Man-in-the-Middle (MITM)</h3>
+  <ul>
+    <li>L'attaquant s'interpose entre deux parties</li>
+    <li>Peut lire/modifier les communications</li>
+    <li>Techniques : ARP Spoofing, DNS Spoofing</li>
+  </ul>
+
+  <h2>5. Attaques Web (OWASP Top 10)</h2>
+  <table>
+    <tr><th>Attaque</th><th>Description</th></tr>
+    <tr><td><strong>SQL Injection</strong></td><td>Injecter du SQL malveillant</td></tr>
+    <tr><td><strong>XSS</strong></td><td>Injecter du JavaScript malveillant</td></tr>
+    <tr><td><strong>CSRF</strong></td><td>Forcer une action à l'insu de l'utilisateur</td></tr>
+    <tr><td><strong>Broken Auth</strong></td><td>Failles d'authentification</td></tr>
+  </table>
+
+  <h2>6. Kill Chain (Cyber Kill Chain)</h2>
+  <div class="highlight">
+    <ol>
+      <li><strong>Reconnaissance</strong> : Collecte d'informations</li>
+      <li><strong>Weaponization</strong> : Création du malware</li>
+      <li><strong>Delivery</strong> : Envoi (email, USB...)</li>
+      <li><strong>Exploitation</strong> : Exploitation de la vulnérabilité</li>
+      <li><strong>Installation</strong> : Installation du malware</li>
+      <li><strong>C2</strong> : Command & Control</li>
+      <li><strong>Actions</strong> : Exfiltration, destruction...</li>
+    </ol>
+  </div>
+
+  <div class="highlight">
+    <strong>🔑 Points clés :</strong>
+    <ul>
+      <li>Le phishing reste le vecteur #1</li>
+      <li>Ransomware = menace majeure pour les entreprises</li>
+      <li>Defense in depth : plusieurs couches de sécurité</li>
+      <li>La sensibilisation des utilisateurs est cruciale</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
+
+

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résumé - Sécurité VoIP</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  h3 { color: #6a34cc; }
+  .highlight { background: #f0e6ff; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #6a34cc; }
+  .danger { background: #f8d7da; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #dc3545; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  th { background: #e9d6ff; color: #4a2db6; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2, .dark h3 { color: #d4b4ff; }
+  .dark .highlight, .dark .danger { background: #3a3a3a; }
+  .dark th { background: #3a3a3a; color: #d4b4ff; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📘 Résumé - Sécurité VoIP</div>
+  <div style="display:flex; gap:10px; align-items:center;">
+    <button onclick="window.print()" style="padding:8px 14px; background:linear-gradient(135deg,#6a34cc,#9b59b6); color:white; border:none; border-radius:10px; font-weight:bold; cursor:pointer;">🖨️ Imprimer</button>
+    <button id="toggleDark" style="padding:8px 14px; background:#fff; border:none; border-radius:10px; font-weight:bold; color:#6a34cc; cursor:pointer;">🌙</button>
+    <a href="../VOIp.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+<div class="container">
+  <h1>🔒 Sécurité VoIP</h1>
+
+  <h2>1. Menaces sur la VoIP</h2>
+
+  <table>
+    <tr><th>Menace</th><th>Description</th><th>Impact</th></tr>
+    <tr>
+      <td><strong>Eavesdropping</strong></td>
+      <td>Écoute des conversations</td>
+      <td>Confidentialité compromise</td>
+    </tr>
+    <tr>
+      <td><strong>MITM</strong></td>
+      <td>Interception et modification</td>
+      <td>Écoute, manipulation</td>
+    </tr>
+    <tr>
+      <td><strong>DoS/DDoS</strong></td>
+      <td>Saturation du service</td>
+      <td>Indisponibilité</td>
+    </tr>
+    <tr>
+      <td><strong>Toll Fraud</strong></td>
+      <td>Fraude téléphonique</td>
+      <td>Pertes financières</td>
+    </tr>
+    <tr>
+      <td><strong>Vishing</strong></td>
+      <td>Phishing vocal</td>
+      <td>Vol d'informations</td>
+    </tr>
+    <tr>
+      <td><strong>SRTP Downgrade</strong></td>
+      <td>Forcer le RTP non chiffré</td>
+      <td>Écoute possible</td>
+    </tr>
+  </table>
+
+  <h2>2. Écoute des appels (Eavesdropping)</h2>
+
+  <div class="danger">
+    <strong>⚠️ Vulnérabilité :</strong> RTP transporte la voix en clair par défaut. Un attaquant sur le réseau peut capturer et reconstruire les conversations.
+  </div>
+
+  <h3>Technique d'attaque :</h3>
+  <ol>
+    <li>ARP Spoofing pour intercepter le trafic</li>
+    <li>Capture des paquets RTP avec Wireshark</li>
+    <li>Extraction audio : Telephony → VoIP Calls → Play</li>
+  </ol>
+
+  <h2>3. Protocoles de sécurité</h2>
+
+  <h3>🔐 SRTP (Secure RTP)</h3>
+  <ul>
+    <li>Chiffrement AES du flux audio</li>
+    <li>Authentification des paquets</li>
+    <li>Protection contre le replay</li>
+  </ul>
+
+  <h3>🔐 TLS (Transport Layer Security)</h3>
+  <ul>
+    <li>Chiffrement de la signalisation SIP</li>
+    <li>SIP over TLS (SIPS) sur port 5061</li>
+    <li>Authentification par certificats</li>
+  </ul>
+
+  <h3>🔐 SRTP + TLS</h3>
+  <div class="highlight">
+    <strong>Combinaison recommandée :</strong>
+    <ul>
+      <li>TLS pour la signalisation (SIP)</li>
+      <li>SRTP pour le média (voix)</li>
+      <li>= Communication entièrement chiffrée</li>
+    </ul>
+  </div>
+
+  <h2>4. Authentification</h2>
+
+  <h3>Digest Authentication (SIP)</h3>
+  <ul>
+    <li>Challenge-Response avec MD5</li>
+    <li>Évite l'envoi du mot de passe en clair</li>
+    <li>Vulnérable aux attaques par dictionnaire</li>
+  </ul>
+
+  <h3>Meilleures pratiques</h3>
+  <ul>
+    <li>Mots de passe forts (16+ caractères)</li>
+    <li>Limiter les tentatives de connexion</li>
+    <li>Fail2ban pour bloquer les attaques</li>
+    <li>Authentification mutuelle avec certificats</li>
+  </ul>
+
+  <h2>5. Protection contre le Toll Fraud</h2>
+
+  <ul>
+    <li><strong>Limiter les destinations</strong> : Bloquer les appels internationaux non autorisés</li>
+    <li><strong>Limites de crédit</strong> : Plafonds par utilisateur</li>
+    <li><strong>Alertes</strong> : Détection des comportements anormaux</li>
+    <li><strong>Authentification forte</strong> pour les extensions sensibles</li>
+    <li><strong>Filtrage IP</strong> : N'autoriser que les IPs connues</li>
+  </ul>
+
+  <h2>6. Sécurité réseau</h2>
+
+  <table>
+    <tr><th>Mesure</th><th>Description</th></tr>
+    <tr><td><strong>VLAN dédié</strong></td><td>Séparer le trafic voix du données</td></tr>
+    <tr><td><strong>QoS</strong></td><td>Priorité au trafic VoIP</td></tr>
+    <tr><td><strong>Firewall SIP-aware</strong></td><td>Inspection des paquets SIP</td></tr>
+    <tr><td><strong>SBC</strong></td><td>Session Border Controller (protection périmétrique)</td></tr>
+    <tr><td><strong>VPN</strong></td><td>Tunnel chiffré pour sites distants</td></tr>
+  </table>
+
+  <h2>7. Hardening Asterisk</h2>
+
+  <ul>
+    <li>Désactiver les modules inutilisés</li>
+    <li>Changer les ports par défaut</li>
+    <li>Limiter les connexions par IP</li>
+    <li>Activer fail2ban</li>
+    <li>Logs et monitoring</li>
+    <li>Mises à jour régulières</li>
+  </ul>
+
+  <div class="highlight">
+    <strong>🔑 Points clés :</strong>
+    <ul>
+      <li>RTP non chiffré = conversations écoutables</li>
+      <li>SRTP + TLS = communication sécurisée</li>
+      <li>Le Toll Fraud peut coûter des milliers d'euros</li>
+      <li>VLAN dédié + SBC = bonne architecture</li>
+    </ul>
+  </div>
+</div>
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+</script>
+</body>
+</html>
+
+

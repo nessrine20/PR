@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correction Examen - VoIP</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #28a745, #20c997); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; }
+  .top-btn, .print-btn { padding: 8px 14px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .top-btn { background: #fff; color: #28a745; }
+  .print-btn { background: linear-gradient(135deg, #28a745, #20c997); color: white; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #28a745; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #28a745; border-bottom: 3px solid #d4edda; padding-bottom: 15px; text-align: center; }
+  h2 { color: #20c997; margin-top: 30px; }
+  .question { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #28a745; }
+  .question-num { color: #28a745; font-weight: bold; font-size: 18px; margin-bottom: 10px; }
+  .answer { background: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; border: 2px solid #28a745; }
+  .formula { background: #e8f4ff; padding: 10px; border-radius: 5px; font-family: monospace; text-align: center; margin: 10px 0; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark .question { background: #2a3a2a; }
+  .dark .answer { background: #3a4a3a; border-color: #5cdb5c; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } .container { box-shadow: none; width: 95%; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">✅ Correction Examen - VoIP</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../Examens.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>✅ Correction Examen - VoIP</h1>
+
+  <h2>Partie 1 : Architecture</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1 - Composants SIP (5 pts)</p>
+    <div class="answer">
+      <ul>
+        <li><strong>Registrar :</strong> Reçoit les REGISTER, stocke les associations URI/IP</li>
+        <li><strong>Proxy :</strong> Route les requêtes, peut modifier les messages</li>
+        <li><strong>Redirect :</strong> Renvoie une redirection (3xx) vers la bonne destination</li>
+        <li><strong>Location Server :</strong> Base de données des localisations des utilisateurs</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2 - H.323 vs SIP (5 pts)</p>
+    <div class="answer">
+      <ul>
+        <li><strong>H.323 :</strong> Binaire, complexe, protocoles multiples (H.225, H.245)</li>
+        <li><strong>SIP :</strong> Textuel, simple, flexible, inspiré HTTP</li>
+        <li><strong>Raison du remplacement :</strong> SIP plus léger, plus facile à débugger, meilleure intégration web, extensible</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3 - Négociation SDP (5 pts)</p>
+    <div class="answer">
+      <p><strong>Processus Offer/Answer :</strong></p>
+      <ol>
+        <li>Appelant envoie INVITE avec SDP (liste de codecs supportés)</li>
+        <li>Appelé répond 200 OK avec SDP (codecs acceptés)</li>
+        <li>Le premier codec commun dans l'ordre de préférence est utilisé</li>
+      </ol>
+    </div>
+  </div>
+
+  <h2>Partie 2 : QoS et Sécurité</h2>
+
+  <div class="question">
+    <p class="question-num">Question 4 - QoS (5 pts)</p>
+    <div class="answer">
+      <ul>
+        <li><strong>DiffServ :</strong> Marquage DSCP (EF pour voix = priorité max)</li>
+        <li><strong>Prioritisation :</strong> Queues dédiées, LLQ (Low Latency Queuing)</li>
+        <li><strong>Dimensionnement :</strong> G.711 = 87.2 kbps/appel avec overhead</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5 - SRTP/TLS (5 pts)</p>
+    <div class="answer">
+      <ul>
+        <li><strong>TLS :</strong> Chiffre la signalisation SIP (protège les métadonnées)</li>
+        <li><strong>SRTP :</strong> Chiffre le flux média RTP (protège la voix)</li>
+        <li><strong>Combinaison :</strong> TLS pour SIP + SRTP pour RTP = sécurité complète</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Déploiement</h2>
+
+  <div class="question">
+    <p class="question-num">Question 7 (10 pts)</p>
+    <div class="answer">
+      <p><strong>a) Architecture :</strong></p>
+      <ul>
+        <li>IP-PBX : FreePBX/Asterisk ou solution commerciale</li>
+        <li>Trunk SIP vers opérateur pour PSTN</li>
+        <li>Téléphones IP + softphones</li>
+        <li>PoE switches pour alimenter les téléphones</li>
+      </ul>
+      
+      <p><strong>b) Calcul bande passante :</strong></p>
+      <p class="formula">G.711 = 64 kbps + overhead IP/UDP/RTP ≈ 87.2 kbps/appel<br>
+      50 appels × 87.2 kbps × 2 (bidirectionnel) = <strong>8.72 Mbps</strong></p>
+      
+      <p><strong>c) Sécurité et HA :</strong></p>
+      <ul>
+        <li>TLS + SRTP pour le chiffrement</li>
+        <li>Cluster IP-PBX actif/passif</li>
+        <li>Authentification forte</li>
+        <li>VLAN dédié voix</li>
+        <li>Firewall SBC (Session Border Controller)</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() { document.body.classList.toggle("dark"); this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙"; };
+  document.getElementById("toggleLang").onclick = function() { alert("English version coming soon!"); };
+</script>
+</body>
+</html>
+
+

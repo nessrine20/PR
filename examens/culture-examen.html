@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Examen Final - Culture d'Entreprise</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; }
+  .top-btn, .print-btn { padding: 8px 14px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .top-btn { background: #fff; color: #6a34cc; }
+  .print-btn { background: linear-gradient(135deg, #6a34cc, #9b59b6); color: white; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; text-align: center; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .info-box { background: #fff3cd; padding: 20px; border-radius: 10px; margin-bottom: 30px; border-left: 4px solid #ffc107; }
+  .question { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .question-num { color: #6a34cc; font-weight: bold; font-size: 18px; }
+  .points { float: right; background: #6a34cc; color: white; padding: 3px 10px; border-radius: 15px; font-size: 14px; }
+  .answer-space { border: 2px dashed #ccc; padding: 40px; margin-top: 15px; border-radius: 8px; min-height: 80px; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark .question { background: #3a3a3a; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } .container { box-shadow: none; width: 95%; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📝 Examen Final - Culture</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../Examens.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>🏢 Examen Final - Culture d'Entreprise</h1>
+  <div class="info-box"><strong>📅 Durée :</strong> 2h00 | <strong>📊 Barème :</strong> 40 points</div>
+
+  <h2>Partie 1 : Droit du numérique (15 pts)</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1 <span class="points">5 pts</span></p>
+    <p>Expliquez les principes fondamentaux du RGPD. Quels sont les droits des personnes concernées ?</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2 <span class="points">5 pts</span></p>
+    <p>Qu'est-ce que la responsabilité du prestataire informatique ? Quelles clauses du contrat protègent chaque partie ?</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3 <span class="points">5 pts</span></p>
+    <p>Décrivez le cadre juridique de la cybercriminalité en France (lois, infractions, sanctions).</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <h2>Partie 2 : Gestion de projet et entreprise (15 pts)</h2>
+
+  <div class="question">
+    <p class="question-num">Question 4 <span class="points">5 pts</span></p>
+    <p>Comparez les méthodologies Agile et Waterfall. Quand choisir l'une plutôt que l'autre ?</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5 <span class="points">5 pts</span></p>
+    <p>Qu'est-ce qu'un business plan ? Quels sont les éléments essentiels pour une startup tech ?</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 6 <span class="points">5 pts</span></p>
+    <p>Décrivez les différentes formes juridiques d'entreprise (SARL, SAS, auto-entrepreneur). Avantages/inconvénients.</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <h2>Partie 3 : Cas pratique (10 pts)</h2>
+
+  <div class="question">
+    <p class="question-num">Question 7 <span class="points">10 pts</span></p>
+    <p><strong>Scénario :</strong> Vous êtes consultant IT pour une startup de 10 personnes qui développe une app de santé (données médicales).</p>
+    <p><strong>a)</strong> Quelles obligations RGPD s'appliquent ? (4 pts)</p>
+    <div class="answer-space"></div>
+    <p><strong>b)</strong> Quel type de contrat recommanderiez-vous avec le client (régie, forfait) ? Justifiez. (3 pts)</p>
+    <div class="answer-space"></div>
+    <p><strong>c)</strong> Quelles clauses essentielles inclure dans les CGU de l'application ? (3 pts)</p>
+    <div class="answer-space"></div>
+  </div>
+
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() { document.body.classList.toggle("dark"); this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙"; };
+  document.getElementById("toggleLang").onclick = function() { alert("English version coming soon!"); };
+</script>
+</body>
+</html>
+
+

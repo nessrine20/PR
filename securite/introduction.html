@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction - Sécurité Réseaux Sans Fil</title>
+<link rel="stylesheet" href="../assets/css/global.css">
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+  .top-btn { padding: 8px 14px; background: #fff; border: none; border-radius: 10px; font-weight: bold; color: #6a34cc; cursor: pointer; transition: 0.25s; }
+  .top-btn:hover { background: #f3e7ff; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  h3 { color: #6a34cc; }
+  .highlight { background: #f0e6ff; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #6a34cc; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  th { background: #e9d6ff; color: #4a2db6; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2, .dark h3 { color: #d4b4ff; }
+  .dark .highlight { background: #3a3a3a; }
+  .dark th { background: #3a3a3a; color: #d4b4ff; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">🔐 Introduction - Sécurité Sans Fil</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../securite.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+<div class="container">
+  <h1>🔐 Introduction aux Réseaux Sans Fil</h1>
+
+  <h2>Qu'est-ce qu'un réseau sans fil ?</h2>
+  <p>Un <strong>réseau sans fil</strong> permet la communication entre appareils sans câble physique, en utilisant des ondes radio. Le standard le plus répandu est le <strong>WiFi</strong> (Wireless Fidelity), basé sur les normes IEEE 802.11.</p>
+
+  <h2>Types de réseaux sans fil</h2>
+  <table>
+    <tr><th>Type</th><th>Portée</th><th>Exemples</th></tr>
+    <tr><td><strong>WPAN</strong> (Personal)</td><td>~10m</td><td>Bluetooth, Zigbee</td></tr>
+    <tr><td><strong>WLAN</strong> (Local)</td><td>~100m</td><td>WiFi</td></tr>
+    <tr><td><strong>WMAN</strong> (Metropolitan)</td><td>~50km</td><td>WiMAX</td></tr>
+    <tr><td><strong>WWAN</strong> (Wide)</td><td>Mondial</td><td>4G, 5G</td></tr>
+  </table>
+
+  <h2>Standards WiFi (IEEE 802.11)</h2>
+  <table>
+    <tr><th>Standard</th><th>Nom commercial</th><th>Fréquence</th><th>Débit max</th></tr>
+    <tr><td>802.11n</td><td>WiFi 4</td><td>2.4/5 GHz</td><td>600 Mbps</td></tr>
+    <tr><td>802.11ac</td><td>WiFi 5</td><td>5 GHz</td><td>6.9 Gbps</td></tr>
+    <tr><td>802.11ax</td><td>WiFi 6</td><td>2.4/5/6 GHz</td><td>9.6 Gbps</td></tr>
+    <tr><td>802.11be</td><td>WiFi 7</td><td>2.4/5/6 GHz</td><td>46 Gbps</td></tr>
+  </table>
+
+  <h2>Architecture WiFi</h2>
+  <ul>
+    <li><strong>Station (STA)</strong> : Appareil client (PC, smartphone)</li>
+    <li><strong>Point d'Accès (AP)</strong> : Borne WiFi qui connecte au réseau</li>
+    <li><strong>SSID</strong> : Nom du réseau WiFi</li>
+    <li><strong>BSSID</strong> : Adresse MAC de l'AP</li>
+    <li><strong>ESS</strong> : Ensemble de plusieurs AP avec le même SSID</li>
+  </ul>
+
+  <h2>Bandes de fréquences</h2>
+  <div class="highlight">
+    <ul>
+      <li><strong>2.4 GHz</strong> : Meilleure portée, plus d'interférences (micro-ondes, Bluetooth), 3 canaux non-chevauchants (1, 6, 11)</li>
+      <li><strong>5 GHz</strong> : Moins d'interférences, portée réduite, plus de canaux</li>
+      <li><strong>6 GHz</strong> : WiFi 6E/7, très peu d'interférences, haute performance</li>
+    </ul>
+  </div>
+
+  <h2>Pourquoi sécuriser le WiFi ?</h2>
+  <ul>
+    <li>⚠️ Les ondes radio peuvent être interceptées par n'importe qui à portée</li>
+    <li>⚠️ Un réseau non sécurisé expose vos données</li>
+    <li>⚠️ Les attaquants peuvent usurper votre connexion</li>
+    <li>⚠️ Le WiFi est souvent le maillon faible du réseau</li>
+  </ul>
+
+  <div class="highlight">
+    <strong>🔑 À retenir :</strong>
+    <ul>
+      <li>WiFi = IEEE 802.11 (WiFi 4, 5, 6, 7)</li>
+      <li>2.4 GHz = portée, 5 GHz = performance</li>
+      <li>Les ondes radio sont vulnérables aux écoutes</li>
+      <li>La sécurité WiFi est essentielle (WPA2/WPA3)</li>
+    </ul>
+  </div>
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+  document.getElementById("toggleLang").onclick = function() {
+    alert("English version coming soon!");
+  };
+</script>
+</body>
+</html>
+
+

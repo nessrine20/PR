@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correction DS 1 - Intelligence Artificielle</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #28a745, #20c997); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+  .top-btn { padding: 8px 14px; background: #fff; border: none; border-radius: 10px; font-weight: bold; color: #28a745; cursor: pointer; }
+  .print-btn { padding: 8px 14px; background: linear-gradient(135deg, #28a745, #20c997); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #28a745; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #28a745; border-bottom: 3px solid #d4edda; padding-bottom: 15px; text-align: center; }
+  h2 { color: #20c997; margin-top: 30px; }
+  .question { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #28a745; }
+  .question-num { color: #28a745; font-weight: bold; font-size: 18px; margin-bottom: 10px; }
+  .answer { background: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; border: 2px solid #28a745; }
+  .formula { background: #e8f4ff; padding: 10px; border-radius: 5px; font-family: monospace; text-align: center; margin: 10px 0; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2 { color: #5cdb5c; }
+  .dark .question { background: #2a3a2a; }
+  .dark .answer { background: #3a4a3a; border-color: #5cdb5c; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } .container { box-shadow: none; width: 95%; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">✅ Correction DS 1 - IA</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../Examens.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>✅ Correction DS 1 - Intelligence Artificielle</h1>
+
+  <h2>Partie 1 : Concepts fondamentaux</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1 - ML et types d'apprentissage (2 pts)</p>
+    <div class="answer">
+      <p><strong>Machine Learning :</strong> Sous-domaine de l'IA permettant aux machines d'apprendre à partir de données sans programmation explicite.</p>
+      <ul>
+        <li><strong>Supervisé :</strong> Données étiquetées (labels), apprend à prédire les labels</li>
+        <li><strong>Non supervisé :</strong> Pas de labels, trouve des patterns (clustering)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2 - Overfitting (2 pts)</p>
+    <div class="answer">
+      <p><strong>Définition :</strong> Le modèle mémorise les données d'entraînement au lieu de généraliser.</p>
+      <p><strong>Détection :</strong> Écart entre accuracy train (haute) et validation (basse)</p>
+      <p><strong>Prévention :</strong> Dropout, régularisation L1/L2, early stopping, data augmentation, plus de données</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3 - Fonction d'activation (2 pts)</p>
+    <div class="answer">
+      <p><strong>Rôle :</strong> Introduit la non-linéarité, permet au réseau d'apprendre des patterns complexes.</p>
+      <p><strong>Exemples :</strong> ReLU, Sigmoid, Tanh, Softmax, Leaky ReLU</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4 - Classification vs Régression (2 pts)</p>
+    <div class="answer">
+      <ul>
+        <li><strong>Classification :</strong> Prédire une catégorie (spam/non-spam, chat/chien)</li>
+        <li><strong>Régression :</strong> Prédire une valeur continue (prix, température)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Partie 2 : Algorithmes</h2>
+
+  <div class="question">
+    <p class="question-num">Question 5 - K-NN (3 pts)</p>
+    <div class="answer">
+      <p><strong>Fonctionnement :</strong> Pour classifier un point, trouve les K voisins les plus proches et vote majoritaire.</p>
+      <p><strong>Avantages :</strong> Simple, pas d'entraînement, fonctionne bien sur petits datasets</p>
+      <p><strong>Inconvénients :</strong> Lent à l'inférence, sensible aux outliers, choix de K critique</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 6 - Calcul paramètres (3 pts)</p>
+    <div class="answer">
+      <p>Formule : params = (input × output) + output (biais)</p>
+      <ul>
+        <li>Couche 1 : (50 × 32) + 32 = <strong>1 632</strong></li>
+        <li>Couche 2 : (32 × 16) + 16 = <strong>528</strong></li>
+        <li>Couche 3 : (16 × 5) + 5 = <strong>85</strong></li>
+      </ul>
+      <p class="formula"><strong>Total : 2 245 paramètres</strong></p>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Métriques</h2>
+
+  <div class="question">
+    <p class="question-num">Question 7 - Métriques (3 pts)</p>
+    <div class="answer">
+      <ul>
+        <li><strong>Accuracy :</strong> (TP+TN) / Total - % de bonnes prédictions</li>
+        <li><strong>Precision :</strong> TP / (TP+FP) - Fiabilité des positifs prédits</li>
+        <li><strong>Recall :</strong> TP / (TP+FN) - Taux de détection des positifs</li>
+        <li><strong>F1 :</strong> 2 × (P×R)/(P+R) - Moyenne harmonique</li>
+      </ul>
+      <p><strong>Precision privilégiée :</strong> Quand les FP sont coûteux (diagnostic médical)</p>
+      <p><strong>Recall privilégié :</strong> Quand les FN sont dangereux (détection cancer)</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 8 - Calculs (3 pts)</p>
+    <div class="answer">
+      <p class="formula">Accuracy = (80+850) / 1000 = <strong>93%</strong></p>
+      <p class="formula">Precision = 80 / (80+50) = 80/130 = <strong>61.5%</strong></p>
+      <p class="formula">Recall = 80 / (80+20) = 80/100 = <strong>80%</strong></p>
+      <p class="formula">F1 = 2 × (0.615×0.80)/(0.615+0.80) = <strong>69.5%</strong></p>
+    </div>
+  </div>
+
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+  document.getElementById("toggleLang").onclick = function() { alert("English version coming soon!"); };
+</script>
+</body>
+</html>
+
+

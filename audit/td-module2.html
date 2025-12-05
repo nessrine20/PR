@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TD - Tests d'Intrusion</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .question { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .question-num { color: #6a34cc; font-weight: bold; font-size: 18px; }
+  .answer { background: #d4edda; padding: 15px; border-radius: 10px; margin-top: 15px; display: none; border-left: 4px solid #28a745; }
+  .show-answer { background: #6a34cc; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+  .scenario { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; margin: 15px 0; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📝 TD - Tests d'Intrusion</div>
+  <a href="../audit.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>📝 TD : Tests d'Intrusion</h1>
+
+  <h2>Partie 1 : Méthodologie</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1</p>
+    <p>Quelle est la différence entre Black Box, Grey Box et White Box ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ul>
+        <li><strong>Black Box</strong> : Aucune information fournie, simule un attaquant externe</li>
+        <li><strong>Grey Box</strong> : Informations partielles (ex: credentials utilisateur), simule un insider</li>
+        <li><strong>White Box</strong> : Accès complet (code source, architecture), audit approfondi</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2</p>
+    <p>Citez les 6 phases de la méthodologie PTES.</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ol>
+        <li>Pré-engagement (scope, autorisations)</li>
+        <li>Reconnaissance (OSINT, scan)</li>
+        <li>Scan & Énumération (vulnérabilités)</li>
+        <li>Exploitation (obtenir l'accès)</li>
+        <li>Post-exploitation (privesc, lateral movement)</li>
+        <li>Reporting (rapport technique et exécutif)</li>
+      </ol>
+    </div>
+  </div>
+
+  <h2>Partie 2 : Outils</h2>
+
+  <div class="question">
+    <p class="question-num">Question 3</p>
+    <p>Que fait cette commande Nmap ?</p>
+    <div class="code-block">nmap -sS -sV -O -p 1-1000 192.168.1.0/24</div>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ul>
+        <li><strong>-sS</strong> : SYN scan (stealth, demi-connexion)</li>
+        <li><strong>-sV</strong> : Détection des versions des services</li>
+        <li><strong>-O</strong> : Détection du système d'exploitation</li>
+        <li><strong>-p 1-1000</strong> : Scan des ports 1 à 1000</li>
+        <li><strong>192.168.1.0/24</strong> : Scan tout le sous-réseau (256 hôtes)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4</p>
+    <p>Associez chaque outil à son usage principal :</p>
+    <ol>
+      <li>Burp Suite</li>
+      <li>Metasploit</li>
+      <li>Hashcat</li>
+      <li>BloodHound</li>
+      <li>Nessus</li>
+    </ol>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ol>
+        <li><strong>Burp Suite</strong> : Test de sécurité web (proxy, scanner)</li>
+        <li><strong>Metasploit</strong> : Framework d'exploitation</li>
+        <li><strong>Hashcat</strong> : Crack de mots de passe (GPU)</li>
+        <li><strong>BloodHound</strong> : Analyse Active Directory (chemins d'attaque)</li>
+        <li><strong>Nessus</strong> : Scan de vulnérabilités</li>
+      </ol>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Cas pratique</h2>
+
+  <div class="scenario">
+    <strong>📋 Scénario</strong><br><br>
+    Vous êtes mandaté pour un pentest Black Box sur l'entreprise "TechCorp". Le scope est : *.techcorp.com. Vous avez 2 semaines.
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5</p>
+    <p>Décrivez votre approche pour la phase de reconnaissance.</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <p><strong>Reconnaissance passive :</strong></p>
+      <ul>
+        <li>Whois : Informations sur le domaine</li>
+        <li>DNS : Énumération des sous-domaines (subfinder, amass)</li>
+        <li>Google Dorks : "site:techcorp.com filetype:pdf"</li>
+        <li>Shodan/Censys : Services exposés</li>
+        <li>LinkedIn : Employés, technologies utilisées</li>
+        <li>GitHub : Repos, credentials exposés</li>
+      </ul>
+      <p><strong>Reconnaissance active :</strong></p>
+      <ul>
+        <li>Nmap : Scan de ports et services</li>
+        <li>Fingerprinting : Versions des technologies</li>
+        <li>Nikto : Scan du serveur web</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 6</p>
+    <p>Vous trouvez une injection SQL sur le formulaire de login. Comment procédez-vous ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ol>
+        <li><strong>Confirmer</strong> la vulnérabilité avec des payloads simples</li>
+        <li><strong>Documenter</strong> : URL, paramètre vulnérable, payload</li>
+        <li><strong>Évaluer l'impact</strong> avec SQLmap :
+          <div class="code-block">sqlmap -u "https://techcorp.com/login" --data="user=test&pass=test" --dbs</div>
+        </li>
+        <li><strong>Extraire</strong> (preuve de concept) : tables, users, hashs</li>
+        <li><strong>Tenter</strong> l'élévation : --os-shell, lecture de fichiers</li>
+        <li><strong>Documenter</strong> pour le rapport avec captures</li>
+      </ol>
+    </div>
+  </div>
+
+  <h2>Partie 4 : Reporting</h2>
+
+  <div class="question">
+    <p class="question-num">Question 7</p>
+    <p>Quels éléments doit contenir un bon rapport de pentest ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <p><strong>Rapport exécutif :</strong></p>
+      <ul>
+        <li>Résumé en langage non-technique</li>
+        <li>Score global de sécurité</li>
+        <li>Risques métier</li>
+        <li>Recommandations prioritaires</li>
+      </ul>
+      <p><strong>Rapport technique :</strong></p>
+      <ul>
+        <li>Méthodologie utilisée</li>
+        <li>Vulnérabilités trouvées (CVSS, description, preuves)</li>
+        <li>Étapes de reproduction</li>
+        <li>Impact potentiel</li>
+        <li>Recommandations de remédiation détaillées</li>
+        <li>Annexes (captures, logs, payloads)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+

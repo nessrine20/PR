@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résumé - Services AWS</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  h3 { color: #6a34cc; }
+  .highlight { background: #f0e6ff; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #6a34cc; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  th { background: #e9d6ff; color: #4a2db6; }
+  .service-card { background: #f8f4ff; padding: 15px; border-radius: 10px; margin: 10px 0; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2, .dark h3 { color: #d4b4ff; }
+  .dark .highlight { background: #3a3a3a; }
+  .dark .service-card { background: #3a3a3a; }
+  .dark th { background: #3a3a3a; color: #d4b4ff; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📘 Résumé - Services AWS</div>
+  <div style="display:flex; gap:10px; align-items:center;">
+    <button onclick="window.print()" style="padding:8px 14px; background:linear-gradient(135deg,#6a34cc,#9b59b6); color:white; border:none; border-radius:10px; font-weight:bold; cursor:pointer;">🖨️ Imprimer</button>
+    <button id="toggleDark" style="padding:8px 14px; background:#fff; border:none; border-radius:10px; font-weight:bold; color:#6a34cc; cursor:pointer;">🌙</button>
+    <a href="../cloud.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+<div class="container">
+  <h1>🔶 Services AWS Essentiels</h1>
+
+  <h2>1. Compute (Calcul)</h2>
+
+  <div class="service-card">
+    <h3>🖥️ EC2 (Elastic Compute Cloud)</h3>
+    <ul>
+      <li>Machines virtuelles (instances)</li>
+      <li>Types : t2.micro (free tier), t3, m5, c5 (compute), r5 (memory)...</li>
+      <li>Modèles de tarification : On-Demand, Reserved, Spot</li>
+    </ul>
+  </div>
+
+  <div class="service-card">
+    <h3>⚡ Lambda</h3>
+    <ul>
+      <li>Serverless : exécution de code sans gérer de serveurs</li>
+      <li>Facturation à la milliseconde d'exécution</li>
+      <li>Idéal pour : APIs, traitements événementiels</li>
+    </ul>
+  </div>
+
+  <div class="service-card">
+    <h3>📦 ECS / EKS</h3>
+    <ul>
+      <li><strong>ECS</strong> : Service de conteneurs Docker (propriétaire AWS)</li>
+      <li><strong>EKS</strong> : Kubernetes managé</li>
+    </ul>
+  </div>
+
+  <h2>2. Storage (Stockage)</h2>
+
+  <table>
+    <tr><th>Service</th><th>Type</th><th>Usage</th><th>Durabilité</th></tr>
+    <tr>
+      <td><strong>S3</strong></td>
+      <td>Object Storage</td>
+      <td>Fichiers, backups, static websites</td>
+      <td>99.999999999% (11 nines)</td>
+    </tr>
+    <tr>
+      <td><strong>EBS</strong></td>
+      <td>Block Storage</td>
+      <td>Disques pour EC2</td>
+      <td>99.999%</td>
+    </tr>
+    <tr>
+      <td><strong>EFS</strong></td>
+      <td>File Storage</td>
+      <td>NFS partagé entre instances</td>
+      <td>99.999999999%</td>
+    </tr>
+    <tr>
+      <td><strong>Glacier</strong></td>
+      <td>Archive</td>
+      <td>Archivage long terme (froid)</td>
+      <td>99.999999999%</td>
+    </tr>
+  </table>
+
+  <h3>Classes de stockage S3</h3>
+  <ul>
+    <li><strong>S3 Standard</strong> : Accès fréquent</li>
+    <li><strong>S3 Infrequent Access</strong> : Accès rare, moins cher</li>
+    <li><strong>S3 Glacier</strong> : Archive, récupération en heures</li>
+    <li><strong>S3 Glacier Deep Archive</strong> : Archive très long terme</li>
+  </ul>
+
+  <h2>3. Database (Base de données)</h2>
+
+  <table>
+    <tr><th>Service</th><th>Type</th><th>Moteurs</th></tr>
+    <tr>
+      <td><strong>RDS</strong></td>
+      <td>SQL managé</td>
+      <td>MySQL, PostgreSQL, MariaDB, Oracle, SQL Server</td>
+    </tr>
+    <tr>
+      <td><strong>Aurora</strong></td>
+      <td>SQL haute perf</td>
+      <td>Compatible MySQL/PostgreSQL, 5x plus rapide</td>
+    </tr>
+    <tr>
+      <td><strong>DynamoDB</strong></td>
+      <td>NoSQL</td>
+      <td>Key-Value, Document, serverless</td>
+    </tr>
+    <tr>
+      <td><strong>ElastiCache</strong></td>
+      <td>Cache</td>
+      <td>Redis, Memcached</td>
+    </tr>
+  </table>
+
+  <h2>4. Networking (Réseau)</h2>
+
+  <div class="service-card">
+    <h3>🌐 VPC (Virtual Private Cloud)</h3>
+    <ul>
+      <li>Réseau privé virtuel isolé</li>
+      <li>Subnets publics et privés</li>
+      <li>Internet Gateway, NAT Gateway</li>
+      <li>Security Groups, Network ACLs</li>
+    </ul>
+  </div>
+
+  <div class="service-card">
+    <h3>🔀 Route 53</h3>
+    <ul>
+      <li>Service DNS managé</li>
+      <li>Enregistrement de domaines</li>
+      <li>Health checks, routage géographique</li>
+    </ul>
+  </div>
+
+  <div class="service-card">
+    <h3>⚡ CloudFront</h3>
+    <ul>
+      <li>CDN (Content Delivery Network)</li>
+      <li>Cache au plus près des utilisateurs</li>
+      <li>HTTPS, protection DDoS</li>
+    </ul>
+  </div>
+
+  <h2>5. Security (Sécurité)</h2>
+
+  <table>
+    <tr><th>Service</th><th>Fonction</th></tr>
+    <tr><td><strong>IAM</strong></td><td>Gestion des identités et accès</td></tr>
+    <tr><td><strong>KMS</strong></td><td>Gestion des clés de chiffrement</td></tr>
+    <tr><td><strong>WAF</strong></td><td>Firewall applicatif web</td></tr>
+    <tr><td><strong>Shield</strong></td><td>Protection DDoS</td></tr>
+    <tr><td><strong>GuardDuty</strong></td><td>Détection de menaces</td></tr>
+  </table>
+
+  <div class="highlight">
+    <strong>🔑 Points clés :</strong>
+    <ul>
+      <li>EC2 = VMs, Lambda = Serverless</li>
+      <li>S3 = stockage objet illimité avec haute durabilité</li>
+      <li>RDS = bases SQL managées, DynamoDB = NoSQL serverless</li>
+      <li>VPC = réseau isolé, Security Groups = firewall</li>
+      <li>IAM = contrôle d'accès (users, roles, policies)</li>
+    </ul>
+  </div>
+</div>
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+</script>
+</body>
+</html>
+
+

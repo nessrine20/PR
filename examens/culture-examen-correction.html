@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correction Examen - Culture</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #28a745, #20c997); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; }
+  .top-btn, .print-btn { padding: 8px 14px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .top-btn { background: #fff; color: #28a745; }
+  .print-btn { background: linear-gradient(135deg, #28a745, #20c997); color: white; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #28a745; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #28a745; text-align: center; }
+  h2 { color: #20c997; margin-top: 30px; }
+  .question { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #28a745; }
+  .question-num { color: #28a745; font-weight: bold; font-size: 18px; }
+  .answer { background: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; border: 2px solid #28a745; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+  th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+  th { background: #d4edda; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark .question { background: #2a3a2a; }
+  .dark .answer { background: #3a4a3a; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } .container { box-shadow: none; width: 95%; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">✅ Correction Examen - Culture</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../Examens.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>✅ Correction Examen - Culture</h1>
+
+  <div class="question">
+    <p class="question-num">Question 1 - RGPD (5 pts)</p>
+    <div class="answer">
+      <p><strong>Principes :</strong> Licéité, finalité, minimisation, exactitude, limitation conservation, intégrité, accountability</p>
+      <p><strong>Droits :</strong> Accès, rectification, effacement, portabilité, opposition, limitation</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4 - Agile vs Waterfall (5 pts)</p>
+    <div class="answer">
+      <table>
+        <tr><th>Critère</th><th>Waterfall</th><th>Agile</th></tr>
+        <tr><td>Flexibilité</td><td>Faible</td><td>Haute</td></tr>
+        <tr><td>Livraisons</td><td>Fin de projet</td><td>Itératives</td></tr>
+        <tr><td>Documentation</td><td>Extensive</td><td>Légère</td></tr>
+        <tr><td>Usage idéal</td><td>Besoins figés</td><td>Besoins évolutifs</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 6 - Formes juridiques (5 pts)</p>
+    <div class="answer">
+      <table>
+        <tr><th>Forme</th><th>Avantages</th><th>Inconvénients</th></tr>
+        <tr><td>Auto-entrepreneur</td><td>Simple, peu de charges</td><td>Plafond CA, pas d'associés</td></tr>
+        <tr><td>SARL</td><td>Responsabilité limitée</td><td>Charges sociales élevées</td></tr>
+        <tr><td>SAS</td><td>Flexible, actions</td><td>Formalisme, coût</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 7 - Cas pratique santé (10 pts)</p>
+    <div class="answer">
+      <p><strong>a) Obligations RGPD données de santé :</strong></p>
+      <ul>
+        <li>Consentement explicite (données sensibles)</li>
+        <li>DPO obligatoire</li>
+        <li>AIPD (Analyse d'Impact)</li>
+        <li>Hébergeur certifié HDS</li>
+        <li>Chiffrement obligatoire</li>
+      </ul>
+      
+      <p><strong>b) Type de contrat :</strong></p>
+      <p>Régie + Time & Material pour la phase de développement (besoins évolutifs), puis forfait pour la maintenance.</p>
+      
+      <p><strong>c) Clauses CGU :</strong></p>
+      <ul>
+        <li>Politique de confidentialité</li>
+        <li>Collecte et usage des données</li>
+        <li>Limitation de responsabilité</li>
+        <li>Propriété intellectuelle</li>
+        <li>Conditions de résiliation</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() { document.body.classList.toggle("dark"); this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙"; };
+  document.getElementById("toggleLang").onclick = function() { alert("English version coming soon!"); };
+</script>
+</body>
+</html>
+
+

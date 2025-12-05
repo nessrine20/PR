@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correction Examen - Sécurité WiFi</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #28a745, #20c997); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+  .top-btn { padding: 8px 14px; background: #fff; border: none; border-radius: 10px; font-weight: bold; color: #28a745; cursor: pointer; }
+  .print-btn { padding: 8px 14px; background: linear-gradient(135deg, #28a745, #20c997); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #28a745; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #28a745; border-bottom: 3px solid #d4edda; padding-bottom: 15px; text-align: center; }
+  h2 { color: #20c997; margin-top: 30px; }
+  .question { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #28a745; }
+  .question-num { color: #28a745; font-weight: bold; font-size: 18px; margin-bottom: 10px; }
+  .answer { background: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; border: 2px solid #28a745; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+  th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+  th { background: #d4edda; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2 { color: #5cdb5c; }
+  .dark .question { background: #2a3a2a; }
+  .dark .answer { background: #3a4a3a; border-color: #5cdb5c; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } .container { box-shadow: none; width: 95%; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">✅ Correction Examen - Sécurité WiFi</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../Examens.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>✅ Correction Examen - Sécurité WiFi</h1>
+
+  <h2>Partie 1 : Protocoles</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1 - Évolution protocoles (5 pts)</p>
+    <div class="answer">
+      <table>
+        <tr><th>Protocole</th><th>Chiffrement</th><th>Failles</th><th>Usage</th></tr>
+        <tr><td>WEP</td><td>RC4 (64/128 bits)</td><td>IV faible, cassable en minutes</td><td>❌ Jamais</td></tr>
+        <tr><td>WPA</td><td>TKIP</td><td>Dictionnaire, Beck-Tews</td><td>❌ Éviter</td></tr>
+        <tr><td>WPA2</td><td>AES-CCMP</td><td>KRACK, dictionnaire PSK</td><td>✅ Standard actuel</td></tr>
+        <tr><td>WPA3</td><td>AES-GCMP + SAE</td><td>Dragonblood (corrigé)</td><td>✅ Recommandé</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2 - 802.1X/EAP (5 pts)</p>
+    <div class="answer">
+      <p><strong>Composants :</strong></p>
+      <ul>
+        <li><strong>Supplicant :</strong> Client demandant l'accès</li>
+        <li><strong>Authenticator :</strong> Point d'accès (relais)</li>
+        <li><strong>Authentication Server :</strong> RADIUS (décision)</li>
+      </ul>
+      <p><strong>Flux :</strong> Client → EAPOL-Start → AP → RADIUS → EAP-Request/Identity → Client → EAP-Response → RADIUS → Success/Failure → AP → Port ouvert/fermé</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3 - 4-Way Handshake (5 pts)</p>
+    <div class="answer">
+      <ul>
+        <li><strong>Message 1 :</strong> AP → Client : ANonce</li>
+        <li><strong>Message 2 :</strong> Client → AP : SNonce + MIC (PTK calculée)</li>
+        <li><strong>Message 3 :</strong> AP → Client : GTK chiffrée + MIC</li>
+        <li><strong>Message 4 :</strong> Client → AP : ACK</li>
+      </ul>
+      <p><strong>Clés :</strong> PMK (Master) → PTK (trafic unicast) + GTK (broadcast)</p>
+    </div>
+  </div>
+
+  <h2>Partie 2 : Attaques</h2>
+
+  <div class="question">
+    <p class="question-num">Question 4 - KRACK (5 pts)</p>
+    <div class="answer">
+      <p><strong>Vulnérabilité :</strong> Réinstallation de la clé PTK lors du Message 3 rejouée, permettant la réutilisation du nonce.</p>
+      <p><strong>Mitigation :</strong> Patches firmware, WPA3 résout le problème.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5 - Deauth attack (5 pts)</p>
+    <div class="answer">
+      <p><strong>Fonctionnement :</strong> Envoi de trames de désauthentification spoofées (non chiffrées dans 802.11).</p>
+      <p><strong>Protection :</strong> 802.11w (Management Frame Protection) chiffre les trames de gestion.</p>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Cas pratique Hôpital</h2>
+
+  <div class="question">
+    <p class="question-num">Question 7 (10 pts)</p>
+    <div class="answer">
+      <p><strong>a) Architecture :</strong></p>
+      <ul>
+        <li>SSID "MED-SECURE" → VLAN 10 (médecins)</li>
+        <li>SSID "GUEST" → VLAN 20 (patients, isolé)</li>
+        <li>SSID "IOT-MEDICAL" → VLAN 30 (équipements)</li>
+      </ul>
+      
+      <p><strong>b) Protocoles :</strong></p>
+      <ul>
+        <li>Médecins : WPA3-Enterprise + 802.1X + certificats</li>
+        <li>Patients : WPA2-PSK + portail captif + isolation client</li>
+        <li>IoT : WPA2-PSK dédié + ACL strictes</li>
+      </ul>
+      
+      <p><strong>c) Protection IoT :</strong></p>
+      <ul>
+        <li>Segmentation réseau stricte</li>
+        <li>NAC (contrôle d'accès réseau)</li>
+        <li>Monitoring comportemental</li>
+        <li>Mises à jour firmware régulières</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() { document.body.classList.toggle("dark"); this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙"; };
+  document.getElementById("toggleLang").onclick = function() { alert("English version coming soon!"); };
+</script>
+</body>
+</html>
+
+

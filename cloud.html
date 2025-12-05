@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cours Cloud</title>
+  <title>Cours Cloud – AWS Academy</title>
 
-  <!-- STYLE CLOUD (ADAPTÉ À TON THÈME VIOLET) -->
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       background: #f4eaff;
+      transition: 0.3s;
     }
 
-    /* TOPBAR */
+    /* NAVBAR */
     .topbar {
       background: linear-gradient(135deg, #c59bff, #b07cff);
       padding: 15px 30px;
@@ -30,6 +30,27 @@
     .topbar-title {
       font-size: 22px;
       font-weight: bold;
+    }
+
+    .topbar-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .top-btn {
+      padding: 8px 14px;
+      background: #fff;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      color: #6a34cc;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .top-btn:hover {
+      background: #f3e7ff;
     }
 
     .back-btn {
@@ -59,7 +80,7 @@
       margin-bottom: 30px;
     }
 
-    /* MODULE STYLE */
+    /* MODULE */
     .module {
       background: white;
       border-radius: 12px;
@@ -84,293 +105,161 @@
 
     .module-body {
       display: none;
-      background: #ffffff;
+      background: white;
       padding: 20px;
-      line-height: 1.6;
-      font-size: 15px;
+      font-size: 16px;
       color: #444;
     }
-.topbar-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
 
-.top-btn {
-  padding: 8px 14px;
-  background: white;
-  border: none;
-  border-radius: 10px;
-  font-weight: bold;
-  color: #6a34cc;
-  cursor: pointer;
-  transition: 0.25s;
-}
-
-.top-btn:hover {
-  background: #f3e7ff;
-}
-.dark-mode {
-  background: #1a1a1a;
-  color: white;
-}
-
-.dark-mode .module {
-  background: #2a2a2a;
-  border-color: #444;
-}
-
-.dark-mode .module-header {
-  background: #3c3c3c;
-  color: #e5d7ff;
-}
-
-.dark-mode .card {
-  background: #3a2a4d;
-  color: white;
-  border: 1px solid #6a34cc;
-}
-
-.dark-mode .btn-more {
-  background: #9c6bff;
-}
-
-.dark-mode .topbar {
-  background: #2b1f3a;
-}
-
-
-    /* Cards inside modules (Résumé / TD / TP) */
-    .subcards {
-      display: flex;
-      gap: 20px;
-      margin-top: 20px;
+    /* LIENS RÉSUMÉS / TD / TP */
+    .resource-list {
+      margin-top: 15px;
+      padding-left: 10px;
     }
 
-    .card {
-      flex: 1;
-      background: #f6e9ff;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      text-align: center;
-      border: 1px solid #e2caff;
-    }
-
-    .card h3 {
+    .resource-item {
+      display: block;
+      font-size: 17px;
+      padding: 8px 0;
       color: #5b22b3;
-      margin-bottom: 8px;
-    }
-
-    .card p {
-      color: #555;
-      font-size: 14px;
-    }
-
-    .btn-more {
-      display: inline-block;
-      margin-top: 10px;
-      background: #6a34cc;
-      color: white;
-      padding: 8px 15px;
-      border-radius: 8px;
       font-weight: bold;
       text-decoration: none;
       transition: 0.2s;
     }
 
-    .btn-more:hover {
-      background: #5420a5;
+    .resource-item:hover {
+      color: #7a41e8;
+      text-decoration: underline;
+    }
+
+    /* MODE DARK */
+    .dark {
+      background: #1b1b1b !important;
+      color: white;
+    }
+    .dark .module {
+      background: #292929;
+      border-color: #444;
+    }
+    .dark .module-header {
+      background: #3a3a3a;
+      color: white;
+    }
+    .dark .resource-item {
+      color: #d4b4ff;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- TOPBAR -->
+  <!-- NAVBAR -->
   <div class="topbar">
     <div class="topbar-title">☁️ Cours Cloud – AWS Academy</div>
-     <button id="toggleLang" class="top-btn">EN</button>
-        <button id="toggleDark" class="top-btn">🌙</button>
-    <a href="dashboard.html" class="back-btn">← Retour</a>
+
+    <div class="topbar-actions">
+      <button id="toggleLang" class="top-btn">EN</button>
+      <button id="toggleDark" class="top-btn">🌙</button>
+      <a href="dashboard.php" class="back-btn">← Retour</a>
+    </div>
   </div>
 
+  <!-- CONTENU -->
   <div class="container">
 
     <h1>Modules Cloud</h1>
 
-    <!-- === MODULE 0 === -->
+    <!-- INTRODUCTION -->
     <div class="module">
-      <div class="module-header">Introduction au Cloud</div>
+      <div class="module-header">📚 Introduction au Cloud Computing</div>
       <div class="module-body">
-        <p>Définition, avantages, modèles de services (IaaS / PaaS / SaaS)…</p>
-
-        <div class="subcards">
-          <div class="card">
-            <h3>📘 Résumé</h3>
-            <p>Les concepts essentiels du Cloud.</p>
-            <a href="#" class="btn-more">Voir</a>
-          </div>
-
-          <div class="card">
-            <h3>📝 TD</h3>
-            <p>Exercices d’introduction.</p>
-            <a href="#" class="btn-more">Accéder</a>
-          </div>
-
-          <div class="card">
-            <h3>🔧 TP</h3>
-            <p>Travaux pratiques sur AWS.</p>
-            <a href="#" class="btn-more">Détails</a>
-          </div>
+        <p>Définition, caractéristiques NIST, modèles de services et de déploiement, principaux fournisseurs…</p>
+        <div class="resource-list">
+          <a href="cloud/introduction.html" class="resource-item">📘 Résumé</a>
         </div>
       </div>
     </div>
 
-    <!-- === MODULE 1 === -->
+    <!-- MODULE 1 -->
     <div class="module">
-      <div class="module-header">Module 1 – AWS Cloud Concepts</div>
+      <div class="module-header">Module 1 – Services Cloud & AWS</div>
       <div class="module-body">
-        <p>Bases du Cloud AWS : régions, zones, services fondamentaux…</p>
+        <p>IaaS, PaaS, SaaS, régions AWS, zones de disponibilité, premiers pas avec EC2…</p>
 
-        <div class="subcards">
-          <div class="card">
-            <h3>📘 Résumé</h3>
-            <p>Concepts clés du Cloud AWS.</p>
-            <a href="#" class="btn-more">Voir</a>
-          </div>
-
-          <div class="card">
-            <h3>📝 TD</h3>
-            <p>Exercices sur les concepts.</p>
-            <a href="#" class="btn-more">Accéder</a>
-          </div>
-
-          <div class="card">
-            <h3>🔧 TP</h3>
-            <p>Manipulation AWS Console.</p>
-            <a href="#" class="btn-more">Détails</a>
-          </div>
+        <div class="resource-list">
+          <a href="cloud/resume-module1.html" class="resource-item">📘 Résumé</a>
+          <a href="cloud/td-module1.html" class="resource-item">📝 TD</a>
+          <a href="cloud/tp-module1.html" class="resource-item">🔧 TP</a>
         </div>
       </div>
     </div>
 
-    <!-- === MODULE 2 === -->
+    <!-- MODULE 2 -->
     <div class="module">
-      <div class="module-header">Module 2 – Cloud Billing</div>
+      <div class="module-header">Module 2 – Services AWS</div>
       <div class="module-body">
-        <p>Facturation AWS, modèles de coût, outils d’estimation…</p>
+        <p>EC2, S3, RDS, Lambda, VPC, IAM, CloudFront, Route53…</p>
 
-        <div class="subcards">
-          <div class="card">
-            <h3>📘 Résumé</h3>
-            <p>Notions de coûts AWS.</p>
-            <a href="#" class="btn-more">Voir</a>
-          </div>
-
-          <div class="card">
-            <h3>📝 TD</h3>
-            <p>Exercices de calcul de coûts.</p>
-            <a href="#" class="btn-more">Accéder</a>
-          </div>
-
-          <div class="card">
-            <h3>🔧 TP</h3>
-            <p>Utilisation d’AWS Pricing Calculator.</p>
-            <a href="#" class="btn-more">Détails</a>
-          </div>
+        <div class="resource-list">
+          <a href="cloud/resume-module2.html" class="resource-item">📘 Résumé</a>
+          <a href="cloud/td-module2.html" class="resource-item">📝 TD</a>
+          <a href="cloud/tp-module2.html" class="resource-item">🔧 TP</a>
         </div>
       </div>
     </div>
 
-    <!-- === MODULE 3 === -->
+    <!-- MODULE 3 -->
     <div class="module">
       <div class="module-header">Module 3 – AWS Infrastructure</div>
       <div class="module-body">
-        <p>Régions AWS, edge locations, réseau mondial…</p>
+        <p>Régions AWS, Edge locations, backbone mondial…</p>
 
-        <div class="subcards">
-          <div class="card">
-            <h3>📘 Résumé</h3>
-            <p>Architecture globale AWS.</p>
-            <a href="#" class="btn-more">Voir</a>
-          </div>
-
-          <div class="card">
-            <h3>📝 TD</h3>
-            <p>Questions sur l’architecture AWS.</p>
-            <a href="#" class="btn-more">Accéder</a>
-          </div>
-
-          <div class="card">
-            <h3>🔧 TP</h3>
-            <p>Pratique sur les régions et AZ.</p>
-            <a href="#" class="btn-more">Détails</a>
-          </div>
+        <div class="resource-list">
+          <a href="resume-module3.html" class="resource-item">📘 Résumé</a>
+          <a href="td-module3.html" class="resource-item">📝 TD</a>
+          <a href="tp-module3.html" class="resource-item">🔧 TP</a>
         </div>
       </div>
     </div>
 
-    <!-- === MODULE 4 === -->
+    <!-- MODULE 4 -->
     <div class="module">
       <div class="module-header">Module 4 – Cloud Security</div>
       <div class="module-body">
-        <p>IAM, responsabilité partagée, bonnes pratiques…</p>
+        <p>IAM, responsabilité partagée, sécurité cloud…</p>
 
-        <div class="subcards">
-          <div class="card">
-            <h3>📘 Résumé</h3>
-            <p>Sécurité dans le Cloud.</p>
-            <a href="#" class="btn-more">Voir</a>
-          </div>
-
-          <div class="card">
-            <h3>📝 TD</h3>
-            <p>Exercices sur IAM.</p>
-            <a href="#" class="btn-more">Accéder</a>
-          </div>
-
-          <div class="card">
-            <h3>🔧 TP</h3>
-            <p>Création d’utilisateurs IAM.</p>
-            <a href="#" class="btn-more">Détails</a>
-          </div>
+        <div class="resource-list">
+          <a href="resume-module4.html" class="resource-item">📘 Résumé</a>
+          <a href="td-module4.html" class="resource-item">📝 TD</a>
+          <a href="tp-module4.html" class="resource-item">🔧 TP</a>
         </div>
       </div>
     </div>
 
   </div>
 
-  <!-- Script ouverture modules -->
+  <!-- SCRIPT -->
   <script>
+    // Ouvrir/fermer module
     document.querySelectorAll('.module-header').forEach(header => {
       header.addEventListener('click', () => {
         let body = header.nextElementSibling;
-        body.style.display =
-          (body.style.display === "block") ? "none" : "block";
+        body.style.display = body.style.display === "block" ? "none" : "block";
       });
     });
+
+    // DARK MODE
+    document.getElementById("toggleDark").onclick = function () {
+      document.body.classList.toggle("dark");
+    };
+
+    // LANGUE
+    document.getElementById("toggleLang").onclick = function () {
+      alert("Version anglaise en préparation !");
+    };
   </script>
+<script src="cursor.js"></script>
 
 </body>
 </html>
-<script>
-  const body = document.body;
 
-  // Toggle Dark Mode
-  document.getElementById("toggleDark").onclick = () => {
-    body.classList.toggle("dark-mode");
-  };
-
-  // Toggle language
-  document.getElementById("toggleLang").onclick = () => {
-    let btn = document.getElementById("toggleLang");
-    if (btn.innerText === "EN") {
-      btn.innerText = "FR";
-      alert("Switch to English version (à implémenter)");
-    } else {
-      btn.innerText = "EN";
-      alert("Langue française activée");
-    }
-  };
-</script>

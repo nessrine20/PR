@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DS 1 - VPN</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+  .top-btn { padding: 8px 14px; background: #fff; border: none; border-radius: 10px; font-weight: bold; color: #6a34cc; cursor: pointer; }
+  .print-btn { padding: 8px 14px; background: linear-gradient(135deg, #6a34cc, #9b59b6); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; text-align: center; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .info-box { background: #e8f4ff; padding: 20px; border-radius: 10px; margin-bottom: 30px; border-left: 4px solid #007bff; }
+  .question { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .question-num { color: #6a34cc; font-weight: bold; font-size: 18px; margin-bottom: 10px; }
+  .points { float: right; background: #6a34cc; color: white; padding: 3px 10px; border-radius: 15px; font-size: 14px; }
+  .answer-space { border: 2px dashed #ccc; padding: 40px; margin-top: 15px; border-radius: 8px; min-height: 80px; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2 { color: #d4b4ff; }
+  .dark .question { background: #3a3a3a; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } .container { box-shadow: none; width: 95%; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📋 DS 1 - VPN</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../Examens.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>🌐 DS 1 - VPN</h1>
+  
+  <div class="info-box">
+    <strong>📅 Durée :</strong> 1h30 | <strong>📊 Barème :</strong> 20 points | <strong>📝 Documents :</strong> Non autorisés
+  </div>
+
+  <h2>Partie 1 : Concepts VPN (8 points)</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1 <span class="points">2 pts</span></p>
+    <p>Qu'est-ce qu'un VPN ? Quels sont les principaux cas d'utilisation ?</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2 <span class="points">3 pts</span></p>
+    <p>Expliquez la différence entre un VPN Site-to-Site et un VPN Remote Access.</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3 <span class="points">3 pts</span></p>
+    <p>Qu'est-ce que le tunneling ? Comparez les protocoles PPTP, L2TP et OpenVPN.</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <h2>Partie 2 : IPSec (8 points)</h2>
+
+  <div class="question">
+    <p class="question-num">Question 4 <span class="points">3 pts</span></p>
+    <p>Décrivez les deux modes de fonctionnement d'IPSec : Transport et Tunnel. Quand utiliser chacun ?</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5 <span class="points">3 pts</span></p>
+    <p>Expliquez les protocoles AH et ESP. Quelles protections offrent-ils ?</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 6 <span class="points">2 pts</span></p>
+    <p>Décrivez les 2 phases de négociation IKE (Internet Key Exchange).</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <h2>Partie 3 : Cas pratique (4 points)</h2>
+
+  <div class="question">
+    <p class="question-num">Question 7 <span class="points">4 pts</span></p>
+    <p>Une entreprise avec un siège à Paris et une filiale à Lyon souhaite interconnecter ses réseaux de manière sécurisée. Proposez une solution VPN adaptée et justifiez vos choix techniques.</p>
+    <div class="answer-space"></div>
+  </div>
+
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+  document.getElementById("toggleLang").onclick = function() { alert("English version coming soon!"); };
+</script>
+</body>
+</html>
+
+

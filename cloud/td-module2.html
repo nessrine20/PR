@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TD - Services AWS</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .question { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .question-num { color: #6a34cc; font-weight: bold; font-size: 18px; }
+  .answer { background: #d4edda; padding: 15px; border-radius: 10px; margin-top: 15px; display: none; border-left: 4px solid #28a745; }
+  .show-answer { background: #6a34cc; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+  .scenario { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📝 TD - Services AWS</div>
+  <a href="../cloud.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>📝 TD : Services AWS</h1>
+
+  <h2>Partie 1 : Association de services</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1</p>
+    <p>Associez chaque besoin au service AWS approprié :</p>
+    <ol>
+      <li>Stocker des fichiers statiques (images, vidéos)</li>
+      <li>Héberger une base de données MySQL</li>
+      <li>Exécuter du code sans gérer de serveur</li>
+      <li>Distribuer du contenu au plus près des utilisateurs</li>
+      <li>Créer un réseau privé virtuel</li>
+    </ol>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ol>
+        <li>S3 (Simple Storage Service)</li>
+        <li>RDS (Relational Database Service)</li>
+        <li>Lambda</li>
+        <li>CloudFront (CDN)</li>
+        <li>VPC (Virtual Private Cloud)</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2</p>
+    <p>Quelle est la différence entre S3 et EBS ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <table style="width:100%; border-collapse:collapse;">
+        <tr><th style="border:1px solid #ddd; padding:8px;">S3</th><th style="border:1px solid #ddd; padding:8px;">EBS</th></tr>
+        <tr>
+          <td style="border:1px solid #ddd; padding:8px;">Object Storage</td>
+          <td style="border:1px solid #ddd; padding:8px;">Block Storage</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #ddd; padding:8px;">Accessible via HTTP/API</td>
+          <td style="border:1px solid #ddd; padding:8px;">Attaché à une instance EC2</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #ddd; padding:8px;">Illimité</td>
+          <td style="border:1px solid #ddd; padding:8px;">Taille fixe (1 Go - 16 To)</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #ddd; padding:8px;">Fichiers, backups, sites statiques</td>
+          <td style="border:1px solid #ddd; padding:8px;">Disque système, bases de données</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <h2>Partie 2 : Architecture</h2>
+
+  <div class="scenario">
+    <strong>📋 Cas - Application web e-commerce</strong><br><br>
+    Vous devez concevoir l'architecture AWS pour une boutique en ligne avec :
+    <ul>
+      <li>Site web frontend (React)</li>
+      <li>API backend (Node.js)</li>
+      <li>Base de données relationnelle</li>
+      <li>Stockage d'images produits</li>
+      <li>Haute disponibilité requise</li>
+    </ul>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3</p>
+    <p>Proposez les services AWS pour chaque composant.</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ul>
+        <li><strong>Frontend React</strong> : S3 + CloudFront (site statique)</li>
+        <li><strong>API Backend</strong> : EC2 (ou Lambda + API Gateway) + Load Balancer (ALB)</li>
+        <li><strong>Base de données</strong> : RDS Aurora (Multi-AZ pour HA)</li>
+        <li><strong>Images</strong> : S3 + CloudFront</li>
+        <li><strong>Réseau</strong> : VPC avec subnets publics/privés</li>
+        <li><strong>Cache</strong> : ElastiCache Redis (sessions, cache)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4</p>
+    <p>Comment assurer la haute disponibilité ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ul>
+        <li><strong>Multi-AZ</strong> : Déployer dans plusieurs zones de disponibilité</li>
+        <li><strong>Auto Scaling</strong> : Ajuster le nombre d'instances selon la charge</li>
+        <li><strong>Load Balancer</strong> : Distribuer le trafic</li>
+        <li><strong>RDS Multi-AZ</strong> : Réplication automatique de la base</li>
+        <li><strong>S3</strong> : Réplication native entre AZ</li>
+        <li><strong>Route 53</strong> : Health checks et failover DNS</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Sécurité</h2>
+
+  <div class="question">
+    <p class="question-num">Question 5</p>
+    <p>Quels services AWS utiliseriez-vous pour :</p>
+    <ol>
+      <li>Gérer les permissions des utilisateurs</li>
+      <li>Chiffrer les données au repos</li>
+      <li>Protéger contre les attaques DDoS</li>
+      <li>Filtrer le trafic HTTP malveillant</li>
+    </ol>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ol>
+        <li><strong>IAM</strong> (Identity and Access Management)</li>
+        <li><strong>KMS</strong> (Key Management Service) + chiffrement S3/EBS</li>
+        <li><strong>Shield</strong> (Standard gratuit, Advanced payant)</li>
+        <li><strong>WAF</strong> (Web Application Firewall)</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 6</p>
+    <p>Expliquez le principe de "Least Privilege" dans IAM.</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <p><strong>Principe du moindre privilège :</strong></p>
+      <ul>
+        <li>Donner uniquement les permissions nécessaires pour accomplir une tâche</li>
+        <li>Pas de permissions "admin" par défaut</li>
+        <li>Créer des rôles spécifiques par fonction</li>
+        <li>Réviser régulièrement les permissions</li>
+        <li>Utiliser des policies granulaires</li>
+      </ul>
+      <p>Exemple : Un développeur frontend n'a pas besoin d'accès à RDS.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+

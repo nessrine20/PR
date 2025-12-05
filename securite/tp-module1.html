@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP - Configuration Sécurité WiFi</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar {
+    background: linear-gradient(135deg, #c59bff, #b07cff);
+    padding: 15px 30px; display: flex; justify-content: space-between;
+    align-items: center; color: white; position: sticky; top: 0; z-index: 10;
+  }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn {
+    padding: 8px 16px; background: #fff; color: #6a34cc;
+    border-radius: 8px; font-weight: bold; text-decoration: none;
+  }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  h3 { color: #6a34cc; }
+  .objective { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+  .step { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .step-num { background: #6a34cc; color: white; padding: 5px 12px; border-radius: 50%; font-weight: bold; margin-right: 10px; }
+  .warning { background: #fff3cd; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #ffc107; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 20px; border-radius: 10px; font-family: monospace; overflow-x: auto; margin: 15px 0; }
+  .checklist { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; }
+  .checklist li { margin: 10px 0; }
+  ul { padding-left: 25px; }
+  .screenshot { background: #f0f0f0; border: 2px dashed #ccc; padding: 40px; text-align: center; color: #666; border-radius: 10px; margin: 15px 0; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-title">🔧 TP - Module 1</div>
+  <a href="../securite.html" class="back-btn">← Retour au cours</a>
+</div>
+
+<div class="container">
+  <h1>🔧 TP : Configuration Sécurité WiFi</h1>
+  
+  <div class="objective">
+    <strong>🎯 Objectifs du TP :</strong>
+    <ul>
+      <li>Configurer un point d'accès WiFi avec WPA2-AES</li>
+      <li>Appliquer les bonnes pratiques de sécurité</li>
+      <li>Vérifier la configuration avec des outils</li>
+    </ul>
+    <br>
+    <strong>⏱️ Durée estimée :</strong> 1h30<br>
+    <strong>🛠️ Matériel requis :</strong> Routeur WiFi, PC, smartphone
+  </div>
+
+  <h2>Partie 1 : Accès à l'interface du routeur</h2>
+
+  <div class="step">
+    <p><span class="step-num">1</span><strong>Connexion au routeur</strong></p>
+    <ul>
+      <li>Connectez-vous au réseau WiFi du routeur (ou par câble Ethernet)</li>
+      <li>Ouvrez un navigateur web</li>
+      <li>Tapez l'adresse IP du routeur (généralement) :</li>
+    </ul>
+    <div class="code-block">
+192.168.1.1<br>
+ou<br>
+192.168.0.1
+    </div>
+    <p>Pour trouver l'IP de votre passerelle :</p>
+    <div class="code-block">
+# Windows<br>
+ipconfig | findstr "Passerelle"<br><br>
+# Linux/Mac<br>
+ip route | grep default
+    </div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">2</span><strong>Authentification</strong></p>
+    <ul>
+      <li>Entrez les identifiants par défaut (souvent admin/admin)</li>
+      <li>Cherchez ces informations sous le routeur ou dans le manuel</li>
+    </ul>
+    <div class="warning">
+      <strong>⚠️ Important :</strong> La première chose à faire est de changer le mot de passe administrateur !
+    </div>
+  </div>
+
+  <h2>Partie 2 : Configuration de la sécurité WiFi</h2>
+
+  <div class="step">
+    <p><span class="step-num">3</span><strong>Changer le mot de passe admin</strong></p>
+    <ul>
+      <li>Allez dans : <strong>Administration</strong> ou <strong>System</strong></li>
+      <li>Changez le mot de passe par défaut</li>
+      <li>Utilisez un mot de passe fort (12+ caractères)</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">4</span><strong>Configuration du WiFi</strong></p>
+    <p>Allez dans : <strong>Wireless</strong> ou <strong>WiFi Settings</strong></p>
+    
+    <h3>Paramètres à configurer :</h3>
+    <table style="width:100%; border-collapse: collapse; margin: 15px 0;">
+      <tr style="background:#e9d6ff;">
+        <th style="padding:10px; border:1px solid #ddd;">Paramètre</th>
+        <th style="padding:10px; border:1px solid #ddd;">Valeur recommandée</th>
+      </tr>
+      <tr>
+        <td style="padding:10px; border:1px solid #ddd;">SSID</td>
+        <td style="padding:10px; border:1px solid #ddd;">Nom personnalisé (pas "default" ou nom du FAI)</td>
+      </tr>
+      <tr>
+        <td style="padding:10px; border:1px solid #ddd;">Sécurité</td>
+        <td style="padding:10px; border:1px solid #ddd;"><strong>WPA2-Personal</strong> ou <strong>WPA3</strong></td>
+      </tr>
+      <tr>
+        <td style="padding:10px; border:1px solid #ddd;">Chiffrement</td>
+        <td style="padding:10px; border:1px solid #ddd;"><strong>AES</strong> (pas TKIP)</td>
+      </tr>
+      <tr>
+        <td style="padding:10px; border:1px solid #ddd;">Mot de passe</td>
+        <td style="padding:10px; border:1px solid #ddd;">Minimum 12 caractères, complexe</td>
+      </tr>
+      <tr>
+        <td style="padding:10px; border:1px solid #ddd;">WPS</td>
+        <td style="padding:10px; border:1px solid #ddd;"><strong>Désactivé</strong></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">5</span><strong>Désactiver WPS</strong></p>
+    <ul>
+      <li>Allez dans : <strong>WPS</strong> ou <strong>WiFi Protected Setup</strong></li>
+      <li>Désactivez cette fonctionnalité</li>
+    </ul>
+    <div class="warning">
+      <strong>⚠️ Pourquoi désactiver WPS ?</strong><br>
+      WPS permet de se connecter avec un code PIN de 8 chiffres. Ce PIN peut être cracké par brute force en quelques heures (attaque Reaver).
+    </div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">6</span><strong>Créer un réseau invité (optionnel)</strong></p>
+    <ul>
+      <li>Allez dans : <strong>Guest Network</strong></li>
+      <li>Activez le réseau invité</li>
+      <li>Configurez avec WPA2-AES</li>
+      <li>Activez <strong>l'isolation des clients</strong></li>
+    </ul>
+  </div>
+
+  <h2>Partie 3 : Vérification</h2>
+
+  <div class="step">
+    <p><span class="step-num">7</span><strong>Vérifier avec un smartphone</strong></p>
+    <ul>
+      <li>Oubliez l'ancien réseau sur votre téléphone</li>
+      <li>Recherchez les réseaux WiFi disponibles</li>
+      <li>Votre réseau doit afficher <strong>WPA2</strong> ou <strong>WPA3</strong></li>
+      <li>Connectez-vous avec le nouveau mot de passe</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">8</span><strong>Vérifier avec un outil (Windows)</strong></p>
+    <div class="code-block">
+# Voir les réseaux WiFi et leur sécurité<br>
+netsh wlan show networks mode=bssid<br><br>
+# Voir le profil de votre réseau<br>
+netsh wlan show profile name="VotreSSID" key=clear
+    </div>
+  </div>
+
+  <h2>✅ Checklist finale</h2>
+  
+  <div class="checklist">
+    <strong>Vérifiez que vous avez bien :</strong>
+    <ul>
+      <li>☐ Changé le mot de passe admin du routeur</li>
+      <li>☐ Configuré WPA2-AES ou WPA3</li>
+      <li>☐ Défini un mot de passe WiFi fort (12+ caractères)</li>
+      <li>☐ Désactivé WPS</li>
+      <li>☐ Personnalisé le SSID</li>
+      <li>☐ Testé la connexion</li>
+      <li>☐ Noté le nouveau mot de passe en lieu sûr</li>
+    </ul>
+  </div>
+
+  <h2>📝 Compte-rendu à rendre</h2>
+  <p>Rédigez un court rapport (1 page) contenant :</p>
+  <ul>
+    <li>Les captures d'écran de votre configuration</li>
+    <li>Le type de sécurité choisi et pourquoi</li>
+    <li>Les difficultés rencontrées</li>
+    <li>Ce que vous avez appris</li>
+  </ul>
+</div>
+
+</body>
+</html>
+
+

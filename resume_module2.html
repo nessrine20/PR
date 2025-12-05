@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résumé – Module 2 : AWS Cloud Billing</title>
+
+<style>
+/* ------------------------------------------------ */
+/* ---------------- GLOBAL STYLE ------------------ */
+/* ------------------------------------------------ */
+body {
+  font-family: Arial, sans-serif;
+  background:#f4eaff;
+  margin:0;
+  padding:0;
+  transition:0.3s ease;
+}
+
+h1, h2 {
+  color:#5a1fc8;
+}
+
+.container {
+  width:75%;
+  margin:30px auto;
+  background:white;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.1);
+  border:1px solid #e5d7ff;
+}
+
+/* ------------------------------------------------ */
+/* ---------------- TOPBAR STYLE ------------------ */
+/* ------------------------------------------------ */
+.topbar {
+  background:linear-gradient(135deg,#c59bff,#b07cff);
+  padding:14px 25px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:white;
+  font-weight:bold;
+  box-shadow:0 4px 14px rgba(0,0,0,0.15);
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+
+.btn {
+  padding:7px 14px;
+  border:none;
+  border-radius:8px;
+  margin-left:8px;
+  font-weight:bold;
+  cursor:pointer;
+  background:white;
+  color:#6a34cc;
+  transition:0.25s;
+}
+
+.btn:hover {
+  background:#f0e5ff;
+}
+
+/* ------------------------------------------------ */
+/* ---------------- DARK MODE --------------------- */
+/* ------------------------------------------------ */
+.dark {
+  background:#2a2a2d;
+  color:white;
+}
+
+.dark .container {
+  background:#333;
+  border-color:#6f42c1;
+}
+
+.dark .topbar {
+  background:linear-gradient(135deg,#3a2960,#6a34cc);
+}
+
+.dark h1, .dark h2 {
+  color:#d7c4ff;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ------------------------------------------------ -->
+<!-- ---------------------- TOPBAR ------------------- -->
+<!-- ------------------------------------------------ -->
+<div class="topbar">
+  <div>📘 Résumé — Module 2 : Cloud Billing</div>
+
+  <div>
+    <button id="langBtn" class="btn">EN</button>
+    <button id="darkBtn" class="btn">🌙</button>
+    <button onclick="window.print()" class="btn">🖨️ PDF</button>
+    <a href="cloud.html" class="btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+
+<h1 data-tr="title">Résumé – Module 2 : Facturation et Tarification AWS</h1>
+
+<p data-tr="intro">
+AWS utilise un modèle de tarification flexible basé sur la consommation réelle. La facturation dépend des services utilisés, du temps d'exécution, du stockage consommé et du trafic réseau.
+</p>
+
+<h2><span data-tr="t1">Les 3 principes de tarification AWS</span></h2>
+<ul>
+  <li data-tr="p1">Pay-as-you-go : tu payes uniquement ce que tu consommes</li>
+  <li data-tr="p2">Pay-less-when-you-reserve : réduction avec les instances réservées</li>
+  <li data-tr="p3">Pay even less per unit : réduction pour usage élevé (volume pricing)</li>
+</ul>
+
+<h2><span data-tr="t2">Outils AWS pour gérer les coûts</span></h2>
+<ul>
+  <li data-tr="o1">AWS Pricing Calculator : estimation des coûts</li>
+  <li data-tr="o2">AWS Billing Dashboard : vue générale de la facture</li>
+  <li data-tr="o3">AWS Budgets : alertes personnalisées</li>
+  <li data-tr="o4">Cost Explorer : analyse visuelle des coûts</li>
+</ul>
+
+<h2><span data-tr="t3">Les facteurs influençant les coûts</span></h2>
+<ul>
+  <li data-tr="f1">Type d’instance (EC2, GPU, mémoire, CPU)</li>
+  <li data-tr="f2">Stockage utilisé (S3, EBS, Glacier)</li>
+  <li data-tr="f3">Trafic réseau sortant (Data Transfer Out)</li>
+  <li data-tr="f4">Nombre de requêtes API</li>
+</ul>
+
+<h2><span data-tr="t4">Stratégies d’optimisation des coûts</span></h2>
+<ul>
+  <li data-tr="s1">Utiliser les instances réservées</li>
+  <li data-tr="s2">Utiliser les Spot Instances</li>
+  <li data-tr="s3">Mettre en place des budgets de coûts</li>
+  <li data-tr="s4">Automatiser l’extinction des ressources inutiles</li>
+</ul>
+
+</div>
+
+<!-- ------------------------------------------------ -->
+<!-- ---------------------- SCRIPT ------------------- -->
+<!-- ------------------------------------------------ -->
+<script>
+// ---------------- DARK MODE ----------------
+document.getElementById("darkBtn").onclick = () => {
+  document.body.classList.toggle("dark");
+};
+
+// ---------------- MULTILINGUE ----------------
+const tr = {
+  fr: {
+    title:"Résumé – Module 2 : Facturation et Tarification AWS",
+    intro:"AWS utilise un modèle de tarification flexible basé sur la consommation réelle...",
+    t1:"Les 3 principes de tarification AWS",
+    p1:"Pay-as-you-go : tu payes uniquement ce que tu consommes",
+    p2:"Pay-less-when-you-reserve : réduction avec les instances réservées",
+    p3:"Pay even less per unit : réduction pour usage élevé (volume pricing)",
+    t2:"Outils AWS pour gérer les coûts",
+    o1:"AWS Pricing Calculator : estimation des coûts",
+    o2:"AWS Billing Dashboard : vue générale de la facture",
+    o3:"AWS Budgets : alertes personnalisées",
+    o4:"Cost Explorer : analyse visuelle des coûts",
+    t3:"Les facteurs influençant les coûts",
+    f1:"Type d’instance (EC2, GPU, mémoire, CPU)",
+    f2:"Stockage utilisé (S3, EBS, Glacier)",
+    f3:"Trafic réseau sortant (Data Transfer Out)",
+    f4:"Nombre de requêtes API",
+    t4:"Stratégies d’optimisation des coûts",
+    s1:"Utiliser les instances réservées",
+    s2:"Utiliser les Spot Instances",
+    s3:"Mettre en place des budgets de coûts",
+    s4:"Automatiser l’extinction des ressources inutiles"
+  },
+
+  en: {
+    title:"Module 2 Summary: AWS Billing & Pricing",
+    intro:"AWS uses a flexible pricing model based on actual consumption. Billing depends on services used, execution time, storage consumed, and network traffic.",
+    t1:"The 3 AWS Pricing Principles",
+    p1:"Pay-as-you-go: pay only for what you consume",
+    p2:"Pay-less-when-you-reserve: discounts with Reserved Instances",
+    p3:"Pay even less per unit: volume-based discounts",
+    t2:"AWS Cost Management Tools",
+    o1:"AWS Pricing Calculator: cost estimation",
+    o2:"AWS Billing Dashboard: global billing overview",
+    o3:"AWS Budgets: custom alerts",
+    o4:"Cost Explorer: cost visualization tool",
+    t3:"Cost Influencing Factors",
+    f1:"Instance type (EC2, GPU, memory, CPU)",
+    f2:"Storage used (S3, EBS, Glacier)",
+    f3:"Outbound network traffic (Data Transfer Out)",
+    f4:"Number of API requests",
+    t4:"Cost Optimization Strategies",
+    s1:"Use Reserved Instances",
+    s2:"Use Spot Instances",
+    s3:"Set cost budgets",
+    s4:"Automate shutdown of unused resources"
+  }
+};
+
+let currentLang = "fr";
+
+document.getElementById("langBtn").onclick = () => {
+  currentLang = currentLang === "fr" ? "en" : "fr";
+  document.getElementById("langBtn").innerText = currentLang === "fr" ? "EN" : "FR";
+
+  document.querySelectorAll("[data-tr]").forEach(el => {
+    el.innerHTML = tr[currentLang][el.dataset.tr];
+  });
+};
+</script>
+
+</body>
+</html>
+

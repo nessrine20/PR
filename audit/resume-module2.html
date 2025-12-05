@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résumé - Tests d'Intrusion</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  h3 { color: #6a34cc; }
+  .highlight { background: #f0e6ff; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #6a34cc; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  th { background: #e9d6ff; color: #4a2db6; }
+  .phase { background: #f8f4ff; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #6a34cc; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2, .dark h3 { color: #d4b4ff; }
+  .dark .highlight, .dark .phase { background: #3a3a3a; }
+  .dark th { background: #3a3a3a; color: #d4b4ff; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📘 Résumé - Tests d'Intrusion</div>
+  <div style="display:flex; gap:10px; align-items:center;">
+    <button onclick="window.print()" style="padding:8px 14px; background:linear-gradient(135deg,#6a34cc,#9b59b6); color:white; border:none; border-radius:10px; font-weight:bold; cursor:pointer;">🖨️ Imprimer</button>
+    <button id="toggleDark" style="padding:8px 14px; background:#fff; border:none; border-radius:10px; font-weight:bold; color:#6a34cc; cursor:pointer;">🌙</button>
+    <a href="../audit.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+<div class="container">
+  <h1>🎯 Tests d'Intrusion (Pentest)</h1>
+
+  <h2>1. Types de tests</h2>
+  <table>
+    <tr><th>Type</th><th>Connaissance</th><th>Simule</th></tr>
+    <tr>
+      <td><strong>Black Box</strong></td>
+      <td>Aucune information</td>
+      <td>Attaquant externe</td>
+    </tr>
+    <tr>
+      <td><strong>Grey Box</strong></td>
+      <td>Informations partielles</td>
+      <td>Utilisateur malveillant</td>
+    </tr>
+    <tr>
+      <td><strong>White Box</strong></td>
+      <td>Accès complet (code, schémas)</td>
+      <td>Audit approfondi</td>
+    </tr>
+  </table>
+
+  <h2>2. Méthodologie PTES</h2>
+
+  <div class="phase">
+    <h3>Phase 1 : Pré-engagement</h3>
+    <ul>
+      <li>Définir le périmètre (scope)</li>
+      <li>Signer les autorisations légales</li>
+      <li>Définir les règles d'engagement</li>
+      <li>Planifier les créneaux horaires</li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <h3>Phase 2 : Reconnaissance</h3>
+    <ul>
+      <li><strong>Passive</strong> : OSINT, Whois, Google Dorks, Shodan</li>
+      <li><strong>Active</strong> : Scan de ports, fingerprinting</li>
+      <li>Outils : Nmap, theHarvester, Maltego, Recon-ng</li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <h3>Phase 3 : Scan & Énumération</h3>
+    <ul>
+      <li>Scan de vulnérabilités : Nessus, OpenVAS, Qualys</li>
+      <li>Énumération des services</li>
+      <li>Identification des versions logicielles</li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <h3>Phase 4 : Exploitation</h3>
+    <ul>
+      <li>Exploitation des vulnérabilités trouvées</li>
+      <li>Outils : Metasploit, Burp Suite, SQLmap</li>
+      <li>Objectif : Obtenir un accès initial</li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <h3>Phase 5 : Post-Exploitation</h3>
+    <ul>
+      <li>Élévation de privilèges</li>
+      <li>Mouvement latéral</li>
+      <li>Persistance</li>
+      <li>Exfiltration de données (preuve de concept)</li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <h3>Phase 6 : Reporting</h3>
+    <ul>
+      <li>Rapport exécutif (pour la direction)</li>
+      <li>Rapport technique détaillé</li>
+      <li>Preuves (captures, logs)</li>
+      <li>Recommandations de remédiation</li>
+    </ul>
+  </div>
+
+  <h2>3. Outils essentiels</h2>
+  <table>
+    <tr><th>Catégorie</th><th>Outils</th></tr>
+    <tr><td>Reconnaissance</td><td>Nmap, theHarvester, Shodan, Maltego</td></tr>
+    <tr><td>Vulnérabilités</td><td>Nessus, OpenVAS, Nikto</td></tr>
+    <tr><td>Exploitation</td><td>Metasploit, Cobalt Strike</td></tr>
+    <tr><td>Web</td><td>Burp Suite, OWASP ZAP, SQLmap</td></tr>
+    <tr><td>Mots de passe</td><td>Hashcat, John the Ripper, Hydra</td></tr>
+    <tr><td>Post-exploit</td><td>Mimikatz, BloodHound, Impacket</td></tr>
+  </table>
+
+  <h2>4. CVSS (Common Vulnerability Scoring System)</h2>
+  <table>
+    <tr><th>Score</th><th>Sévérité</th><th>Couleur</th></tr>
+    <tr><td>0.0</td><td>None</td><td>⚪</td></tr>
+    <tr><td>0.1 - 3.9</td><td>Low</td><td>🟢</td></tr>
+    <tr><td>4.0 - 6.9</td><td>Medium</td><td>🟡</td></tr>
+    <tr><td>7.0 - 8.9</td><td>High</td><td>🟠</td></tr>
+    <tr><td>9.0 - 10.0</td><td>Critical</td><td>🔴</td></tr>
+  </table>
+
+  <h2>5. Aspects légaux</h2>
+  <ul>
+    <li><strong>Autorisation écrite obligatoire</strong></li>
+    <li>Définir clairement le périmètre</li>
+    <li>Ne pas tester les systèmes hors scope</li>
+    <li>Respecter les horaires convenus</li>
+    <li>Confidentialité des résultats</li>
+    <li>Suppression des données post-test</li>
+  </ul>
+
+  <div class="highlight">
+    <strong>🔑 Points clés :</strong>
+    <ul>
+      <li>Toujours avoir une autorisation écrite avant de tester</li>
+      <li>La reconnaissance est 80% du travail</li>
+      <li>Documenter chaque action pour le rapport</li>
+      <li>Le rapport doit être actionnable (recommandations claires)</li>
+    </ul>
+  </div>
+</div>
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+</script>
+</body>
+</html>
+
+

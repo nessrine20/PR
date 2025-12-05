@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction à l'Intelligence Artificielle</title>
+<link rel="stylesheet" href="../assets/css/global.css">
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+  .top-btn { padding: 8px 14px; background: #fff; border: none; border-radius: 10px; font-weight: bold; color: #6a34cc; cursor: pointer; transition: 0.25s; }
+  .top-btn:hover { background: #f3e7ff; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  h3 { color: #6a34cc; }
+  .highlight { background: #f0e6ff; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #6a34cc; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  th { background: #e9d6ff; color: #4a2db6; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2, .dark h3 { color: #d4b4ff; }
+  .dark .highlight { background: #3a3a3a; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">🤖 Introduction à l'IA</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../ia.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+<div class="container">
+  <h1>🤖 Introduction à l'Intelligence Artificielle</h1>
+
+  <h2>Qu'est-ce que l'Intelligence Artificielle ?</h2>
+  <p>L'<strong>Intelligence Artificielle (IA)</strong> est un domaine de l'informatique qui vise à créer des machines capables de simuler l'intelligence humaine : apprendre, raisonner, percevoir et prendre des décisions.</p>
+
+  <h2>Historique</h2>
+  <ul>
+    <li><strong>1950</strong> : Alan Turing propose le "Test de Turing"</li>
+    <li><strong>1956</strong> : Conférence de Dartmouth - naissance officielle de l'IA</li>
+    <li><strong>1997</strong> : Deep Blue (IBM) bat Kasparov aux échecs</li>
+    <li><strong>2012</strong> : AlexNet révolutionne la vision par ordinateur</li>
+    <li><strong>2016</strong> : AlphaGo bat le champion du monde de Go</li>
+    <li><strong>2022</strong> : ChatGPT démocratise l'IA générative</li>
+  </ul>
+
+  <h2>Types d'Intelligence Artificielle</h2>
+  <table>
+    <tr><th>Type</th><th>Description</th><th>Exemples</th></tr>
+    <tr>
+      <td><strong>IA Faible (Narrow AI)</strong></td>
+      <td>Spécialisée dans une tâche spécifique</td>
+      <td>Siri, recommandations Netflix, détection de spam</td>
+    </tr>
+    <tr>
+      <td><strong>IA Forte (General AI)</strong></td>
+      <td>Intelligence comparable à l'humain (théorique)</td>
+      <td>N'existe pas encore</td>
+    </tr>
+    <tr>
+      <td><strong>Super IA</strong></td>
+      <td>Dépasse l'intelligence humaine (hypothétique)</td>
+      <td>Science-fiction</td>
+    </tr>
+  </table>
+
+  <h2>Sous-domaines de l'IA</h2>
+  <ul>
+    <li><strong>Machine Learning</strong> : Apprentissage à partir des données</li>
+    <li><strong>Deep Learning</strong> : Réseaux de neurones profonds</li>
+    <li><strong>NLP</strong> : Traitement du langage naturel (ChatGPT, traduction)</li>
+    <li><strong>Computer Vision</strong> : Analyse d'images et vidéos</li>
+    <li><strong>Robotique</strong> : Machines autonomes</li>
+    <li><strong>Systèmes experts</strong> : Bases de règles et raisonnement</li>
+  </ul>
+
+  <h2>Applications de l'IA</h2>
+  <table>
+    <tr><th>Domaine</th><th>Applications</th></tr>
+    <tr><td>Santé</td><td>Diagnostic médical, découverte de médicaments</td></tr>
+    <tr><td>Finance</td><td>Détection de fraude, trading algorithmique</td></tr>
+    <tr><td>Transport</td><td>Voitures autonomes, optimisation de routes</td></tr>
+    <tr><td>Commerce</td><td>Recommandations, chatbots, prévision de stocks</td></tr>
+    <tr><td>Sécurité</td><td>Reconnaissance faciale, détection d'intrusions</td></tr>
+  </table>
+
+  <div class="highlight">
+    <strong>🔑 À retenir :</strong>
+    <ul>
+      <li>L'IA simule l'intelligence humaine par des algorithmes</li>
+      <li>L'IA actuelle est "faible" (spécialisée)</li>
+      <li>Le Machine Learning et le Deep Learning sont les techniques clés</li>
+      <li>L'IA transforme tous les secteurs d'activité</li>
+    </ul>
+  </div>
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+  document.getElementById("toggleLang").onclick = function() {
+    alert("English version coming soon!");
+  };
+</script>
+</body>
+</html>
+
+

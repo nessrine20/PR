@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TD - Réseaux de Neurones</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .question { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .question-num { color: #6a34cc; font-weight: bold; font-size: 18px; }
+  .answer { background: #d4edda; padding: 15px; border-radius: 10px; margin-top: 15px; display: none; border-left: 4px solid #28a745; }
+  .show-answer { background: #6a34cc; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; margin: 15px 0; font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📝 TD - Réseaux de Neurones</div>
+  <a href="../ia.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>📝 TD : Réseaux de Neurones</h1>
+
+  <h2>Partie 1 : Concepts</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1</p>
+    <p>Expliquez le rôle de la fonction d'activation. Pourquoi est-elle nécessaire ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <p>La fonction d'activation introduit la <strong>non-linéarité</strong> dans le réseau.</p>
+      <p><strong>Sans elle :</strong> Un réseau de N couches linéaires = 1 seule transformation linéaire (inutile d'empiler les couches)</p>
+      <p><strong>Avec elle :</strong> Le réseau peut apprendre des frontières de décision complexes et des patterns non-linéaires.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2</p>
+    <p>Pourquoi ReLU est-elle préférée à Sigmoid pour les couches cachées ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ul>
+        <li><strong>Vanishing gradient</strong> : Sigmoid sature (dérivée → 0), bloque l'apprentissage</li>
+        <li><strong>Calcul</strong> : ReLU (max(0,x)) est beaucoup plus rapide</li>
+        <li><strong>Sparsité</strong> : ReLU met à 0 les valeurs négatives → réseau plus sparse</li>
+        <li><strong>Convergence</strong> : ReLU converge plus rapidement</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3</p>
+    <p>Qu'est-ce que l'overfitting ? Comment le détecter et le prévenir ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <p><strong>Overfitting :</strong> Le modèle mémorise les données d'entraînement au lieu de généraliser.</p>
+      <p><strong>Détection :</strong></p>
+      <ul>
+        <li>Loss d'entraînement diminue mais loss de validation augmente</li>
+        <li>Écart important entre accuracy train et validation</li>
+      </ul>
+      <p><strong>Prévention :</strong></p>
+      <ul>
+        <li>Dropout</li>
+        <li>Régularisation L1/L2</li>
+        <li>Early Stopping</li>
+        <li>Data Augmentation</li>
+        <li>Plus de données</li>
+        <li>Réduire la complexité du modèle</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Partie 2 : Architecture</h2>
+
+  <div class="question">
+    <p class="question-num">Question 4</p>
+    <p>Pour classifier des images de chiffres manuscrits (MNIST, 28×28 pixels, 10 classes), proposez une architecture.</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <div class="code-block">model = Sequential([
+    Flatten(input_shape=(28, 28)),    # 784 entrées
+    Dense(128, activation='relu'),     # Couche cachée 1
+    Dropout(0.2),                       # Régularisation
+    Dense(64, activation='relu'),      # Couche cachée 2
+    Dropout(0.2),
+    Dense(10, activation='softmax')    # 10 classes
+])</div>
+      <p><strong>Justification :</strong></p>
+      <ul>
+        <li>Flatten : Image 2D → vecteur 1D (784 pixels)</li>
+        <li>Dense 128/64 : Couches cachées pour extraire les features</li>
+        <li>Dropout : Évite l'overfitting</li>
+        <li>Softmax : Probabilités pour 10 classes</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5</p>
+    <p>Quelle loss et quel optimiseur utiliseriez-vous pour ce problème ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <div class="code-block">model.compile(
+    optimizer='adam',
+    loss='sparse_categorical_crossentropy',
+    metrics=['accuracy']
+)</div>
+      <ul>
+        <li><strong>Loss</strong> : sparse_categorical_crossentropy (classification multi-classes, labels entiers)</li>
+        <li><strong>Optimiseur</strong> : Adam (adaptatif, performant par défaut)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Calculs</h2>
+
+  <div class="question">
+    <p class="question-num">Question 6</p>
+    <p>Un réseau a : Input(100) → Dense(64) → Dense(32) → Dense(10). Combien de paramètres ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <p>Pour chaque couche Dense : <strong>params = (input × output) + output</strong> (poids + biais)</p>
+      <ul>
+        <li>Couche 1 : (100 × 64) + 64 = <strong>6,464</strong></li>
+        <li>Couche 2 : (64 × 32) + 32 = <strong>2,080</strong></li>
+        <li>Couche 3 : (32 × 10) + 10 = <strong>330</strong></li>
+      </ul>
+      <p><strong>Total : 8,874 paramètres</strong></p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 7</p>
+    <p>Calculez la sortie d'un neurone avec :</p>
+    <ul>
+      <li>Entrées : x₁=2, x₂=3</li>
+      <li>Poids : w₁=0.5, w₂=-0.3</li>
+      <li>Biais : b=0.1</li>
+      <li>Activation : ReLU</li>
+    </ul>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ol>
+        <li>Somme pondérée : z = (2×0.5) + (3×(-0.3)) + 0.1 = 1 - 0.9 + 0.1 = <strong>0.2</strong></li>
+        <li>ReLU(0.2) = max(0, 0.2) = <strong>0.2</strong></li>
+      </ol>
+      <p><strong>Sortie : 0.2</strong></p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+

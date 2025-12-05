@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TD - Droit du Travail</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .question { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .question-num { color: #6a34cc; font-weight: bold; font-size: 18px; }
+  .answer { background: #d4edda; padding: 15px; border-radius: 10px; margin-top: 15px; display: none; border-left: 4px solid #28a745; }
+  .show-answer { background: #6a34cc; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+  .case-study { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📝 TD - Droit du Travail</div>
+  <a href="../culture.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>📝 TD : Droit du Travail</h1>
+
+  <h2>Partie 1 : QCM</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1</p>
+    <p>Quel élément distingue principalement le contrat de travail des autres contrats ?</p>
+    <p>a) La rémunération &nbsp; b) Le lien de subordination &nbsp; c) La durée &nbsp; d) L'écrit</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer"><strong>Réponse : b) Le lien de subordination</strong> - C'est l'élément caractéristique du salariat.</div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2</p>
+    <p>Quelle est la durée maximale d'un CDD, renouvellements compris ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer"><strong>Réponse : 18 mois</strong> (24 mois dans certains cas exceptionnels)</div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3</p>
+    <p>Combien de jours de congés payés acquiert-on par mois de travail effectif ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer"><strong>Réponse : 2,5 jours ouvrables</strong>, soit 30 jours par an (5 semaines)</div>
+  </div>
+
+  <h2>Partie 2 : Cas Pratiques</h2>
+
+  <div class="case-study">
+    <strong>📋 Cas n°1 - Le CDD litigieux</strong><br><br>
+    Entreprise TechSoft embauche Marie en CDD de 6 mois pour "accroissement temporaire d'activité". À la fin du CDD, l'entreprise renouvelle le contrat 2 fois. Marie travaille depuis 20 mois.
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4</p>
+    <p>Ce CDD est-il régulier ? Quels sont les recours de Marie ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <p><strong>Non, le CDD n'est pas régulier :</strong></p>
+      <ul>
+        <li>Dépassement de la durée maximale de 18 mois</li>
+        <li>Maximum 2 renouvellements autorisés (mais durée totale dépassée)</li>
+      </ul>
+      <p><strong>Recours de Marie :</strong></p>
+      <ul>
+        <li>Demander la requalification en CDI devant les Prud'hommes</li>
+        <li>Obtenir une indemnité de requalification (minimum 1 mois de salaire)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-study">
+    <strong>📋 Cas n°2 - La période d'essai</strong><br><br>
+    Paul, embauché comme développeur (statut cadre), est licencié au bout de 3 mois sans motif particulier. Son contrat prévoyait une période d'essai de 4 mois.
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5</p>
+    <p>L'employeur peut-il rompre la période d'essai sans motif ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <p><strong>Oui, pendant la période d'essai :</strong></p>
+      <ul>
+        <li>Rupture libre sans justification</li>
+        <li>Pas de procédure de licenciement</li>
+        <li><strong>MAIS</strong> respect du délai de prévenance obligatoire (24h à 1 mois selon ancienneté)</li>
+        <li>La rupture ne doit pas être abusive (discrimination, motif illicite)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-study">
+    <strong>📋 Cas n°3 - Les heures supplémentaires</strong><br><br>
+    Sophie travaille 42 heures par semaine depuis 3 mois. Son employeur refuse de les payer en heures supplémentaires car "c'était prévu dans le contrat".
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 6</p>
+    <p>L'employeur a-t-il raison ? Que doit faire Sophie ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <p><strong>L'employeur a tort :</strong></p>
+      <ul>
+        <li>La durée légale est de 35h/semaine</li>
+        <li>7 heures supplémentaires/semaine doivent être majorées</li>
+        <li>Un contrat ne peut pas déroger défavorablement à la loi</li>
+      </ul>
+      <p><strong>Sophie peut :</strong></p>
+      <ul>
+        <li>Demander le paiement des heures (3 ans de prescription)</li>
+        <li>Saisir l'inspection du travail</li>
+        <li>Saisir les Prud'hommes si refus persistant</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+

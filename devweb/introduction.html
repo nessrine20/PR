@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction au Développement Web</title>
+<link rel="stylesheet" href="../assets/css/global.css">
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+  .top-btn { padding: 8px 14px; background: #fff; border: none; border-radius: 10px; font-weight: bold; color: #6a34cc; cursor: pointer; transition: 0.25s; }
+  .top-btn:hover { background: #f3e7ff; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .highlight { background: #f0e6ff; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #6a34cc; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  th { background: #e9d6ff; color: #4a2db6; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2 { color: #d4b4ff; }
+  .dark .highlight { background: #3a3a3a; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">💻 Introduction au Développement Web</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../developpement_web.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+<div class="container">
+  <h1>💻 Introduction au Développement Web</h1>
+
+  <h2>Qu'est-ce que le développement web ?</h2>
+  <p>Le <strong>développement web</strong> désigne la création de sites et applications accessibles via un navigateur. Il englobe le frontend (interface utilisateur), le backend (logique serveur) et les bases de données.</p>
+
+  <h2>Architecture Client-Serveur</h2>
+  <div class="highlight">
+    <ul>
+      <li><strong>Client</strong> : Le navigateur (Chrome, Firefox) qui affiche le site</li>
+      <li><strong>Serveur</strong> : La machine qui héberge le site et traite les requêtes</li>
+      <li><strong>HTTP/HTTPS</strong> : Protocole de communication web</li>
+      <li><strong>Requête/Réponse</strong> : Le client demande, le serveur répond</li>
+    </ul>
+  </div>
+
+  <h2>Frontend vs Backend</h2>
+  <table>
+    <tr><th>Frontend</th><th>Backend</th></tr>
+    <tr><td>Ce que l'utilisateur voit</td><td>Logique invisible côté serveur</td></tr>
+    <tr><td>HTML, CSS, JavaScript</td><td>PHP, Python, Node.js, Java</td></tr>
+    <tr><td>S'exécute dans le navigateur</td><td>S'exécute sur le serveur</td></tr>
+    <tr><td>React, Vue, Angular</td><td>Laravel, Django, Express</td></tr>
+  </table>
+
+  <h2>Technologies essentielles</h2>
+
+  <h3>Frontend</h3>
+  <ul>
+    <li><strong>HTML</strong> : Structure de la page</li>
+    <li><strong>CSS</strong> : Style et mise en forme</li>
+    <li><strong>JavaScript</strong> : Interactivité</li>
+    <li><strong>Frameworks</strong> : React, Vue.js, Angular</li>
+  </ul>
+
+  <h3>Backend</h3>
+  <ul>
+    <li><strong>PHP</strong> : Langage serveur classique</li>
+    <li><strong>Python</strong> : Django, Flask</li>
+    <li><strong>JavaScript</strong> : Node.js, Express</li>
+    <li><strong>Bases de données</strong> : MySQL, PostgreSQL, MongoDB</li>
+  </ul>
+
+  <h2>Outils du développeur</h2>
+  <ul>
+    <li><strong>Éditeur</strong> : VS Code, Sublime Text</li>
+    <li><strong>Navigateur DevTools</strong> : Inspection du code</li>
+    <li><strong>Git</strong> : Gestion de versions</li>
+    <li><strong>Terminal</strong> : Commandes et scripts</li>
+    <li><strong>WAMP/XAMPP</strong> : Serveur local</li>
+  </ul>
+
+  <div class="highlight">
+    <strong>🔑 À retenir :</strong>
+    <ul>
+      <li>Le web fonctionne en client-serveur via HTTP</li>
+      <li>Frontend = interface, Backend = logique serveur</li>
+      <li>HTML + CSS + JavaScript = trio fondamental du web</li>
+      <li>Les frameworks accélèrent le développement</li>
+    </ul>
+  </div>
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+  document.getElementById("toggleLang").onclick = function() {
+    alert("English version coming soon!");
+  };
+</script>
+</body>
+</html>
+
+

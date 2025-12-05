@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP - Analyse de Malware</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .objective { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+  .step { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .step-num { background: #6a34cc; color: white; padding: 5px 12px; border-radius: 50%; font-weight: bold; margin-right: 10px; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; margin: 15px 0; overflow-x: auto; }
+  .warning { background: #f8d7da; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #dc3545; }
+  .success { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">🔧 TP - Analyse de Malware</div>
+  <a href="../cyberops.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>🔬 TP : Analyse de Malware (Sandbox)</h1>
+
+  <div class="warning">
+    <strong>⚠️ AVERTISSEMENT SÉCURITÉ</strong><br>
+    Ce TP doit être réalisé dans un environnement isolé (VM). Ne jamais exécuter de malware sur une machine de production !
+  </div>
+
+  <div class="objective">
+    <strong>🎯 Objectifs :</strong>
+    <ul>
+      <li>Configurer un environnement d'analyse sécurisé</li>
+      <li>Utiliser des outils d'analyse statique</li>
+      <li>Observer le comportement d'un malware</li>
+      <li>Identifier les IOC (Indicators of Compromise)</li>
+    </ul>
+    <strong>⏱️ Durée :</strong> 3h
+  </div>
+
+  <h2>Partie 1 : Environnement de travail</h2>
+
+  <div class="step">
+    <p><span class="step-num">1</span><strong>Préparer la VM d'analyse</strong></p>
+    <ul>
+      <li>Télécharger REMnux ou FlareVM</li>
+      <li>Désactiver le réseau ou utiliser un réseau isolé</li>
+      <li>Créer un snapshot "clean"</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">2</span><strong>Outils essentiels</strong></p>
+    <ul>
+      <li><strong>strings</strong> : Extraire les chaînes de caractères</li>
+      <li><strong>file</strong> : Identifier le type de fichier</li>
+      <li><strong>md5sum/sha256sum</strong> : Calculer les hash</li>
+      <li><strong>VirusTotal</strong> : Analyse en ligne</li>
+    </ul>
+  </div>
+
+  <h2>Partie 2 : Analyse statique</h2>
+
+  <div class="step">
+    <p><span class="step-num">3</span><strong>Identifier le fichier</strong></p>
+    <div class="code-block"># Type de fichier
+file sample.exe
+
+# Hash MD5 et SHA256
+md5sum sample.exe
+sha256sum sample.exe
+
+# Rechercher le hash sur VirusTotal
+# https://www.virustotal.com</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">4</span><strong>Extraire les strings</strong></p>
+    <div class="code-block"># Strings ASCII
+strings sample.exe > strings_ascii.txt
+
+# Strings Unicode
+strings -el sample.exe > strings_unicode.txt
+
+# Rechercher des patterns
+grep -E "(http|ftp|\.exe|\.dll|password)" strings_ascii.txt</div>
+    <p><strong>Que chercher ?</strong> URLs, IPs, chemins de fichiers, clés de registre, noms de fonctions API suspectes</p>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">5</span><strong>Analyse avec PEStudio (Windows)</strong></p>
+    <ul>
+      <li>Ouvrir le fichier dans PEStudio</li>
+      <li>Vérifier les sections (entropy élevée = possible packing)</li>
+      <li>Analyser les imports API (CreateRemoteThread, VirtualAlloc...)</li>
+      <li>Vérifier les indicateurs blacklistés</li>
+    </ul>
+  </div>
+
+  <h2>Partie 3 : Analyse dynamique</h2>
+
+  <div class="step">
+    <p><span class="step-num">6</span><strong>Préparer le monitoring</strong></p>
+    <div class="code-block"># Lancer Procmon (Process Monitor)
+# Filtrer par le nom du processus
+
+# Lancer Wireshark pour capturer le trafic réseau
+# Utiliser FakeNet-NG pour simuler des services</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">7</span><strong>Exécuter et observer</strong></p>
+    <ul>
+      <li>Exécuter le sample</li>
+      <li>Observer les processus créés</li>
+      <li>Noter les fichiers créés/modifiés</li>
+      <li>Capturer les connexions réseau</li>
+    </ul>
+  </div>
+
+  <h2>Partie 4 : Rapport d'analyse</h2>
+
+  <div class="success">
+    <strong>📝 Livrable - Rapport contenant :</strong>
+    <ol>
+      <li><strong>Métadonnées</strong> : Hash MD5/SHA256, taille, type</li>
+      <li><strong>Détection</strong> : Score VirusTotal, noms de détection</li>
+      <li><strong>Comportement</strong> : Fichiers, registre, réseau</li>
+      <li><strong>IOC identifiés</strong> : IPs, URLs, hash, chemins</li>
+      <li><strong>Classification</strong> : Type de malware probable</li>
+      <li><strong>Recommandations</strong> : Actions de remédiation</li>
+    </ol>
+  </div>
+</div>
+</body>
+</html>
+
+

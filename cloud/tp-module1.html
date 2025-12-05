@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP - Créer une VM sur le Cloud</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .objective { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+  .step { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .step-num { background: #6a34cc; color: white; padding: 5px 12px; border-radius: 50%; font-weight: bold; margin-right: 10px; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; margin: 15px 0; overflow-x: auto; }
+  .warning { background: #fff3cd; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #ffc107; }
+  .success { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">🔧 TP - Créer une VM Cloud</div>
+  <a href="../cloud.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>🖥️ TP : Créer une Machine Virtuelle sur AWS</h1>
+
+  <div class="objective">
+    <strong>🎯 Objectifs :</strong>
+    <ul>
+      <li>Créer un compte AWS (Free Tier)</li>
+      <li>Lancer une instance EC2</li>
+      <li>Se connecter en SSH</li>
+      <li>Installer un serveur web</li>
+    </ul>
+    <strong>⏱️ Durée :</strong> 2h
+  </div>
+
+  <div class="warning">
+    <strong>⚠️ Important :</strong> AWS Free Tier offre 750h/mois d'instance t2.micro gratuitement pendant 12 mois. Pensez à arrêter vos instances après le TP !
+  </div>
+
+  <h2>Partie 1 : Création du compte AWS</h2>
+
+  <div class="step">
+    <p><span class="step-num">1</span><strong>Créer un compte AWS</strong></p>
+    <ul>
+      <li>Aller sur <a href="https://aws.amazon.com" target="_blank">aws.amazon.com</a></li>
+      <li>Cliquer sur "Créer un compte AWS"</li>
+      <li>Renseigner email, mot de passe, informations de facturation</li>
+      <li>Une carte bancaire est requise (pas de prélèvement si Free Tier)</li>
+    </ul>
+  </div>
+
+  <h2>Partie 2 : Lancer une instance EC2</h2>
+
+  <div class="step">
+    <p><span class="step-num">2</span><strong>Accéder à EC2</strong></p>
+    <ul>
+      <li>Se connecter à la Console AWS</li>
+      <li>Rechercher "EC2" dans la barre de recherche</li>
+      <li>Cliquer sur "Instances" → "Lancer une instance"</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">3</span><strong>Configurer l'instance</strong></p>
+    <ul>
+      <li><strong>Nom :</strong> MonServeurWeb</li>
+      <li><strong>AMI :</strong> Amazon Linux 2023 (Free Tier eligible)</li>
+      <li><strong>Type :</strong> t2.micro (Free Tier)</li>
+      <li><strong>Paire de clés :</strong> Créer une nouvelle paire, télécharger le fichier .pem</li>
+      <li><strong>Groupe de sécurité :</strong> Autoriser SSH (22) et HTTP (80)</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">4</span><strong>Lancer l'instance</strong></p>
+    <p>Cliquer sur "Lancer l'instance" et attendre que l'état passe à "Running"</p>
+  </div>
+
+  <h2>Partie 3 : Connexion SSH</h2>
+
+  <div class="step">
+    <p><span class="step-num">5</span><strong>Se connecter à l'instance</strong></p>
+    <div class="code-block"># Modifier les permissions de la clé (Linux/Mac)
+chmod 400 ma-cle.pem
+
+# Se connecter
+ssh -i "ma-cle.pem" ec2-user@IP_PUBLIQUE</div>
+    <p>Sur Windows, utiliser PuTTY ou le terminal Windows avec OpenSSH.</p>
+  </div>
+
+  <h2>Partie 4 : Installer un serveur web</h2>
+
+  <div class="step">
+    <p><span class="step-num">6</span><strong>Installer Apache</strong></p>
+    <div class="code-block"># Mettre à jour le système
+sudo yum update -y
+
+# Installer Apache
+sudo yum install httpd -y
+
+# Démarrer Apache
+sudo systemctl start httpd
+sudo systemctl enable httpd
+
+# Vérifier le statut
+sudo systemctl status httpd</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">7</span><strong>Créer une page web</strong></p>
+    <div class="code-block"># Créer une page HTML
+sudo nano /var/www/html/index.html</div>
+    <p>Contenu :</p>
+    <div class="code-block">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Mon serveur Cloud&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;🎉 Bravo ! Votre serveur fonctionne !&lt;/h1&gt;
+  &lt;p&gt;Hébergé sur AWS EC2&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">8</span><strong>Tester</strong></p>
+    <p>Ouvrir un navigateur et aller sur : <code>http://IP_PUBLIQUE_DE_VOTRE_INSTANCE</code></p>
+  </div>
+
+  <h2>Partie 5 : Nettoyage</h2>
+
+  <div class="step">
+    <p><span class="step-num">9</span><strong>Arrêter ou terminer l'instance</strong></p>
+    <ul>
+      <li><strong>Arrêter :</strong> L'instance est préservée, pas de facturation compute</li>
+      <li><strong>Terminer :</strong> L'instance est supprimée définitivement</li>
+    </ul>
+    <p>Dans la console EC2 : Sélectionner l'instance → Actions → État de l'instance → Arrêter/Résilier</p>
+  </div>
+
+  <div class="success">
+    <strong>✅ Livrables :</strong>
+    <ol>
+      <li>Capture d'écran de l'instance en cours d'exécution</li>
+      <li>Capture de la connexion SSH réussie</li>
+      <li>Capture de la page web accessible via navigateur</li>
+      <li>Estimation du coût mensuel si l'instance tournait 24/7</li>
+    </ol>
+  </div>
+</div>
+</body>
+</html>
+
+

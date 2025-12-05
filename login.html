@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>login</title>
-  <link rel="stylesheet" href="login.css" />
+  <link rel="stylesheet" href="assets/css/login.css" />
 </head>
 <body>
   <div class="main-container">
@@ -33,25 +33,29 @@
       </div>
 
       <!-- Partie droite (formulaire) -->
-      <div class="form-section">
 
-        <form>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="votre.email@gmail.com" required>
-          </div>
+<div class="form-section">
 
-          <div class="form-group">
-            <label for="password">Mot de passe</label>
-            <input type="password" id="password" placeholder="••••••••" required>
-          </div>
+  <form class="login-form" method="POST" action="login.php">
+    <input type="hidden" id="expected_role" name="expected_role" value="etudiant">
 
-          <button type="submit" class="btn">Connexion</button>
-        </form>
-      </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="votre.email@gmail.com" required>
     </div>
-  </div>
 
-  <script src="main.js"></script>
+    <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" name="password" placeholder="••••••••" required>
+    </div>
+
+    <button type="submit" class="btn">Connexion</button>
+</form>
+
+
+</div>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
+

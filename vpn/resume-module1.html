@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résumé - Protocoles VPN</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .highlight { background: #f0e6ff; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #6a34cc; }
+  .warning { background: #fff3cd; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #ffc107; }
+  .success { background: #d4edda; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #28a745; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  th { background: #e9d6ff; color: #4a2db6; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📘 Résumé - Protocoles VPN</div>
+  <a href="../vpn.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>🔐 Protocoles VPN</h1>
+
+  <h2>1. Qu'est-ce qu'un VPN ?</h2>
+  <div class="highlight">
+    <strong>VPN (Virtual Private Network)</strong> = Tunnel sécurisé qui permet de communiquer de manière privée sur un réseau public (Internet).
+  </div>
+
+  <h2>2. Comparatif des protocoles</h2>
+  <table>
+    <tr>
+      <th>Protocole</th>
+      <th>Sécurité</th>
+      <th>Vitesse</th>
+      <th>Recommandation</th>
+    </tr>
+    <tr>
+      <td><strong>PPTP</strong></td>
+      <td>❌ Faible</td>
+      <td>✅ Rapide</td>
+      <td>❌ Obsolète</td>
+    </tr>
+    <tr>
+      <td><strong>L2TP/IPSec</strong></td>
+      <td>✅ Bonne</td>
+      <td>⚠️ Moyenne</td>
+      <td>✅ OK</td>
+    </tr>
+    <tr>
+      <td><strong>OpenVPN</strong></td>
+      <td>✅✅ Excellente</td>
+      <td>✅ Bonne</td>
+      <td>✅✅ Recommandé</td>
+    </tr>
+    <tr>
+      <td><strong>IKEv2/IPSec</strong></td>
+      <td>✅✅ Excellente</td>
+      <td>✅✅ Très rapide</td>
+      <td>✅✅ Mobile</td>
+    </tr>
+    <tr>
+      <td><strong>WireGuard</strong></td>
+      <td>✅✅ Excellente</td>
+      <td>✅✅✅ Ultra rapide</td>
+      <td>✅✅✅ Moderne</td>
+    </tr>
+  </table>
+
+  <h2>3. PPTP (Point-to-Point Tunneling Protocol)</h2>
+  <div class="warning">
+    <strong>⚠️ OBSOLÈTE - Ne plus utiliser !</strong>
+  </div>
+  <ul>
+    <li>Port : 1723 (TCP)</li>
+    <li>Chiffrement : MPPE (faible)</li>
+    <li>Vulnérabilités connues depuis 2012</li>
+  </ul>
+
+  <h2>4. L2TP/IPSec</h2>
+  <ul>
+    <li>L2TP = tunnel (pas de chiffrement)</li>
+    <li>IPSec = chiffrement</li>
+    <li>Ports : UDP 500, 1701, 4500</li>
+    <li>Double encapsulation = plus lent</li>
+  </ul>
+
+  <h2>5. OpenVPN</h2>
+  <div class="success">
+    <strong>✅ Standard de l'industrie</strong>
+  </div>
+  <ul>
+    <li>Open source</li>
+    <li>SSL/TLS (OpenSSL)</li>
+    <li>Port configurable (443 pour bypass firewall)</li>
+    <li>UDP ou TCP</li>
+    <li>Hautement configurable</li>
+  </ul>
+
+  <h2>6. IKEv2/IPSec</h2>
+  <ul>
+    <li>Excellente stabilité mobile (MOBIKE)</li>
+    <li>Reconnexion rapide</li>
+    <li>Natif sur iOS, Windows, macOS</li>
+    <li>Ports : UDP 500, 4500</li>
+  </ul>
+
+  <h2>7. WireGuard</h2>
+  <div class="success">
+    <strong>✅ Le plus moderne et performant</strong>
+  </div>
+  <ul>
+    <li>Code minimal (~4000 lignes vs 100 000 pour OpenVPN)</li>
+    <li>Cryptographie moderne (ChaCha20, Curve25519)</li>
+    <li>Très rapide et léger</li>
+    <li>Intégré au kernel Linux</li>
+    <li>Port : UDP 51820</li>
+  </ul>
+
+  <h2>8. Types de VPN</h2>
+  <table>
+    <tr><th>Type</th><th>Usage</th></tr>
+    <tr><td><strong>Site-to-Site</strong></td><td>Connecter 2 réseaux d'entreprise</td></tr>
+    <tr><td><strong>Remote Access</strong></td><td>Télétravailleur → réseau entreprise</td></tr>
+    <tr><td><strong>Client VPN</strong></td><td>Utilisateur → Internet (anonymat)</td></tr>
+  </table>
+
+  <div class="highlight">
+    <strong>🔑 Points clés :</strong>
+    <ul>
+      <li>PPTP = ❌ Jamais</li>
+      <li>OpenVPN = ✅ Valeur sûre</li>
+      <li>WireGuard = ✅✅ Meilleur choix moderne</li>
+      <li>IKEv2 = ✅ Idéal pour mobile</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
+
+

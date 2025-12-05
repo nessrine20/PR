@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TD - Protocoles de Sécurité WiFi</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar {
+    background: linear-gradient(135deg, #c59bff, #b07cff);
+    padding: 15px 30px; display: flex; justify-content: space-between;
+    align-items: center; color: white; position: sticky; top: 0; z-index: 10;
+  }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn {
+    padding: 8px 16px; background: #fff; color: #6a34cc;
+    border-radius: 8px; font-weight: bold; text-decoration: none;
+  }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .question { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .question-num { color: #6a34cc; font-weight: bold; font-size: 18px; }
+  .choices { margin: 15px 0; padding-left: 20px; }
+  .choices label { display: block; margin: 10px 0; cursor: pointer; padding: 10px; border-radius: 8px; transition: 0.2s; }
+  .choices label:hover { background: #f0e6ff; }
+  .choices input { margin-right: 10px; }
+  .answer { background: #d4edda; padding: 15px; border-radius: 10px; margin-top: 15px; display: none; border-left: 4px solid #28a745; }
+  .show-answer { background: #6a34cc; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-top: 10px; }
+  .show-answer:hover { background: #5420a5; }
+  .scenario { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-title">📝 TD - Module 1</div>
+  <a href="../securite.html" class="back-btn">← Retour au cours</a>
+</div>
+
+<div class="container">
+  <h1>📝 TD : Protocoles de Sécurité WiFi</h1>
+  
+  <h2>Partie 1 : QCM</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1</p>
+    <p>Quel protocole de sécurité WiFi utilise le chiffrement RC4 avec un vecteur d'initialisation de 24 bits ?</p>
+    <div class="choices">
+      <label><input type="radio" name="q1" value="a"> a) WPA</label>
+      <label><input type="radio" name="q1" value="b"> b) WEP</label>
+      <label><input type="radio" name="q1" value="c"> c) WPA2</label>
+      <label><input type="radio" name="q1" value="d"> d) WPA3</label>
+    </div>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <strong>Réponse : b) WEP</strong><br>
+      WEP utilise RC4 avec un IV de seulement 24 bits, ce qui le rend vulnérable car l'IV se répète rapidement.
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2</p>
+    <p>Quelle est la principale amélioration de WPA3 par rapport à WPA2 ?</p>
+    <div class="choices">
+      <label><input type="radio" name="q2" value="a"> a) Utilisation de TKIP</label>
+      <label><input type="radio" name="q2" value="b"> b) SAE (Simultaneous Authentication of Equals)</label>
+      <label><input type="radio" name="q2" value="c"> c) Clé statique</label>
+      <label><input type="radio" name="q2" value="d"> d) IV plus long</label>
+    </div>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <strong>Réponse : b) SAE</strong><br>
+      SAE remplace PSK et empêche les attaques par dictionnaire hors ligne en utilisant un échange de clés plus sécurisé.
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3</p>
+    <p>Quel mode WPA2 est recommandé pour une entreprise avec 500 employés ?</p>
+    <div class="choices">
+      <label><input type="radio" name="q3" value="a"> a) WPA2-Personal</label>
+      <label><input type="radio" name="q3" value="b"> b) WPA2-Enterprise</label>
+      <label><input type="radio" name="q3" value="c"> c) WEP</label>
+      <label><input type="radio" name="q3" value="d"> d) Open (sans mot de passe)</label>
+    </div>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <strong>Réponse : b) WPA2-Enterprise</strong><br>
+      Enterprise utilise un serveur RADIUS pour authentifier chaque utilisateur individuellement. Si un employé quitte l'entreprise, on désactive son compte sans affecter les autres.
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4</p>
+    <p>Quel algorithme de chiffrement est utilisé par WPA2 ?</p>
+    <div class="choices">
+      <label><input type="radio" name="q4" value="a"> a) RC4</label>
+      <label><input type="radio" name="q4" value="b"> b) DES</label>
+      <label><input type="radio" name="q4" value="c"> c) AES-CCMP</label>
+      <label><input type="radio" name="q4" value="d"> d) 3DES</label>
+    </div>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <strong>Réponse : c) AES-CCMP</strong><br>
+      WPA2 utilise AES (Advanced Encryption Standard) avec le mode CCMP (Counter Mode with CBC-MAC Protocol).
+    </div>
+  </div>
+
+  <h2>Partie 2 : Étude de cas</h2>
+
+  <div class="scenario">
+    <strong>📋 Scénario :</strong><br><br>
+    Vous êtes consultant en sécurité pour une PME de 50 employés. Leur réseau WiFi actuel utilise WPA2-Personal avec le mot de passe "entreprise123". Tous les employés connaissent ce mot de passe. Un employé vient de quitter l'entreprise en mauvais termes.
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5</p>
+    <p>Quels sont les risques de sécurité dans cette situation ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <strong>Risques identifiés :</strong>
+      <ul>
+        <li>L'ex-employé connaît toujours le mot de passe WiFi</li>
+        <li>Il peut se connecter depuis le parking ou à proximité</li>
+        <li>Le mot de passe "entreprise123" est faible (mot du dictionnaire + chiffres simples)</li>
+        <li>Avec WPA2-Personal, impossible de révoquer l'accès d'un seul utilisateur</li>
+        <li>Risque d'attaque par dictionnaire sur le handshake</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 6</p>
+    <p>Quelles recommandations donneriez-vous à cette entreprise ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <strong>Recommandations :</strong>
+      <ul>
+        <li><strong>Court terme :</strong> Changer immédiatement le mot de passe WiFi</li>
+        <li><strong>Nouveau mot de passe :</strong> Minimum 16 caractères, aléatoire (ex: "Kj#9mP@2xL!nB5qR")</li>
+        <li><strong>Moyen terme :</strong> Migrer vers WPA2-Enterprise avec serveur RADIUS</li>
+        <li><strong>Gestion des accès :</strong> Chaque employé aura ses propres identifiants</li>
+        <li><strong>Procédure de départ :</strong> Désactiver le compte WiFi lors du départ d'un employé</li>
+        <li><strong>Si possible :</strong> Passer à WPA3 pour une meilleure protection</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Exercice pratique</h2>
+
+  <div class="question">
+    <p class="question-num">Question 7</p>
+    <p>Classez ces mots de passe du plus faible au plus fort :</p>
+    <ol type="A">
+      <li>password123</li>
+      <li>MonChien2024!</li>
+      <li>Xk9#mL2@pQ5n</li>
+      <li>12345678</li>
+    </ol>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <strong>Classement (du plus faible au plus fort) :</strong>
+      <ol>
+        <li><strong>12345678</strong> - Suite de chiffres, très faible</li>
+        <li><strong>password123</strong> - Mot commun + chiffres, très faible</li>
+        <li><strong>MonChien2024!</strong> - Mots + année + symbole, moyen</li>
+        <li><strong>Xk9#mL2@pQ5n</strong> - Aléatoire, mixte, le plus fort</li>
+      </ol>
+      <br>
+      <strong>Note :</strong> Pour WiFi, recommandez minimum 12 caractères aléatoires.
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correction DS 1 - Culture d'Entreprise</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #28a745, #20c997); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+  .top-btn { padding: 8px 14px; background: #fff; border: none; border-radius: 10px; font-weight: bold; color: #28a745; cursor: pointer; }
+  .print-btn { padding: 8px 14px; background: linear-gradient(135deg, #28a745, #20c997); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #28a745; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #28a745; border-bottom: 3px solid #d4edda; padding-bottom: 15px; text-align: center; }
+  h2 { color: #20c997; margin-top: 30px; }
+  .question { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #28a745; }
+  .question-num { color: #28a745; font-weight: bold; font-size: 18px; margin-bottom: 10px; }
+  .answer { background: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; border: 2px solid #28a745; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+  th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+  th { background: #d4edda; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2 { color: #5cdb5c; }
+  .dark .question { background: #2a3a2a; }
+  .dark .answer { background: #3a4a3a; border-color: #5cdb5c; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } .container { box-shadow: none; width: 95%; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">✅ Correction DS 1 - Culture</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../Examens.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>✅ Correction DS 1 - Culture d'Entreprise</h1>
+
+  <h2>Partie 1 : Droit du travail</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1 - Types de contrats (2 pts)</p>
+    <div class="answer">
+      <table>
+        <tr><th>Contrat</th><th>Caractéristiques</th></tr>
+        <tr><td><strong>CDI</strong></td><td>Durée indéterminée, contrat par défaut</td></tr>
+        <tr><td><strong>CDD</strong></td><td>Durée limitée, motif obligatoire, max 18 mois</td></tr>
+        <tr><td><strong>Intérim</strong></td><td>Via agence, missions temporaires</td></tr>
+        <tr><td><strong>Apprentissage</strong></td><td>Formation alternée, jeunes 16-29 ans</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2 - Période d'essai (2 pts)</p>
+    <div class="answer">
+      <p><strong>Définition :</strong> Période permettant d'évaluer les compétences du salarié</p>
+      <table>
+        <tr><th>Catégorie</th><th>Durée initiale</th><th>Renouvelable</th></tr>
+        <tr><td>Ouvriers/Employés</td><td>2 mois</td><td>4 mois max</td></tr>
+        <tr><td>Techniciens/AM</td><td>3 mois</td><td>6 mois max</td></tr>
+        <tr><td>Cadres</td><td>4 mois</td><td>8 mois max</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3 - Rupture de contrat (2 pts)</p>
+    <div class="answer">
+      <ul>
+        <li><strong>Démission :</strong> Initiative du salarié, préavis obligatoire</li>
+        <li><strong>Licenciement :</strong> Initiative employeur, motif nécessaire (économique, faute)</li>
+        <li><strong>Rupture conventionnelle :</strong> Accord mutuel, indemnités, accès chômage</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4 - RGPD (2 pts)</p>
+    <div class="answer">
+      <p><strong>RGPD :</strong> Règlement européen sur la protection des données personnelles</p>
+      <p><strong>Obligations employeur :</strong></p>
+      <ul>
+        <li>Informer les salariés du traitement</li>
+        <li>Limiter la collecte au nécessaire</li>
+        <li>Sécuriser les données</li>
+        <li>Respecter les droits d'accès et de rectification</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Partie 2 : Propriété intellectuelle</h2>
+
+  <div class="question">
+    <p class="question-num">Question 5 - Logiciel salarié (3 pts)</p>
+    <div class="answer">
+      <p><strong>Règle :</strong> Les droits patrimoniaux appartiennent automatiquement à l'employeur (art. L113-9 CPI)</p>
+      <p><strong>Conditions :</strong></p>
+      <ul>
+        <li>Créé dans le cadre des fonctions</li>
+        <li>Ou sur instructions de l'employeur</li>
+      </ul>
+      <p><strong>Droits moraux :</strong> Restent au salarié (paternité)</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 6 - Licences (3 pts)</p>
+    <div class="answer">
+      <table>
+        <tr><th>Type</th><th>Caractéristiques</th><th>Exemples</th></tr>
+        <tr><td><strong>Propriétaire</strong></td><td>Code fermé, usage limité</td><td>Windows, MS Office</td></tr>
+        <tr><td><strong>Open Source (GPL)</strong></td><td>Code ouvert, copyleft</td><td>Linux, WordPress</td></tr>
+        <tr><td><strong>MIT/BSD</strong></td><td>Permissive, peu de restrictions</td><td>React, jQuery</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Éthique</h2>
+
+  <div class="question">
+    <p class="question-num">Question 7 - Responsabilité (3 pts)</p>
+    <div class="answer">
+      <ul>
+        <li><strong>Civile :</strong> Réparation des dommages (bug causant pertes financières)</li>
+        <li><strong>Pénale :</strong> Sanctions pour infractions (accès frauduleux, violation données)</li>
+      </ul>
+      <p><strong>Exemples de risques :</strong></p>
+      <ul>
+        <li>Négligence causant une fuite de données</li>
+        <li>Accès non autorisé à des systèmes</li>
+        <li>Violation du secret professionnel</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 8 - Découverte de faille (3 pts)</p>
+    <div class="answer">
+      <p><strong>Actions recommandées :</strong></p>
+      <ol>
+        <li>Documenter la faille (sans l'exploiter)</li>
+        <li>Informer immédiatement le responsable sécurité/hiérarchie</li>
+        <li>Ne pas divulguer publiquement (responsible disclosure)</li>
+        <li>Si non corrigée, contacter l'ANSSI</li>
+      </ol>
+      <p><strong>Légalement :</strong> L'exploitation constitue un délit (art. 323-1 CP)</p>
+    </div>
+  </div>
+
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+  document.getElementById("toggleLang").onclick = function() { alert("English version coming soon!"); };
+</script>
+</body>
+</html>
+
+

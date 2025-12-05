@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP - Sécurisation Asterisk</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .objective { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+  .step { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .step-num { background: #6a34cc; color: white; padding: 5px 12px; border-radius: 50%; font-weight: bold; margin-right: 10px; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; margin: 15px 0; overflow-x: auto; font-size: 12px; }
+  .success { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">🔧 TP - Sécurisation Asterisk</div>
+  <a href="../VOIp.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>🔒 TP : Sécuriser un Serveur Asterisk</h1>
+
+  <div class="objective">
+    <strong>🎯 Objectifs :</strong>
+    <ul>
+      <li>Activer TLS pour SIP</li>
+      <li>Configurer SRTP</li>
+      <li>Installer Fail2ban</li>
+      <li>Tester la sécurité</li>
+    </ul>
+    <strong>⏱️ Durée :</strong> 2h30
+  </div>
+
+  <h2>Partie 1 : Génération des certificats</h2>
+
+  <div class="step">
+    <p><span class="step-num">1</span><strong>Créer les certificats TLS</strong></p>
+    <div class="code-block">cd /etc/asterisk/keys
+
+# Générer CA et certificat serveur
+./ast_tls_cert -C pbx.example.com -O "My Company" -d /etc/asterisk/keys
+
+# Fichiers créés :
+# - ca.crt (Autorité de certification)
+# - asterisk.pem (Certificat serveur)
+# - asterisk.key (Clé privée)</div>
+  </div>
+
+  <h2>Partie 2 : Configuration TLS (pjsip.conf)</h2>
+
+  <div class="step">
+    <p><span class="step-num">2</span><strong>Configurer le transport TLS</strong></p>
+    <div class="code-block">[transport-tls]
+type=transport
+protocol=tls
+bind=0.0.0.0:5061
+cert_file=/etc/asterisk/keys/asterisk.pem
+priv_key_file=/etc/asterisk/keys/asterisk.key
+ca_list_file=/etc/asterisk/keys/ca.crt
+method=tlsv1_2
+verify_server=yes
+verify_client=yes</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">3</span><strong>Configurer un endpoint sécurisé</strong></p>
+    <div class="code-block">[1001]
+type=endpoint
+context=internal
+disallow=all
+allow=ulaw
+allow=alaw
+auth=1001-auth
+aors=1001
+media_encryption=sdes
+media_encryption_optimistic=no
+transport=transport-tls
+
+[1001-auth]
+type=auth
+auth_type=userpass
+password=MotDePasseTresSecurise2024!
+username=1001
+
+[1001-aor]
+type=aor
+max_contacts=1</div>
+  </div>
+
+  <h2>Partie 3 : Fail2ban</h2>
+
+  <div class="step">
+    <p><span class="step-num">4</span><strong>Installer Fail2ban</strong></p>
+    <div class="code-block">sudo apt install fail2ban -y</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">5</span><strong>Configurer le filtre Asterisk</strong></p>
+    <div class="code-block"># /etc/fail2ban/filter.d/asterisk.conf
+[Definition]
+failregex = NOTICE.* .*: Registration from '.*' failed for '<HOST>:.*' - Wrong password
+            NOTICE.* .*: Registration from '.*' failed for '<HOST>:.*' - No matching peer
+            NOTICE.* <HOST> failed to authenticate
+            NOTICE.* .*: No registration for peer '.*' \(from <HOST>\)
+            NOTICE.* .*: Host <HOST> failed MD5 authentication
+
+ignoreregex =</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">6</span><strong>Activer la jail</strong></p>
+    <div class="code-block"># /etc/fail2ban/jail.local
+[asterisk]
+enabled = true
+port = 5060,5061
+filter = asterisk
+logpath = /var/log/asterisk/messages
+maxretry = 3
+bantime = 86400
+findtime = 600</div>
+    <div class="code-block">sudo systemctl restart fail2ban
+sudo fail2ban-client status asterisk</div>
+  </div>
+
+  <h2>Partie 4 : Restrictions réseau</h2>
+
+  <div class="step">
+    <p><span class="step-num">7</span><strong>Configurer les ACL</strong></p>
+    <div class="code-block"># pjsip.conf - Limiter les IP autorisées
+[acl]
+type=acl
+deny=0.0.0.0/0.0.0.0
+permit=192.168.1.0/255.255.255.0
+permit=10.0.0.0/255.0.0.0</div>
+  </div>
+
+  <h2>Partie 5 : Tests de sécurité</h2>
+
+  <div class="step">
+    <p><span class="step-num">8</span><strong>Vérifier TLS avec OpenSSL</strong></p>
+    <div class="code-block">openssl s_client -connect pbx.example.com:5061</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">9</span><strong>Tester avec SIPVicious (environnement de test)</strong></p>
+    <div class="code-block"># Scanner les extensions
+svmap 192.168.1.100
+
+# Tester les mots de passe (ATTENTION: uniquement sur votre serveur de test)
+svcrack -u 1001 -d wordlist.txt 192.168.1.100</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">10</span><strong>Vérifier Fail2ban</strong></p>
+    <div class="code-block"># Voir les IP bannies
+sudo fail2ban-client status asterisk
+
+# Logs
+sudo tail -f /var/log/fail2ban.log</div>
+  </div>
+
+  <div class="success">
+    <strong>✅ Livrables :</strong>
+    <ol>
+      <li>Configuration TLS fonctionnelle</li>
+      <li>Capture Wireshark montrant le trafic chiffré</li>
+      <li>Logs Fail2ban montrant des blocages</li>
+      <li>Rapport de sécurité avec recommandations</li>
+    </ol>
+  </div>
+</div>
+</body>
+</html>
+
+

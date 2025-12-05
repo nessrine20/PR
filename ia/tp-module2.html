@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP - Classification MNIST</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .objective { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+  .step { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .step-num { background: #6a34cc; color: white; padding: 5px 12px; border-radius: 50%; font-weight: bold; margin-right: 10px; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; margin: 15px 0; overflow-x: auto; font-size: 12px; }
+  .success { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">🔧 TP - Classification MNIST</div>
+  <a href="../ia.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>🔢 TP : Classification de Chiffres Manuscrits</h1>
+
+  <div class="objective">
+    <strong>🎯 Objectifs :</strong>
+    <ul>
+      <li>Charger et préparer le dataset MNIST</li>
+      <li>Construire un réseau de neurones avec Keras</li>
+      <li>Entraîner et évaluer le modèle</li>
+      <li>Atteindre >98% d'accuracy</li>
+    </ul>
+    <strong>⏱️ Durée :</strong> 2h<br>
+    <strong>🛠️ Prérequis :</strong> Python, TensorFlow/Keras
+  </div>
+
+  <h2>Partie 1 : Préparation</h2>
+
+  <div class="step">
+    <p><span class="step-num">1</span><strong>Imports et chargement des données</strong></p>
+    <div class="code-block">import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Dropout, Flatten
+from tensorflow.keras.datasets import mnist
+import matplotlib.pyplot as plt
+
+# Charger MNIST
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+
+print(f"Train: {x_train.shape}, Test: {x_test.shape}")
+# Train: (60000, 28, 28), Test: (10000, 28, 28)</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">2</span><strong>Visualiser les données</strong></p>
+    <div class="code-block"># Afficher quelques exemples
+fig, axes = plt.subplots(2, 5, figsize=(12, 5))
+for i, ax in enumerate(axes.flat):
+    ax.imshow(x_train[i], cmap='gray')
+    ax.set_title(f"Label: {y_train[i]}")
+    ax.axis('off')
+plt.tight_layout()
+plt.show()</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">3</span><strong>Prétraitement</strong></p>
+    <div class="code-block"># Normaliser les pixels [0-255] → [0-1]
+x_train = x_train.astype('float32') / 255.0
+x_test = x_test.astype('float32') / 255.0
+
+print(f"Min: {x_train.min()}, Max: {x_train.max()}")</div>
+  </div>
+
+  <h2>Partie 2 : Construction du modèle</h2>
+
+  <div class="step">
+    <p><span class="step-num">4</span><strong>Définir l'architecture</strong></p>
+    <div class="code-block">model = Sequential([
+    # Aplatir l'image 28x28 en vecteur de 784
+    Flatten(input_shape=(28, 28)),
+    
+    # Première couche cachée
+    Dense(128, activation='relu'),
+    Dropout(0.2),
+    
+    # Deuxième couche cachée
+    Dense(64, activation='relu'),
+    Dropout(0.2),
+    
+    # Couche de sortie (10 chiffres)
+    Dense(10, activation='softmax')
+])
+
+# Résumé du modèle
+model.summary()</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">5</span><strong>Compiler le modèle</strong></p>
+    <div class="code-block">model.compile(
+    optimizer='adam',
+    loss='sparse_categorical_crossentropy',
+    metrics=['accuracy']
+)</div>
+  </div>
+
+  <h2>Partie 3 : Entraînement</h2>
+
+  <div class="step">
+    <p><span class="step-num">6</span><strong>Entraîner le modèle</strong></p>
+    <div class="code-block">history = model.fit(
+    x_train, y_train,
+    epochs=10,
+    batch_size=32,
+    validation_split=0.1,
+    verbose=1
+)</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">7</span><strong>Visualiser l'apprentissage</strong></p>
+    <div class="code-block"># Courbes de loss et accuracy
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
+
+ax1.plot(history.history['loss'], label='Train')
+ax1.plot(history.history['val_loss'], label='Validation')
+ax1.set_title('Loss')
+ax1.legend()
+
+ax2.plot(history.history['accuracy'], label='Train')
+ax2.plot(history.history['val_accuracy'], label='Validation')
+ax2.set_title('Accuracy')
+ax2.legend()
+
+plt.show()</div>
+  </div>
+
+  <h2>Partie 4 : Évaluation</h2>
+
+  <div class="step">
+    <p><span class="step-num">8</span><strong>Évaluer sur le test set</strong></p>
+    <div class="code-block"># Évaluation finale
+test_loss, test_acc = model.evaluate(x_test, y_test)
+print(f"\nTest Accuracy: {test_acc*100:.2f}%")</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">9</span><strong>Tester sur des exemples</strong></p>
+    <div class="code-block"># Prédictions sur quelques exemples
+predictions = model.predict(x_test[:5])
+
+for i in range(5):
+    plt.subplot(1, 5, i+1)
+    plt.imshow(x_test[i], cmap='gray')
+    pred = predictions[i].argmax()
+    plt.title(f"Pred: {pred}\nReal: {y_test[i]}")
+    plt.axis('off')
+plt.show()</div>
+  </div>
+
+  <h2>Partie 5 : Amélioration</h2>
+
+  <div class="step">
+    <p><span class="step-num">10</span><strong>Challenges bonus</strong></p>
+    <ul>
+      <li>Ajouter plus de couches/neurones</li>
+      <li>Tester différents learning rates</li>
+      <li>Ajouter BatchNormalization</li>
+      <li>Utiliser un CNN au lieu d'un MLP</li>
+      <li>Objectif : dépasser 99% d'accuracy</li>
+    </ul>
+  </div>
+
+  <div class="success">
+    <strong>✅ Livrables :</strong>
+    <ol>
+      <li>Code Python complet et commenté</li>
+      <li>Graphiques de loss/accuracy</li>
+      <li>Accuracy finale sur le test set</li>
+      <li>Matrice de confusion</li>
+      <li>Analyse des erreurs du modèle</li>
+    </ol>
+  </div>
+</div>
+</body>
+</html>
+
+

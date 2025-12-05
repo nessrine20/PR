@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TD - Menaces & Attaques</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .question { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .question-num { color: #6a34cc; font-weight: bold; font-size: 18px; }
+  .answer { background: #d4edda; padding: 15px; border-radius: 10px; margin-top: 15px; display: none; border-left: 4px solid #28a745; }
+  .show-answer { background: #6a34cc; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+  .scenario { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+  .email-box { background: #f5f5f5; padding: 20px; border-radius: 10px; border: 1px solid #ddd; margin: 15px 0; font-family: monospace; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📝 TD - Menaces & Attaques</div>
+  <a href="../cyberops.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>📝 TD : Menaces & Attaques</h1>
+
+  <h2>Partie 1 : QCM</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1</p>
+    <p>Quel type de malware chiffre les fichiers et demande une rançon ?</p>
+    <p>a) Virus &nbsp; b) Worm &nbsp; c) Ransomware &nbsp; d) Spyware</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer"><strong>Réponse : c) Ransomware</strong></div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2</p>
+    <p>Quelle attaque exploite la confiance de l'utilisateur pour voler ses identifiants par email ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer"><strong>Réponse : Phishing</strong></div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3</p>
+    <p>Quelle est la différence entre DoS et DDoS ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <strong>DoS</strong> : Attaque depuis UNE source<br>
+      <strong>DDoS</strong> : Attaque depuis MULTIPLES sources (botnet)
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4</p>
+    <p>Dans une attaque MITM, où se positionne l'attaquant ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer"><strong>Entre les deux parties qui communiquent</strong>, interceptant et potentiellement modifiant les échanges.</div>
+  </div>
+
+  <h2>Partie 2 : Analyse d'email suspect</h2>
+
+  <div class="scenario">
+    <strong>📋 Exercice :</strong> Analysez cet email et identifiez les indicateurs de phishing.
+  </div>
+
+  <div class="email-box">
+    <strong>De:</strong> service-client@amaz0n-securite.com<br>
+    <strong>À:</strong> vous@email.com<br>
+    <strong>Objet:</strong> ⚠️ URGENT: Votre compte sera suspendu !!!<br><br>
+    Cher client,<br><br>
+    Nous avons detecté une activité suspecte sur votre compte. 
+    Votre compte sera suspendu dans 24h si vous ne verifiez pas vos informations.<br><br>
+    <a href="#">Cliquez ici pour vérifier votre compte</a><br><br>
+    Cordialement,<br>
+    L'equipe Amazon
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5</p>
+    <p>Listez au moins 5 indicateurs de phishing dans cet email.</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <strong>Indicateurs de phishing :</strong>
+      <ol>
+        <li><strong>Domaine suspect</strong> : amaz0n-securite.com (0 au lieu de o)</li>
+        <li><strong>Urgence artificielle</strong> : "URGENT", "24h"</li>
+        <li><strong>Fautes d'orthographe</strong> : "detecté", "verifiez"</li>
+        <li><strong>Absence d'accents</strong> : "equipe" au lieu de "équipe"</li>
+        <li><strong>Lien générique</strong> : "Cliquez ici"</li>
+        <li><strong>Menace</strong> : "sera suspendu"</li>
+        <li><strong>Pas de personnalisation</strong> : "Cher client" générique</li>
+      </ol>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Classification d'attaques</h2>
+
+  <div class="question">
+    <p class="question-num">Question 6</p>
+    <p>Classifiez ces attaques dans la bonne catégorie :</p>
+    <ol>
+      <li>Un employé reçoit un appel d'un "technicien Microsoft"</li>
+      <li>Un site web affiche du contenu malveillant à tous les visiteurs</li>
+      <li>Un serveur reçoit des millions de requêtes et devient inaccessible</li>
+      <li>Les fichiers d'une entreprise sont chiffrés avec demande de Bitcoin</li>
+    </ol>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ol>
+        <li><strong>Vishing</strong> (ingénierie sociale par téléphone)</li>
+        <li><strong>XSS stocké</strong> ou <strong>Defacement</strong></li>
+        <li><strong>DDoS</strong></li>
+        <li><strong>Ransomware</strong></li>
+      </ol>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+

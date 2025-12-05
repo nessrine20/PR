@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TD - IPSec</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .question { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .question-num { color: #6a34cc; font-weight: bold; font-size: 18px; }
+  .answer { background: #d4edda; padding: 15px; border-radius: 10px; margin-top: 15px; display: none; border-left: 4px solid #28a745; }
+  .show-answer { background: #6a34cc; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+  .scenario { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📝 TD - IPSec</div>
+  <a href="../vpn.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>📝 TD : IPSec</h1>
+
+  <h2>Partie 1 : Concepts</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1</p>
+    <p>Quelle est la différence entre AH et ESP ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <table style="width:100%; border-collapse:collapse;">
+        <tr><th style="border:1px solid #ddd; padding:8px;">AH</th><th style="border:1px solid #ddd; padding:8px;">ESP</th></tr>
+        <tr>
+          <td style="border:1px solid #ddd; padding:8px;">Authentification + Intégrité</td>
+          <td style="border:1px solid #ddd; padding:8px;">Chiffrement + Authentification + Intégrité</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #ddd; padding:8px;">Pas de confidentialité</td>
+          <td style="border:1px solid #ddd; padding:8px;">Confidentialité assurée</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #ddd; padding:8px;">Protège l'en-tête IP</td>
+          <td style="border:1px solid #ddd; padding:8px;">Ne protège pas l'en-tête IP externe</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #ddd; padding:8px;">Problème avec NAT</td>
+          <td style="border:1px solid #ddd; padding:8px;">Compatible NAT-T</td>
+        </tr>
+      </table>
+      <p><strong>ESP est recommandé</strong> car il offre le chiffrement.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2</p>
+    <p>Quelle est la différence entre le mode Transport et le mode Tunnel ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <p><strong>Mode Transport :</strong></p>
+      <ul>
+        <li>Chiffre uniquement les données (payload)</li>
+        <li>Conserve l'en-tête IP original</li>
+        <li>Usage : Host-to-Host</li>
+      </ul>
+      <p><strong>Mode Tunnel :</strong></p>
+      <ul>
+        <li>Chiffre tout le paquet IP (en-tête + données)</li>
+        <li>Ajoute un nouvel en-tête IP</li>
+        <li>Usage : VPN site-à-site, Gateway-to-Gateway</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3</p>
+    <p>Décrivez les deux phases de IKE.</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <p><strong>Phase 1 (IKE SA) :</strong></p>
+      <ul>
+        <li>Authentification mutuelle des peers</li>
+        <li>Négociation des algorithmes (chiffrement, hash, DH)</li>
+        <li>Échange Diffie-Hellman pour générer la clé partagée</li>
+        <li>Création du canal sécurisé pour la Phase 2</li>
+      </ul>
+      <p><strong>Phase 2 (IPSec SA) :</strong></p>
+      <ul>
+        <li>Négociation des paramètres IPSec (ESP/AH, mode)</li>
+        <li>Génération des clés de session pour le tunnel</li>
+        <li>Optionnel : PFS avec nouveau DH</li>
+        <li>Création des SA unidirectionnelles</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Partie 2 : Configuration</h2>
+
+  <div class="scenario">
+    <strong>📋 Scénario</strong><br><br>
+    Vous devez configurer un VPN IPSec site-à-site entre deux routeurs :<br>
+    - Site A : 192.168.1.0/24 (Gateway : 203.0.113.1)<br>
+    - Site B : 192.168.2.0/24 (Gateway : 198.51.100.1)
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4</p>
+    <p>Quels paramètres devez-vous définir pour la Phase 1 ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ul>
+        <li><strong>Méthode d'authentification</strong> : PSK ou Certificats</li>
+        <li><strong>Algorithme de chiffrement</strong> : AES-256</li>
+        <li><strong>Algorithme de hash</strong> : SHA-256</li>
+        <li><strong>Groupe Diffie-Hellman</strong> : 14 ou 19</li>
+        <li><strong>Lifetime</strong> : 86400 secondes (24h)</li>
+        <li><strong>Mode</strong> : Main mode ou Aggressive mode</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5</p>
+    <p>Quels paramètres pour la Phase 2 ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ul>
+        <li><strong>Protocole</strong> : ESP</li>
+        <li><strong>Mode</strong> : Tunnel</li>
+        <li><strong>Chiffrement</strong> : AES-256-GCM</li>
+        <li><strong>Intégrité</strong> : SHA-256 (ou inclus dans GCM)</li>
+        <li><strong>PFS</strong> : DH Group 14</li>
+        <li><strong>Lifetime</strong> : 3600 secondes (1h)</li>
+        <li><strong>Traffic Selector</strong> : 192.168.1.0/24 ↔ 192.168.2.0/24</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Sécurité</h2>
+
+  <div class="question">
+    <p class="question-num">Question 6</p>
+    <p>Pourquoi PFS (Perfect Forward Secrecy) est-il important ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <p><strong>PFS</strong> génère une nouvelle clé Diffie-Hellman pour chaque session Phase 2.</p>
+      <p><strong>Avantages :</strong></p>
+      <ul>
+        <li>Si une clé de session est compromise, les autres sessions restent sécurisées</li>
+        <li>La compromission de la clé Phase 1 ne permet pas de déchiffrer le trafic passé</li>
+        <li>Protection contre les attaques "record now, decrypt later"</li>
+      </ul>
+      <p><strong>Coût :</strong> Légèrement plus de CPU pour le nouveau DH exchange.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 7</p>
+    <p>Quels algorithmes sont à éviter et pourquoi ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <table style="width:100%; border-collapse:collapse;">
+        <tr><th style="border:1px solid #ddd; padding:8px;">À éviter</th><th style="border:1px solid #ddd; padding:8px;">Raison</th></tr>
+        <tr><td style="border:1px solid #ddd; padding:8px;">DES</td><td style="border:1px solid #ddd; padding:8px;">Clé 56 bits, cassable</td></tr>
+        <tr><td style="border:1px solid #ddd; padding:8px;">3DES</td><td style="border:1px solid #ddd; padding:8px;">Lent, vulnérabilités</td></tr>
+        <tr><td style="border:1px solid #ddd; padding:8px;">MD5</td><td style="border:1px solid #ddd; padding:8px;">Collisions démontrées</td></tr>
+        <tr><td style="border:1px solid #ddd; padding:8px;">SHA-1</td><td style="border:1px solid #ddd; padding:8px;">Collisions possibles</td></tr>
+        <tr><td style="border:1px solid #ddd; padding:8px;">DH Group 1, 2, 5</td><td style="border:1px solid #ddd; padding:8px;">Clés trop courtes</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+

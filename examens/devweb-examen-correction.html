@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correction Examen - Dev Web</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #28a745, #20c997); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; }
+  .top-btn, .print-btn { padding: 8px 14px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .top-btn { background: #fff; color: #28a745; }
+  .print-btn { background: linear-gradient(135deg, #28a745, #20c997); color: white; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #28a745; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #28a745; border-bottom: 3px solid #d4edda; padding-bottom: 15px; text-align: center; }
+  h2 { color: #20c997; margin-top: 30px; }
+  .question { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #28a745; }
+  .question-num { color: #28a745; font-weight: bold; font-size: 18px; margin-bottom: 10px; }
+  .answer { background: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; border: 2px solid #28a745; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; margin: 10px 0; overflow-x: auto; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark .question { background: #2a3a2a; }
+  .dark .answer { background: #3a4a3a; border-color: #5cdb5c; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } .container { box-shadow: none; width: 95%; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">✅ Correction Examen - Dev Web</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../Examens.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>✅ Correction Examen - Dev Web</h1>
+
+  <h2>Partie 1 : Frontend</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1 - Composants React (5 pts)</p>
+    <div class="answer">
+      <p><strong>Composants :</strong> Blocs réutilisables d'UI (fonctions ou classes retournant du JSX)</p>
+      <ul>
+        <li><strong>Props :</strong> Données passées du parent, immutables</li>
+        <li><strong>State :</strong> Données internes, modifiables, déclenchent un re-render</li>
+      </ul>
+      <p><strong>Cycle de vie :</strong> Mounting → Updating → Unmounting (useEffect remplace les méthodes de classe)</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2 - Virtual DOM (5 pts)</p>
+    <div class="answer">
+      <p><strong>Virtual DOM :</strong> Représentation JavaScript légère du DOM réel</p>
+      <p><strong>Optimisation :</strong></p>
+      <ol>
+        <li>Crée un nouveau Virtual DOM après changement d'état</li>
+        <li>Compare avec l'ancien (diffing)</li>
+        <li>Calcule le minimum de modifications</li>
+        <li>Applique uniquement ces modifications au DOM réel (batch)</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3 - Hooks (5 pts)</p>
+    <div class="answer">
+      <div class="code-block">
+// useState : état local<br>
+const [count, setCount] = useState(0);<br><br>
+
+// useEffect : effets de bord<br>
+useEffect(() => {<br>
+&nbsp;&nbsp;document.title = `Compteur: ${count}`;<br>
+&nbsp;&nbsp;return () => cleanup(); // cleanup<br>
+}, [count]);<br><br>
+
+// useContext : partage de données global<br>
+const theme = useContext(ThemeContext);
+      </div>
+    </div>
+  </div>
+
+  <h2>Partie 2 : Backend</h2>
+
+  <div class="question">
+    <p class="question-num">Question 4 - REST API (5 pts)</p>
+    <div class="answer">
+      <ul>
+        <li><strong>GET /users</strong> : Récupérer la liste</li>
+        <li><strong>GET /users/1</strong> : Récupérer un utilisateur</li>
+        <li><strong>POST /users</strong> : Créer un utilisateur</li>
+        <li><strong>PUT /users/1</strong> : Mettre à jour entièrement</li>
+        <li><strong>PATCH /users/1</strong> : Mise à jour partielle</li>
+        <li><strong>DELETE /users/1</strong> : Supprimer</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5 - JWT (5 pts)</p>
+    <div class="answer">
+      <p><strong>Flow :</strong></p>
+      <ol>
+        <li>Client envoie credentials (email/mdp)</li>
+        <li>Serveur vérifie et génère un JWT signé</li>
+        <li>Client stocke le token (localStorage/cookie)</li>
+        <li>Client envoie le token dans header Authorization</li>
+        <li>Serveur valide la signature</li>
+      </ol>
+      <p><strong>Avantages :</strong> Stateless, scalable</p>
+      <p><strong>Risques :</strong> XSS si localStorage, pas de révocation facile</p>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Projet Todo</h2>
+
+  <div class="question">
+    <p class="question-num">Question 7 (10 pts)</p>
+    <div class="answer">
+      <p><strong>a) Architecture :</strong></p>
+      <ul>
+        <li>Frontend : React + Axios</li>
+        <li>Backend : Node.js + Express</li>
+        <li>BDD : MySQL ou MongoDB</li>
+      </ul>
+      
+      <p><strong>b) Schéma BDD :</strong></p>
+      <div class="code-block">
+users (id, email, password_hash, created_at)<br>
+tasks (id, user_id FK, title, completed, created_at)
+      </div>
+      
+      <p><strong>c) Endpoints :</strong></p>
+      <ul>
+        <li>POST /auth/register</li>
+        <li>POST /auth/login</li>
+        <li>GET /tasks (auth required)</li>
+        <li>POST /tasks</li>
+        <li>PUT /tasks/:id</li>
+        <li>DELETE /tasks/:id</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() { document.body.classList.toggle("dark"); this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙"; };
+  document.getElementById("toggleLang").onclick = function() { alert("English version coming soon!"); };
+</script>
+</body>
+</html>
+
+

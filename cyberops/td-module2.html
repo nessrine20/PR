@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TD - SOC & SIEM</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .question { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .question-num { color: #6a34cc; font-weight: bold; font-size: 18px; }
+  .answer { background: #d4edda; padding: 15px; border-radius: 10px; margin-top: 15px; display: none; border-left: 4px solid #28a745; }
+  .show-answer { background: #6a34cc; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+  .scenario { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+  .log-box { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; margin: 15px 0; overflow-x: auto; font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📝 TD - SOC & SIEM</div>
+  <a href="../cyberops.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>📝 TD : SOC & SIEM</h1>
+
+  <h2>Partie 1 : Concepts SOC</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1</p>
+    <p>Expliquez la différence entre les rôles Tier 1, Tier 2 et Tier 3 dans un SOC.</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ul>
+        <li><strong>Tier 1</strong> : Surveillance 24/7, triage des alertes, escalade des incidents suspects</li>
+        <li><strong>Tier 2</strong> : Investigation approfondie, analyse de corrélation, remédiation</li>
+        <li><strong>Tier 3</strong> : Threat hunting proactif, analyse de malware, forensics avancé</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2</p>
+    <p>Que signifient MTTD et MTTR ? Pourquoi sont-ils importants ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ul>
+        <li><strong>MTTD</strong> (Mean Time To Detect) : Temps moyen pour détecter une menace</li>
+        <li><strong>MTTR</strong> (Mean Time To Respond) : Temps moyen pour répondre à un incident</li>
+      </ul>
+      <p>Ces métriques mesurent l'efficacité du SOC. Plus ils sont bas, plus le SOC est performant.</p>
+    </div>
+  </div>
+
+  <h2>Partie 2 : Analyse de logs</h2>
+
+  <div class="scenario">
+    <strong>📋 Contexte :</strong> Vous êtes analyste SOC Tier 1. Le SIEM génère une alerte "Multiple Failed Login Attempts". Analysez les logs suivants.
+  </div>
+
+  <div class="log-box">
+2024-01-15 14:23:01 AUTH FAILED user=admin src_ip=192.168.1.105 dst=DC01
+2024-01-15 14:23:03 AUTH FAILED user=admin src_ip=192.168.1.105 dst=DC01
+2024-01-15 14:23:05 AUTH FAILED user=admin src_ip=192.168.1.105 dst=DC01
+2024-01-15 14:23:07 AUTH FAILED user=admin src_ip=192.168.1.105 dst=DC01
+2024-01-15 14:23:09 AUTH FAILED user=admin src_ip=192.168.1.105 dst=DC01
+2024-01-15 14:23:11 AUTH SUCCESS user=admin src_ip=192.168.1.105 dst=DC01
+2024-01-15 14:24:00 PROCESS_CREATE host=DC01 user=admin process=powershell.exe
+2024-01-15 14:24:15 NETWORK host=DC01 dst_ip=185.234.xxx.xxx port=443
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3</p>
+    <p>Que s'est-il passé ? Identifiez le type d'attaque et les étapes.</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ol>
+        <li><strong>Brute Force</strong> : 5 tentatives échouées en 10 secondes</li>
+        <li><strong>Compromission réussie</strong> : Login réussi après les échecs</li>
+        <li><strong>Exécution</strong> : Lancement de PowerShell (souvent malveillant)</li>
+        <li><strong>C2</strong> : Connexion vers IP externe suspecte (185.234.xxx.xxx)</li>
+      </ol>
+      <p><strong>Conclusion</strong> : Probable compromission du compte admin avec établissement d'un canal C2.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4</p>
+    <p>Quelles actions immédiates recommanderiez-vous ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ol>
+        <li><strong>Isoler</strong> la machine DC01 du réseau</li>
+        <li><strong>Désactiver</strong> le compte admin compromis</li>
+        <li><strong>Bloquer</strong> l'IP 185.234.xxx.xxx au pare-feu</li>
+        <li><strong>Collecter</strong> les logs et artefacts pour forensics</li>
+        <li><strong>Escalader</strong> au Tier 2 / Incident Manager</li>
+        <li><strong>Vérifier</strong> les autres systèmes pour lateral movement</li>
+      </ol>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Règles SIEM</h2>
+
+  <div class="question">
+    <p class="question-num">Question 5</p>
+    <p>Écrivez une règle de corrélation (en pseudo-code) pour détecter une attaque par brute force.</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <pre style="background:#f5f5f5; padding:15px; border-radius:8px;">
+RULE: Brute_Force_Detection
+WHEN:
+  count(event_type="AUTH_FAILED") >= 5
+  WHERE same(src_ip) AND same(user)
+  WITHIN 5 minutes
+THEN:
+  ALERT severity=HIGH
+  message="Possible brute force attack"
+  include: src_ip, user, target_host, timestamp
+      </pre>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 6</p>
+    <p>Proposez une règle pour détecter une possible exfiltration de données.</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <pre style="background:#f5f5f5; padding:15px; border-radius:8px;">
+RULE: Data_Exfiltration_Detection
+WHEN:
+  sum(bytes_out) > 500MB
+  WHERE dst_ip NOT IN internal_networks
+  AND time BETWEEN 22:00 AND 06:00  # hors heures
+  WITHIN 1 hour
+THEN:
+  ALERT severity=CRITICAL
+  message="Possible data exfiltration"
+  include: src_host, user, dst_ip, bytes_out
+      </pre>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+

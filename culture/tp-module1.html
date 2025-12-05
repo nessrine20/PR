@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP - Analyse de Contrat</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .objective { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+  .contract { background: #f5f5f5; padding: 25px; border-radius: 10px; border: 2px solid #ddd; margin: 20px 0; }
+  .contract h3 { color: #333; text-align: center; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
+  .step { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .step-num { background: #6a34cc; color: white; padding: 5px 12px; border-radius: 50%; font-weight: bold; margin-right: 10px; }
+  .warning { background: #f8d7da; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #dc3545; }
+  .success { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">🔧 TP - Analyse de Contrat</div>
+  <a href="../culture.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>📋 TP : Analyse d'un Contrat de Travail</h1>
+
+  <div class="objective">
+    <strong>🎯 Objectifs :</strong>
+    <ul>
+      <li>Identifier les clauses obligatoires d'un contrat</li>
+      <li>Repérer les clauses abusives ou illégales</li>
+      <li>Comprendre les droits et obligations des parties</li>
+    </ul>
+    <strong>⏱️ Durée :</strong> 1h30
+  </div>
+
+  <h2>Document à analyser</h2>
+
+  <div class="contract">
+    <h3>CONTRAT DE TRAVAIL À DURÉE INDÉTERMINÉE</h3>
+    
+    <p><strong>Entre :</strong><br>
+    La société TECHCORP, SARL au capital de 50 000€<br>
+    Représentée par M. Dupont, gérant<br>
+    <em>Ci-après dénommée "l'Employeur"</em></p>
+
+    <p><strong>Et :</strong><br>
+    M. Martin Jean, né le 15/03/1995<br>
+    Demeurant au 12 rue des Lilas, 75001 Paris<br>
+    <em>Ci-après dénommé "le Salarié"</em></p>
+
+    <p><strong>Article 1 - Engagement</strong><br>
+    Le Salarié est engagé en qualité de Développeur Web, statut Employé, coefficient 300.</p>
+
+    <p><strong>Article 2 - Durée</strong><br>
+    Le présent contrat est conclu pour une durée indéterminée à compter du 01/09/2024.</p>
+
+    <p><strong>Article 3 - Période d'essai</strong><br>
+    Une période d'essai de 6 mois est prévue, renouvelable une fois.</p>
+
+    <p><strong>Article 4 - Rémunération</strong><br>
+    Le Salarié percevra une rémunération mensuelle brute de 1 600€ pour 35 heures hebdomadaires.</p>
+
+    <p><strong>Article 5 - Horaires</strong><br>
+    Le Salarié travaillera du lundi au samedi, de 9h à 18h avec 1h de pause déjeuner.</p>
+
+    <p><strong>Article 6 - Clause de non-concurrence</strong><br>
+    Le Salarié s'engage, pendant 3 ans après la fin du contrat, à ne pas exercer d'activité concurrente dans toute la France, sans contrepartie financière.</p>
+
+    <p><strong>Article 7 - Exclusivité</strong><br>
+    Le Salarié s'engage à ne pas exercer d'autre activité professionnelle pendant la durée du contrat.</p>
+
+    <p><strong>Article 8 - Confidentialité</strong><br>
+    Le Salarié s'engage à garder confidentiels tous les documents et informations de l'entreprise.</p>
+  </div>
+
+  <h2>Questions d'analyse</h2>
+
+  <div class="step">
+    <p><span class="step-num">1</span><strong>Vérifier les mentions obligatoires</strong></p>
+    <p>Le contrat contient-il toutes les mentions obligatoires ? Listez celles présentes et celles manquantes.</p>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">2</span><strong>Analyser la période d'essai (Article 3)</strong></p>
+    <p>La période d'essai est-elle conforme à la loi ? Justifiez.</p>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">3</span><strong>Vérifier la rémunération (Article 4)</strong></p>
+    <p>Le salaire proposé est-il légal ? Comparez avec le SMIC.</p>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">4</span><strong>Analyser les horaires (Article 5)</strong></p>
+    <p>Calculez le nombre d'heures hebdomadaires. Y a-t-il un problème ?</p>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">5</span><strong>Évaluer la clause de non-concurrence (Article 6)</strong></p>
+    <p>Cette clause est-elle valide ? Quelles sont les conditions de validité ?</p>
+  </div>
+
+  <div class="warning">
+    <strong>⚠️ Indices pour l'analyse :</strong>
+    <ul>
+      <li>SMIC 2024 : environ 1 766€ brut/mois</li>
+      <li>Période d'essai employé : 2 mois maximum</li>
+      <li>Durée légale du travail : 35h/semaine</li>
+      <li>Clause de non-concurrence : nécessite une contrepartie financière</li>
+    </ul>
+  </div>
+
+  <div class="success">
+    <strong>📝 Livrable :</strong><br>
+    Rédigez un rapport d'analyse (1-2 pages) identifiant les clauses illégales ou abusives et proposant des corrections.
+  </div>
+</div>
+</body>
+</html>
+
+

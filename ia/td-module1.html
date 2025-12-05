@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TD - Machine Learning</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar {
+    background: linear-gradient(135deg, #c59bff, #b07cff);
+    padding: 15px 30px; display: flex; justify-content: space-between;
+    align-items: center; color: white; position: sticky; top: 0; z-index: 10;
+  }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .question { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .question-num { color: #6a34cc; font-weight: bold; font-size: 18px; }
+  .choices label { display: block; margin: 10px 0; padding: 10px; border-radius: 8px; cursor: pointer; }
+  .choices label:hover { background: #f0e6ff; }
+  .answer { background: #d4edda; padding: 15px; border-radius: 10px; margin-top: 15px; display: none; border-left: 4px solid #28a745; }
+  .show-answer { background: #6a34cc; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+  .show-answer:hover { background: #5420a5; }
+  .exercise { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+  table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+  th, td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+  th { background: #e9d6ff; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-title">📝 TD - Machine Learning</div>
+  <a href="../ia.html" class="back-btn">← Retour au cours</a>
+</div>
+
+<div class="container">
+  <h1>📝 TD : Machine Learning</h1>
+  
+  <h2>Partie 1 : QCM</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1</p>
+    <p>Quel type d'apprentissage utilise des données étiquetées ?</p>
+    <div class="choices">
+      <label><input type="radio" name="q1"> a) Non supervisé</label>
+      <label><input type="radio" name="q1"> b) Supervisé</label>
+      <label><input type="radio" name="q1"> c) Par renforcement</label>
+      <label><input type="radio" name="q1"> d) Semi-supervisé</label>
+    </div>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <strong>Réponse : b) Supervisé</strong><br>
+      L'apprentissage supervisé utilise des données avec des labels (réponses connues) pour entraîner le modèle.
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2</p>
+    <p>Vous voulez prédire le prix d'une maison. Quel type de problème est-ce ?</p>
+    <div class="choices">
+      <label><input type="radio" name="q2"> a) Classification</label>
+      <label><input type="radio" name="q2"> b) Clustering</label>
+      <label><input type="radio" name="q2"> c) Régression</label>
+      <label><input type="radio" name="q2"> d) Réduction de dimension</label>
+    </div>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <strong>Réponse : c) Régression</strong><br>
+      Le prix est une valeur continue. La régression prédit des valeurs numériques continues.
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3</p>
+    <p>Quel algorithme est utilisé pour regrouper des données similaires sans labels ?</p>
+    <div class="choices">
+      <label><input type="radio" name="q3"> a) Régression linéaire</label>
+      <label><input type="radio" name="q3"> b) K-Means</label>
+      <label><input type="radio" name="q3"> c) Random Forest</label>
+      <label><input type="radio" name="q3"> d) SVM</label>
+    </div>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <strong>Réponse : b) K-Means</strong><br>
+      K-Means est un algorithme de clustering (non supervisé) qui regroupe les données en K clusters.
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4</p>
+    <p>Pourquoi divise-t-on les données en Train et Test ?</p>
+    <div class="choices">
+      <label><input type="radio" name="q4"> a) Pour gagner du temps</label>
+      <label><input type="radio" name="q4"> b) Pour évaluer sur des données non vues (éviter l'overfitting)</label>
+      <label><input type="radio" name="q4"> c) Pour réduire la taille des données</label>
+      <label><input type="radio" name="q4"> d) C'est obligatoire par la loi</label>
+    </div>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <strong>Réponse : b) Pour évaluer sur des données non vues</strong><br>
+      Le test set permet de mesurer la performance du modèle sur des données qu'il n'a jamais vues, ce qui détecte l'overfitting.
+    </div>
+  </div>
+
+  <h2>Partie 2 : Exercices de calcul</h2>
+
+  <div class="exercise">
+    <p class="question-num">Exercice 1 : Matrice de confusion</p>
+    <p>Voici les résultats d'un modèle de détection de spam :</p>
+    <table>
+      <tr><th></th><th>Prédit: Spam</th><th>Prédit: Non-Spam</th></tr>
+      <tr><th>Réel: Spam</th><td>85 (TP)</td><td>15 (FN)</td></tr>
+      <tr><th>Réel: Non-Spam</th><td>10 (FP)</td><td>90 (TN)</td></tr>
+    </table>
+    <p>Calculez :</p>
+    <ul>
+      <li>a) L'Accuracy</li>
+      <li>b) La Precision</li>
+      <li>c) Le Recall</li>
+      <li>d) Le F1-Score</li>
+    </ul>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <strong>Réponses :</strong><br><br>
+      <strong>a) Accuracy</strong> = (TP + TN) / Total = (85 + 90) / 200 = <strong>0.875 (87.5%)</strong><br><br>
+      <strong>b) Precision</strong> = TP / (TP + FP) = 85 / (85 + 10) = <strong>0.894 (89.4%)</strong><br><br>
+      <strong>c) Recall</strong> = TP / (TP + FN) = 85 / (85 + 15) = <strong>0.85 (85%)</strong><br><br>
+      <strong>d) F1-Score</strong> = 2 × (P × R) / (P + R) = 2 × (0.894 × 0.85) / (0.894 + 0.85) = <strong>0.871 (87.1%)</strong>
+    </div>
+  </div>
+
+  <div class="exercise">
+    <p class="question-num">Exercice 2 : Choisir le bon algorithme</p>
+    <p>Pour chaque situation, indiquez l'algorithme le plus approprié :</p>
+    <ol>
+      <li>Segmenter les clients d'un e-commerce en groupes similaires</li>
+      <li>Prédire si un email est un spam ou non</li>
+      <li>Estimer le salaire d'un employé selon son expérience</li>
+      <li>Entraîner une IA à jouer aux échecs</li>
+    </ol>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ol>
+        <li><strong>K-Means</strong> (Clustering - non supervisé)</li>
+        <li><strong>Régression Logistique</strong> ou <strong>Random Forest</strong> (Classification binaire)</li>
+        <li><strong>Régression Linéaire</strong> (Prédiction de valeur continue)</li>
+        <li><strong>Apprentissage par Renforcement</strong> (Q-Learning, etc.)</li>
+      </ol>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Réflexion</h2>
+
+  <div class="question">
+    <p class="question-num">Question 5</p>
+    <p>Un modèle a 99% d'accuracy sur le train set mais seulement 60% sur le test set. Quel est le problème et comment le résoudre ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <strong>Problème : Overfitting (sur-apprentissage)</strong><br><br>
+      Le modèle a "mémorisé" les données d'entraînement au lieu d'apprendre des patterns généralisables.<br><br>
+      <strong>Solutions :</strong>
+      <ul>
+        <li>Augmenter la quantité de données</li>
+        <li>Simplifier le modèle (moins de paramètres)</li>
+        <li>Utiliser la régularisation (L1, L2)</li>
+        <li>Utiliser la validation croisée (Cross-validation)</li>
+        <li>Early stopping si c'est un réseau de neurones</li>
+        <li>Dropout pour les réseaux de neurones</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+

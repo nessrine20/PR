@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résumé - Attaques WiFi</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  h3 { color: #6a34cc; }
+  .highlight { background: #f0e6ff; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #6a34cc; }
+  .danger { background: #f8d7da; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #dc3545; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  th { background: #e9d6ff; color: #4a2db6; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; margin: 15px 0; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2, .dark h3 { color: #d4b4ff; }
+  .dark .highlight { background: #3a3a3a; }
+  .dark th { background: #3a3a3a; color: #d4b4ff; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📘 Résumé - Attaques WiFi</div>
+  <div style="display:flex; gap:10px; align-items:center;">
+    <button onclick="window.print()" style="padding:8px 14px; background:linear-gradient(135deg,#6a34cc,#9b59b6); color:white; border:none; border-radius:10px; font-weight:bold; cursor:pointer;">🖨️ Imprimer</button>
+    <button id="toggleDark" style="padding:8px 14px; background:#fff; border:none; border-radius:10px; font-weight:bold; color:#6a34cc; cursor:pointer;">🌙</button>
+    <a href="../securite.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+<div class="container">
+  <h1>⚔️ Attaques sur les Réseaux WiFi</h1>
+
+  <div class="danger">
+    <strong>⚠️ Avertissement :</strong> Ces techniques sont présentées à des fins éducatives uniquement. Toute utilisation non autorisée est illégale.
+  </div>
+
+  <h2>1. Attaques de reconnaissance</h2>
+
+  <h3>🔍 Wardriving</h3>
+  <ul>
+    <li>Détection des réseaux WiFi en se déplaçant</li>
+    <li>Outils : Kismet, Wigle WiFi</li>
+    <li>Collecte : SSID, BSSID, canal, type de sécurité</li>
+  </ul>
+
+  <h3>📡 Sniffing passif</h3>
+  <ul>
+    <li>Mode monitor de la carte WiFi</li>
+    <li>Capture du trafic sans association au réseau</li>
+    <li>Outils : Wireshark, tcpdump, Airodump-ng</li>
+  </ul>
+
+  <h2>2. Attaques sur WEP</h2>
+
+  <table>
+    <tr><th>Attaque</th><th>Principe</th><th>Temps</th></tr>
+    <tr>
+      <td><strong>FMS</strong></td>
+      <td>Exploitation des IVs faibles</td>
+      <td>~1 million de paquets</td>
+    </tr>
+    <tr>
+      <td><strong>Chopchop</strong></td>
+      <td>Décryptage octet par octet</td>
+      <td>Minutes</td>
+    </tr>
+    <tr>
+      <td><strong>Fragmentation</strong></td>
+      <td>Récupération du keystream</td>
+      <td>Minutes</td>
+    </tr>
+    <tr>
+      <td><strong>PTW</strong></td>
+      <td>Statistiques avancées</td>
+      <td>~40000 paquets</td>
+    </tr>
+  </table>
+
+  <div class="code-block"># Exemple avec Aircrack-ng (WEP)
+airodump-ng wlan0mon                    # Scanner
+airodump-ng -c 6 --bssid XX:XX -w cap wlan0mon  # Capturer
+aireplay-ng -3 -b XX:XX wlan0mon        # Injection ARP
+aircrack-ng cap-01.cap                  # Cracker</div>
+
+  <h2>3. Attaques sur WPA/WPA2-PSK</h2>
+
+  <h3>📥 Capture du 4-Way Handshake</h3>
+  <ul>
+    <li>Nécessaire : Un client doit se connecter</li>
+    <li>Forcer la déconnexion : Attaque deauth</li>
+    <li>Capturer les 4 messages EAPOL</li>
+  </ul>
+
+  <h3>🔨 Attaque par dictionnaire</h3>
+  <div class="code-block"># Capture du handshake
+airodump-ng -c 6 --bssid XX:XX -w capture wlan0mon
+
+# Deauth pour forcer la reconnexion
+aireplay-ng -0 5 -a XX:XX -c YY:YY wlan0mon
+
+# Crack avec dictionnaire
+aircrack-ng -w wordlist.txt capture-01.cap
+
+# Ou avec Hashcat (GPU)
+hashcat -m 22000 capture.hc22000 wordlist.txt</div>
+
+  <h3>🌈 Rainbow Tables</h3>
+  <ul>
+    <li>Tables pré-calculées pour un SSID spécifique</li>
+    <li>Plus rapide mais nécessite beaucoup de stockage</li>
+    <li>Outils : coWPAtty, genpmk</li>
+  </ul>
+
+  <h2>4. Attaques Evil Twin</h2>
+
+  <div class="highlight">
+    <strong>Principe :</strong> Créer un faux point d'accès avec le même SSID que la cible pour intercepter les connexions.
+  </div>
+
+  <ol>
+    <li>Scanner les réseaux et identifier la cible</li>
+    <li>Créer un AP avec le même SSID (plus puissant)</li>
+    <li>Deauth les clients du vrai AP</li>
+    <li>Les clients se reconnectent au faux AP</li>
+    <li>Intercepter le trafic (MITM)</li>
+  </ol>
+
+  <p><strong>Outils :</strong> Fluxion, Wifiphisher, hostapd</p>
+
+  <h2>5. Attaques KRACK (WPA2)</h2>
+
+  <ul>
+    <li><strong>Key Reinstallation Attack</strong></li>
+    <li>Exploite une faille dans le 4-Way Handshake</li>
+    <li>Force la réinstallation de la clé de session</li>
+    <li>Permet le décryptage de paquets</li>
+    <li><strong>Correction :</strong> Patches disponibles depuis 2017</li>
+  </ul>
+
+  <h2>6. Contre-mesures</h2>
+
+  <table>
+    <tr><th>Attaque</th><th>Protection</th></tr>
+    <tr><td>Cracking WEP</td><td>Migrer vers WPA3</td></tr>
+    <tr><td>Dictionnaire WPA</td><td>Mot de passe fort (12+ caractères, complexe)</td></tr>
+    <tr><td>Evil Twin</td><td>WPA-Enterprise (802.1X), vérifier certificats</td></tr>
+    <tr><td>Deauth</td><td>802.11w (Management Frame Protection)</td></tr>
+    <tr><td>KRACK</td><td>Mettre à jour les appareils</td></tr>
+  </table>
+
+  <div class="highlight">
+    <strong>🔑 Points clés :</strong>
+    <ul>
+      <li>WEP est cracké en minutes → Ne jamais utiliser</li>
+      <li>WPA2-PSK résiste si mot de passe fort</li>
+      <li>Le handshake est le point faible à capturer</li>
+      <li>Les attaques Evil Twin sont redoutables</li>
+      <li>WPA3 avec SAE résout beaucoup de problèmes</li>
+    </ul>
+  </div>
+</div>
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+</script>
+</body>
+</html>
+
+

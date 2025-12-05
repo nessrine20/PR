@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction à la VoIP</title>
+<link rel="stylesheet" href="../assets/css/global.css">
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+  .top-btn { padding: 8px 14px; background: #fff; border: none; border-radius: 10px; font-weight: bold; color: #6a34cc; cursor: pointer; transition: 0.25s; }
+  .top-btn:hover { background: #f3e7ff; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .highlight { background: #f0e6ff; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #6a34cc; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  th { background: #e9d6ff; color: #4a2db6; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2 { color: #d4b4ff; }
+  .dark .highlight { background: #3a3a3a; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📞 Introduction à la VoIP</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../VOIp.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+<div class="container">
+  <h1>📞 Introduction à la VoIP</h1>
+
+  <h2>Qu'est-ce que la VoIP ?</h2>
+  <p>La <strong>VoIP</strong> (Voice over Internet Protocol) est une technologie qui permet de transmettre la voix sur des réseaux IP, comme Internet, au lieu des lignes téléphoniques traditionnelles (PSTN).</p>
+
+  <h2>Avantages de la VoIP</h2>
+  <ul>
+    <li>💰 <strong>Réduction des coûts</strong> : Appels moins chers, surtout internationaux</li>
+    <li>🔧 <strong>Fonctionnalités avancées</strong> : Messagerie vocale, conférences, transferts</li>
+    <li>📱 <strong>Mobilité</strong> : Utilisation depuis n'importe où avec Internet</li>
+    <li>🔗 <strong>Intégration</strong> : Avec CRM, email, collaboration</li>
+    <li>📈 <strong>Évolutivité</strong> : Ajout facile de lignes</li>
+  </ul>
+
+  <h2>Architecture VoIP</h2>
+  <table>
+    <tr><th>Composant</th><th>Rôle</th></tr>
+    <tr><td><strong>Téléphone IP</strong></td><td>Terminal utilisateur (hardphone ou softphone)</td></tr>
+    <tr><td><strong>IPBX</strong></td><td>Autocommutateur IP (Asterisk, FreePBX)</td></tr>
+    <tr><td><strong>Passerelle (Gateway)</strong></td><td>Interface avec le réseau téléphonique traditionnel</td></tr>
+    <tr><td><strong>Proxy SIP</strong></td><td>Routage des appels SIP</td></tr>
+    <tr><td><strong>Registrar</strong></td><td>Enregistrement des utilisateurs</td></tr>
+  </table>
+
+  <h2>Protocoles principaux</h2>
+  <div class="highlight">
+    <ul>
+      <li><strong>SIP</strong> (Session Initiation Protocol) : Signalisation, établissement des appels</li>
+      <li><strong>RTP</strong> (Real-time Transport Protocol) : Transport de la voix</li>
+      <li><strong>RTCP</strong> : Contrôle qualité du flux RTP</li>
+      <li><strong>H.323</strong> : Standard plus ancien (moins utilisé)</li>
+    </ul>
+  </div>
+
+  <h2>Codecs audio</h2>
+  <table>
+    <tr><th>Codec</th><th>Bande passante</th><th>Qualité</th></tr>
+    <tr><td>G.711</td><td>64 kbps</td><td>Excellente (PCM)</td></tr>
+    <tr><td>G.729</td><td>8 kbps</td><td>Bonne (compression)</td></tr>
+    <tr><td>Opus</td><td>6-510 kbps</td><td>Excellente (moderne)</td></tr>
+    <tr><td>G.722</td><td>48-64 kbps</td><td>HD Voice</td></tr>
+  </table>
+
+  <div class="highlight">
+    <strong>🔑 À retenir :</strong>
+    <ul>
+      <li>VoIP = téléphonie sur réseau IP</li>
+      <li>SIP pour la signalisation, RTP pour la voix</li>
+      <li>L'IPBX est le cœur du système (ex: Asterisk)</li>
+      <li>La QoS est essentielle pour la qualité d'appel</li>
+    </ul>
+  </div>
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+  document.getElementById("toggleLang").onclick = function() {
+    alert("English version coming soon!");
+  };
+</script>
+</body>
+</html>
+
+

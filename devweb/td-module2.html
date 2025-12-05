@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TD - JavaScript</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .question { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .question-num { color: #6a34cc; font-weight: bold; font-size: 18px; }
+  .answer { background: #d4edda; padding: 15px; border-radius: 10px; margin-top: 15px; display: none; border-left: 4px solid #28a745; }
+  .show-answer { background: #6a34cc; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; margin: 15px 0; overflow-x: auto; font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📝 TD - JavaScript</div>
+  <a href="../developpement_web.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>📝 TD : JavaScript</h1>
+
+  <h2>Partie 1 : Variables et Types</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1</p>
+    <p>Quelle est la différence entre <code>let</code>, <code>const</code> et <code>var</code> ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ul>
+        <li><code>var</code> : Scope fonction, hoisting, peut être redéclarée (à éviter)</li>
+        <li><code>let</code> : Scope bloc, peut être réassignée</li>
+        <li><code>const</code> : Scope bloc, NE peut PAS être réassignée (mais les objets/arrays peuvent être modifiés)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2</p>
+    <p>Que retournent ces comparaisons ?</p>
+    <div class="code-block">console.log(5 == "5");
+console.log(5 === "5");
+console.log(null == undefined);
+console.log(null === undefined);</div>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <div class="code-block">5 == "5"           // true (comparaison avec conversion)
+5 === "5"          // false (comparaison stricte, types différents)
+null == undefined  // true
+null === undefined // false</div>
+      <strong>Règle :</strong> Toujours utiliser <code>===</code> (égalité stricte)
+    </div>
+  </div>
+
+  <h2>Partie 2 : Fonctions</h2>
+
+  <div class="question">
+    <p class="question-num">Question 3</p>
+    <p>Transformez cette fonction en arrow function :</p>
+    <div class="code-block">function multiply(a, b) {
+  return a * b;
+}</div>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <div class="code-block">// Version longue
+const multiply = (a, b) => {
+  return a * b;
+};
+
+// Version courte (return implicite)
+const multiply = (a, b) => a * b;</div>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Arrays</h2>
+
+  <div class="question">
+    <p class="question-num">Question 4</p>
+    <p>Utilisez <code>map</code> pour doubler chaque nombre :</p>
+    <div class="code-block">const numbers = [1, 2, 3, 4, 5];</div>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <div class="code-block">const doubled = numbers.map(n => n * 2);
+// [2, 4, 6, 8, 10]</div>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5</p>
+    <p>Utilisez <code>filter</code> pour garder les nombres pairs :</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <div class="code-block">const evens = numbers.filter(n => n % 2 === 0);
+// [2, 4]</div>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 6</p>
+    <p>Utilisez <code>reduce</code> pour calculer la somme :</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <div class="code-block">const sum = numbers.reduce((acc, n) => acc + n, 0);
+// 15</div>
+    </div>
+  </div>
+
+  <h2>Partie 4 : DOM</h2>
+
+  <div class="question">
+    <p class="question-num">Question 7</p>
+    <p>Écrivez le code pour :</p>
+    <ol>
+      <li>Sélectionner un bouton avec l'id "btn"</li>
+      <li>Au clic, changer le texte d'un paragraphe avec l'id "message"</li>
+    </ol>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <div class="code-block">const btn = document.getElementById('btn');
+const message = document.getElementById('message');
+
+btn.addEventListener('click', () => {
+  message.textContent = 'Bouton cliqué !';
+});</div>
+    </div>
+  </div>
+
+  <h2>Partie 5 : Asynchrone</h2>
+
+  <div class="question">
+    <p class="question-num">Question 8</p>
+    <p>Convertissez ce code en async/await :</p>
+    <div class="code-block">fetch('https://api.example.com/users')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));</div>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <div class="code-block">async function getUsers() {
+  try {
+    const response = await fetch('https://api.example.com/users');
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+getUsers();</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+

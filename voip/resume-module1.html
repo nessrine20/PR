@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résumé - Protocoles SIP & RTP</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .highlight { background: #f0e6ff; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #6a34cc; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  th { background: #e9d6ff; color: #4a2db6; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; overflow-x: auto; margin: 15px 0; white-space: pre; font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📘 Résumé - SIP & RTP</div>
+  <a href="../VOIp.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>📞 Protocoles SIP & RTP</h1>
+
+  <h2>1. SIP (Session Initiation Protocol)</h2>
+  <div class="highlight">
+    <strong>Rôle :</strong> Protocole de signalisation pour établir, modifier et terminer les sessions multimédia (appels VoIP, vidéoconférence).
+  </div>
+
+  <h3>Caractéristiques</h3>
+  <ul>
+    <li><strong>Port :</strong> 5060 (UDP/TCP) ou 5061 (TLS)</li>
+    <li><strong>Format :</strong> Texte (similaire à HTTP)</li>
+    <li><strong>Modèle :</strong> Requête/Réponse</li>
+  </ul>
+
+  <h3>Messages SIP</h3>
+  <table>
+    <tr><th>Requête</th><th>Description</th></tr>
+    <tr><td><strong>INVITE</strong></td><td>Initier un appel</td></tr>
+    <tr><td><strong>ACK</strong></td><td>Confirmer réception du 200 OK</td></tr>
+    <tr><td><strong>BYE</strong></td><td>Terminer un appel</td></tr>
+    <tr><td><strong>CANCEL</strong></td><td>Annuler une requête en cours</td></tr>
+    <tr><td><strong>REGISTER</strong></td><td>Enregistrer l'emplacement</td></tr>
+    <tr><td><strong>OPTIONS</strong></td><td>Interroger les capacités</td></tr>
+  </table>
+
+  <h3>Codes de réponse</h3>
+  <table>
+    <tr><th>Code</th><th>Signification</th><th>Exemple</th></tr>
+    <tr><td>1xx</td><td>Informatif</td><td>100 Trying, 180 Ringing</td></tr>
+    <tr><td>2xx</td><td>Succès</td><td>200 OK</td></tr>
+    <tr><td>3xx</td><td>Redirection</td><td>302 Moved</td></tr>
+    <tr><td>4xx</td><td>Erreur client</td><td>404 Not Found, 401 Unauthorized</td></tr>
+    <tr><td>5xx</td><td>Erreur serveur</td><td>500 Server Error</td></tr>
+    <tr><td>6xx</td><td>Erreur globale</td><td>603 Decline</td></tr>
+  </table>
+
+  <h3>Exemple de message INVITE</h3>
+  <div class="code-block">INVITE sip:bob@example.com SIP/2.0
+Via: SIP/2.0/UDP pc33.example.com;branch=z9hG4bK776
+Max-Forwards: 70
+To: Bob <sip:bob@example.com>
+From: Alice <sip:alice@example.com>;tag=1928301774
+Call-ID: a84b4c76e66710@pc33.example.com
+CSeq: 314159 INVITE
+Contact: <sip:alice@pc33.example.com>
+Content-Type: application/sdp
+Content-Length: 142</div>
+
+  <h2>2. RTP (Real-time Transport Protocol)</h2>
+  <div class="highlight">
+    <strong>Rôle :</strong> Transporter les flux audio/vidéo en temps réel.
+  </div>
+
+  <ul>
+    <li><strong>Port :</strong> Dynamique (généralement 16384-32767)</li>
+    <li><strong>Transport :</strong> UDP (rapidité > fiabilité)</li>
+    <li><strong>Contenu :</strong> Timestamp, numéro de séquence, payload type</li>
+  </ul>
+
+  <h3>RTCP (RTP Control Protocol)</h3>
+  <p>Protocole compagnon pour le contrôle qualité :</p>
+  <ul>
+    <li>Statistiques sur les paquets perdus</li>
+    <li>Jitter (variation de latence)</li>
+    <li>Round-trip time</li>
+  </ul>
+
+  <h2>3. Flux d'un appel SIP</h2>
+  <div class="code-block">Alice                 Proxy SIP                 Bob
+  |                       |                       |
+  |------ INVITE -------->|                       |
+  |                       |------ INVITE -------->|
+  |<----- 100 Trying -----|                       |
+  |                       |<----- 180 Ringing ----|
+  |<----- 180 Ringing ----|                       |
+  |                       |<----- 200 OK ---------|
+  |<----- 200 OK ---------|                       |
+  |------ ACK ----------->|------ ACK ----------->|
+  |                       |                       |
+  |<======== RTP (Audio) ========================>|
+  |                       |                       |
+  |------ BYE ----------->|------ BYE ----------->|
+  |<----- 200 OK ---------|<----- 200 OK ---------|</div>
+
+  <div class="highlight">
+    <strong>🔑 Points clés :</strong>
+    <ul>
+      <li>SIP = Signalisation (établir/terminer)</li>
+      <li>RTP = Transport média (audio/vidéo)</li>
+      <li>SDP = Description des médias (codecs, ports)</li>
+      <li>RTCP = Contrôle qualité</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
+
+

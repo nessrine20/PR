@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Examens - Plateforme de Révision</title>
+<link rel="stylesheet" href="assets/css/global.css">
+
+<style>
+/* =========================== */
+/* GLOBAL */
+/* =========================== */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4eaff;
+  transition: 0.3s;
+}
+
+/* =========================== */
+/* NAVBAR UNIFIÉE */
+/* =========================== */
+.navbar {
+  position: relative;
+  z-index: 9500;
+  width: 70%;
+  height: 70px;
+  margin: 20px auto 0;
+  background: linear-gradient(120deg, #9c6bff, #c29fff);
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.navbar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.logo {
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Navbar Buttons */
+.btn {
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+/* Bouton Retour */
+.btn-back {
+  background: white !important;
+  color: #7c3aed !important;
+}
+
+/* =========================== */
+/* CONTENT */
+/* =========================== */
+
+.container {
+  width: 85%;
+  margin: 60px auto;
+}
+
+h1 {
+  font-size: 32px;
+  text-align: center;
+  color: #4a2db6;
+  margin-bottom: 40px;
+}
+
+/* GRID */
+.subject-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 25px;
+}
+
+/* CARD */
+.subject-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.subject-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.subject-header {
+  background: linear-gradient(135deg, #b07cff, #9b59b6);
+  color: white;
+  padding: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.subject-body {
+  padding: 20px;
+}
+
+.exam-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.exam-item {
+  padding: 12px 15px;
+  margin: 8px 0;
+  background: #f8f4ff;
+  border-radius: 10px;
+  border-left: 4px solid #6a34cc;
+  transition: 0.2s;
+}
+
+.exam-item:hover {
+  background: #f0e6ff;
+  transform: translateX(5px);
+}
+
+.exam-item a {
+  text-decoration: none;
+  color: #5b22b3;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.exam-badge {
+  background: #e9d6ff;
+  color: #6a34cc;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+/* =========================== */
+/* DARK MODE */
+/* =========================== */
+.dark {
+  background: #1b1b1b !important;
+  color: #eee;
+}
+
+.dark .subject-card { background: #292929; }
+.dark .subject-header { background: linear-gradient(135deg, #5a189a, #3c096c); }
+.dark .exam-item { background: #3a3a3a; border-left-color: #9b59b6; }
+.dark .exam-item a { color: #d4b4ff; }
+.dark .exam-badge { background: #5a189a; color: #f0e6ff; }
+.dark h1 { color: #d4b4ff; }
+</style>
+</head>
+
+<body>
+
+<!-- =========================== -->
+<!-- NAVBAR UNIFIÉE -->
+<!-- =========================== -->
+<header class="navbar">
+  <div class="logo">🎓 BOOSTSR51</div>
+
+  <div class="nav-actions">
+    <button id="toggleDark" class="btn">🌙</button>
+
+    <a href="dashboard.php" class="btn btn-back">← Retour</a>
+  </div>
+</header>
+
+
+<!-- =========================== -->
+<!-- MAIN CONTENT -->
+<!-- =========================== -->
+<div class="container">
+
+  <h1>📚 Examens par Matière</h1>
+
+  <div class="subject-grid">
+
+    <!-- ================= CLOUD ================= -->
+    <div class="subject-card">
+      <div class="subject-header">☁️ Cloud Computing</div>
+      <div class="subject-body">
+        <ul class="exam-list">
+          <li class="exam-item">
+            <a href="examens/cloud-ds1.html">
+              <span>📋 DS 1 - Introduction au Cloud</span><span class="exam-badge">DS</span>
+            </a>
+          </li>
+
+          <li class="exam-item">
+            <a href="examens/cloud-ds1-correction.html">
+              <span>✅ Correction DS 1</span><span class="exam-badge">Corrigé</span>
+            </a>
+          </li>
+
+          <li class="exam-item">
+            <a href="examens/cloud-examen.html">
+              <span>📝 Examen Final</span><span class="exam-badge">Examen</span>
+            </a>
+          </li>
+
+          <li class="exam-item">
+            <a href="examens/cloud-examen-correction.html">
+              <span>✅ Correction Examen</span><span class="exam-badge">Corrigé</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ================= DÉVELOPPEMENT WEB ================= -->
+    <div class="subject-card">
+      <div class="subject-header">💻 Développement Web</div>
+      <div class="subject-body">
+        <ul class="exam-list">
+          <li class="exam-item">
+            <a href="examens/devweb-ds1.html">
+              <span>📋 DS 1 - HTML/CSS/JS</span><span class="exam-badge">DS</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/devweb-ds1-correction.html">
+              <span>✅ Correction DS 1</span><span class="exam-badge">Corrigé</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/devweb-examen.html">
+              <span>📝 Examen Final</span><span class="exam-badge">Examen</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/devweb-examen-correction.html">
+              <span>✅ Correction Examen</span><span class="exam-badge">Corrigé</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ================= WIFI ================= -->
+    <div class="subject-card">
+      <div class="subject-header">🔐 Sécurité Réseaux Sans Fil</div>
+      <div class="subject-body">
+        <ul class="exam-list">
+          <li class="exam-item">
+            <a href="examens/securite-ds1.html">
+              <span>📋 DS 1 - Protocoles WiFi</span><span class="exam-badge">DS</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/securite-ds1-correction.html">
+              <span>✅ Correction DS 1</span><span class="exam-badge">Corrigé</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/securite-examen.html">
+              <span>📝 Examen Final</span><span class="exam-badge">Examen</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/securite-examen-correction.html">
+              <span>✅ Correction Examen</span><span class="exam-badge">Corrigé</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ================= IA ================= -->
+    <div class="subject-card">
+      <div class="subject-header">🤖 Intelligence Artificielle</div>
+      <div class="subject-body">
+        <ul class="exam-list">
+          <li class="exam-item">
+            <a href="examens/ia-ds1.html">
+              <span>📋 DS 1 - Machine Learning</span><span class="exam-badge">DS</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/ia-ds1-correction.html">
+              <span>✅ Correction DS 1</span><span class="exam-badge">Corrigé</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/ia-examen.html">
+              <span>📝 Examen Final</span><span class="exam-badge">Examen</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/ia-examen-correction.html">
+              <span>✅ Correction Examen</span><span class="exam-badge">Corrigé</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ================= AUDIT ================= -->
+    <div class="subject-card">
+      <div class="subject-header">🛡️ Audit de Sécurité</div>
+      <div class="subject-body">
+        <ul class="exam-list">
+          <li class="exam-item">
+            <a href="examens/audit-ds1.html">
+              <span>📋 DS 1 - Normes ISO</span><span class="exam-badge">DS</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/audit-ds1-correction.html">
+              <span>✅ Correction DS 1</span><span class="exam-badge">Corrigé</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/audit-examen.html">
+              <span>📝 Examen Final</span><span class="exam-badge">Examen</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/audit-examen-correction.html">
+              <span>✅ Correction Examen</span><span class="exam-badge">Corrigé</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ================= VOIP ================= -->
+    <div class="subject-card">
+      <div class="subject-header">📞 VoIP</div>
+      <div class="subject-body">
+        <ul class="exam-list">
+          <li class="exam-item">
+            <a href="examens/voip-ds1.html">
+              <span>📋 DS 1 - Protocoles SIP/RTP</span><span class="exam-badge">DS</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/voip-ds1-correction.html">
+              <span>✅ Correction DS 1</span><span class="exam-badge">Corrigé</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/voip-examen.html">
+              <span>📝 Examen Final</span><span class="exam-badge">Examen</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/voip-examen-correction.html">
+              <span>✅ Correction Examen</span><span class="exam-badge">Corrigé</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ================= VPN ================= -->
+    <div class="subject-card">
+      <div class="subject-header">🌐 VPN</div>
+      <div class="subject-body">
+        <ul class="exam-list">
+          <li class="exam-item">
+            <a href="examens/vpn-ds1.html">
+              <span>📋 DS 1 - Protocoles VPN</span><span class="exam-badge">DS</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/vpn-ds1-correction.html">
+              <span>✅ Correction DS 1</span><span class="exam-badge">Corrigé</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/vpn-examen.html">
+              <span>📝 Examen Final</span><span class="exam-badge">Examen</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/vpn-examen-correction.html">
+              <span>✅ Correction Examen</span><span class="exam-badge">Corrigé</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ================= CULTURE ENTREPRISE ================= -->
+    <div class="subject-card">
+      <div class="subject-header">🏢 Culture d'Entreprise</div>
+      <div class="subject-body">
+        <ul class="exam-list">
+          <li class="exam-item">
+            <a href="examens/culture-ds1.html">
+              <span>📋 DS 1 - Droit du Travail</span><span class="exam-badge">DS</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/culture-ds1-correction.html">
+              <span>✅ Correction DS 1</span><span class="exam-badge">Corrigé</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/culture-examen.html">
+              <span>📝 Examen Final</span><span class="exam-badge">Examen</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/culture-examen-correction.html">
+              <span>✅ Correction Examen</span><span class="exam-badge">Corrigé</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ================= CYBEROPS ================= -->
+    <div class="subject-card">
+      <div class="subject-header">🚨 CyberOps</div>
+      <div class="subject-body">
+        <ul class="exam-list">
+          <li class="exam-item">
+            <a href="examens/cyberops-ds1.html">
+              <span>📋 DS 1 - Menaces & SOC</span><span class="exam-badge">DS</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/cyberops-ds1-correction.html">
+              <span>✅ Correction DS 1</span><span class="exam-badge">Corrigé</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/cyberops-examen.html">
+              <span>📝 Examen Final</span><span class="exam-badge">Examen</span>
+            </a>
+          </li>
+          <li class="exam-item">
+            <a href="examens/cyberops-examen-correction.html">
+              <span>✅ Correction Examen</span><span class="exam-badge">Corrigé</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script>
+document.getElementById("toggleDark").onclick = function () {
+  document.body.classList.toggle("dark");
+  this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+};
+</script>
+
+</body>
+</html>
+

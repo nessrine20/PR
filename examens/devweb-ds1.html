@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DS 1 - Développement Web</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+  .top-btn { padding: 8px 14px; background: #fff; border: none; border-radius: 10px; font-weight: bold; color: #6a34cc; cursor: pointer; }
+  .print-btn { padding: 8px 14px; background: linear-gradient(135deg, #6a34cc, #9b59b6); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; text-align: center; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .info-box { background: #e8f4ff; padding: 20px; border-radius: 10px; margin-bottom: 30px; border-left: 4px solid #007bff; }
+  .question { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .question-num { color: #6a34cc; font-weight: bold; font-size: 18px; margin-bottom: 10px; }
+  .points { float: right; background: #6a34cc; color: white; padding: 3px 10px; border-radius: 15px; font-size: 14px; }
+  .answer-space { border: 2px dashed #ccc; padding: 40px; margin-top: 15px; border-radius: 8px; min-height: 80px; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; margin: 10px 0; overflow-x: auto; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2 { color: #d4b4ff; }
+  .dark .question { background: #3a3a3a; }
+  @media print { .topbar, #cursorCanvas { display: none !important; } body { background: white !important; } .container { box-shadow: none; width: 95%; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📋 DS 1 - Développement Web</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../Examens.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>💻 DS 1 - Développement Web</h1>
+  
+  <div class="info-box">
+    <strong>📅 Durée :</strong> 1h30 | <strong>📊 Barème :</strong> 20 points | <strong>📝 Documents :</strong> Non autorisés
+  </div>
+
+  <h2>Partie 1 : HTML & CSS (8 points)</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1 <span class="points">2 pts</span></p>
+    <p>Quelle est la différence entre les balises sémantiques HTML5 et les balises génériques ? Citez 5 balises sémantiques.</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2 <span class="points">3 pts</span></p>
+    <p>Expliquez le modèle de boîte CSS (Box Model). Quelle propriété utiliser pour que padding et border soient inclus dans la largeur ?</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3 <span class="points">3 pts</span></p>
+    <p>Écrivez le CSS pour créer une grille de 3 colonnes égales avec un gap de 20px utilisant CSS Grid.</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <h2>Partie 2 : JavaScript (8 points)</h2>
+
+  <div class="question">
+    <p class="question-num">Question 4 <span class="points">2 pts</span></p>
+    <p>Quelle est la différence entre let, const et var ?</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5 <span class="points">3 pts</span></p>
+    <p>Qu'est-ce que l'asynchronisme en JavaScript ? Expliquez les Promises et async/await.</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 6 <span class="points">3 pts</span></p>
+    <p>Analysez ce code et indiquez ce qu'il affiche :</p>
+    <div class="code-block">
+let x = 10;<br>
+function test() {<br>
+&nbsp;&nbsp;console.log(x);<br>
+&nbsp;&nbsp;let x = 20;<br>
+&nbsp;&nbsp;console.log(x);<br>
+}<br>
+test();
+    </div>
+    <div class="answer-space"></div>
+  </div>
+
+  <h2>Partie 3 : Pratique (4 points)</h2>
+
+  <div class="question">
+    <p class="question-num">Question 7 <span class="points">4 pts</span></p>
+    <p>Écrivez le code HTML, CSS et JavaScript pour créer un bouton qui, au clic, change la couleur de fond de la page entre violet et blanc.</p>
+    <div class="answer-space" style="min-height: 150px;"></div>
+  </div>
+
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+  document.getElementById("toggleLang").onclick = function() { alert("English version coming soon!"); };
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction à CyberOps</title>
+<link rel="stylesheet" href="../assets/css/global.css">
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+  .top-btn { padding: 8px 14px; background: #fff; border: none; border-radius: 10px; font-weight: bold; color: #6a34cc; cursor: pointer; transition: 0.25s; }
+  .top-btn:hover { background: #f3e7ff; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .highlight { background: #f0e6ff; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #6a34cc; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  th { background: #e9d6ff; color: #4a2db6; }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2 { color: #d4b4ff; }
+  .dark .highlight { background: #3a3a3a; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">🚨 Introduction à CyberOps</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../cyberops.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+<div class="container">
+  <h1>🚨 Introduction aux Opérations de Cybersécurité</h1>
+
+  <h2>Qu'est-ce que CyberOps ?</h2>
+  <p>Les <strong>opérations de cybersécurité</strong> (CyberOps) englobent l'ensemble des activités de surveillance, détection et réponse aux menaces informatiques au sein d'une organisation, généralement depuis un <strong>SOC</strong> (Security Operations Center).</p>
+
+  <h2>Le SOC (Security Operations Center)</h2>
+  <p>Le SOC est le centre névralgique de la cybersécurité opérationnelle. Il fonctionne 24h/24, 7j/7 pour surveiller et protéger les systèmes d'information.</p>
+
+  <h2>Rôles dans un SOC</h2>
+  <table>
+    <tr><th>Niveau</th><th>Rôle</th><th>Responsabilités</th></tr>
+    <tr>
+      <td><strong>Tier 1</strong></td>
+      <td>Analyste Junior</td>
+      <td>Surveillance 24/7, triage des alertes, escalade</td>
+    </tr>
+    <tr>
+      <td><strong>Tier 2</strong></td>
+      <td>Analyste Senior</td>
+      <td>Investigation approfondie, corrélation, remédiation</td>
+    </tr>
+    <tr>
+      <td><strong>Tier 3</strong></td>
+      <td>Expert / Threat Hunter</td>
+      <td>Hunting proactif, forensics, analyse de malware</td>
+    </tr>
+    <tr>
+      <td><strong>SOC Manager</strong></td>
+      <td>Responsable</td>
+      <td>Gestion d'équipe, stratégie, reporting</td>
+    </tr>
+  </table>
+
+  <h2>Missions principales</h2>
+  <ul>
+    <li>👁️ <strong>Surveillance</strong> : Monitoring continu des systèmes et réseaux</li>
+    <li>🔍 <strong>Détection</strong> : Identification des activités suspectes</li>
+    <li>📊 <strong>Analyse</strong> : Investigation des incidents</li>
+    <li>🛡️ <strong>Réponse</strong> : Containment et remédiation</li>
+    <li>📝 <strong>Reporting</strong> : Documentation et amélioration continue</li>
+  </ul>
+
+  <h2>Outils essentiels</h2>
+  <div class="highlight">
+    <ul>
+      <li><strong>SIEM</strong> : Splunk, QRadar, ELK Stack (collecte et corrélation de logs)</li>
+      <li><strong>EDR</strong> : CrowdStrike, Carbon Black (protection endpoints)</li>
+      <li><strong>IDS/IPS</strong> : Snort, Suricata (détection d'intrusions)</li>
+      <li><strong>Threat Intelligence</strong> : MISP, OTX (renseignement menaces)</li>
+      <li><strong>SOAR</strong> : Automatisation de la réponse aux incidents</li>
+    </ul>
+  </div>
+
+  <div class="highlight">
+    <strong>🔑 À retenir :</strong>
+    <ul>
+      <li>Le SOC surveille et protège le SI 24/7</li>
+      <li>Les analystes sont organisés en Tier 1, 2, 3</li>
+      <li>Le SIEM est l'outil central du SOC</li>
+      <li>Détecter rapidement et répondre efficacement = objectifs clés</li>
+    </ul>
+  </div>
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+  document.getElementById("toggleLang").onclick = function() {
+    alert("English version coming soon!");
+  };
+</script>
+</body>
+</html>
+
+

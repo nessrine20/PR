@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résumé - Machine Learning</title>
+<link rel="stylesheet" href="../assets/css/global.css">
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; transition: 0.3s; }
+  .topbar {
+    background: linear-gradient(135deg, #c59bff, #b07cff);
+    padding: 15px 30px; display: flex; justify-content: space-between;
+    align-items: center; color: white; position: sticky; top: 0; z-index: 10;
+  }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+  .top-btn { padding: 8px 14px; background: #fff; border: none; border-radius: 10px; font-weight: bold; color: #6a34cc; cursor: pointer; }
+  .print-btn { padding: 8px 14px; background: linear-gradient(135deg, #6a34cc, #9b59b6); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+  .back-btn {
+    padding: 8px 16px; background: #fff; color: #6a34cc;
+    border-radius: 8px; font-weight: bold; text-decoration: none;
+  }
+  .dark { background: #1b1b1b !important; color: #eee; }
+  .dark .container { background: #292929; }
+  .dark h1, .dark h2, .dark h3 { color: #d4b4ff; }
+  .dark .highlight { background: #3a3a3a; }
+  .dark th { background: #3a3a3a; color: #d4b4ff; }
+  .dark .code-block { background: #1a1a2e; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  h3 { color: #6a34cc; }
+  .highlight { background: #f0e6ff; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #6a34cc; }
+  .formula { background: #e8f4ff; padding: 15px; border-radius: 10px; margin: 15px 0; text-align: center; font-family: monospace; font-size: 18px; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  th { background: #e9d6ff; color: #4a2db6; }
+  ul { padding-left: 25px; }
+  li { margin: 8px 0; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; overflow-x: auto; margin: 15px 0; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-title">📘 Résumé - Machine Learning</div>
+  <div class="topbar-actions">
+    <button onclick="window.print()" class="print-btn">🖨️ Imprimer</button>
+    <button id="toggleLang" class="top-btn">EN</button>
+    <button id="toggleDark" class="top-btn">🌙</button>
+    <a href="../ia.html" class="back-btn">← Retour</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>📊 Machine Learning - Les fondamentaux</h1>
+  
+  <h2>1. Définition</h2>
+  <div class="highlight">
+    <strong>Machine Learning (ML)</strong> = Apprentissage automatique<br><br>
+    C'est un sous-domaine de l'IA qui permet aux machines d'apprendre à partir de données sans être explicitement programmées.
+  </div>
+
+  <h2>2. Types d'apprentissage</h2>
+  
+  <h3>📌 Apprentissage Supervisé</h3>
+  <ul>
+    <li><strong>Principe :</strong> On fournit des données avec les réponses (labels)</li>
+    <li><strong>Exemple :</strong> Photos de chats/chiens étiquetées → le modèle apprend à les distinguer</li>
+    <li><strong>Types :</strong>
+      <ul>
+        <li><strong>Classification</strong> : Prédire une catégorie (spam/non-spam)</li>
+        <li><strong>Régression</strong> : Prédire une valeur continue (prix d'une maison)</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3>📌 Apprentissage Non Supervisé</h3>
+  <ul>
+    <li><strong>Principe :</strong> Données sans labels, le modèle trouve des patterns</li>
+    <li><strong>Exemple :</strong> Segmentation de clients en groupes similaires</li>
+    <li><strong>Types :</strong>
+      <ul>
+        <li><strong>Clustering</strong> : Regrouper les données similaires (K-Means)</li>
+        <li><strong>Réduction de dimension</strong> : Simplifier les données (PCA)</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3>📌 Apprentissage par Renforcement</h3>
+  <ul>
+    <li><strong>Principe :</strong> Agent qui apprend par essai-erreur avec récompenses/pénalités</li>
+    <li><strong>Exemple :</strong> IA qui apprend à jouer aux jeux vidéo</li>
+  </ul>
+
+  <h2>3. Algorithmes principaux</h2>
+
+  <table>
+    <tr>
+      <th>Algorithme</th>
+      <th>Type</th>
+      <th>Usage</th>
+    </tr>
+    <tr>
+      <td>Régression Linéaire</td>
+      <td>Supervisé - Régression</td>
+      <td>Prédire des valeurs continues</td>
+    </tr>
+    <tr>
+      <td>Régression Logistique</td>
+      <td>Supervisé - Classification</td>
+      <td>Classification binaire</td>
+    </tr>
+    <tr>
+      <td>K-NN</td>
+      <td>Supervisé</td>
+      <td>Classification par voisinage</td>
+    </tr>
+    <tr>
+      <td>Arbre de décision</td>
+      <td>Supervisé</td>
+      <td>Classification/Régression</td>
+    </tr>
+    <tr>
+      <td>Random Forest</td>
+      <td>Supervisé</td>
+      <td>Ensemble d'arbres</td>
+    </tr>
+    <tr>
+      <td>SVM</td>
+      <td>Supervisé</td>
+      <td>Classification avec marge</td>
+    </tr>
+    <tr>
+      <td>K-Means</td>
+      <td>Non supervisé</td>
+      <td>Clustering</td>
+    </tr>
+  </table>
+
+  <h2>4. Formules essentielles</h2>
+
+  <h3>Régression Linéaire</h3>
+  <div class="formula">
+    y = ax + b
+  </div>
+  <p>Où a = pente, b = ordonnée à l'origine</p>
+
+  <h3>Erreur Quadratique Moyenne (MSE)</h3>
+  <div class="formula">
+    MSE = (1/n) × Σ(yi - ŷi)²
+  </div>
+
+  <h3>Accuracy (Précision)</h3>
+  <div class="formula">
+    Accuracy = (TP + TN) / (TP + TN + FP + FN)
+  </div>
+
+  <h2>5. Processus ML typique</h2>
+  <ol>
+    <li><strong>Collecter</strong> les données</li>
+    <li><strong>Nettoyer</strong> les données (valeurs manquantes, outliers)</li>
+    <li><strong>Explorer</strong> les données (visualisation)</li>
+    <li><strong>Diviser</strong> : Train (80%) / Test (20%)</li>
+    <li><strong>Entraîner</strong> le modèle</li>
+    <li><strong>Évaluer</strong> les performances</li>
+    <li><strong>Optimiser</strong> (hyperparamètres)</li>
+    <li><strong>Déployer</strong> le modèle</li>
+  </ol>
+
+  <h2>6. Métriques d'évaluation</h2>
+
+  <h3>Pour la Classification :</h3>
+  <ul>
+    <li><strong>Accuracy</strong> : % de bonnes prédictions</li>
+    <li><strong>Precision</strong> : TP / (TP + FP) - Fiabilité des positifs</li>
+    <li><strong>Recall</strong> : TP / (TP + FN) - Détection des positifs</li>
+    <li><strong>F1-Score</strong> : 2 × (Precision × Recall) / (Precision + Recall)</li>
+  </ul>
+
+  <h3>Pour la Régression :</h3>
+  <ul>
+    <li><strong>MSE</strong> : Erreur quadratique moyenne</li>
+    <li><strong>RMSE</strong> : Racine de MSE</li>
+    <li><strong>MAE</strong> : Erreur absolue moyenne</li>
+    <li><strong>R²</strong> : Coefficient de détermination (0 à 1)</li>
+  </ul>
+
+  <h2>7. Code Python avec Scikit-learn</h2>
+  <div class="code-block">
+from sklearn.model_selection import train_test_split<br>
+from sklearn.ensemble import RandomForestClassifier<br>
+from sklearn.metrics import accuracy_score, classification_report<br><br>
+
+# 1. Diviser les données<br>
+X_train, X_test, y_train, y_test = train_test_split(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;X, y, test_size=0.2, random_state=42<br>
+)<br><br>
+
+# 2. Créer et entraîner le modèle<br>
+model = RandomForestClassifier(n_estimators=100)<br>
+model.fit(X_train, y_train)<br><br>
+
+# 3. Prédire<br>
+y_pred = model.predict(X_test)<br><br>
+
+# 4. Évaluer<br>
+print(f"Accuracy: {accuracy_score(y_test, y_pred)}")<br>
+print(classification_report(y_test, y_pred))
+  </div>
+
+  <h2>🔑 Points clés à retenir</h2>
+  <div class="highlight">
+    <ul>
+      <li><strong>Supervisé</strong> = données étiquetées</li>
+      <li><strong>Non supervisé</strong> = trouver des patterns</li>
+      <li><strong>Train/Test split</strong> = éviter l'overfitting</li>
+      <li><strong>Feature engineering</strong> = clé du succès</li>
+      <li><strong>Pas de modèle parfait</strong> = choisir selon le problème</li>
+    </ul>
+  </div>
+</div>
+
+<script src="../assets/js/cursor.js"></script>
+<script>
+  document.getElementById("toggleDark").onclick = function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+  document.getElementById("toggleLang").onclick = function() { alert("English version coming soon!"); };
+</script>
+</body>
+</html>
+
+

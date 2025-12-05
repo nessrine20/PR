@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TD - Création d'Entreprise</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .question { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .question-num { color: #6a34cc; font-weight: bold; font-size: 18px; }
+  .answer { background: #d4edda; padding: 15px; border-radius: 10px; margin-top: 15px; display: none; border-left: 4px solid #28a745; }
+  .show-answer { background: #6a34cc; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+  .case-study { background: #e8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #007bff; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📝 TD - Création d'Entreprise</div>
+  <a href="../culture.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>📝 TD : Création d'Entreprise</h1>
+
+  <h2>Partie 1 : Choix de statut</h2>
+
+  <div class="case-study">
+    <strong>📋 Cas n°1 - Le développeur freelance</strong><br><br>
+    Ahmed veut se lancer en freelance comme développeur web. Il prévoit un CA de 50 000€/an. Il travaillera seul et souhaite une gestion simple.
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 1</p>
+    <p>Quel statut recommanderiez-vous à Ahmed ? Justifiez.</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <p><strong>Micro-entreprise (auto-entrepreneur)</strong> car :</p>
+      <ul>
+        <li>CA < 77 700€ (plafond services)</li>
+        <li>Gestion simplifiée (pas de comptabilité complète)</li>
+        <li>Cotisations calculées sur CA (22%)</li>
+        <li>Pas de TVA si CA < 36 800€</li>
+      </ul>
+      <p><strong>Alternative :</strong> SASU si souhaite protection sociale renforcée ou image plus "sérieuse" pour les clients grands comptes.</p>
+    </div>
+  </div>
+
+  <div class="case-study">
+    <strong>📋 Cas n°2 - La startup tech</strong><br><br>
+    Léa et Marc veulent créer une startup d'IA. Ils prévoient de lever 500 000€ auprès d'investisseurs dans 18 mois.
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2</p>
+    <p>Quel statut est le plus adapté ? Pourquoi ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <p><strong>SAS (Société par Actions Simplifiée)</strong> car :</p>
+      <ul>
+        <li>Grande flexibilité statutaire</li>
+        <li>Facilité pour les levées de fonds (actions)</li>
+        <li>Possibilité de créer des catégories d'actions</li>
+        <li>Attractivité pour les investisseurs</li>
+        <li>Président assimilé salarié (protection sociale)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Partie 2 : Business Plan</h2>
+
+  <div class="question">
+    <p class="question-num">Question 3</p>
+    <p>Quelles sont les 6 parties essentielles d'un business plan ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ol>
+        <li><strong>Executive Summary</strong> : Synthèse du projet (1-2 pages)</li>
+        <li><strong>Présentation</strong> : Équipe, produit/service, proposition de valeur</li>
+        <li><strong>Étude de marché</strong> : Taille du marché, clients cibles, concurrence</li>
+        <li><strong>Stratégie</strong> : Marketing, commerciale, différenciation</li>
+        <li><strong>Prévisions financières</strong> : CA, charges, résultat sur 3 ans</li>
+        <li><strong>Plan de financement</strong> : Besoins, sources de financement</li>
+      </ol>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Financement</h2>
+
+  <div class="case-study">
+    <strong>📋 Cas n°3 - Besoin de financement</strong><br><br>
+    Une startup a besoin de 100 000€ pour se lancer. Les fondateurs peuvent apporter 20 000€.
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 4</p>
+    <p>Proposez un plan de financement en combinant plusieurs sources.</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <p><strong>Exemple de montage :</strong></p>
+      <ul>
+        <li>Apport personnel : 20 000€ (obligatoire pour crédibilité)</li>
+        <li>Love money (famille) : 10 000€</li>
+        <li>Prêt d'honneur (Réseau Entreprendre, Initiative France) : 20 000€</li>
+        <li>Prêt bancaire : 30 000€ (avec garantie BPI)</li>
+        <li>Crowdfunding : 10 000€</li>
+        <li>Business Angel : 10 000€ (en capital)</li>
+      </ul>
+      <p><strong>Total : 100 000€</strong></p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5</p>
+    <p>Qu'est-ce que l'ACRE et quels sont ses avantages ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <p><strong>ACRE = Aide aux Créateurs et Repreneurs d'Entreprise</strong></p>
+      <ul>
+        <li>Exonération partielle de charges sociales la 1ère année</li>
+        <li>Pour les demandeurs d'emploi, bénéficiaires RSA, -26 ans...</li>
+        <li>Micro-entreprise : cotisations réduites de 50% pendant 1 an</li>
+        <li>Autres statuts : exonération jusqu'à 75% du PASS</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+

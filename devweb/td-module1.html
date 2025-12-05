@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TD - HTML & CSS</title>
+<style>
+  body { font-family: Arial; margin: 0; background: #f4eaff; line-height: 1.8; }
+  .topbar { background: linear-gradient(135deg, #c59bff, #b07cff); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; }
+  .topbar-title { font-size: 20px; font-weight: bold; }
+  .back-btn { padding: 8px 16px; background: #fff; color: #6a34cc; border-radius: 8px; font-weight: bold; text-decoration: none; }
+  .container { width: 70%; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  h1 { color: #4a2db6; border-bottom: 3px solid #e9d6ff; padding-bottom: 15px; }
+  h2 { color: #5b22b3; margin-top: 30px; }
+  .question { background: #f8f4ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #6a34cc; }
+  .question-num { color: #6a34cc; font-weight: bold; font-size: 18px; }
+  .answer { background: #d4edda; padding: 15px; border-radius: 10px; margin-top: 15px; display: none; border-left: 4px solid #28a745; }
+  .show-answer { background: #6a34cc; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: monospace; margin: 15px 0; overflow-x: auto; font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-title">📝 TD - HTML & CSS</div>
+  <a href="../developpement_web.html" class="back-btn">← Retour au cours</a>
+</div>
+<div class="container">
+  <h1>📝 TD : HTML & CSS</h1>
+
+  <h2>Partie 1 : HTML</h2>
+
+  <div class="question">
+    <p class="question-num">Question 1</p>
+    <p>Quelle est la différence entre <code>&lt;div&gt;</code> et <code>&lt;span&gt;</code> ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ul>
+        <li><code>&lt;div&gt;</code> : Élément <strong>block</strong> - prend toute la largeur, crée un saut de ligne</li>
+        <li><code>&lt;span&gt;</code> : Élément <strong>inline</strong> - ne prend que la largeur du contenu, pas de saut de ligne</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 2</p>
+    <p>Pourquoi utiliser les balises sémantiques HTML5 plutôt que des <code>&lt;div&gt;</code> partout ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ul>
+        <li><strong>Accessibilité</strong> : Les lecteurs d'écran comprennent la structure</li>
+        <li><strong>SEO</strong> : Les moteurs de recherche indexent mieux</li>
+        <li><strong>Maintenabilité</strong> : Code plus lisible et compréhensible</li>
+        <li><strong>Standards</strong> : Respect des bonnes pratiques web</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 3</p>
+    <p>Corrigez ce code HTML :</p>
+    <div class="code-block">&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Ma page
+&lt;body&gt;
+&lt;h1&gt;Bienvenue&lt;/h2&gt;
+&lt;img src="photo.jpg"&gt;
+&lt;a&gt;Cliquez ici&lt;/p&gt;</div>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <div class="code-block">&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Ma page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Bienvenue&lt;/h1&gt;
+  &lt;img src="photo.jpg" alt="Description"&gt;
+  &lt;a href="#"&gt;Cliquez ici&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+      <strong>Erreurs corrigées :</strong> DOCTYPE manquant, balises non fermées, h1 fermé par h2, img sans alt, a sans href et fermé par p
+    </div>
+  </div>
+
+  <h2>Partie 2 : CSS</h2>
+
+  <div class="question">
+    <p class="question-num">Question 4</p>
+    <p>Quel est l'ordre de spécificité CSS (du moins au plus prioritaire) ?</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <ol>
+        <li>Sélecteur d'élément : <code>p { }</code> → 0,0,0,1</li>
+        <li>Sélecteur de classe : <code>.classe { }</code> → 0,0,1,0</li>
+        <li>Sélecteur d'ID : <code>#id { }</code> → 0,1,0,0</li>
+        <li>Style inline : <code>style=""</code> → 1,0,0,0</li>
+        <li><code>!important</code> : Priorité absolue (à éviter)</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 5</p>
+    <p>Centrer un élément horizontalement ET verticalement avec Flexbox :</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <div class="code-block">.container {
+  display: flex;
+  justify-content: center;  /* horizontal */
+  align-items: center;      /* vertical */
+  height: 100vh;            /* hauteur pleine page */
+}</div>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="question-num">Question 6</p>
+    <p>Créez une grille de 3 colonnes égales avec un gap de 20px :</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <div class="code-block">.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}</div>
+    </div>
+  </div>
+
+  <h2>Partie 3 : Responsive</h2>
+
+  <div class="question">
+    <p class="question-num">Question 7</p>
+    <p>Écrivez une media query pour que les colonnes passent de 3 à 1 sur mobile (&lt;768px) :</p>
+    <button class="show-answer" onclick="this.nextElementSibling.style.display='block'">Voir la réponse</button>
+    <div class="answer">
+      <div class="code-block">/* Par défaut (desktop) */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+
